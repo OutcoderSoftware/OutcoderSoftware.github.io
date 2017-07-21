@@ -1,8 +1,7 @@
-﻿<style> @import url("../../../UserGuideCss/bootstrap_noprint.min.css"); </style>
-<style> @import url("../../../UserGuideCss/font-awesome.min.css"); </style>
-<style> @import url("../../../UserGuideCss/Theme.css"); </style>
-<style> @import url("../../../UserGuideCss/UserGuide.css"); </style>
-<style> @import url("../../../UserGuideCss/highlightjs/styles/github-gist.css"); </style>
+﻿---
+layout: UserGuide
+title: Outcoder License Server User Guide
+---
 
 # Outcoder License Server User Guide
 #### For Version 1

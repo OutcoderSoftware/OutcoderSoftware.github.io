@@ -58,24 +58,22 @@
 
 Airlock Browser is a modern, feature rich, highly configurable web browser that allows mobile workers to be more productive. It has been specifically designed for ruggedized devices and is based on the popular Surfy Browser for Windows 10 and Android. Airlock Browser includes all the features you'd expect in an industrial browser such as hardware barcode reader support, client side JavaScript and CSS execution, URL rules, and remote configuration; as well as some distinctive features, such as passcode and fingerprint access, text to speech, and a fully customizable user interface.
 
-This guide provides information on the installation and configuration of Airlock Browser, and also on developing and
-using web-based applications for Airlock Browser.
+This guide provides information on the usage and configuration of Airlock Browser, and also on developing web-based applications for Airlock Browser.
 
 Airlock Browser for Android is compatible with devices running Android 5.0 (Lollipop) and above.
 
 ## Overview of the User Interface
 
-When launching Airlock Browser, the launchpad is displayed. The launchpad contains tiles, which are quick links to web application profiles that you create. See Figure 1. You look at creating web application profiles later in the guide.
+When launching Airlock Browser, the launchpad is displayed. The launchpad contains tiles, which are quick links to web application profiles that you create. (See Figure 1.) You look at creating web application profiles later in the guide.
 
-Tapping or sliding the launchpad to the left reveals the web content. By tapping the ellipsis button in the bottom right hand corner of the main view, the application bar expands. See Figure 1.
+Tapping or sliding the launchpad to the left reveals the web content. By tapping the ellipsis button in the bottom right hand corner of the main view, the application bar expands. (See Figure 1.)
 
 There is an address bar, and various toolbar and menu items. Tapping the address bar allows you to enter a URL or a search query.
 We explore the toolbar and menu items later in the guide.
 
 <figure><img src='Images/MainView.png'><figcaption>Figure 1. Launchpad and Tabbed Browser side-by-side</figcaption></figure>
 
-When the application bar is expanded, the tab headers are revealed at the top of the screen. You can switch between
-tabs by scrolling and tapping the desired tab. A favicon image for the page sits in each tab along with the page title and an SSL indicator that notifies the user of an secure SSL connection. A vertical ellipsis button reveals a set of commands available for the active tab. See Figure 2.
+When the application bar is expanded, the tab headers are revealed at the top of the screen. You can switch between tabs by scrolling and tapping the desired tab. A favicon image for the page sits in each tab along with the page title and an SSL indicator that notifies the user of an secure SSL connection. A vertical ellipsis button reveals a set of commands available for the active tab. (See Figure 2.)
 
 <figure><img src='Images/TabMenu.png'><figcaption>Figure 2. Browser Tab Menu</figcaption></figure>
 
@@ -89,7 +87,7 @@ The Settings screen (See Figure 3.) offers various settings, and is divided into
 
 <figure><img src='Images/Settings_General.png'><figcaption>Figure 3. Settings Screen</figcaption></figure>
 
-> **NOTE:** When first launching Airlock Browser, the app is in its non-locked-down state. All screens are visible, all settings are present on the Settings screen, and launchpad tiles are editable. However, upon setting an administration password, most settings are no longer present on the Settings screen, launchpad tiles are no longer editable, and the screens available to the user are limited to those that you (as the administrator) allow in the application bar. You can decide which items, if any, appear in the application bar and tab menu are appropriate for your organization's needs. We explore all of these aspects later in this guide.
+> **NOTE:** When first launching Airlock Browser, the app is in its non-locked-down state. All screens are visible, all settings are present on the Settings screen, and launchpad tiles are editable. However, upon setting an administration password, most settings are hidden on the Settings screen, launchpad tiles are no longer editable, and the screens available to the user are limited to those that you (as the administrator) allow in the application bar. You can decide which items, if any, are appropriate for your organization's needs and should appear in the application bar and tab menu. We explore these aspects later in this guide.
 
 ## Configuring General Settings
 In this section you explore the items in the General section of the Settings screen.
@@ -108,19 +106,19 @@ By default, Airlock Browser launches in full-screen mode; hiding the application
 > **NOTE:** The user is able to enable or disable full-screen mode using the *Full Screen* item in the application bar menu. To prevent this, remove the Full Screen item from the application bar menu via the *Customize Menus* item on the Appearance tab of the Settings screen.
 
 ### Hardware Back Button Action
-To perform a back navigation of a web page, the user may either use Airlock Browser's back button in its main toolbar or the user can tap the hardware back button in the operating system's navigation bar. To prevent the hardware back button from navigating to the previous web page set the Hardware Back Button Action to *None*.
+To perform a back navigation of a web page, the user may either use Airlock Browser's back button in its main toolbar or the user can tap the hardware back button in the operating system's navigation bar. To prevent the hardware back button from navigating to the previous web page set the *Hardware Back Button Action* to *None*.
 
 ### Show Launchpad when App Starts
 When Airlock Browser launches or is deactivated for 5 minutes, the launchpad is brought into view. To prevent this behavior, disable this option.
 
 ### Pause Browser Tab when Inactive
-When switching between tabs, Airlock Browser does *not* stop playback of video or execution of JavaScript on inactive tabs. Disable this option to prevent video or JavaScript execution when a tab is not the active tab.
+When switching between tabs, Airlock Browser does *not* stop playback of video on inactive tabs. Enable this option to prevent video playback when a tab is not the active tab.
 
 ### Show Orientation Lock
-The orientation lock appears when the device is rotated, and allows the user to temporarily prevent app from switching from, or to, landscape or portrait mode. On some devices, where the accelerator is not properly configured, the orientation lock can be displayed erroneously. This option allows you to prevent the orientation lock from showing.
+The orientation lock appears when the device is rotated, and allows the user to temporarily prevent Airlock Browser from switching from, or to, landscape or portrait mode. On some devices, where the accelerator is malfunctioning or not properly configured, the orientation lock can be displayed incorrectly. This option allows you to prevent the orientation lock from showing.
 
 ### Download Images
-This option allows you to disable the downloading of images when a web page loads, which may be useful in low bandwidth environment, or when a web application present images that have a large file size. 
+This option allows you to disable the downloading of images when a web page loads, which may be useful in low bandwidth environments, or when a web application presents images that have a large file size. 
 
 ### Ad Blocker
 When enabled, the Ad Blocker stops most web page ads from being displayed.
@@ -132,7 +130,7 @@ In this section you explore the items in the Security section of the Settings sc
 Ordinarily, the devices back button may be used to exit Airlock Browser. To prevent the app from exiting via the hardware back button, enable this option.
 
 ### Require Passcode at Launch
-When enabled, the user is presented with a passcode entry screen when the app launches or the app is deactivated for 5 minutes or longer. See Figure 4. This feature is commonly used when the device is used by staff in a public or unrestricted environment. 
+When *Require Passcode at Launch* is enabled, the user is presented with a passcode entry screen when the app launches or the app is deactivated for 5 minutes or longer. See Figure 4. This feature is commonly used when the device is being used by staff in a public or unrestricted environment. 
 
 When Require Passcode at Launch is enabled, the window for the app is secured. This means that there is no app preview when cycling through apps, and taking a screenshot of the app is disabled.
 
@@ -153,7 +151,7 @@ If the device has a hardware fingerprint reader, then Airlock Browser can be unl
 When enabled, this option causes Airlock Browser to re-open the pages that were open the last time it was running.
 
 ### Allow Access to My Location
-Some websites rely on knowing the GPS location of the device, to provide, for example, navigation services. Disabling this option will prevent web pages from accessing the location of the device.
+Some websites rely on knowing the GPS location of the device to provide, for example, navigation services. Disabling this option prevents web pages from accessing the location of the device.
 
 ### Save Passwords for Web Pages
 When enabled, the browser prompts the user to save a password when it identifies a form submission with a password field. If the user agrees to saving the password, the password is stored in an encrypted form. When the user navigates to the same page, the browser will attempt to populate the password field.
@@ -169,14 +167,14 @@ This button deletes all saved web page passwords.
 This button deletes all cookies.
 
 ### URL Rules
-URL rules determine which pages can or cannot be accessed by the browser. When navigating to a URL the list is evaluated from top to bottom. See Figure 5.
+URL rules determine which pages can or cannot be accessed by the browser. When navigating to a URL the list is evaluated from top to bottom. (See Figure 5.)
 
 As soon as a match is found, the *Allow* or *Deny* rule is applied. Long press to change the order of a URL rule. Swipe a URL rule left or right to delete it. If you mistakenly delete a rule, use the undo button in the application bar to restore it.
-To create a new rule, tap the + button in the application bar.
+To create a new rule, tap the *+* button in the application bar.
 
-Wildcards are supported. You may also specify more complex rules using regular expressions.
+Wildcards are supported by default. You may also specify more complex rules using regular expressions.
 
-> **NOTE:** An allow rule is automatically created for the URL of active web application profile (defined in the launchpad), and it takes precedence before the URL rules defined on the URL Rules screen. 
+> **NOTE:** An allow rule is automatically created for the URL of active web application profile (defined in the Launchpad), and it takes precedence over the URL rules defined on the URL Rules screen. 
 
 <figure><img src='Images/UrlRules.png'><figcaption>Figure 5. URL Rules Screen</figcaption></figure>
 
@@ -184,7 +182,7 @@ Wildcards are supported. You may also specify more complex rules using regular e
 In this section you see how to change theme options and customize menu and toolbars via the Appearance section of the Settings screen.
 
 ### Customizing Menus and Toolbars
-Depending on your organizations needs, you may wish to hide or show various items in the browsers main application bar and tab menu.
+Depending on your organizations needs, you may wish to hide, show, or reorder some items in the browsers main application bar and tab menu.
 
 The items that appear in the main application bar and tab menu are customizable. You can remove items, change their order, and even add new items.
 
@@ -195,21 +193,21 @@ There are three menus to choose from:
 * Main Menu
 * Tab Menu
 
-The main menu and toolbar are located together on the application bar. While the tab menu is located at the top of each browser tab. See Figure 6.
+The main menu and toolbar are located together on the application bar. While the tab menu is located at the top of each browser tab. (See Figure 6.)
 
 <figure><img src='Images/AppBarTabMenu.png'><figcaption>Figure 6. Application bar menu, toolbar, and tab menu</figcaption></figure>
 
-Choosing *Main Toolbar* from the *Select Menu* screen displays the *Main Toolbar* customization screen. See Figure 7.
+Choosing *Main Toolbar* from the *Select Menu* screen displays the *Main Toolbar* customization screen. (See Figure 7.)
 
-Checkmarks alongside each item indicate whether the item is present. You can introduce new items to the toolbar, or remove items by unchecking them. Items can be reordered by long pressing and dragging the item to a new position in the list.
+A checkmark alongside an item indicates that it will be displayed. You can introduce new items to the toolbar, or remove items by unchecking them. Items can be reordered by long pressing and dragging the item to a new position in the list.
 
-In the case of the Main Toolbar, there is one item that must always be present: the Expand button. This button is required so that the user can open the application bar menu.
+There are two required items that cannot be unchecked: the *Expand* button in the Main Toolbar and the *Administration* item in the Main Menu. The Expand button is required so that the user can open the application bar menu to get to the *Administration* button.
 
 <figure><img src='Images/CustomizingToolbar.png'><figcaption>Figure 7. Customizing the toolbar</figcaption></figure>
 
 ### Night Dimmer Level
 The Night Dimmer Level setting controls the how dark the screen is when the Night Dimmer is engaged via the main application bar menu.
-This setting is visible in lock-down mode to allow it to be adjusted in different lighting scenarios.
+This setting is visible in lock-down mode to allow it to be adjusted in different lighting conditions.
 
 ### Launchpad Background
 

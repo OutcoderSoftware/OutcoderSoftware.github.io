@@ -1,0 +1,8 @@
+theme: jekyll-theme-minimal
+name: Codon
+markdown: kramdown
+highlighter: rouge
+default_lang: csharp
+permalink: /blog/:year/:month/:day/:title
+encoding: utf-8
+repository: OutcoderSoftware/OutcoderSoftware.github.io

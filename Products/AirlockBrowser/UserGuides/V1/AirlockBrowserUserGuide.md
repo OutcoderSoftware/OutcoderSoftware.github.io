@@ -1,6 +1,6 @@
 ﻿<style> @import url("../../../UserGuide.css"); </style>
 # Airlock Browser User Guide
-#### For Version 1.0 Android
+#### For Version 1 Android
 ----
 ## Table of Contents
 

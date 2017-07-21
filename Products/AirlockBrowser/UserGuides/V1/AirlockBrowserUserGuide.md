@@ -61,7 +61,7 @@ Airlock Browser is a modern, feature rich, highly configurable web browser that 
 This guide provides information on the installation and configuration of Airlock Browser, and also on developing and
 using web-based applications for Airlock Browser.
 
-Airlock Browser for Android is compatible with devices running Android 5.0 (Lollipop).
+Airlock Browser for Android is compatible with devices running Android 5.0 (Lollipop) and above.
 
 ## Overview of the User Interface
 

@@ -20,7 +20,7 @@ The Outcoder License Server provides an easy way to distribute licenses for Outc
 
 ## System Requirements
 
-Outcoder License Server requires Windows 7 or later and the .NET Framework 4.6.1.
+Outcoder License Server requires Windows 7 or later, the .NET Framework 4.6.1, and 6 MB of disk space.
 
 ## Overview of the User Interface
 
@@ -28,9 +28,9 @@ When you launch the License Server application, you are presented with the main 
 
 By default the License Server listens for license requests on port **9132**. During installation, the installer attempts to open port 9132 on the system's firewall, and it adds a URL reservation for ```http://+:9132/```.
 
-While the License Server is running, the Port number cannot be changed. To change the port number, click the *Stop Server* button. Click the *Start Server* button to resume accepting connections.
+While the License Server is running, the Port number cannot be changed. To change the port number, click the *Stop Server* button. Click the *Start Server* button to resume the server.
 
-When a device running a supported Outcoder product, such as Airlock Browser, connects to the License Server, the product's serial number is displayed in the list on the left side of the main window. 
+When a device running a supported Outcoder product, such as Airlock Browser, connects to the License Server, the product's serial number is displayed in the *Devices* list on the left side of the main window. 
 
 > **NOTE:** The License Server retains the list of devices that has connected to the License Server. To remove all items in the list, click *Clear Device List*.
 
@@ -45,7 +45,7 @@ The Export Serials dialog has three required fields:
 * Organization
 * Contact Email
 
-See Figure 2. 
+(See Figure 2.)
 
 Enter the information into the three fields and click export.
 
@@ -59,9 +59,9 @@ A *Choose Location* dialog is presented. Select the location where to save the s
 
 Upon receipt of the Serials file, it is then processed and you will receive a licenses file.
 
-Click the *Import License* button to browse for the license file. The license is displayed in the list on the right side of the main window. (See Figure 4.) 
+Click the *Import License* button to browse for the license file. The license is displayed in the *Licenses* list on the right side of the main window. (See Figure 4.) 
 
-When a device running a supported product, such as Airlock Browser, connects to the License Server, the device receives the license. The item in the License Server's Devices list then changes to a green color, indicating that the device is licensed; and the item in the Licenses list changes to a gray color, indicating that the license has been applied.
+When a device running a supported product, such as Airlock Browser, connects to the License Server, the device is sent the license. The item in the License Server's Devices list then changes to green, indicating that the device is licensed; and the corresponding item in the Licenses list changes to gray, indicating that the license has been applied.
 
 <figure><img src='Images/LicenseImported.png'><figcaption>Figure 4. License imported and delivered to device.</figcaption></figure>
 

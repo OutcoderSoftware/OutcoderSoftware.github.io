@@ -1,3 +1,4 @@
+theme: jekyll-theme-minima
 name: Outcoder
 markdown: kramdown
 highlighter: rouge

@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
-name: Codon
+name: Outcoder
 markdown: kramdown
 highlighter: rouge
 default_lang: csharp

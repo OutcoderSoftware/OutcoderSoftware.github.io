@@ -1,6 +1,7 @@
 ﻿<style> @import url("../../../UserGuide.css"); </style>
+
 # Outcoder License Server User Guide
-#### For Version 1.0
+#### For Version 1
 ----
 ## Table of Contents
 

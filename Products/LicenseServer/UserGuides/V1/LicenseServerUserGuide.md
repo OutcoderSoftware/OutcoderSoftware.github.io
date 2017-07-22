@@ -1,5 +1,5 @@
-﻿---
-layout: test
+---
+layout: UserGuide
 title: Outcoder License Server User Guide
 ---
 
@@ -8,6 +8,14 @@ title: Outcoder License Server User Guide
 
 ## Table of Contents
 
+[//]: # (TOC Begin)
+* [Introduction](#introduction)
+* [System Requirements](#system-requirements)
+* [Overview of the User Interface](#overview-of-the-user-interface)
+* [Exporting Serials](#exporting-serials)
+* [Importing Licenses](#importing-licenses)
+
+[//]: # (TOC End)
 
 
 ## Introduction

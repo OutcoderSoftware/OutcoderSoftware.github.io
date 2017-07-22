@@ -1,6 +1,5 @@
 ﻿---
-layout: UserGuide
-title: Airlock Browser User Guide
+layout: test
 ---
 
 # Airlock Browser User Guide

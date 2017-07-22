@@ -1,5 +1,4 @@
-﻿---
----
+﻿
 # User Guides
 
 * [Airlock Browser](/Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html)

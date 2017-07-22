@@ -1,11 +1,11 @@
 ﻿---
-layout: UserGuide
+layout: test
 title: Outcoder License Server User Guide
 ---
 
 # Outcoder License Server User Guide
 #### For Version 1
-----
+
 ## Table of Contents
 
 [//]: # (TOC Begin)

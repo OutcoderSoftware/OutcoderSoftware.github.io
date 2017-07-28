@@ -74,7 +74,8 @@ When launching Airlock Browser, the launchpad is displayed. The launchpad contai
 Tapping or sliding the launchpad to the left reveals the web content. By tapping the ellipsis button in the bottom right hand corner of the main view, the application bar expands.
 
 There is an address bar, and various toolbar and menu items. Tapping the address bar allows you to enter a URL or a search query.
-We explore the toolbar and menu items later in the guide.
+
+> **NOTE:** The buttons and menu items in the application bar and tab menu are completely customizable. A device administrator may re-order, remove, or add buttons according to requirements. You see how to achieve this later in this guide.
 
 <figure><img src='Images/MainView.png'><figcaption>Figure 1. Launchpad and Tabbed Browser side-by-side</figcaption></figure>
 
@@ -82,9 +83,11 @@ When the application bar is expanded, the tab headers are revealed at the top of
 
 <figure><img src='Images/TabMenu.png'><figcaption>Figure 2. Browser Tab Menu</figcaption></figure>
 
-Tapping the Settings button in the application bar menu, displays the Settings screen.
+Tapping the Settings button in the application bar menu, displays the Settings screen. (See Figure 3.)
 
-The Settings screen (See Figure 3.) offers various settings, and is divided into four sections:
+> **NOTE:** All settings are exportable, as are web application profiles. You explore how to export the browser's configuration, and even host the exported configuration on a server, to deliver browser settings to multiple devices. 
+
+The Settings screen  offers various settings, and is divided into four sections:
 * General Settings
 * Security Settings
 * Appearance Settings
@@ -306,18 +309,16 @@ To deploy licenses to multiple devices in the field, the [Outcoder License Serve
 
 <figure><img src='Images/ManageLicense.png'><figcaption>Figure 12. Manage License Screen</figcaption></figure>
 
-Tapping on the + button opens the Application screen, allowing you to define a new web application profile. (See Figure 13.)
-
-The Web Address edit box defaults to the URL of the current active tab.
-
 ## Creating a Web Application Profile
 Web application profiles (AKA applications) represent web sites. They allow you to define the behavior of Airlock Browser when navigating to pages within your organization. Each application is represented as a tile on the launchpad. Tapping on a tile applies the settings for that application and opens the Web Address in a new browser tab. 
 
-To create a new web application profile, tap the plus tile on the launchpad. 
+To create a new web application profile, tap the + tile on the launchpad. (See Figure 13.)
+
+The Web Address edit box defaults to the URL of the current active tab.
 
 To edit an existing web application profile, long press its tile in the launchpad. A menu appears allowing you to edit the tile or delete the tile. When a tile is deleted from the applications section in the launchpad, it is deleted from the device.
 
-The web application profile includes a *Title* field, the *Web Address* (URL), a tile color option, and several other options that we now explore. (See Figure 13.)
+The web application profile includes a *Title* field, the *Web Address* (URL), a tile color option, and several other options that we now explore.
 
 <figure><img src='Images/WebApplication.png'><figcaption>Figure 13. Web Application Profile Screen</figcaption></figure>
 

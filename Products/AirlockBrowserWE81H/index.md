@@ -144,7 +144,8 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 					</div>
 				</div>
 			</div>
-			<div id="slider1" class="col-md-4 col-sm-4" style="width: 250px">
+			<div id="slider1" class="col-md-4 col-sm-4" style="width: 250px" 
+				data-cycle-fx="fadeOut">
 				<img border="0" src="/images/Device01.png" />
 				<img border="0" src="/images/Device02.png" />
 				<img border="0" src="/images/Device03.png" />

@@ -18,7 +18,7 @@ title: About Us
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="about-2-img-cont"><img src="images/about.jpg" class="img-responsive" alt=""></div>
+				<div class="about-2-img-cont"><img src="/images/about.jpg" class="img-responsive" alt=""></div>
 			</div>
 			<div class="col-lg-6">
 				<div class="about-2-txt-cont section-padding wow fadeInRight">

@@ -14,7 +14,7 @@ title: Outcoder | The Browser Company
     <!-- Wrapper for carousel items -->
     <div class="carousel-inner"> 
       <!--1st item start-->
-      <div class="item active"> <img src="images/slide1.png" class="img-responsive" alt="First Slide Image">
+      <div class="item active"> <img src="/images/slide1.png" class="img-responsive" alt="First Slide Image">
         <div class="carousel-caption">
           <h1 class="wow fadeInUp">WE DESIGN & BUILD MOBILE <span>BROWSERS</span></h1>
           <H4>&nbsp;</H4>
@@ -25,7 +25,7 @@ title: Outcoder | The Browser Company
       </div>
       <!--1st item end--> 
       <!--2nd item start-->
-      <div class="item"> <img src="images/slide2.png" class="img-responsive" alt="Second Slide Image">
+      <div class="item"> <img src="/images/slide2.png" class="img-responsive" alt="Second Slide Image">
         <div class="carousel-caption">
           <h1 class="wow fadeInUp color-white"><span>Airlock</span> Browser</h1>
           <h4 class="wow fadeInUp color-white hidden-xs">INDUSTRIAL BROWSER FOR PRODUCTIVE MOBILE BROWSING</h4>
@@ -34,7 +34,7 @@ title: Outcoder | The Browser Company
       </div>
       <!--2nd item end--> 
       <!--3rd item start-->
-      <div class="item"> <img src="images/slide3.png" class="img-responsive" alt="Third Slide Image">
+      <div class="item"> <img src="/images/slide3.png" class="img-responsive" alt="Third Slide Image">
         <div class="carousel-caption">
           <h1 class="wow fadeInUp color-white"><span>Surfy</span> Browser </h1>
           <h4 class="wow fadeInUp color-white hidden-xs">A DARINGLY DIFFERENT CONSUMER BROWSER</h4>

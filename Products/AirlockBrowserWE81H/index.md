@@ -230,7 +230,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 	</div>
 </section>
 
-<script src="/js/jquery.cycle.all.js"></script>
+<script src="/js/jquery.cycle2.js"></script>
 <script>
     $(document).ready(function ()
         {

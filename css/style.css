@@ -89,13 +89,9 @@ img {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 15px;
 	font-weight: 500;
-	font-family: "Open Sans", "Roboto", "Helvetica Neue", Arial, sans-serif;
-	
+	font-family: 'Rubik', sans-serif;
 	letter-spacing: 1px;
 }
-
-/* font-family: 'Rubik', sans-serif; */
-
 html, body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
@@ -283,11 +279,10 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	font-size: 14px;
 }
 .navbar-default .navbar-nav>li>a {
-	font-family: "Open Sans", "Roboto", "Helvetica Neue", Arial, sans-serif;
+	font-family: 'Rubik', sans-serif;
 	font-weight:500;
 	color:#777;
 }
-/*font-family: 'Rubik', sans-serif; */
 .navbar-right {
 	float: right!important;
 	margin-top: 5px;
@@ -347,11 +342,10 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.09);
 }
 .navbar-fixed-top .navbar-nav>li>a {
-	font-family: "Open Sans", "Roboto", "Helvetica Neue", Arial, sans-serif;
+	font-family: 'Rubik', sans-serif;
 	font-weight:500;
 	color:#777;
 }
-	/* font-family: 'Rubik', sans-serif; */
 .navbar-fixed-top .navbar-nav>.active>a, .navbar-fixed-top .navbar-nav>.active>a:focus, .navbar-fixed-top .navbar-nav>.active>a:hover {
 	color: #d21919;
 	background-color: transparent;

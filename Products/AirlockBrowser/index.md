@@ -2,7 +2,7 @@
 title: Outcoder | The Browser Company | Airlock Browser for Android
 ---
 
-<section id="banner-3" class="section-padding" style="background:url(images/airlock-bg.jpg) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover; }">
+<section id="banner-3" class="section-padding" style="background:url(/images/airlock-bg.jpg) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover; }">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">

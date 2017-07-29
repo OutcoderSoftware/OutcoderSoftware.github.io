@@ -1018,7 +1018,7 @@ $.fn.cycle.defaults = {
     before:           null,     // transition callback (scope set to element to be shown):     function(currSlideElement, nextSlideElement, options, forwardFlag)
     center:           null,     // set to true to have cycle add top/left margin to each slide (use with width and height options)
     cleartype:        !$.support.opacity,  // true if clearType corrections should be applied (for IE)
-    cleartypeNoBg:    false,    // set to true to disable extra cleartype fixing (leave false to force background color setting on slides)
+    cleartypeNoBg:    true,    // set to true to disable extra cleartype fixing (leave false to force background color setting on slides)
     containerResize:  1,        // resize container to fit largest slide
     containerResizeHeight:  0,  // resize containers height to fit the largest slide but leave the width dynamic
     continuous:       0,        // true to start next transition immediately after current one completes

@@ -62,7 +62,7 @@
   background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
-  background-image: url(images/preloader.gif);
+  background-image: url(/images/preloader.gif);
 }
 .alignleft {
 	float: left;

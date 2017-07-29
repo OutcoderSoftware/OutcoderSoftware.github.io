@@ -95,18 +95,12 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 	</div>
 </section>
 
-
-
-
-
 <section id="services-1" class="section-padding-ash">
 	<div class="container">
 		<h2 class="text-center">Top Features</h2>
 		<div class="text-center">
 			<hr class="hr-center">
-		</div>
-                    
-                
+		</div>             
 		<div class="row">
 			<style>
 				.media-heading { font-size: 24px; }
@@ -151,7 +145,6 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4">
-
 				<ul id="slider1" style="display: block; margin-left: auto; margin-right: auto">
 					<li><img border="0" src="/images/Device01.png" width="260px" /></li>
 					<li><img border="0" src="/images/Device02.png" width="260px" /></li>
@@ -236,5 +229,17 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 		</div>
 	</div>
 </section>
+
+<script src="Scripts/jquery.cycle.all.js"></script>
+<script>
+    $(document).ready(function ()
+        {
+            $('#slider1').cycle({
+                fx: 'fade', // here change effect to blindX, blindY, blindZ etc 
+                speed: 'slow', 
+                timeout: 2000 
+            });
+        });
+</script>
 	
   

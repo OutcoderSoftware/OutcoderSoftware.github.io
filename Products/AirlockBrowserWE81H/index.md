@@ -25,7 +25,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<h2 class="text-left">Introducing Airlock Browser for WE8.1H</h2>
 				<hr class="hr-left">
 				<div class="row">
-          
+		  
 					<div style="padding-bottom:20px;padding-right:20px;padding-left:20px;"> 
 						<p>Today, more and more organizations are choosing the web for delivering information and for line of business applications. 
 							Rich user experiences can be delivered to devices without being coupled to any particular platform. 
@@ -33,9 +33,9 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 						<p>Airlock Industrial Browser provides secure browsing and allows organizations to configure the browser to meet the unique needs of their business and end-users. 
 							Airlock Industrial Browser allows organizations to take advantage of mobile browsing without security risks, 
 							while offering deep integration features that connect the web with the device, such as barcode scanning support for web pages.</p>
-              
+			  
 					</div>
-         
+		 
 					<div class="about-3-cont-txt" style="padding-top:0px;">
 						<ul class="wow fadeInUp">
 							<li><a href="#">Download Airlock Browser for WE8.1H </a></li>
@@ -110,7 +110,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 
 					<div class="media-body">
 						<h3 class="media-heading">Cloud configuration deployment</h3>
-                               
+							   
 					</div>
 				</div>
 				<div class="media text-right feature">
@@ -125,14 +125,14 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 					<div class="media-body">
 						<h3 class="media-heading">easy configuration</h3>
 						Administrators configure the app, export the configuration; you're good to go.
-                                
+								
 					</div>
 				</div>
 				<div class="media text-right feature">
-    
+	
 					<div class="media-body">
 						<h3 class="media-heading">Restrict URLs</h3>
-                               
+							   
 					</div>
 				</div>
 				<div class="media text-right feature">
@@ -140,7 +140,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 					<div class="media-body">
 						<h3 class="media-heading">Keyboard wedge</h3>
 						Built in scanning & keyboard wedge support
-                                
+								
 					</div>
 				</div>
 			</div>
@@ -231,16 +231,11 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 
 <script src="/js/jquery.cycle2.js"></script>
 <script>
-    $(document).ready(function ()
-        {
+	$(document).ready(function ()
+		{
 			var slider = $('#slider1');
-            slider.cycle({
-				width: 250,
-                fx: 'fade', // here change effect to blindX, blindY, blindZ etc 
-                speed: 'slow', 
-                timeout: 2000 
-            });
-        });
+			slider.cycle();
+		});
 </script>
 	
   

@@ -235,7 +235,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
     $(document).ready(function ()
         {
 			var slider = $('#slider1');
-			slider.width = 250;
+			slider.options.fit = 1;
             slider.cycle({
                 fx: 'fade', // here change effect to blindX, blindY, blindZ etc 
                 speed: 'slow', 

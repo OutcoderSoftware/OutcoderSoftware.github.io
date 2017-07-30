@@ -3,17 +3,18 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 ---
 
 <section id="banner-3" class="section-padding" style="background:url(/images/airlock-bg.jpg) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover; }">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <div class="banner-2-cont">
-          <h1 class="wow fadeInUp text-center">Airlock Browser</h1>
-          <h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
-          <div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<div class="banner-2-cont">
+					<img class="wow fadeInUp center-block" src="Images/Airlock_Logo_150.png" title="Airlock Browser Logo" style="margin-bottom: 20px" />
+					<h1 class="wow fadeInUp text-center">Airlock Browser</h1>
+					<h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
+					<div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section id="faq-team" class="section-padding">

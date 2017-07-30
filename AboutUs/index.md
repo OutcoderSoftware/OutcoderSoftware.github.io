@@ -24,7 +24,7 @@ title: About Us
 				<div class="about-2-txt-cont section-padding wow fadeInRight">
 					<h5 class="text-left">Why choose us</h5>
 					<h2 class="text-left">Reputation. Experience. Focus.</h2>
-					<p>Outcoder designs & builds mobile browsers. We bring years of experience in both commercial and enterprise development, creating and maintaining bespoke systems.</p>
+					<p>Outcoder is a Swiss software company. We design & build mobile browsers. We bring years of experience in both commercial and enterprise development, creating and maintaining bespoke systems.</p>
 					<a href="mailto:sales@outcoder.com" class="btn btn-black btn-xl" >EMAIL US TODAY</a> </div>
 			</div>
 		</div>

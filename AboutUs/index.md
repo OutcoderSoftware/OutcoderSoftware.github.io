@@ -8,7 +8,7 @@ title: About Us
 			<div class="col-lg-12">
 				<div class="inner-header-txt-cont">
 					<h2 class="text-left">About us</h2>
-					<h6><a href="#" class="">Home</a> / About us</h6>
+					<h6><a href="/" class="">Home</a> / About us</h6>
 				</div>
 			</div>
 		</div>
@@ -25,7 +25,7 @@ title: About Us
 					<h5 class="text-left">Why choose us</h5>
 					<h2 class="text-left">Reputation. Experience. Focus.</h2>
 					<p>Outcoder is a Swiss software company. We design & build mobile browsers. We bring years of experience in both commercial and enterprise development, creating and maintaining bespoke systems.</p>
-					<a href="mailto:sales@outcoder.com" class="btn btn-black btn-xl" >EMAIL US TODAY</a> </div>
+					<a href="mailto:info@outcoder.com" class="btn btn-black btn-xl" >EMAIL US TODAY</a> </div>
 			</div>
 		</div>
 	</div>

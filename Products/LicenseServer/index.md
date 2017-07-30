@@ -37,8 +37,8 @@ title: Outcoder | The Browser Company | License Server
 		 
 		   <div class="about-3-cont-txt" style="padding-top:0px;">
 			  <ul class="wow fadeInUp">
-				<li><a href="#">Download Airlock Browser for Android </a></li>
-				<li><a href="#">Airlock Browser for Android Documentation</a></li>
+				<li><a href="#">Download Outcoder License Server</a></li>
+				<li><a href="/Products/LicenseServer/UserGuides/V1/LicenseServerUserGuide.html">User Guide</a></li>
 			  </ul>
 			</div>
 		</div>

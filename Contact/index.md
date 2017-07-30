@@ -8,7 +8,7 @@ title: Outcoder | The Browser Company | Contact
 			<div class="col-lg-12">
 				<div class="inner-header-txt-cont">
 					<h2 class="text-left">Contact us</h2>
-					<h6><a href="#" class="">Home</a> / Contact us</h6>
+					<h6><a href="/" class="">Home</a> / Contact us</h6>
 				</div>
 			</div>
 		</div>
@@ -24,7 +24,7 @@ title: Outcoder | The Browser Company | Contact
 				<div id="swatch_social-2" class="sidebar-widget  widget_swatch_social">
 					<ul class="unstyled" style="list-style-type: none; margin-left: 0em; padding-left: 0px">
 						<li style="padding-bottom: 1.5em">
-							<a href="mailto:sales@outcoder.com">
+							<a href="mailto:info@outcoder.com">
 								<i class="fa fa-envelope-o" style="font-size: 3em"></i>
 								<span style="font-size: 1.5em; padding-left: 1em; vertical-align: top">sales@outcoder.com</span>
 							</a>

@@ -23,8 +23,8 @@ title: About Us
 			<div class="col-lg-6">
 				<div class="about-2-txt-cont section-padding wow fadeInRight">
 					<h5 class="text-left">Why choose us</h5>
-					<h2 class="text-left">Briliant developers. Experience. Focus.</h2>
-					<p>Outcoder designs & builds mobile browsers. We have over a decade of experience in software development and knowhow in the mobile browser space. We have the skils, knowledge and experience to make your users more productive.</p>
+					<h2 class="text-left">Reputation. Experience. Focus.</h2>
+					<p>Outcoder designs & builds mobile browsers. We bring years of experience in both commercial and enterprise development, creating and maintaining bespoke systems.</p>
 					<a href="mailto:sales@outcoder.com" class="btn btn-black btn-xl" >EMAIL US TODAY</a> </div>
 			</div>
 		</div>

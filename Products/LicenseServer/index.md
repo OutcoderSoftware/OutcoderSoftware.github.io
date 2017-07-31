@@ -29,8 +29,8 @@ title: Outcoder | The Browser Company | License Server
 				<p>Today, more and more organizations are choosing the web for delivering information and for line of business applications. 
 				Rich user experiences can be delivered to devices without being coupled to any particular platform. 
 				Yet, the question arises, how do you safely and securely allow end-users to consume web content from an enterprise device?</p>
-				<p>Airlock Industrial Browser provides secure browsing and allows organizations to configure the browser to meet the unique needs of their business and end-users. 
-				Airlock Industrial Browser allows organizations to take advantage of mobile browsing without security risks, 
+				<p>Airlock Browser provides secure browsing and allows organizations to configure the browser to meet the unique needs of their business and end-users. 
+				Airlock Browser allows organizations to take advantage of mobile browsing without security risks, 
 				while offering deep integration features that connect the web with the device, such as barcode scanning support for web pages.</p>
 			  
 			</div>

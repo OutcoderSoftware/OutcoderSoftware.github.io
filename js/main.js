@@ -72,9 +72,9 @@
     jQuery(window).on('load',function(){
 		
 		//Preloader
-		$('.preloader').delay(500).fadeOut('slow');
-		$('body').delay(500).css({'overflow':'visible'});
-        
+		//$('.preloader').delay(500).fadeOut('slow');
+		//$('body').delay(500).css({'overflow':'visible'});
+		$('body').css({ 'overflow': 'visible' });
     });
 
 

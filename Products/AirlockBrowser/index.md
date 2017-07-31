@@ -9,7 +9,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 		    <div class="banner-2-cont">
 			    <div class="wow fadeInUp center-block" style="margin-bottom: 15px">
 				    <span style="display:table;margin:0 auto;">
-					    <img src="/Images/Airlock_Logo_150.png" title="Airlock Browser Logo" style="width: 90px; height: 90px;"/>
+					    <img src="Images/Airlock_Logo_150.png" title="Airlock Browser Logo" style="width: 90px; height: 90px;"/>
 					    <span class="h1" style="margin-left: 20px; margin-top: 0px; margin-bottom: 0px; vertical-align: middle">Airlock&nbsp;Browser</span>
 				    </span>
 			    </div>

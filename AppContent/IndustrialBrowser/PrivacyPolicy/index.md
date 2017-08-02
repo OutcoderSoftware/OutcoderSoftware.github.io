@@ -1,6 +1,6 @@
 ---
 title: Airlock Browser Privacy Policy
-template: PrivacyPolicy
+layout: PrivacyPolicy
 ---
 
 # Airlock Browser Privacy Policy

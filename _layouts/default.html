@@ -38,6 +38,10 @@
 <script src="/js/jquery.counterup.min.js"></script> 
 <!-- default --> 
 <script src="/js/main.js"></script>
+	
+{% for js in page.customjs %}
+<script type="text/javascript" src="{{ js }}"></script>
+{% endfor %}
 </head>
 <body>
 <!--<div class="preloader"></div>-->

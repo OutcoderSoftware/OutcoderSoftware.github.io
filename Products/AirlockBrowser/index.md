@@ -14,7 +14,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 				    </span>
 			    </div>
 			    <h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
-			    <div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
+			    <div class="text-center hidden-xs"><a href="Downloads/" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../RequestQuote/index.html?ProductId=IndustrialAndroid" class="btn btn-default btn-xl">Request A Quote</a></div>
 		    </div>
 	    </div>
     </div>
@@ -40,8 +40,8 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
          
            <div class="about-3-cont-txt" style="padding-top:0px;">
               <ul class="wow fadeInUp">
-                <li><a href="#">Download Airlock Browser for Android </a></li>
-                <li><a href="/Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html">View the User Guide</a></li>
+                <li><a href="Downloads/" class="downloadLink">Download Airlock Browser for Android</a></li>
+                <li><a href="UserGuides/V1/AirlockBrowserUserGuide.html" class="downloadLink">View the User Guide</a></li>
               </ul>
             </div>
         </div>

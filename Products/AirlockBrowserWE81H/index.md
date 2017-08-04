@@ -2,7 +2,7 @@
 title: Outcoder | The Browser Company | Airlock Browser for WE81H
 ---
 
-<section id="banner-3" class="section-padding" style="background:url(/images/airlock-we81-bg.png) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover;
+<section id="banner-3" class="section-padding" style="background:url(/images/airlock-we81-bg.jpg) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover;
 								}">
 	<div class="container">
 		<div class="row">

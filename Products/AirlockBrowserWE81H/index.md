@@ -10,7 +10,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<div class="banner-2-cont">
 					<h1 class="wow fadeInUp text-center">Airlock Browser for Windows Embeded 8.1 Handheld</h1>
 					<h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
-					<div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
+					<div class="text-center hidden-xs"><a href="../RequestTrial/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../RequestQuote/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-default btn-xl">Request A Quote</a></div>
 				</div>
 			</div>
 		</div>

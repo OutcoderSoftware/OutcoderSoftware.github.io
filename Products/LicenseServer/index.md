@@ -1,5 +1,5 @@
 ---
-title: Outcoder | The Browser Company | License Server
+title: Outcoder | License Server
 ---
 
 <section id="banner-3" class="section-padding" style="background:url(/images/license-server-bg.png) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover; }">
@@ -9,7 +9,7 @@ title: Outcoder | The Browser Company | License Server
 		<div class="banner-2-cont">
 		  <h1 class="wow fadeInUp text-center">Outcoder License Server</h1>
 		  <h4 class="wow fadeInUp text-center hidden-xs">SAVE TIME</h4>
-		  <div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
+		  <div class="text-center hidden-xs"><a href="Downloads/" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request A Quote</a></div>
 		</div>
 	  </div>
 	</div>
@@ -21,7 +21,7 @@ title: Outcoder | The Browser Company | License Server
   <div class="container">
 	<div class="row">
 	  <div class="col-lg-6">
-		<h2 class="text-left">Introducing Airlock Browser</h2>
+		<h2 class="text-left">Introducing Outcoder License Server</h2>
 		<hr class="hr-left">
 		<div class="row">
 		  

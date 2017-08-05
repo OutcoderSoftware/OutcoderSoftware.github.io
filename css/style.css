@@ -53,6 +53,19 @@
 	font-size: large
 }
 
+.short p {
+	font-size: 1.4em;
+	color: black;
+}
+
+.short ul {
+	font-size: 1.4em;
+}
+
+.short h1 {
+	font-size: 3.1em;
+}
+
 /*--------------------------------*/
 /*           1.Default
 /*--------------------------------*/
@@ -829,7 +842,7 @@ button.close {
 .footer-cont ul {
 	list-style-type: none;
 	padding: 0px;
-	width: 200px;
+	width: 240px;
 	display: inline-block;
 }
 .footer-cont ul li {

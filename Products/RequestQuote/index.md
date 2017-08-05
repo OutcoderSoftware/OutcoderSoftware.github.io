@@ -5,7 +5,17 @@ customjs:
  - RequestQuote.js
 ---
 
-<div class="col-lg-6">
+<div class="short">
+<div class="row">
+<div class="maincopy col-md-7 col-xs-12">
+<h1>REQUEST A QUOTE FOR ONE OF OUR SOLUTIONS</h1>
+<p>Discover how Outcoder can boost the productivity of your workforce. Start saving money today.</p>
+<ul>
+	<li>Modern browser solutions built to support your organization.</li>
+	<li>Harness our expertise in mobile enterprise solutions.</li>
+</ul>
+</div>
+<div class="call-to-action col-md-5 col-xs-12">
 <div class="contact-form-cont">
 <h3>Request Quote</h3>
 <form action="https://formspree.io/sales@outcoder.com" method="post">
@@ -28,6 +38,8 @@ customjs:
 </form>
 </div>
 </div>
+</div>
+<div>
 
 <h2 id='result'></h2>
 

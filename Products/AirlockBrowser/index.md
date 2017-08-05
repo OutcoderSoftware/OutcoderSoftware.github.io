@@ -150,10 +150,14 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 
 			<div id="slider1" class="col-md-4 col-sm-4" style="width: 250px" 
 					data-cycle-fx="fadeout">
-				<img border="0" src="/images/Device01.png" />
-				<img border="0" src="/images/Device02.png" />
-				<img border="0" src="/images/Device03.png" />
-				<img border="0" src="/images/Device04.png" />
+				<img border="0" src="Images/Device/Device01.png" />
+				<img border="0" src="Images/Device/Device02.png" />
+				<img border="0" src="Images/Device/Device03.png" />
+				<img border="0" src="Images/Device/Device05.png" />
+				<img border="0" src="Images/Device/Device06.png" />
+				<img border="0" src="Images/Device/Device07.png" />
+				<img border="0" src="Images/Device/Device08.png" />
+				<img border="0" src="Images/Device/Device09.png" />
 			</div>
 
 			<div class="col-md-4 col-sm-4">

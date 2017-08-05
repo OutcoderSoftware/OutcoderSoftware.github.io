@@ -20,7 +20,7 @@ title: Outcoder License Server User Guide
 
 ## Introduction
 
-The Outcoder License Server provides an easy way to distribute licenses for Outcoder projects such as Airlock Browser. The License Server allows you to export serial numbers from devices on your network. The serial numbers can then be sent to sales@outcoder.com, where you'll be issued with a licenses file. You can then import the licenses file into the License Server, which will automatically distribute and assign licenses for devices on your network.  
+The Outcoder License Server provides an easy way to distribute licenses for Outcoder products such as Airlock Browser. The License Server allows you to export serial numbers from devices on your network. The serial numbers can then be sent to sales@outcoder.com, where you'll be issued with a licenses file. You can then import the licenses file into the License Server, which will automatically distribute and assign licenses for devices on your network.  
 
 ## System Requirements
 

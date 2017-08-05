@@ -26,18 +26,17 @@ title: Outcoder | The Browser Company | License Server
 		<div class="row">
 		  
 			<div style="padding-bottom:20px;padding-right:20px;padding-left:20px;"> 
-				<p>Today, more and more organizations are choosing the web for delivering information and for line of business applications. 
-				Rich user experiences can be delivered to devices without being coupled to any particular platform. 
-				Yet, the question arises, how do you safely and securely allow end-users to consume web content from an enterprise device?</p>
-				<p>Airlock Browser provides secure browsing and allows organizations to configure the browser to meet the unique needs of their business and end-users. 
-				Airlock Browser allows organizations to take advantage of mobile browsing without security risks, 
-				while offering deep integration features that connect the web with the device, such as barcode scanning support for web pages.</p>
+				<p>The Outcoder License Server provides an easy way to distribute licenses for Outcoder products such as Airlock Browser. 
+				The License Server allows you to export serial numbers from devices on your network. 
+				The serial numbers can then be sent to sales@outcoder.com, where you'll be issued with a licenses file. 
+				You can then import the licenses file into the License Server, which will automatically distribute 
+				and assign licenses for devices on your network.</p>
 			  
 			</div>
 		 
 		   <div class="about-3-cont-txt" style="padding-top:0px;">
 			  <ul class="wow fadeInUp">
-				<li><a href="#">Download Outcoder License Server</a></li>
+				<li><a href="Downloads/">Download Outcoder License Server</a></li>
 				<li><a href="/Products/LicenseServer/UserGuides/V1/LicenseServerUserGuide.html">User Guide</a></li>
 			  </ul>
 			</div>

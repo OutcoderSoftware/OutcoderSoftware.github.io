@@ -1,15 +1,18 @@
 /* Medium Layout: 1280px. */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
+@media only screen and (min-width: 768px) {
 
 	.navbar-brand img {
 		margin-right: 15px;
 	}
 }
+
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+
+}
 /* Tablet Layout: 768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-	.navbar-brand img {
-		margin-right: 15px;
-	}
+
 }
 /* Mobile Layout: 320px. */
 @media only screen and (max-width: 767px) { 

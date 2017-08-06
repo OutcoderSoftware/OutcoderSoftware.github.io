@@ -304,8 +304,15 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	border-color: transparent;
 }
 
+.navbar-toggle {
+	align-self: center;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
 .navbar-header {
 	min-height: 90px;
+	display: flex;
 }
 
 

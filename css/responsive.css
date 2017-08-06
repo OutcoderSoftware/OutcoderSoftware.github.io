@@ -76,8 +76,8 @@
 .navbar-right{float:left !important;margin-left: 0px;}
 }
 
-@media (max-width: 767px) { 
-	.top-bar{
-		display:none;
+@media (max-width: 767px) {
+	.topRequestQuote {
+		display: none;
 	}
 }

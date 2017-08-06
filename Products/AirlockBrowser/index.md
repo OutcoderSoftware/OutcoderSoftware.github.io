@@ -14,7 +14,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 				    </span>
 			    </div>
 			    <h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
-			    <div class="text-center hidden-xs"><a href="Downloads/" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../RequestQuote/index.html?ProductId=IndustrialAndroid" class="btn btn-default btn-xl">Request A Quote</a></div>
+			    <div class="text-center hidden-xs"><a href="Downloads/" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../../RequestQuote/index.html?ProductId=IndustrialAndroid" class="btn btn-default btn-xl">Request A Quote</a></div>
 		    </div>
 	    </div>
     </div>
@@ -40,8 +40,8 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
          
            <div class="about-3-cont-txt" style="padding-top:0px;">
               <ul class="wow fadeInUp">
-                <li><a href="Downloads/" class="downloadLink">Download Airlock Browser for Android</a></li>
-                <li><a href="UserGuides/V1/AirlockBrowserUserGuide.html" class="downloadLink">View the User Guide</a></li>
+                <li><a href="Downloads/">Download Airlock Browser for Android</a></li>
+                <li><a href="UserGuides/V1/AirlockBrowserUserGuide.html">View the User Guide</a></li>
               </ul>
             </div>
         </div>
@@ -107,7 +107,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 			<style>
 				.media-heading { font-size: 24px; }
 			</style>
-			<div class="col-md-4 col-sm-4">
+			<div class="col-md-4 col-sm-4 wow fadeInLeft">
 
 				<div class="media text-right feature">
 					<div class="media-body">
@@ -160,7 +160,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 				<img border="0" src="Images/Device/Device09.png" />
 			</div>
 
-			<div class="col-md-4 col-sm-4">
+			<div class="col-md-4 col-sm-4 wow fadeInRight">
 
 				<div class="media feature">
 					<div class="media-body">
@@ -217,32 +217,30 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
                 <style>
                     i.fa.fa-check { margin-right: 10px }
                 </style>
-                    <ul class="feature-list list-unstyled">
-            <li><i class="fa fa-check"></i>Configurable fullscreen or partial screen modes</li>
-            <li><i class="fa fa-check"></i>Unlimited web profiles</li>
-            <li><i class="fa fa-check"></i>Clear cookies and cache with history</li>
-            <li><i class="fa fa-check"></i>Save and Share downloaded files</li>
-                        <li><i class="fa fa-check"></i>Ad Blocker</li>
-            <li><i class="fa fa-check"></i>Restore browser tabs at launch</li>
-			<li><i class="fa fa-check"></i>Define a custom user-agent</li>
-			<li><i class="fa fa-check"></i>Save Passwords and Logins</li>
-            <li><i class="fa fa-check"></i>Screen orientation controls</li>
-			<li><i class="fa fa-check"></i>Set screen orientation web profile</li>            
-        </ul>
+				<ul class="feature-list list-unstyled wow fadeInUp">
+					<li><i class="fa fa-check"></i>Configurable fullscreen or partial screen modes</li>
+					<li><i class="fa fa-check"></i>Unlimited web profiles</li>
+					<li><i class="fa fa-check"></i>Clear cookies and cache with history</li>
+					<li><i class="fa fa-check"></i>Save and Share downloaded files</li>
+								<li><i class="fa fa-check"></i>Ad Blocker</li>
+					<li><i class="fa fa-check"></i>Restore browser tabs at launch</li>
+					<li><i class="fa fa-check"></i>Define a custom user-agent</li>
+					<li><i class="fa fa-check"></i>Save Passwords and Logins</li>
+					<li><i class="fa fa-check"></i>Screen orientation controls</li>
+					<li><i class="fa fa-check"></i>Set screen orientation web profile</li>            
+				</ul>
             </div>
             <div class="col-lg-4">
-            <ul class="feature-list list-unstyled">
-
-			<li><i class="fa fa-check"></i>Searchable History</li>
-			<li><i class="fa fa-check"></i>Bookmarks and bookmark folders</li>
-			<li><i class="fa fa-check"></i>Set web page text size for each profile</li>
-			<li><i class="fa fa-check"></i>Multiple search providers</li>
-			<li><i class="fa fa-check"></i>Listen to pages with text-to-speech</li>
-			<li><i class="fa fa-check"></i>Save images & open links via context menu</li>
-			<li><i class="fa fa-check"></i>Find on Page</li>
-			<li><i class="fa fa-check"></i>Night dimmer</li>
-			<li><i class="fa fa-check"></i>And many more...</li>
-			
+            <ul class="feature-list list-unstyled wow fadeInUp">
+				<li><i class="fa fa-check"></i>Searchable History</li>
+				<li><i class="fa fa-check"></i>Bookmarks and bookmark folders</li>
+				<li><i class="fa fa-check"></i>Set web page text size for each profile</li>
+				<li><i class="fa fa-check"></i>Multiple search providers</li>
+				<li><i class="fa fa-check"></i>Listen to pages with text-to-speech</li>
+				<li><i class="fa fa-check"></i>Save images & open links via context menu</li>
+				<li><i class="fa fa-check"></i>Find on Page</li>
+				<li><i class="fa fa-check"></i>Night dimmer</li>
+				<li><i class="fa fa-check"></i>And many more...</li>
         </ul>            
             </div>
             <div class="col-lg-8 col-lg-offset-2 text-center">

@@ -16,8 +16,7 @@ title: Outcoder | The Browser Company
       <!--1st item start-->
       <div class="item active"> <img src="/images/slide1.png" class="img-responsive" alt="First Slide Image">
         <div class="carousel-caption">
-          <h1 class="wow fadeInUp">WE DESIGN & BUILD MOBILE <span>BROWSERS</span></h1>
-          <H4>&nbsp;</H4>
+          <h1 class="wow fadeInUp">WE DESIGN & BUILD MOBILE <span>BROWSERS</span></h1>          
           <div class="text-center hidden-xs"><a href="/Products/AirlockBrowser/" class="btn btn-black btn-xl">Industrial Browsers</a> &nbsp; <a href="http://www.surfybrowser.com" class="btn btn-default btn-xl">Consumer Browsers</a>
 		  </div>
        

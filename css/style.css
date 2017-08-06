@@ -49,7 +49,9 @@
 	
 -----------------------------------------------------------------------------------*/
 
-.downloadLink {
+
+
+.about-3-cont-txt ul li a {
 	font-size: large
 }
 
@@ -273,6 +275,17 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 }
 .social-cont ul li a:hover {
 	color: #d21919;
+}
+
+.social-cont p a {
+	color: #d21919;
+	font-size: 1.3em;
+}
+
+.social-cont p i {
+	color: #d21919;
+	line-height: 22px;
+	font-size: 20px;
 }
 /*--------------------------------*/
 /*           3.Navbar
@@ -856,6 +869,11 @@ button.close {
 .footer-cont ul li a {
 	color:#bbb;
 }
+
+.footer-cont p a {
+	color: #bbb;
+}
+
 .footer-cont ul li a:hover {
 	color:#fff;
 	text-decoration:none

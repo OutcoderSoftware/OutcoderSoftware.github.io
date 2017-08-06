@@ -28,11 +28,12 @@ customjs:
     <input type="text" name="LicenseCount" class="form-control" placeholder="Number of Licenses" />
     <p class="help-block"></p>
     <textarea type="text" name="MessageBody" class="form-control" placeholder="Message"></textarea>
-    <input type="hidden" name="_next" value="https://outcodersoftware.github.io/Products/RequestQuote/FormSubmitted.html" />
+    <input type="hidden" name="_next" value="https://outcodersoftware.github.io/RequestQuote/FormSubmitted.html" />
     <input type="hidden" name="_subject" value="Request Quote" />
     <input type="hidden" name="_format" value="plain" />
     <input type="text" name="_gotcha" style="display:none" />
     <input type="hidden" name="ProductId" id="ProductId" />
+	<input type="hidden" name="PageId" id="RequestQuote" />
     <p class="help-block"></p>
     <input type="submit" value="Send" id="validate" class="btn btn-primary btn-xl" />
 </form>

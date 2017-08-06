@@ -18,14 +18,15 @@ title: About Us
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="about-2-img-cont"><img src="/images/about.jpg" class="img-responsive" alt=""></div>
+				<div class="about-2-img-cont" style="margin-bottom: 20px"><img src="Images/Mountain.jpg" class="img-responsive" alt=""></div>
 			</div>
 			<div class="col-lg-6">
-				<div class="about-2-txt-cont section-padding wow fadeInRight">
+				<div class="about-2-txt-cont wow fadeInRight">
 					<h5 class="text-left">Why choose us</h5>
 					<h2 class="text-left">Reputation. Experience. Focus.</h2>
 					<p>Outcoder is a Swiss software company. We design & build mobile browsers. We bring years of experience in both commercial and enterprise development, creating and maintaining bespoke systems.</p>
-					<a href="mailto:info@outcoder.com" class="btn btn-black btn-xl" >EMAIL US TODAY</a> </div>
+					<p>&nbsp;</p>
+					<a href="/Contact/" class="btn btn-black btn-xl" >CONTACT US TODAY</a> </div>
 			</div>
 		</div>
 	</div>

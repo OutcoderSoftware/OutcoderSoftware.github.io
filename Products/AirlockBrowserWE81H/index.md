@@ -10,7 +10,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<div class="banner-2-cont">
 					<h1 class="wow fadeInUp text-center">Airlock Browser for Windows Embeded 8.1 Handheld</h1>
 					<h4 class="wow fadeInUp text-center hidden-xs">PRODUCTIVE MOBILE BROWSING</h4>
-					<div class="text-center hidden-xs"><a href="../RequestTrial/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../RequestQuote/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-default btn-xl">Request A Quote</a></div>
+					<div class="text-center hidden-xs"><a href="../RequestTrial/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../../RequestQuote/index.html?ProductId=AirlockBrowserWE81H" class="btn btn-default btn-xl">Request a Quote</a></div>
 				</div>
 			</div>
 		</div>
@@ -105,7 +105,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 			<style>
 				.media-heading { font-size: 24px; }
 			</style>
-			<div class="col-md-4 col-sm-4">
+			<div class="col-md-4 col-sm-4 wow fadeInLeft">
 				<div class="media text-right feature">
 
 					<div class="media-body">
@@ -123,7 +123,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<div class="media text-right feature">
 
 					<div class="media-body">
-						<h3 class="media-heading">easy configuration</h3>
+						<h3 class="media-heading">Easy configuration</h3>
 						Administrators configure the app, export the configuration; you're good to go.
 								
 					</div>
@@ -131,7 +131,8 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<div class="media text-right feature">
 	
 					<div class="media-body">
-						<h3 class="media-heading">Restrict URLs</h3>
+						<h3 class="media-heading">Restrict browsing</h3>
+                             Easily define URL rules to allow or deny access to URLs.
 							   
 					</div>
 				</div>
@@ -151,7 +152,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<img border="0" src="/images/Device03.png" />
 				<img border="0" src="/images/Device04.png" />
 			</div>
-			<div class="col-md-4 col-sm-4">
+			<div class="col-md-4 col-sm-4 wow fadeInRight">
 				<div class="media feature">
 					<div class="media-body">
 						<h3 class="media-heading">Meta tags</h3>
@@ -167,7 +168,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<div class="media feature">
 
 					<div class="media-body">
-						<h3 class="media-heading">Remote application settings</h3>
+						<h3 class="media-heading">Unlimited Web Application Profiles</h3>
 						Define individual remote application settings.
 					</div>
 				</div>
@@ -194,7 +195,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 				<br/><br/>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row wow fadeInUp">
 			<div class="col-lg-4 col-lg-offset-2">
 				<style>
 					i.fa.fa-check { margin-right: 10px }

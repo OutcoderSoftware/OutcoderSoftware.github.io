@@ -277,15 +277,20 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	color: #d21919;
 }
 
-.social-cont p a {
-	color: #d21919;
-	font-size: 1.3em;
+.topMenuLink {
+	margin-right: 10px;	
 }
 
-.social-cont p i {
+.topMenuLink a {
+	color: #d21919;
+	font-size: 1.2em;
+}
+
+.topMenuLink i {
 	color: #d21919;
 	line-height: 22px;
 	font-size: 20px;
+	margin-right: 4px;	
 }
 /*--------------------------------*/
 /*           3.Navbar

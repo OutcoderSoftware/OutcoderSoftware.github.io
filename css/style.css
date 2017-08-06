@@ -296,7 +296,17 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 /*           3.Navbar
 /*--------------------------------*/
 
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #d21919;
+}
 
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+}
+
+.navbar-header {
+	min-height: 90px;
+}
 
 
 .navbar-brand {
@@ -307,7 +317,7 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	line-height: 20px;
 }
 .navbar-fixed-top .navbar-toggle span {
-	background:#777;
+	background: #d21919;
 	border-color: #ddd;
 }
 .navbar-fixed-top .navbar-toggle:focus, .navbar-fixed-top .navbar-toggle:hover {
@@ -317,10 +327,11 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	background: #fff;
 	border: none;
 	border-radius: 0px;
-	padding: 20px 0px 20px;
+	padding: 0px;
 	margin-bottom: 0px;
 	text-transform: capitalize;
 	font-size: 14px;
+	min-height: 90px;
 }
 .navbar-default .navbar-nav>li>a {
 	font-family: 'Rubik', sans-serif;
@@ -346,7 +357,6 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	background-color: transparent;
 }
 .navbar-nav > li > .dropdown-menu {
-	margin-top: 20px;
 	background: #292929;
 	
 }
@@ -354,6 +364,11 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	color: #d21919;
 	background-color: transparent;
 }
+
+.navbar-nav > li > a {
+	line-height: 60px;
+}
+
 .dropdown-menu>li>a {
 	display: block;
 	padding: 12px 20px;
@@ -379,7 +394,6 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	background: #fff;
 	border: none;
 	border-radius: 0px;
-	padding: 20px 10px 20px;
 	margin-bottom: 0px;
 	text-transform: capitalize;
 	font-size: 14px;

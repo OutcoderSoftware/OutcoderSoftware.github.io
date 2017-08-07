@@ -68,20 +68,33 @@
 	font-size: 3.1em;
 }
 
+.topRequestQuote a, .topRequestQuote a:visited {
+	color: #fff;
+}
+
+#header .topbar-button {
+	color: #fff;
+}
+
+/*#requestQuote {*/
+/*	color: #fff;*/
+/*}*/
+
+
 /*--------------------------------*/
 /*           1.Default
 /*--------------------------------*/
 .preloader {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 999999;
-  background-color: #fff;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(/images/preloader.gif);
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 999999;
+	background-color: #fff;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-image: url(/images/preloader.gif);
 }
 .alignleft {
 	float: left;

@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ page.title }}</title>
-	<link rel="icon" href="/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="/Products/UserGuideCss/bootstrap_noprint.min.css">
-	<link rel="stylesheet" type="text/css" href="/Products/UserGuideCss/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/Products/UserGuideCss/Theme.css">
-	<link rel="stylesheet" type="text/css" href="/Products/UserGuideCss/UserGuide.css">
-	<link rel="stylesheet" type="text/css" href="/Products/UserGuideCss/highlightjs/styles/github-gist.css">
-	<link rel='stylesheet' media='screen and (max-width: 700px)' href='/Products/UserGuideCss/NarrowScreen.css' />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-</head>
-<body>
-<div id="MainContent">
-{{ content }}	
-</div>
+---
+layout: default
+customcss:
+- /Products/UserGuideCss/Theme.css
+- /Products/UserGuideCss/UserGuide.css
+- /Products/UserGuideCss/highlightjs/styles/github-gist.css
+cssmaxwidth700:
+- /Products/UserGuideCss/NarrowScreen.css
+---
 
-<!--<footer>-->
-<!-- <ul>-->
-<!-- <li><a href="https://github.com/OutcoderSoftware">github.com/OutcoderSoftware</a></li>-->
-<!-- </ul>-->
-<!--</footer>-->
-</body>
-</html>
+<section id="faq-team" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<div id="MainContent">
+				{{ content }}	
+			</div>
+		</div>
+	</div>
+</section>

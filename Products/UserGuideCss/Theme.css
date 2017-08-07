@@ -21,7 +21,6 @@ h1,h2,h3,h4,h5,h6, .byline,.content-title {
   margin-top: 1em;
   margin-bottom: 16px;    
   color: #333; 
-  font-weight: 600;
 }
 h1 {
     padding-bottom: 0.3em;
@@ -44,15 +43,14 @@ h4 {
 h5, h6 { 
     font-size: 1em;
 }
-a,a:visited {
-    text-decoration: none;
-    color: steelblue;
+a, a:visited {
+	text-decoration: none;
+	color: #777;
 }
 a:hover {
     text-decoration: underline;
 }
 blockquote {
-    opacity: 0.75;
     font-size: 1em !important;
     background: transparent !important;
     border-width-left: 13px !important;
@@ -162,4 +160,10 @@ hr {
 
 @media(min-width: 1080px){
 
+}
+
+section h1, section h2, section h3, section h4, section h5 {
+	margin-top: 2em;
+	text-align: left;
+	letter-spacing: normal;
 }

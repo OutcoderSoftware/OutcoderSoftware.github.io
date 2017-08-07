@@ -4,7 +4,7 @@ title: Airlock Browser User Guide
 ---
 
 # Airlock Browser User Guide
-#### For Version 1 Android
+#### For Version 1, Android
 
 ## Table of Contents
 

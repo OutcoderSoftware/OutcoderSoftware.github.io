@@ -1,0 +1,31 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" %>
+<script runat="server">
+private void Page_Load(object sender, System.EventArgs e)
+{
+    NameValueCollection query = Request.QueryString;
+    var url = query["url"];
+    if (!string.IsNullOrEmpty(url))
+    {
+        url = HttpUtility.UrlDecode(url);
+        if (!string.IsNullOrEmpty(url))
+        {
+            Response.Status = "301 Moved Permanently";
+            Response.AddHeader("Location", url);
+
+            return;
+        }
+    }
+
+    Response.Status = "301 Moved Permanently";
+    Response.AddHeader("Location", "http://www.google.com");
+}
+</script> 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+</body>
+</html>

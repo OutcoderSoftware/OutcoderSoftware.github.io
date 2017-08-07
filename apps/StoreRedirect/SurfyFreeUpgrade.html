@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Get Surfy</title>
+    </head>
+    <body>Redirecting...
+        <script language="javascript">
+            function GetParameterByName(name) 
+            {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+                var results = regex.exec(location.search);
+                return results == null ? "" : results[1].replace(/\+/g, " ");
+            }
+
+            var linkInfo = GetParameterByName('i');
+            var redirectToUrl = 'ae4663b6f0ea42d4b6832c5c03625adf://' + linkInfo;
+            window.location = redirectToUrl;
+        </script>
+    </body>
+</html>

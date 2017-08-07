@@ -105,7 +105,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 			<style>
 				.media-heading { font-size: 24px; }
 			</style>
-			<div class="col-md-4 col-sm-4 wow fadeInLeft">
+			<div class="col-md-4 col-sm-4 wow fadeInLeft" style="margin-bottom:50px">
 				<div class="media text-right feature">
 
 					<div class="media-body">
@@ -145,7 +145,7 @@ title: Outcoder | The Browser Company | Airlock Browser for WE81H
 					</div>
 				</div>
 			</div>
-			<div id="slider1" class="col-md-4 col-sm-4" style="width: 250px" 
+			<div id="slider1" class="col-md-4 col-sm-4" style="width: 250px; margin-bottom: 50px" 
 				data-cycle-fx="fadeout">
 				<img border="0" src="/images/Device01.png" />
 				<img border="0" src="/images/Device02.png" />

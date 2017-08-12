@@ -5,3 +5,7 @@ default_lang: csharp
 permalink: /blog/:year/:month/:day/:title
 encoding: utf-8
 repository: OutcoderSoftware/OutcoderSoftware.github.io
+paginate: 5
+paginate_path: "/Blog/page:num/"
+gems: [jekyll-paginate]
+permalink: /blog/:categories/:year/:month/:day/:title/

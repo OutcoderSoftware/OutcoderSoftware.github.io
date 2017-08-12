@@ -46,7 +46,9 @@ Windows Embedded, enterprise browser, FZ-E1, Toughpad, Pideon, BM180, Ingenico, 
 <!-- default --> 
 <script src="/js/main.js"></script>
 	
-{% for css in layout.customcss %}
+<link rel="stylesheet" href="/css/custom.css">
+	
+	{% for css in layout.customcss %}
 <link rel="stylesheet" href="{{ css }}" />
 {% endfor %}
 	

@@ -11,3 +11,4 @@ gems:
  - [jekyll-paginate]
  - jekyll-redirect-from
 permalink: /blog/:categories/:year/:month/:day/:title/
+excerpt_separator: '<a name="read-more"></a>'

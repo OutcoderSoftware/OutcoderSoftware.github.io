@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: Padded
 title: Outcoder | Blog
 pagination:
 enabled: true
@@ -11,7 +11,8 @@ enabled: true
 	<span class="date">{{ post.date | date_to_string }}</span>
 </p>
 <div class="content">
-	{{ post.content }}
+	{{ post.excerpt }}
 </div>
+<p><a class="btn btn-sm btn-primary" href="{{ post.url }}#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a>
 <hr />
 {% endfor %}

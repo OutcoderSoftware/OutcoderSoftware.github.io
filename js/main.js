@@ -75,7 +75,11 @@
 		//$('.preloader').delay(500).fadeOut('slow');
 		//$('body').delay(500).css({'overflow':'visible'});
 		$('body').css({ 'overflow': 'visible' });
-    });
+	});
+
+	$("li.dropdown").click(function (e) {
+		$(this).toggleClass("open");
+	});
 
 
 }(jQuery));	

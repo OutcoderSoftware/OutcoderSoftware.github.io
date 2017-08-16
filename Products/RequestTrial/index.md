@@ -14,7 +14,7 @@ customjs:
     <input type="text" name="Organization" class="form-control" placeholder="Organization" />
     <p class="help-block"></p>
     <input type="email" name="_replyto" id="email" class="form-control" placeholder="Email" />
-    <input type="hidden" name="_next" value="https://outcodersoftware.github.io/Products/RequestTrial/FormSubmitted/" />
+    <input type="hidden" name="_next" value="http://outcoder.com/Products/RequestTrial/FormSubmitted/" />
     <input type="hidden" name="_subject" value="Request Trial" />
     <input type="hidden" name="_format" value="plain" />
     <input type="text" name="_gotcha" style="display:none" />

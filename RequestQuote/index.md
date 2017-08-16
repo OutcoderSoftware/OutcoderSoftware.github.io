@@ -28,7 +28,7 @@ customjs:
     <input type="text" name="LicenseCount" class="form-control" placeholder="Number of Licenses" />
     <p class="help-block"></p>
     <textarea type="text" name="MessageBody" class="form-control" placeholder="Message"></textarea>
-    <input type="hidden" name="_next" value="https://outcodersoftware.github.io/RequestQuote/FormSubmitted/" />
+    <input type="hidden" name="_next" value="http://outcoder.com/RequestQuote/FormSubmitted/" />
     <input type="hidden" name="_subject" value="Request Quote" />
     <input type="hidden" name="_format" value="plain" />
     <input type="text" name="_gotcha" style="display:none" />

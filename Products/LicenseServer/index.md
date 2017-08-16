@@ -37,7 +37,7 @@ title: Outcoder | License Server
 		   <div class="about-3-cont-txt" style="padding-top:0px;">
 			  <ul class="wow fadeInUp">
 				<li><a href="Downloads/">Download Outcoder License Server</a></li>
-				<li><a href="/Products/LicenseServer/UserGuides/V1/LicenseServerUserGuide.html">User Guide</a></li>
+				<li><a href="UserGuides/V1/LicenseServerUserGuide/">User Guide</a></li>
 			  </ul>
 			</div>
 		</div>

@@ -1,3 +1,8 @@
 .post h1, .post p.meta {
 	text-align: center;
 }
+
+
+.navbar-default .navbar-nav > li > a {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

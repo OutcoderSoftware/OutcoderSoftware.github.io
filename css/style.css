@@ -121,21 +121,21 @@ img {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 15px;
 	font-weight: 500;
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Rubik', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	letter-spacing: 1px;
 }
 
 .h1 {
 	margin: 0 0 15px;
 	font-weight: 500;
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Rubik', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	letter-spacing: 1px;
 	color: white
 }
 
 html, body {
 	height: 100%;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body {
 }
@@ -354,7 +354,7 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	min-height: 90px;
 }
 .navbar-default .navbar-nav>li>a {
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight:500;
 	color:#777;
 }
@@ -420,7 +420,7 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.09);
 }
 .navbar-fixed-top .navbar-nav>li>a {
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight:500;
 	color:#777;
 }

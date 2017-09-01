@@ -31,7 +31,7 @@ title: Airlock Browser User Guide
 	* [Delete Saved Passwords](#delete-saved-passwords)
 	* [Delete Cookies](#delete-cookies)
 	* [URL Rules](#url-rules)
-* [Customizing the Browser's Appearance](#customizing-the-browser's-appearance)
+* [Customizing the Browser's Appearance](#customizing-the-browsers-appearance)
 	* [Customizing Menus and Toolbars](#customizing-menus-and-toolbars)
 	* [Night Dimmer Level](#night-dimmer-level)
 	* [Launchpad Background](#launchpad-background)
@@ -57,7 +57,6 @@ title: Airlock Browser User Guide
 * [Creating and Editing Bookmarks](#creating-and-editing-bookmarks)
 
 [//]: # (TOC End)
-
 
 ## Introduction
 

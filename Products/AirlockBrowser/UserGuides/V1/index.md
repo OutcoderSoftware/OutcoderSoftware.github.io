@@ -3,6 +3,7 @@ layout: UserGuide
 title: Airlock Browser User Guide
 redirect_from:
  - /Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html
+ - /Products/AirlockBrowser/UserGuide/
 ---
 
 # Airlock Browser User Guide

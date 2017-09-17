@@ -46,6 +46,7 @@ redirect_from:
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
+	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
 	* [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
 	* [Limiting Screen Rotation](#limiting-screen-rotation)
@@ -60,6 +61,8 @@ redirect_from:
 * [Creating and Editing Bookmarks](#creating-and-editing-bookmarks)
 
 [//]: # (TOC End)
+
+
 
 ## Introduction
 
@@ -353,6 +356,24 @@ JavaScript may be entered directly into the JavaScript field. Alternatively, use
 When importing a file, you are given the option to append its content to the JavaScript field or replace the content in the JavaScript field.
 
 <figure><img src='Images/JavaScript.png'><figcaption>Figure 15. JavaScript Editor</figcaption></figure>
+
+### Handling Barcode Scan Events
+
+Barcode data is provided as an immutable object to client-side JavaScript. The variable is named *scanData* and has the following fields:
+* `BarcodeData`  
+A string representing the barcode value.
+* `SourceScanner`  
+The ID of the scanner. E.g. 'Internal Image Scanner'
+* `Symbology`  
+The recognized symbology. E.g. Ean8
+* `Timestamp`  
+A string indicating when the scan occurred.
+* `BarcodeLength`  
+The number of characters present in the barcode data.
+* `KeyboardWedgeEnabled`  
+Indicates whether the currently active field is to be populated with the barcode data.
+* `InsertMode`  
+If the keyboard wedge is enabled, this field indicates if the barcode data will replace or be prepended or appended to the active text field.
 
 ### Adding Client-Side CSS to Pages
 If you have a legacy web application that was not designed for a mobile device, you may apply custom CSS to the page to improve its appearance and usability. Tap the *CSS* button on the Web Application Profile screen to display the CSS editor.

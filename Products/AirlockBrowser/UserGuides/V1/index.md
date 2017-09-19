@@ -375,6 +375,28 @@ Indicates whether the currently active field is to be populated with the barcode
 * `InsertMode`  
 If the keyboard wedge is enabled, this field indicates if the barcode data will replace or be prepended or appended to the active text field.
 
+## Leveraging the Airlock Browser JavaScript API
+
+You can invoke the Airlock Browser JavaScript APIs via an on-page script or from a remote web application JavaScript event handler. In this section you look at *print* and *text to speech* APIs.
+
+> **NOTE:** JavaScript APIs can only be called from a page with a domain that matches one of the domains of a web profile, present on the launchpad. This prevents unauthorized web sites from invoking a function from a web page.
+
+### Printing a Page via JavaScript
+
+You are able to launch the print service, installed on a device, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To launch the print service to print the current active page, use the following:
+
+```javascript
+PageHost.Printing.PrintPage();
+```
+
+### Leveraging Airlock's Text to Speech Capability with JavaScript
+
+You can have Airlock Browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:
+
+```javascript
+PageHost.Speech.SpeakText("Hi from Airlock Browser");
+```
+
 ### Adding Client-Side CSS to Pages
 If you have a legacy web application that was not designed for a mobile device, you may apply custom CSS to the page to improve its appearance and usability. Tap the *CSS* button on the Web Application Profile screen to display the CSS editor.
 

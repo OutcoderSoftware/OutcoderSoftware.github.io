@@ -10,8 +10,6 @@ most notably complete customizability of all menus and toolbars in the main inte
 
 ![Surfy Browser](/Blog/Images/PostImages/2017-09-20-SurfyV2/MainImage.png)
 
-
-
 Don't like the back button in the toolbar? Remove it. Want a print button in the main menu? Add it. Change the position of items by long pressing and dragging them to a new position.
 Mix and match as you see fit. After all, Surfy is your browser.
 
@@ -26,3 +24,12 @@ Surfy Browser's translators are:
  We hope you enjoy using this new version of Surfy Browser.
 
  Happy browsing!
+
+
+ <ul class="list-inline intro-social-buttons">
+	<li>
+		<a target="_blank" href='https://play.google.com/store/apps/details?id=com.outcoder.browser'>
+			<img alt='Get it on Google Play' width="258px" src='/apps/surfy/img/google-play-badge.png' />
+		</a>						
+	</li>
+</ul>

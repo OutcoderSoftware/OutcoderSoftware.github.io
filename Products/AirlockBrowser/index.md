@@ -113,7 +113,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 					<div class="media-body">
 						<h3 class="media-heading">Client-Side Scripting</h3>
 						Invoke custom JavaScript and CSS on a page.
-						Also includes JavaScript events for barcodes, device battery, and network connectivity.                                
+						Also includes JavaScript events for barcodes, device battery, network connectivity, printing, and text to speech.                                
 					</div>
 				</div>
 
@@ -222,7 +222,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 					<li><i class="fa fa-check"></i>Unlimited web profiles</li>
 					<li><i class="fa fa-check"></i>Clear cookies and cache with history</li>
 					<li><i class="fa fa-check"></i>Save and Share downloaded files</li>
-								<li><i class="fa fa-check"></i>Ad Blocker</li>
+					<li><i class="fa fa-check"></i>Ad Blocker</li>
 					<li><i class="fa fa-check"></i>Restore browser tabs at launch</li>
 					<li><i class="fa fa-check"></i>Define a custom user-agent</li>
 					<li><i class="fa fa-check"></i>Save Passwords and Logins</li>
@@ -232,6 +232,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
             </div>
             <div class="col-lg-4">
             <ul class="feature-list list-unstyled wow fadeInUp">
+				<li><i class="fa fa-check"></i>Printing Support</li>
 				<li><i class="fa fa-check"></i>Searchable History</li>
 				<li><i class="fa fa-check"></i>Bookmarks and bookmark folders</li>
 				<li><i class="fa fa-check"></i>Set web page text size for each profile</li>

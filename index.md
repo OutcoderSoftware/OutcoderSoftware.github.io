@@ -28,7 +28,7 @@ title: Outcoder | The Browser Company
         <div class="carousel-caption">
           <h1 class="wow fadeInUp color-white"><span>Airlock</span> Browser</h1>
           <h4 class="wow fadeInUp color-white hidden-xs">INDUSTRIAL BROWSER FOR PRODUCTIVE MOBILE BROWSING</h4>
-          <div class="text-center hidden-xs"><a href="#" class="btn btn-black btn-xl">Try It Now</a> &nbsp; <a href="#" class="btn btn-default btn-xl">Request a Quote</a></div>
+          <div class="text-center hidden-xs"><a href="/Products/AirlockBrowser/" class="btn btn-black btn-xl">Try It Now</a> &nbsp; <a href="/RequestQuote/index.html?ProductId=IndustrialAndroid" class="btn btn-default btn-xl">Request a Quote</a></div>
         </div>
       </div>
       <!--2nd item end--> 

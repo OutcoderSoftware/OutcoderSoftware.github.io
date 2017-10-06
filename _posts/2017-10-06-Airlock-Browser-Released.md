@@ -1,10 +1,10 @@
 ---
 author: Katka Vaughan
-title: Airlock Browser for Android Released
+title: Introducing Airlock Browser, a new web browser for industry
 published: true
 ---
 
-<figure><img src='/Blog/Images/PostImages/2017-10-06-AirlockReleased/WelcomeSlides.png'></figure>
+<figure><img style="display: block; margin: auto;" src='/Blog/Images/PostImages/2017-10-06-AirlockReleased/WelcomeSlides.png'></figure>
 
 Today, we're pleased to announce the general availability of Airlock Browser for Android.
 

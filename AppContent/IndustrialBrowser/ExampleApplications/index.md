@@ -7,9 +7,9 @@ layout: IndustrialBrowserExample
 <div id="AndroidLinks">
 	<h2>About This Page</h2>
 	This page links to a set of examples that demonstrate some of the features of Airlock Browser.
-	This page is located at http://industrialbrowser.com/AppContent/IndustrialBrowser/ExampleApplications/
-
-	For more information see the <a href="https://outcodersoftware.github.io/Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html">Airlock Browser User Guide</a>.
+	This page is located on the <a href="http://outcoder.com">Outcoder</a> website
+	<br/>
+	For more information see the <a href="https://outcoder.com/Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html">Airlock Browser User Guide</a>.
 	<br/>
 	<br/>
 </div>

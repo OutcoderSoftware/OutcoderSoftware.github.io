@@ -4,6 +4,9 @@ layout: None
 <html>
 <head>
 	<title>Responding to Power Events</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="robots" content="noindex" />
 	<link href="/AppContent/IndustrialBrowser/ExampleApplications/Css/normalize.css" rel="stylesheet" />
 	<link href="/AppContent/IndustrialBrowser/ExampleApplications/Css/skeleton.css" rel="stylesheet" />
 	<link href="/AppContent/IndustrialBrowser/ExampleApplications/Css/ExampleApplications.css" rel="stylesheet" />

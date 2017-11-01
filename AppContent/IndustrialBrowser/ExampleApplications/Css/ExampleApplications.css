@@ -1,8 +1,12 @@
 ﻿.highlightBackground {
-    background-color: lightblue;
+	background-color: lightblue;
 }
 
 pre {
-    font-size: 11px;
-    background-color: #fbedbb
+	font-size: 11px;
+	background-color: #fbedbb
+}
+
+body {
+	margin: 10px;
 }

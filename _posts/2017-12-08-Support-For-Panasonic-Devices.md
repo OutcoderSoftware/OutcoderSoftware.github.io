@@ -4,6 +4,8 @@ title: Airlock Browser for Android Now Supported on Panasonic Devices
 published: true
 ---
 
+<img src="/Blog/Images/PostImages/2017-12-08-Support-For-Panasonic-Devices/AirlockBrowserOnFZ-N1.png" alt="Airlock Browser on FZ-N1"
+align="right" />
 Today we're pleased to announce that Airlock Browser for Android is now supported
 on Panasonic devices. What this means is that you can harness the power
 of Airlock Browsers client-side scripting to respond to various device events; in particular

@@ -2,6 +2,10 @@
 	text-align: center;
 }
 
+.post h2 {
+	text-align: left;
+}
+
 
 .navbar-default .navbar-nav > li > a {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;

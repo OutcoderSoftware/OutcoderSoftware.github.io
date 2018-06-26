@@ -1,0 +1,1848 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+<style>
+		div.decoderHeader {
+
+		}
+		div.decoderName {
+			text-align: left;
+			font-weight: bold;
+		}
+		span.fieldTitle {
+			font-weight: bold;
+		}
+		th.propertiesTitle {
+			background: yellow
+		}
+		table.properties {
+			min-width: 300px;
+			background: azure
+		}
+		table.properties tr th {
+			text-align: left
+		}
+		div.sectionTitle {
+			font-size: large
+		}
+		div.decoder {
+			background: ghostwhite;
+			padding-bottom: 20px
+		}
+	</style>
+</head>
+<body>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">AustralianPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Aztec</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Chinese2Of5</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Codabar</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ClsiEditingEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>NotisEditingType</td>
+		<td>NotisEditingType</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>NotisEditingEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>VerifyCheckDigit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ClsiEditingEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>NotisEditingType</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.NotisEditingType</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>NotisEditingEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.VerifyCheckDigit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Code11</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>NumberOfCheckDigits</td>
+		<td>NumberOfCheckDigits</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>NumberOfCheckDigits</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.NumberOfCheckDigits</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Code128</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SecurityLevel</td>
+		<td>SecurityLevelLowHigh</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SecurityLevel</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.SecurityLevelLowHigh</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Code39</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToCode32</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToCode32Prefix</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>FullAsciiEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToCode32</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>ConvertToCode32Prefix</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>FullAsciiEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Code93</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Composite</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>C</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>AB</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Tlc39Enabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Mode</td>
+		<td>UpcCompositeMode</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EmulationModeEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>C</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>AB</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Tlc39Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Mode</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.UpcCompositeMode</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EmulationModeEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">UccCoupon</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">DataMatrix</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>MirrorImage</td>
+		<td>MirrorImage</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark1</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark2</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>MirrorImage</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.MirrorImage</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark1</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark2</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">DutchPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Ean13</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Addon2</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>BooklandIsbnFormat</td>
+		<td>IsbnFormat</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToIsbn</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToIssn</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon2</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>BooklandIsbnFormat</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.IsbnFormat</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToIsbn</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>ConvertToIssn</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Ean8</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Addon2</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon2</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Industrial2Of5</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">JapanPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">UKPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Upce1</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Addon2</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpca</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon2</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpca</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">GS1128</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>ApplicationIdentifierMark1</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark2</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark1</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierMark2</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ApplicationIdentifierEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">GS1DataBar14</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>ConvertToUpcEan</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpcEan</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>SecurityLevel</td>
+		<td>int</td>
+		<td>[0, 0]</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">GS1DataBarExpanded</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SecurityLevel</td>
+		<td>int</td>
+		<td>[0, 0]</td>
+	</tr>
+	<tr>
+		<td>FieldSeparator</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">GS1DataBarLimited</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>ConvertToUpcEan</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpcEan</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>SecurityLevel</td>
+		<td>int</td>
+		<td>[0, 0]</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Interleaved2Of5</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitVerification</td>
+		<td>CheckDigitVerification</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitVerification</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.CheckDigitVerification</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Isbt128</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Concatenation</td>
+		<td>Concatenation</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConcatenationRedundancy</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Concatenation</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Concatenation</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConcatenationRedundancy</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Korean3Of5</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Matrix2Of5</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>RedundancyEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>VerifyCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>RedundancyEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">MaxiCode</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">MicroPdf417</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Code128Emulation</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Code128Emulation</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">MicroQR</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Msi</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitAlgorithm</td>
+		<td>CheckDigitAlgorithm</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitOption</td>
+		<td>CheckDigitOption</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitAlgorithm</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.CheckDigitAlgorithm</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>CheckDigitOption</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.CheckDigitOption</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Pdf417</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>TransmitMode</td>
+		<td>TransmitModePdf417</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EscapeCharacterEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitControlHeader</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitMode</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.TransmitModePdf417</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EscapeCharacterEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitControlHeader</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Plessey</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>UnconventionalStop</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>UnconventionalStop</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">QRCode</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Telepen</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TelepenFormat</td>
+		<td>TelepenFormat</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMin</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>LengthMax</td>
+		<td>int</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TelepenFormat</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.TelepenFormat</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">TriopticCode39</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Upca</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Addon2</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon2</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToEan13</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Upce0</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Addon2</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpca</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon2</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Addon5</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Addon</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ConvertToUpca</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Preamble</td>
+		<td>Outcoder.DeviceSupport.Sdks.CipherLab.BarcodeDecoders.Preamble</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">UpuFicsPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">USPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>PlanetEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PostnetEnabled</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PlanetEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>PostnetEnabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>TransmitCheckDigit</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">UspsPostal</div>
+		<div><span class="fieldTitle">SDK Identifier:</span>
+			<span class="fieldValue">0</span></div>
+	</div>
+	<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Valid Values</th>
+		</tr>
+		<tr>
+		<td>Enabled</td>
+		<td>bool</td>
+		<td>true, false</td>
+	</tr>
+	</table>
+</div>
+</body>
+</html>
+
+
+ 

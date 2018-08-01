@@ -7,7 +7,7 @@ redirect_from:
 ---
 
 # Airlock Browser User Guide
-#### For Version 2 alpha, Android
+#### For Version 2.0 Alpha, Android
 
 ## Table of Contents
 
@@ -47,6 +47,11 @@ redirect_from:
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
+* [Leveraging the Airlock Browser JavaScript API](#leveraging-the-airlock-browser-javascript-api)
+	* [Ensuring Airlock is Ready to Receive Commands](#ensuring-airlock-is-ready-to-receive-commands)
+	* [Configuring the Barcode Reader via JavaScript](#configuring-the-barcode-reader-via-javascript)
+	* [Printing a Page via JavaScript](#printing-a-page-via-javascript)
+	* [Leveraging Airlock's Text to Speech Capability with JavaScript](#leveraging-airlocks-text-to-speech-capability-with-javascript)
 	* [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
 	* [Limiting Screen Rotation](#limiting-screen-rotation)
@@ -61,8 +66,6 @@ redirect_from:
 * [Creating and Editing Bookmarks](#creating-and-editing-bookmarks)
 
 [//]: # (TOC End)
-
-
 
 ## Introduction
 
@@ -417,9 +420,9 @@ The `pageHost.scanning` object allows you to retrieve a decoder using the name o
 var decoder = pageHost.scanning.getDecoderWithName('Code39');
 ```
 
-> **NOTE:** Decoder names are *not* case sensitive. For example, calling getDecoderWithName with a value 'Code39' is equivalent to calling the same method with 'CODE39'.
+> **NOTE:** Decoder names are *not* case sensitive. For example, calling `getDecoderWithName` with a value 'Code39' is equivalent to calling the same method with 'CODE39'.
 
-Alternative, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
+Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
 
 ```js
 var decoder = pageHost.scanning.getDecoderWithNativeId(71);
@@ -429,7 +432,7 @@ All properties that are configurable within Airlock Browser's device configurati
 
 For a list of configurable properties, see the device types respective guide:
 
-* [CipherLab](../DeviceSdks/CipherLab/DecoderProperties.html)
+* [CipherLab](../DeviceSdks/CipherLab/DecoderProperties)
 
 > **NOTE:** You must call the `setDecoder` function of the `pageHost.scanner` object for the setting to be applied. See the following example:
 
@@ -438,11 +441,10 @@ var codabarDecoder = pageHost.scanning.getDecoderWithNativeId(71);
 codabarDecoder.Enabled = true;
 codabarDecoder.NotisEditingType = 1;
 codabarDecoder.LengthMin = 10;
-
 var setResult = pageHost.scanning.setDecoder(decoder);
 ```
 
-The `pageHost.scanning.setDecoder` function returns an object indicating success or failure of the call. The result object has a boolean `successful` field, and an `error` field that is populated if the `successful` property is `false`.
+The `pageHost.scanning.setDecoder` function returns an object indicating the success or failure of the call. The result object has a boolean `successful` field, and an `error` field that is populated if the `successful` property is `false`. The following example displays an alert box with the result of the `setDecoder` function call:
 
 ```js
 alert("Decoder set: " + setResult.successful + "   " + setResult.error);

@@ -1,0 +1,3 @@
+https://devices01.azurewebsites.net
+https://licensee.azurewebsites.net
+https://licensor.azurewebsites.net

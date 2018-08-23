@@ -19,22 +19,6 @@
 
 <div class="testDiv">
 	<script>
-		function TestMinimizeApp(textElement) {
-			try {
-				airlock.device.minimizeApp();
-				setText(textElement, "Minimize attempted");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestMinimizeApp('minimizeAppText')" value="Minimize App"/>
-	<div class="outputText" type="text" id="minimizeAppText"></div>
-</div>
-
-<div class="testDiv">
-	<script>
 		function TestSetBrightness(textElement) {
 			try {
 				var brightness = airlock.device.getBrightness();
@@ -169,6 +153,56 @@
 
 <div class="testDiv">
 	<script>
+		function TestLockScreen(textElement) {
+			try {
+				airlock.device.lockScreen();
+				setText(textElement, `Locked streen.`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+
+		function TestIsScreenLocked(textElement) {
+			try {
+				var locked = airlock.device.isScreenLocked();
+				setText(textElement, `Screen locked: ${locked}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+
+		function TestUnlockScreen(textElement) {
+			try {
+				airlock.device.lockScreen();
+				setTimeout(function() {
+					try {
+						airlock.device.unlockScreen();
+						setText(textElement, `Screen unlocked.`);
+					} catch (e2) {
+						setText(textElement, `Error ${e2}`);
+					}
+				}, 4000);
+				
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestLockScreen('TestLockScreenText')" value="Lock Screen" />
+	<div>
+		Changing the lock screen requires device administration privileges,
+		which can be obtained via the Administration screen, within the app.
+	</div>
+	<input type="button" onclick="TestIsScreenLocked('TestLockScreenText')" value="Is Screen Locked" /><br />
+	<input type="button" onclick="TestUnlockScreen('TestLockScreenText')" value="Unlock Screen" /><br />
+	<div class="outputText" type="text" id="TestLockScreenText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
 		function TestSetOrientationLock(textElement) {
 			try {
 				var oldValue = airlock.device.getOrientationLock();
@@ -271,6 +305,22 @@
 	</script>
 	<input type="button" onclick="TestCloseBrowser('TestCloseBrowserText')" value="Close Browser"/>
 	<div class="outputText" type="text" id="TestCloseBrowserText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestMinimizeApp(textElement) {
+			try {
+				airlock.device.minimizeApp();
+				setText(textElement, "Minimize attempted");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestMinimizeApp('minimizeAppText')" value="Minimize App" />
+	<div class="outputText" type="text" id="minimizeAppText"></div>
 </div>
 
 <div class="testDiv">

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Airlock Browser Scripting - Networking</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+</head>
+<body>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>Networking</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<script>
+		function TestGetNetworkInfo(textElement) {
+			try {
+				var value = airlock.networking.getNetworkInfo();
+				showDialog(`connected: ${value.connected}
+approachingDataLimit: ${value.approachingDataLimit}
+roaming: ${value.roaming}
+networkConnectionType: ${value.networkConnectionType}
+limitData: ${value.limitData}
+ssid: ${value.ssid}
+ipAddress: ${value.ipAddress}`);
+			} catch (e) {
+				setText(textElement, "Error " + e);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetNetworkInfo('TestGetNetworkInfoText')" value="Get Network Info"/>
+	<div class="outputText" type="text" id="TestGetNetworkInfoText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestIsWifiEnabled(textElement) {
+			try {
+				var enabled = airlock.networking.isWifiEnabled();
+				setText(textElement, `Enabled: ${enabled}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+
+		function TestSetWifiEnabled(textElement) {
+			try {
+				var enabled = airlock.networking.isWifiEnabled();
+				var newValue = !enabled;
+				airlock.networking.setWifiEnabled(newValue);
+				setText(textElement, `Set wifi enabled to ${newValue}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestIsWifiEnabled('TestWifiEnabledText')" value="isWifiEnabled"/><br/>
+	<input type="button" onclick="TestSetWifiEnabled('TestWifiEnabledText')" value="setWifiEnabled"/><br/>
+	<div class="outputText" type="text" id="TestWifiEnabledText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestGetWirelessNetworks(textElement) {
+			try {
+				setText(textElement, 'Fetching networks...');
+				var networksPromise = airlock.networking.getWirelessNetworks();
+
+				networksPromise.then(function(result) {
+					var text = '';
+					for (var i = 0; i < result.length; i++) {
+						var network = result[i];
+						var networkText = getPropertyValues(network);
+						text += networkText + "\n";
+					}
+					setText(textElement, 'Done');
+					showDialog(text);
+				}).catch(function(error) {
+					setText(textElement, error);
+				});
+
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetWirelessNetworks('TestGetWirelessNetworksText')" value="Get Wireless Networks"/>
+	<div class="outputText" type="text" id="TestGetWirelessNetworksText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSubscribeToConnectionChangedEvent(textElement) {
+			try {
+				airlock.networking.onConnectionChanged.addHandler(handleConnectionChanged);
+				setText(textElement, 'Subscribed.');
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+
+		function handleConnectionChanged(args) {
+			setText('TestConnectionChangedEventText', getPropertyValues(args));
+		}
+
+		function TestUnsubscribeToConnectionChangedEvent(textElement) {
+			try {
+				airlock.networking.onConnectionChanged.removeHandler(handleConnectionChanged);
+				setText(textElement, "Unsubscribed");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSubscribeToConnectionChangedEvent('TestConnectionChangedEventText')" value="Subscribe to Connection Changed"/><br/>
+	<input type="button" onclick="TestUnsubscribeToConnectionChangedEvent('TestConnectionChangedEventText')" value="Unsubscribe"/><br/>
+	<div class="outputText" type="text" id="TestConnectionChangedEventText"></div>
+</div>
+
+</body>
+</html>

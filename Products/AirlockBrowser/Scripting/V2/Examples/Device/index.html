@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Airlock Browser Scripting - Barcode</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+</head>
+<body>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>Device</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<script>
+		function TestMinimizeApp(textElement) {
+			try {
+				airlock.device.minimizeApp();
+				setText(textElement, "Minimize attempted");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestMinimizeApp('minimizeAppText')" value="Minimize App"/>
+	<div class="outputText" type="text" id="minimizeAppText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetBrightness(textElement) {
+			try {
+				var brightness = airlock.device.getBrightness();
+				brightness += .1;
+				if (brightness > 1) {
+					brightness = .1;
+				}
+				airlock.device.setBrightness(brightness);
+				setText(textElement, `Set brightness to ${brightness}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetBrightness('setBrightnessText')" value="Set Brightness"/>
+	<div class="outputText" type="text" id="setBrightnessText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetRingerMode(textElement) {
+			try {
+				var value = airlock.device.getRingerMode();
+				value += 1;
+				if (value > 2) {
+					value = 0;
+				}
+				airlock.device.setRingerMode(value);
+				setText(textElement, `Set Mode to ${value}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetRingerMode('setRingerModeText')" value="Set Ringer Mode"/>
+	<div class="outputText" type="text" id="setRingerModeText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetVolume(output1, output2) {
+			try {
+				var streamType = 3; // Music
+				var maxVolume = airlock.device.getMaxVolume(streamType);
+				setText(output2, "Max volume for stream " + streamType + " is " + maxVolume);
+				var value = airlock.device.getVolume(streamType);
+				value += 1;
+				if (value > maxVolume) {
+					value = 0;
+				}
+				airlock.device.setVolume(streamType, value);
+				setText(output1, `Set value to ${value}`);
+			} catch (e) {
+				setText(output1, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetVolume('setVolumeText', 'maxVolumeText')" value="Set Volume"/>
+	<div class="outputText" type="text" id="setVolumeText"></div>
+	<div class="outputText" type="text" id="maxVolumeText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestBeep(textElement) {
+			try {
+				airlock.device.beep();
+				setText(textElement, "Beeped!");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestBeep('TestBeepText')" value="Beep"/>
+	<div class="outputText" type="text" id="TestBeepText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestVibrate(textElement) {
+			try {
+				airlock.device.vibrate(100);
+				setText(textElement, "Vibrated!");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestVibrate('TestVibrateText')" value="Vibrate"/>
+	<div class="outputText" type="text" id="TestVibrateText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestGetScreenTimeoutMS(textElement) {
+			try {
+				var value = airlock.device.getScreenTimeoutMS();
+				setText(textElement, `${value} MS`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetScreenTimeoutMS('TestGetScreenTimeoutMSText')" value="Get Screen Timeout MS"/>
+	<div class="outputText" type="text" id="TestGetScreenTimeoutMSText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetScreenTimeoutMS(textElement) {
+			try {
+				var currentTimeout = airlock.device.getScreenTimeoutMS();
+				var value = currentTimeout > 100000 ? 30000 : 200000;
+
+				airlock.device.setScreenTimeoutMS(value);
+				setText(textElement, `Set Screen TimeoutMS to ${value}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetScreenTimeoutMS('TestSetScreenTimeoutMSText')" value="Set Screen Timeout MS"/>
+	<div class="outputText" type="text" id="TestSetScreenTimeoutMSText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetOrientationLock(textElement) {
+			try {
+				var oldValue = airlock.device.getOrientationLock();
+				var value = oldValue + 1;
+				if (value > 3) {
+					value = 0;
+				}
+				airlock.device.setOrientationLock(value);
+				setText(textElement, `Set Screen Orientation from ${oldValue} to ${value}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<div>
+		Orientation lock can be set to 0 (unlocked), 1 (locked portrait), 2 (locked landscape), or 3 (system controlled).
+		When set to 3, the locked or unlocked state is determined by the configuration and/or user settings in the app.
+	</div>
+	<input type="button" onclick="TestSetOrientationLock('TestSetOrientationLockText')" value="Set Orientation Lock"/>
+	<div class="outputText" type="text" id="TestSetOrientationLockText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestGetPower(textElement) {
+			try {
+				var value = airlock.device.getPower();
+				var text = getPropertyValues(value);
+				setText(textElement, text);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetPower('TestGetPowerText')" value="Get Power Info"/>
+	<div class="outputText" type="text" id="TestGetPowerText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSubscribeToPowerChanged(textElement) {
+			try {
+				airlock.device.onPowerChanged.addHandler(handlePowerChanged);
+				setText(textElement, 'Subscribed.');
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+
+		function handlePowerChanged(args) {
+			setText('TestConnectionChangedEventText', getPropertyValues(args));
+		}
+
+		function TestUnsubscribeToPowerChanged(textElement) {
+			try {
+				airlock.device.onPowerChanged.removeHandler(handlePowerChanged);
+				setText(textElement, "Unsubscribed");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSubscribeToPowerChanged('TestConnectionChangedEventText')" value="Subscribe to Power Changed"/><br/>
+	<input type="button" onclick="TestUnsubscribeToPowerChanged('TestConnectionChangedEventText')" value="Unsubscribe"/><br/>
+	<div class="outputText" type="text" id="TestConnectionChangedEventText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestGetSystemInfo(textElement) {
+			try {
+				var value = airlock.device.getSystemInfo();
+				var text = getPropertyValues(value);
+				setText(textElement, text);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetSystemInfo('TestGetSystemInfoText')" value="Get System Info"/>
+	<div class="outputText" type="text" id="TestGetSystemInfoText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestCloseBrowser(textElement) {
+			try {
+				airlock.device.closeBrowser(true);
+				setText(textElement, "Closing...");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestCloseBrowser('TestCloseBrowserText')" value="Close Browser"/>
+	<div class="outputText" type="text" id="TestCloseBrowserText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestLaunchApp(textElement) {
+			try {
+				airlock.device.launchApp('com.google.android.apps.photos');
+				setText(textElement, "Launching app...");
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestLaunchApp('TestLaunchAppText')" value="Launch App"/>
+	<div class="outputText" type="text" id="TestLaunchAppText"></div>
+</div>
+
+</body>
+</html>

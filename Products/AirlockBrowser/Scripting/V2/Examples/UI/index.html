@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Airlock Browser Scripting - UI</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+</head>
+<body>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>UI</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<script>
+		function TestSetFullScreen(textElement) {
+			try {
+				var fullScreen = airlock.ui.isFullScreen();
+				airlock.ui.setFullScreen(!fullScreen);
+				setText(textElement, `Set to ${fullScreen}`);
+			} catch (e) {
+				setText(textElement, `Error: ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetFullScreen('setFullScreenText')" value="SetFullScreen"/>
+	<div class="outputText" type="text" id="setFullScreenText"></div>
+</div>
+<div class="testDiv">
+	<script>
+		function TestSetLaunchpadOpen(textElement) {
+			try {
+				var open = airlock.ui.isLaunchpadOpen();
+				airlock.ui.setLaunchpadOpen(!open);
+				setText(textElement, `Set to ${open}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetLaunchpadOpen('setLaunchpadOpenText')" value="SetLaunchpadOpen"/>
+	<div class="outputText" type="text" id="setLaunchpadOpenText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestGetUILanguage(textElement) {
+			try {
+				var value = airlock.ui.getUILanguage();
+				setText(textElement, `Language: ${value}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetUILanguage('TestGetUILanguageText')" value="GetUILanguage"/>
+	<div class="outputText" type="text" id="TestGetUILanguageText"></div>
+</div>
+
+</body>
+</html>

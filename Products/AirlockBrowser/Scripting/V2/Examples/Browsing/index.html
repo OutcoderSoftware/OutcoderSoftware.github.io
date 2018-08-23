@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Airlock Browser Scripting - Browsing</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+</head>
+<body>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>Browsing</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<script>
+		function TestSetTextZoomLevel(textElement) {
+			try {
+				var level = airlock.browsing.getTextZoomLevel();
+				level += .11;
+				if (level > 1.6) {
+					level = 1.0;
+				}
+				airlock.browsing.setTextZoomLevel(level);
+				setText(textElement, `Set Text Zoom to ${level}`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetTextZoomLevel('setTextZoomLevelText')" value="Set Text Zoom Level" />
+	<div class="outputText" type="text" id="setTextZoomLevelText"></div>
+</div>
+
+<div class="testDiv">
+	<script>
+		function TestSetNavigationErrorAction(textElement) {
+			try {
+				var previous = airlock.browsing.getNavigationErrorAction();
+				var value = previous + 1;
+				if (value > 1) {
+					value = 0;
+				}
+				airlock.browsing.setNavigationErrorAction(value);
+				setText(textElement, `Set value to ${value}.
+0 means RedirectToErrorPage. 1 means PreventNavigation.
+The default configuration does not redirect to the error page.
+You can change this behavior in the app's settings,
+or by using the override as demonstrated in this example.`);
+			} catch (e) {
+				setText(textElement, `Error ${e}`);
+				return;
+			}
+		}
+	</script>
+	<input type="button" onclick="TestSetNavigationErrorAction('TestSetNavigationErrorActionText')" value="Set Navigation Error Action" />
+	<div class="outputText" type="text" id="TestSetNavigationErrorActionText"></div>
+	<a href="http://wwwwwwkdd.sdfljalfsdjk.com">Tap this bad link to test.</a>
+</div>
+
+</body>
+</html>

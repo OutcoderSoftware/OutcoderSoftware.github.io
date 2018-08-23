@@ -293,9 +293,9 @@
 
 <div class="testDiv">
 	<script>
-		function TestCloseBrowser(textElement) {
+		function TestExitApp(textElement) {
 			try {
-				airlock.device.closeBrowser(true);
+				airlock.device.exitApp(true);
 				setText(textElement, "Closing...");
 			} catch (e) {
 				setText(textElement, `Error ${e}`);
@@ -303,8 +303,8 @@
 			}
 		}
 	</script>
-	<input type="button" onclick="TestCloseBrowser('TestCloseBrowserText')" value="Close Browser"/>
-	<div class="outputText" type="text" id="TestCloseBrowserText"></div>
+	<input type="button" onclick="TestExitApp('TestExitAppText')" value="Exit App"/>
+	<div class="outputText" type="text" id="TestExitAppText"></div>
 </div>
 
 <div class="testDiv">

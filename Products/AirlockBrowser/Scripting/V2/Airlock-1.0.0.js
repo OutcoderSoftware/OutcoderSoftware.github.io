@@ -132,8 +132,8 @@ airlock.device.getSystemInfo = function () {
 	return pageHost.ii.getResult("device.getSystemInfo");
 }
 
-airlock.device.closeBrowser = function (showNotification) {
-	return pageHost.ii.getResult("device.closeBrowser", showNotification);
+airlock.device.exitApp = function (showNotification) {
+	return pageHost.ii.getResult("device.exitApp", showNotification);
 }
 
 airlock.device.launchApp = function (packageName) {

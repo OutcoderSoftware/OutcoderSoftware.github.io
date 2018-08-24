@@ -36,9 +36,9 @@
 		function TestDecoderProperties(textElement) {
 			try {
 				var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
-				codabarDecoder.Enabled = true;
-				codabarDecoder.NotisEditingType = 1;
-				codabarDecoder.LengthMin = 10;
+				codabarDecoder.enabled = true;
+				codabarDecoder.notisEditingType = 1;
+				codabarDecoder.lengthMin = 10;
 				airlock.scanning.setDecoder(codabarDecoder);
 				setText(textElement, "Decoder set");
 			} catch (e) {
@@ -54,7 +54,7 @@
 		function TestGetDecoderById(textElement) {
 			try {
 				var decoder = airlock.scanning.getDecoderWithNativeId(71);
-				setText(textElement, `Decoder name: ${decoder.Name}`);
+				setText(textElement, `Decoder name: ${decoder.name}`);
 			} catch (e) {
 				setText(textElement, `Decoder get error ${e}`);
 			}
@@ -113,7 +113,7 @@
 		function TestGetDecoderWithName(textElement) {
 			try {
 				var decoder = airlock.scanning.getDecoderWithName('codabar');
-				setText(textElement, decoder.Name);
+				setText(textElement, decoder.name);
 			} catch (e) {
 				setText(textElement, `Error: ${e}`);
 				return;
@@ -129,9 +129,9 @@
 		function TestSetDecoder(textElement) {
 			try {
 				var decoder = airlock.scanning.getDecoderWithName('codabar');
-				decoder.Enabled = !decoder.Enabled;
+				decoder.enabled = !decoder.enabled;
 				airlock.scanning.setDecoder(decoder);
-				setText(textElement, `${decoder.Name}  enabled: ${decoder.Enabled}`);
+				setText(textElement, `${decoder.name}  enabled: ${decoder.enabled}`);
 			} catch (e) {
 				setText(textElement, `Error ${e}`);
 				return;

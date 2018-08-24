@@ -102,7 +102,7 @@ ipAddress: ${value.ipAddress}`);
 	<script>
 		function TestSubscribeToConnectionChangedEvent(textElement) {
 			try {
-				airlock.networking.onConnectionChanged.addHandler(handleConnectionChanged);
+				airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
 				setText(textElement, 'Subscribed.');
 			} catch (e) {
 				setText(textElement, `Error ${e}`);
@@ -116,7 +116,7 @@ ipAddress: ${value.ipAddress}`);
 
 		function TestUnsubscribeToConnectionChangedEvent(textElement) {
 			try {
-				airlock.networking.onConnectionChanged.removeHandler(handleConnectionChanged);
+				airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
 				setText(textElement, "Unsubscribed");
 			} catch (e) {
 				setText(textElement, `Error ${e}`);

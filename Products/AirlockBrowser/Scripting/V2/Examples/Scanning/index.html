@@ -23,7 +23,6 @@
 			//airlock.scanning.setDecoder(decoder);
 		}
 	</script>
-	<script src="../../Airlock-1.0.0.js"></script>
 </head>
 <body>
 <div class="header">
@@ -63,6 +62,26 @@
 	</script>
 	<input type="button" onclick="TestGetDecoderById('getDecoderByIdText')" value="Get decoder by ID"/>
 	<div class="outputText" id="getDecoderByIdText"></div>
+</div>
+	<div class="testDiv">
+	<script>
+		function TestGetDecoders(textElement) {
+			try {
+				var promise = airlock.scanning.getDecoders();
+
+				promise.then(function (decoders) {
+					var text = getPropertyValues(decoders);
+					showDialog(text);
+				}).catch(function (error) {
+					setText(textElement, `Error: ${error}`);
+				});
+			} catch (e) {
+				setText(textElement, `Error: ${e}`);
+			}
+		}
+	</script>
+	<input type="button" onclick="TestGetDecoders('GetDecodersText')" value="Get all decoders"/>
+	<div class="outputText" id="GetDecodersText"></div>
 </div>
 <div class="testDiv">
 	<script>
@@ -204,7 +223,7 @@
 	<script>
 		function TestSubscribeToScanEvent(textElement) {
 			try {
-				airlock.scanning.onScan.addHandler(handleScan);
+				airlock.scanning.onScan.addListener(handleScan);
 				setText(textElement, 'Subscribed.');
 			} catch (e) {
 				setText(textElement, `Error ${e}`);
@@ -218,7 +237,7 @@
 
 		function TestUnsubscribeToScanEvent(textElement) {
 			try {
-				airlock.scanning.onScan.removeHandler(handleScan);
+				airlock.scanning.onScan.removeListener(handleScan);
 				setText(textElement, "Unsubscribed");
 			} catch (e) {
 				setText(textElement, `Error ${e}`);

@@ -247,7 +247,7 @@
 	<script>
 		function TestSubscribeToPowerChanged(textElement) {
 			try {
-				airlock.device.onPowerChanged.addHandler(handlePowerChanged);
+				airlock.device.onPowerChanged.addListener(handlePowerChanged);
 				setText(textElement, 'Subscribed.');
 			} catch (e) {
 				setText(textElement, `Error ${e}`);
@@ -261,7 +261,7 @@
 
 		function TestUnsubscribeToPowerChanged(textElement) {
 			try {
-				airlock.device.onPowerChanged.removeHandler(handlePowerChanged);
+				airlock.device.onPowerChanged.removeListener(handlePowerChanged);
 				setText(textElement, "Unsubscribed");
 			} catch (e) {
 				setText(textElement, `Error ${e}`);

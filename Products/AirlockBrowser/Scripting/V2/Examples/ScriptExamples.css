@@ -2,10 +2,32 @@ body {
 	font-size: medium;
 	font-family: Arial, Helvetica, sans-serif;
 	width: 100%;
+	color: #242729
 }
 
+ul.navigationUL {
+	list-style-type: none;
+	background-color: #f1f1f1;
+	padding-left: 0px;
+	width: 300px;
+}
+
+ul.navigationUL li a {
+	padding-top: .4em;
+	padding-bottom: .4em;
+	display: block;
+    color: #000;
+    padding: 8px 16px;		
+}
+
+ul.navigationUL li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+
 div.testDiv {
-	margin-bottom: .6em;
+	margin-bottom: 3em;
 	padding: .3em;
 	background-color: #fafafa;
 }

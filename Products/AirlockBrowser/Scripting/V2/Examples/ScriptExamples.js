@@ -57,5 +57,8 @@ function setText(elementId, text) {
 function insertScriptInPre(preName, id) {
 	var target = document.getElementById(preName);
 	var script = document.getElementById(id).text;
-	target.innerHTML = script;
+
+	var codeBlock = "<code class=\"language-js\">" + script + "</code>";
+
+	target.innerHTML = codeBlock;
 }

@@ -2,7 +2,8 @@ body {
 	font-size: medium;
 	font-family: Arial, Helvetica, sans-serif;
 	width: 100%;
-	color: #242729
+	color: #242729;
+	background: #e8e8e8;
 }
 
 ul.navigationUL {
@@ -16,24 +17,28 @@ ul.navigationUL li a {
 	padding-top: .4em;
 	padding-bottom: .4em;
 	display: block;
-    color: #000;
-    padding: 8px 16px;		
+	color: #000;
+	padding: 8px 16px;		
 }
 
 ul.navigationUL li a:hover {
-    background-color: #555;
-    color: white;
+	background-color: #555;
+	color: white;
 }
 
 
 div.testDiv {
-	margin-bottom: 3em;
-	padding: .3em;
+	margin-bottom: 2em;
+	padding: .2em;
 	background-color: #fafafa;
+	padding-bottom: 1em;
 }
 
 div.testDiv h3 {
-	color: gray;
+	color: white;
+	background: #404E4D;
+	padding:12px;
+	margin: -.2em;
 }
 
 div.outputText {
@@ -42,6 +47,7 @@ div.outputText {
 	white-space: pre-wrap;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
+	padding: .4em;
 }
 
 div.testDiv input {
@@ -155,15 +161,15 @@ table {
 
 input {
 	margin: 40px 25px;
-	width: 200px;
+
 	display: block;
 	border: none;
 	padding: 10px 0;
-	border-bottom: solid 1px #1abc9c;
+	border-bottom: solid 1px #9BC53D;
 	-webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
 	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #9BC53D 4%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #9BC53D 4%);
 	background-position: -200px 0;
 	background-size: 200px 100%;
 	background-repeat: no-repeat;
@@ -175,21 +181,21 @@ input:focus, input:valid {
 	background-position: 0 0;
 }
 input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
-	color: #1abc9c;
+	color: #9BC53D;
 	font-size: 11px;
 	-webkit-transform: translateY(-20px);
 	transform: translateY(-20px);
 	visibility: visible !important;
 }
-	/*#07A0C3 #FD5200*/
+	/*#07A0C3 #FD5200 EDEDF4*/
 	input[type=button] {
 		border: none;
-		background: #EDEDF4;
+		background: #9BC53D;
 		cursor: pointer;
 		border-radius: 3px;
 		padding: 6px;
 		width: 260px;
-		color: #555;
+		color: #FFF;
 		margin-left: 5px;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 	}
@@ -207,6 +213,6 @@ input[type=button]:hover {
 	}
 
 	div.testDiv h3 {
-		text-align:center;
+		/*text-align:center;*/
 	}
 }

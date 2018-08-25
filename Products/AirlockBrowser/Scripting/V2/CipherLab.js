@@ -1,5 +1,5 @@
 ﻿
-var CLlastScanArgs;
+var cllastScanArgs;
 
 /**
  * Subscribes to the airlock.scanning.onScan event.
@@ -10,8 +10,12 @@ var CLlastScanArgs;
  */
 function BarCodeSetCallBack(jsFunctionName) {
 	airlock.scanning.onScan.addListener(function (args) {
-		CLlastScanArgs = args;
+		cllastScanArgs = args;
 		window[jsFunctionName](args);
+	});
+
+	airlock.scanning.onScanError.addListener(function(args) {
+		clLastScanError = args.errorInfo;
 	});
 }
 
@@ -21,7 +25,7 @@ function BarCodeSetCallBack(jsFunctionName) {
  * @see {@link airlock.scanning.onScan.addListener}
  */
 function BarCodeGetReaderData() {
-	return CLlastScanArgs;
+	return cllastScanArgs;
 }
 
 /**
@@ -30,6 +34,17 @@ function BarCodeGetReaderData() {
  */
 function BarCodeSoftScanTrigger() {
 	airlock.scanning.beginScan();
+}
+
+/**
+ * Resets the scanner configuration. Resets the current devices configuration
+ * and removes any settings stored for the barcode reader, including
+ * decoder settings and so forth.
+ * @returns {Promise} When resolved indicates the reset is complete.
+ * @see {@link airlock.scanning.resetConfiguration}
+ */
+function BarCodeReset() {
+	return airlock.scanning.resetConfiguration();
 }
 
 /**
@@ -162,6 +177,19 @@ function BarCodeSetDecodersStatus(decodersStatus) {
  */
 function BarCodeGetSymbology(decoderName) {
 	return airlock.scanning.getDecoderWithName(decoderName);
+}
+
+var clLastScanError;
+
+/**
+ * Gets the last scan error. Requires subscription to the scan
+ * event via BarCodeSetCallBack;
+ * @returns {object} The last scan error that occured or undefined.
+ * @see {@link BarCodeSetCallBack}
+ * @see {@link airlock.scanning.onScanError}
+ */
+function BarCodeGetErrorMsg() {
+	return clLastScanError;
 }
 
 /**

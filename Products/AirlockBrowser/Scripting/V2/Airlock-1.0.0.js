@@ -77,7 +77,7 @@ airlock.scanning.getDecoderWithNativeId = function (id) {
  * @returns {Promise<Array.<object>} A list of all decoders.
  */
 airlock.scanning.getDecoders = function () {
-	return Instance_HSV12.makePromise("scanning.getDecoders");
+	return hsv12Private.makePromise("scanning.getDecoders");
 }
 
 /**
@@ -97,7 +97,7 @@ airlock.scanning.setDecoder = function (decoder) {
  * @return {object} The reader configuration.
  */
 airlock.scanning.getConfiguration = function () {
-	return pageHost.ii.getResult("scanning.getScannerConfiguration");
+	return pageHost.ii.getResult("scanning.getConfiguration");
 }
 
 /**
@@ -107,7 +107,20 @@ airlock.scanning.getConfiguration = function () {
  */
 airlock.scanning.setConfiguration = function (configuration) {
 	pageHost.ii.assertArgNotNull(configuration, "configuration");
-	pageHost.ii.getResult("scanning.setScannerConfiguration", configuration);
+	pageHost.ii.getResult("scanning.setConfiguration", configuration);
+}
+
+/**
+ * Resets the scanner configuration. Resets the current devices configuration
+ * and removes any settings stored for the barcode reader, including
+ * decoder settings and so forth. An app restart may be required by
+ * some device brands.
+ * @returns {Promise<boolean>} When resolved indicates the reset is complete.
+ * If the resolve value is true, the new configuration has been applied.
+ * If false, an app restart is required.
+ */
+airlock.scanning.resetConfiguration = function () {
+	return hsv12Private.makePromise("scanning.resetConfiguration");
 }
 
 /**
@@ -172,7 +185,7 @@ airlock.scanning.getApiVersion = function () {
  */
 
 /**
- * onScan Event Is raised when the barcode reader receives scan data.
+ * onScan Event. Is raised when the barcode reader receives scan data.
  * To subscribe to the event use:
  *		airlock.device.onScan.addListener(aFunction)
  * To unsubscribe to the event use:
@@ -180,7 +193,24 @@ airlock.scanning.getApiVersion = function () {
  * @event
  * @type {ScanEventArgs}
  */
-airlock.scanning.onScan = pageHost.ii.registerEvent('barcodeReader.onScan');
+airlock.scanning.onScan = pageHost.ii.registerEvent('scanning.onScan');
+
+/**
+ * @typedef ScanErrorEventArgs
+ * @property {object} errorInfo SDK depenedent information regarding the error.
+ * @property {Date} timestamp Indicates when the scan failed.
+ */
+
+/**
+ * onScanError Event. Is raised when the barcode reader fails to scan a barcode.
+ * To subscribe to the event use:
+ *		airlock.device.onScanError.addListener(aFunction)
+ * To unsubscribe to the event use:
+ *		airlock.device.onScanError.removeListener(aFunction)
+ * @event
+ * @type {ScanErrorEventArgs}
+ */
+airlock.scanning.onScanError = pageHost.ii.registerEvent('scanning.onScanError');
 
 /* Device */
 
@@ -494,7 +524,7 @@ airlock.device.onPowerChanged = pageHost.ii.registerEvent("device.onPowerChanged
 airlock.printing = {};
 
 airlock.printing.printPage = function () {
-	return Instance_HSV12.makePromise("printing.printPage");
+	return hsv12Private.makePromise("printing.printPage");
 };
 
 /* Speech */
@@ -714,7 +744,7 @@ airlock.networking.getNetworkInfo = function () {
  * The promis may take several seconds to resolve.
  */
 airlock.networking.getWirelessNetworks = function () {
-	return Instance_HSV12.makePromise("networking.getWirelessNetworksAsync");
+	return hsv12Private.makePromise("networking.getWirelessNetworksAsync");
 }
 
 /**
@@ -922,7 +952,7 @@ airlock.log.error = function (message, error) {
  * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
  */
 airlock.log.getEntries = function (startDate, endDate) {
-	return Instance_HSV12.makePromise("log.getEntries", startDate, endDate);
+	return hsv12Private.makePromise("log.getEntries", startDate, endDate);
 }
 
 /**
@@ -938,7 +968,7 @@ airlock.log.getEntries = function (startDate, endDate) {
  * @returns {number} The number of deleted log entries.
  */
 airlock.log.deleteEntries = function (startDate, endDate) {
-	return Instance_HSV12.makePromise("log.deleteEntries", startDate, endDate);
+	return hsv12Private.makePromise("log.deleteEntries", startDate, endDate);
 }
 
 
@@ -964,7 +994,7 @@ airlock.io = {};
  * An error is produced by the Promise if an IO Exception is raised.
  */
 airlock.io.copyFile = function (sourcePath, destinationPath, overwriteIfExists) {
-	return Instance_HSV12.makePromise("io.copyFile", sourcePath, destinationPath, overwriteIfExists);
+	return hsv12Private.makePromise("io.copyFile", sourcePath, destinationPath, overwriteIfExists);
 }
 
 /**
@@ -978,7 +1008,7 @@ airlock.io.copyFile = function (sourcePath, destinationPath, overwriteIfExists) 
  * @see {@link https://docs.microsoft.com/en-us/dotnet/api/system.io.file.move}
  */
 airlock.io.moveFile = function (sourcePath, destinationPath) {
-	return Instance_HSV12.makePromise("io.moveFile", sourcePath, destinationPath);
+	return hsv12Private.makePromise("io.moveFile", sourcePath, destinationPath);
 }
 
 /**
@@ -988,7 +1018,7 @@ airlock.io.moveFile = function (sourcePath, destinationPath) {
  * @returns {Promise} If the promise is rejected it indicates the delete was unsuccessful.
  */
 airlock.io.deleteFile = function (path) {
-	return Instance_HSV12.makePromise("io.deleteFile", path);
+	return hsv12Private.makePromise("io.deleteFile", path);
 }
 
 /**
@@ -997,7 +1027,7 @@ airlock.io.deleteFile = function (path) {
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
  */
 airlock.io.fileExists = function (path) {
-	return Instance_HSV12.makePromise("io.fileExists", path);
+	return hsv12Private.makePromise("io.fileExists", path);
 }
 
 /**
@@ -1006,7 +1036,7 @@ airlock.io.fileExists = function (path) {
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
  */
 airlock.io.directoryExists = function (path) {
-	return Instance_HSV12.makePromise("io.directoryExists", path);
+	return hsv12Private.makePromise("io.directoryExists", path);
 }
 
 /**
@@ -1067,7 +1097,7 @@ airlock.io.FileMode = {
  * @returns {Promise<number>} A promise that resolves to a file identifier.
  */
 airlock.io.openFile = function (path, fileMode) {
-	return Instance_HSV12.makePromise("io.openFile", path, fileMode);
+	return hsv12Private.makePromise("io.openFile", path, fileMode);
 }
 
 /**
@@ -1079,7 +1109,7 @@ airlock.io.openFile = function (path, fileMode) {
  * that the file has been closed.
  */
 airlock.io.closeFile = function (handle) {
-	return Instance_HSV12.makePromise("io.closeFile", handle);
+	return hsv12Private.makePromise("io.closeFile", handle);
 }
 
 /**
@@ -1091,7 +1121,7 @@ airlock.io.closeFile = function (handle) {
  * that the directory has been created.
  */
 airlock.io.createDirectory = function (path) {
-	return Instance_HSV12.makePromise("io.createDirectory", path);
+	return hsv12Private.makePromise("io.createDirectory", path);
 }
 
 /**
@@ -1105,7 +1135,7 @@ airlock.io.createDirectory = function (path) {
  * that the directory has been deleted.
  */
 airlock.io.deleteDirectory = function (path, recursive) {
-	return Instance_HSV12.makePromise("io.deleteDirectory", path, recursive);
+	return hsv12Private.makePromise("io.deleteDirectory", path, recursive);
 }
 
 /**
@@ -1118,7 +1148,7 @@ airlock.io.deleteDirectory = function (path, recursive) {
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  */
 airlock.io.getFiles = function (directoryPath, searchPattern, recursive) {
-	return Instance_HSV12.makePromise("io.getFiles", directoryPath, searchPattern, recursive);
+	return hsv12Private.makePromise("io.getFiles", directoryPath, searchPattern, recursive);
 }
 
 /**
@@ -1131,7 +1161,7 @@ airlock.io.getFiles = function (directoryPath, searchPattern, recursive) {
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  */
 airlock.io.getDirectories = function (directoryPath, searchPattern, recursive) {
-	return Instance_HSV12.makePromise("io.getDirectories", directoryPath, searchPattern, recursive);
+	return hsv12Private.makePromise("io.getDirectories", directoryPath, searchPattern, recursive);
 }
 
 /**
@@ -1153,7 +1183,7 @@ airlock.io.getDirectories = function (directoryPath, searchPattern, recursive) {
  * that contains the directory, size, modified/created/accessed times.
  */
 airlock.io.getFileInfo = function (path) {
-	return Instance_HSV12.makePromise("io.getFileInfo", path);
+	return hsv12Private.makePromise("io.getFileInfo", path);
 }
 
 /**
@@ -1166,7 +1196,7 @@ airlock.io.getFileInfo = function (path) {
  * read from the file.
  */
 airlock.io.readText = function (handle, length, offset) {
-	return Instance_HSV12.makePromise("io.readText", handle, length, offset);
+	return hsv12Private.makePromise("io.readText", handle, length, offset);
 }
 
 /**
@@ -1179,7 +1209,7 @@ airlock.io.readText = function (handle, length, offset) {
  * a base64 string read from the file.
  */
 airlock.io.readBase64 = function (handle, length, offset) {
-	return Instance_HSV12.makePromise("io.readBase64", handle, length, offset);
+	return hsv12Private.makePromise("io.readBase64", handle, length, offset);
 }
 
 /**
@@ -1189,7 +1219,7 @@ airlock.io.readBase64 = function (handle, length, offset) {
  * that is the contents of the file.
  */
 airlock.io.readAllText = function (filePath) {
-	return Instance_HSV12.makePromise("io.readAllText", filePath);
+	return hsv12Private.makePromise("io.readAllText", filePath);
 }
 
 /**
@@ -1199,7 +1229,7 @@ airlock.io.readAllText = function (filePath) {
  * a line of text that was read from the file.
  */
 airlock.io.readLine = function (handle) {
-	return Instance_HSV12.makePromise("io.readLine", handle);
+	return hsv12Private.makePromise("io.readLine", handle);
 }
 
 /**
@@ -1212,7 +1242,7 @@ airlock.io.readLine = function (handle) {
  * indicates success of the operation.
  */
 airlock.io.writeText = function (handle, text) {
-	return Instance_HSV12.makePromise("io.writeText", handle, text);
+	return hsv12Private.makePromise("io.writeText", handle, text);
 }
 
 /**
@@ -1225,7 +1255,7 @@ airlock.io.writeText = function (handle, text) {
  * indicates success of the operation.
  */
 airlock.io.writeBase64 = function (handle, base64String) {
-	return Instance_HSV12.makePromise("io.writeBase64", handle, base64String);
+	return hsv12Private.makePromise("io.writeBase64", handle, base64String);
 }
 
 /**

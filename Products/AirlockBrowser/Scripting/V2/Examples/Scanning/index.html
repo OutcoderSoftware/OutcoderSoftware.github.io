@@ -155,6 +155,26 @@ function testSetConfiguration(textElement) {
 </div>
 
 <div class="testDiv">
+	<h3>Resetting the Configuration</h3>
+	<script id="resetConfigurationScript">
+function testResetConfiguration(textElement) {
+	setText(textElement, "Resetting...");
+
+	airlock.scanning.resetConfiguration()
+		.then(function (defaultSettingsApplied) {
+			setText(textElement, "Configuration reset."
+				+ (defaultSettingsApplied ? "" : "Restart required."));
+		}).catch(function (e) {
+			setText(textElement, "Error: " + e);
+		})
+}
+	</script><pre class="example" id="resetConfigurationPre"></pre>
+	<script>insertScriptInPre('resetConfigurationPre', 'resetConfigurationScript');</script>
+	<input type="button" onclick="testResetConfiguration('resetConfigurationText')" value="Reset Configuration" />
+	<div class="outputText" id="resetConfigurationText"></div>
+</div>
+
+<div class="testDiv">
 	<h3>Detecting if the Barcode Reader is Active</h3>
 	<script id="getActiveScript">
 function testGetActive(textElement) {
@@ -266,6 +286,39 @@ function testUnsubscribeToScanEvent(textElement) {
 	<input type="button" onclick="testSubscribeToScanEvent('testScanEventText')" value="Subscribe to Scan Event" /><br />
 	<input type="button" onclick="testUnsubscribeToScanEvent('testScanEventText')" value="Unsubscribe" /><br />
 	<div class="outputText" type="text" id="testScanEventText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Monitoring Scan Errors</h3>
+	<script id="subscribeToErrorEventScript">
+function testSubscribeToErrorEvent(textElement) {
+	try {
+		airlock.scanning.onScanError.addListener(handleScanError);
+		setText(textElement, 'Subscribed.');
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+
+function handleScanError(args) {
+	setText('testScanErrorEventText', "Received scan error notification.");
+	setTimeout(setText('testScanErrorEventText', "Listening..."), 4000);
+}
+
+function testUnsubscribeToErrorEvent(textElement) {
+	try {
+		airlock.scanning.onScanError.removeListener(handleScanError);
+		setText(textElement, "Unsubscribed");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="subscribeToErrorEventPre"></pre><script>insertScriptInPre('subscribeToErrorEventPre', 'subscribeToErrorEventScript');</script>
+	<input type="button" onclick="testSubscribeToErrorEvent('testScanErrorEventText')" value="Subscribe to Scan Error Event" /><br />
+	<input type="button" onclick="testUnsubscribeToErrorEvent('testScanErrorEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testScanErrorEventText"></div>
 </div>
 	
 <div class="testDiv">

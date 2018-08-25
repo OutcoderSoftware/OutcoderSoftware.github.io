@@ -56,7 +56,7 @@ function setText(elementId, text) {
 
 function insertScriptInPre(preName, id) {
 	var target = document.getElementById(preName);
-	var script = document.getElementById(id).text;
+	var script = document.getElementById(id).text.replace(/\t/g, '&nbsp;&nbsp;');
 
 	var codeBlock = "<code class=\"language-js\">" + script + "</code>";
 

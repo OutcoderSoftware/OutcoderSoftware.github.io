@@ -38,6 +38,8 @@
 	<script id="getAllDecodersScript">
 function testGetDecoders(textElement) {
 	try {
+		setText(textElement, `Getting all decoders...`);
+
 		var promise = airlock.scanning.getDecoders();
 
 		promise.then(function (decoders) {

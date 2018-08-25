@@ -53,3 +53,9 @@ function setText(elementId, text) {
 	var element = document.getElementById(elementId);
 	element.textContent = text;
 }
+
+function insertScriptInPre(preName, id) {
+	var target = document.getElementById(preName);
+	var script = document.getElementById(id).text;
+	target.innerHTML = script;
+}

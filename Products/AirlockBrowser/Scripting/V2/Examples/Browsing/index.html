@@ -18,48 +18,53 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestSetTextZoomLevel(textElement) {
-			try {
-				var level = airlock.browsing.getTextZoomLevel();
-				level += .11;
-				if (level > 1.6) {
-					level = 1.0;
-				}
-				airlock.browsing.setTextZoomLevel(level);
-				setText(textElement, `Set Text Zoom to ${level}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
+	<h3>Text Zoom Level</h3>
+	<script id="setTextZoomLevelScript">
+function testSetTextZoomLevel(textElement) {
+	try {
+		var level = airlock.browsing.getTextZoomLevel();
+		level += .11;
+		if (level > 1.6) {
+			level = 1.0;
 		}
-	</script>
-	<input type="button" onclick="TestSetTextZoomLevel('setTextZoomLevelText')" value="Set Text Zoom Level" />
+		airlock.browsing.setTextZoomLevel(level);
+
+		setText(textElement, `Set Text Zoom to ${level}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setTextZoomLevelPre"></pre><script>insertScriptInPre('setTextZoomLevelPre', 'setTextZoomLevelScript');</script>
+	<input type="button" onclick="testSetTextZoomLevel('setTextZoomLevelText')" value="Set Text Zoom Level" />
 	<div class="outputText" type="text" id="setTextZoomLevelText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestSetNavigationErrorAction(textElement) {
-			try {
-				var actionSelect = document.getElementById('ErrorActionSelect');
-				var action = actionSelect.options[actionSelect.selectedIndex].value;
+	<h3>Navigation Error Action</h3>
+	<script id="setNavigationErrorActionScript">
+function testSetNavigationErrorAction(textElement) {
+	try {
+		var actionSelect = document.getElementById('ErrorActionSelect');
+		var action = actionSelect.options[actionSelect.selectedIndex].value;
 
-				var useUrl = document.getElementById('UseActionUrlCheckBox').checked;
-				var url = useUrl ? document.getElementById('ErrorActionUrl').textContent : null;
+		var useUrl = document.getElementById('UseActionUrlCheckBox').checked;
+		var url = useUrl ? document.getElementById('ErrorActionUrl').textContent : null;
 
-				airlock.browsing.setNavigationErrorAction(Number(action), url);
-				setText(textElement, `Set value to ${action}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<div>An error action can be defined for all pages, or individually by specifying a URL when calling airlock.browsing.setNavigationErrorAction(value).
+		airlock.browsing.setNavigationErrorAction(Number(action), url);
+		setText(textElement, `Set value to ${action}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setNavigationErrorActionPre"></pre><script>insertScriptInPre('setNavigationErrorActionPre', 'setNavigationErrorActionScript');</script>
+	<div>
+		An error action can be defined for all pages, or individually by specifying a URL when calling airlock.browsing.setNavigationErrorAction(value).
 		The default configuration does not redirect to the error page.
 		You can change this behavior in the app's settings,
-		or by using the override as demonstrated in this example.</div>
+		or by using the override as demonstrated in this example.
+	</div>
 	<label for="ErrorActionSelect">Error Action</label>
 	<select id="ErrorActionSelect" style="margin-top: 1em; margin-bottom: 1em;">
 		<option value="0">Redirect to error page</option>
@@ -71,8 +76,8 @@
 		<input type="checkbox" id="UseActionUrlCheckBox" style="margin: 0" />
 	</div>
 	<input type="text" id="ErrorActionUrl" value="http://wwwwwwkdd.sdfljalfsdjk.com" /><br />
-	<input type="button" onclick="TestSetNavigationErrorAction('TestSetNavigationErrorActionText')" value="Set Navigation Error Action" /><br />
-	<div class="outputText" type="text" id="TestSetNavigationErrorActionText"></div>
+	<input type="button" onclick="testSetNavigationErrorAction('testSetNavigationErrorActionText')" value="Set Navigation Error Action" /><br />
+	<div class="outputText" type="text" id="testSetNavigationErrorActionText"></div>
 	<a href="http://wwwwwwkdd.sdfljalfsdjk.com">Tap this bad link to test.</a>
 </div>
 

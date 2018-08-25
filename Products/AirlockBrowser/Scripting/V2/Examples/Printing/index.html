@@ -18,24 +18,25 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestPrintPage(textElement) {
-			try {
-				var promise = airlock.printing.printPage();
+	<h3>Printing a Page</h3>
+	<script id="printPageScript">
+function testPrintPage(textElement) {
+	try {
+		var promise = airlock.printing.printPage();
 
-				promise.then(function() {
-					setText(textElement, `Request to print received.`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestPrintPage('TestPrintPageText')" value="Print Page"/>
-	<div class="outputText" type="text" id="TestPrintPageText"></div>
+		promise.then(function () {
+			setText(textElement, `Request to print received.`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="printPagePre"></pre><script>insertScriptInPre('printPagePre', 'printPageScript');</script>
+	<input type="button" onclick="testPrintPage('testPrintPageText')" value="Print Page" />
+	<div class="outputText" type="text" id="testPrintPageText"></div>
 </div>
 
 </body>

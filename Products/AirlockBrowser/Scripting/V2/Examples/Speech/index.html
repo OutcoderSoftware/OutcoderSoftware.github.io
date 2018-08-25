@@ -18,19 +18,20 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestSpeakText(textElement) {
-			try {
-				airlock.speech.speakText("Hi from Airlock Browser.");
-				setText(textElement, `Speaking text.`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSpeakText('TestSpeakTextText')" value="Speak Text"/>
-	<div class="outputText" type="text" id="TestSpeakTextText"></div>
+	<h3>Speaking Text</h3>
+	<script id="speakTextScript">
+function testSpeakText(textElement) {
+	try {
+		airlock.speech.speakText("Hi from Airlock Browser.");
+		setText(textElement, `Speaking text.`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="speakTextPre"></pre><script>insertScriptInPre('speakTextPre', 'speakTextScript');</script>
+	<input type="button" onclick="testSpeakText('testSpeakTextText')" value="Speak Text" />
+	<div class="outputText" type="text" id="testSpeakTextText"></div>
 </div>
 
 </body>

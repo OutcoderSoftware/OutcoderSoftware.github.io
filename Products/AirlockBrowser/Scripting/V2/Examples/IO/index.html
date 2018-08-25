@@ -35,172 +35,178 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestDirectoryExists(textElement) {
-			try {
-				var directoryPath = `${filesDir}/${testDiretory}`;
+	<h3>Determining if a Directory Exists</h3>
+	<script id="directoryExistsScript">
+function testDirectoryExists(textElement) {
+	try {
+		var directoryPath = `${filesDir}/${testDiretory}`;
 
-				var promise = airlock.io.directoryExists(directoryPath);
+		var promise = airlock.io.directoryExists(directoryPath);
 
-				promise.then(function(fileExists) {
-					setText(textElement, `Directory exists: ${fileExists}`);
-				}).catch(function(error) {
-					setText(textElement, `Error: ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestDirectoryExists('TestDirectoryExistsText')" value="Get Directory Exists"/><br/>
-	<div class="outputText" type="text" id="TestDirectoryExistsText"></div>
+		promise.then(function (fileExists) {
+			setText(textElement, `Directory exists: ${fileExists}`);
+		}).catch(function (error) {
+			setText(textElement, `Error: ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="directoryExistsPre"></pre><script>insertScriptInPre('directoryExistsPre', 'directoryExistsScript');</script>
+	<input type="button" onclick="testDirectoryExists('testDirectoryExistsText')" value="Get Directory Exists" /><br />
+	<div class="outputText" type="text" id="testDirectoryExistsText"></div>
 </div>
 
 
 <div class="testDiv">
-	<script>
-		var testDiretory = "AirlockTesting";
+	<h3>Creating a Directory</h3>
+	<script id="createDirectoryScript">
+var testDiretory = "AirlockTesting";
 
-		function TestCreateDirectory(textElement) {
-			try {
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var newDir = filesDir + "/" + testDiretory;
+function testCreateDirectory(textElement) {
+	try {
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var newDir = filesDir + "/" + testDiretory;
 
-				/* Create directory has no effect, and does not raise an error,
-				* if the directory already exists. */
-				var promise = airlock.io.createDirectory(newDir);
+		/* Create directory has no effect, and does not raise an error,
+		* if the directory already exists. */
+		var promise = airlock.io.createDirectory(newDir);
 
-				promise.then(function() {
-					setText(textElement, `Created directory ${newDir}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, "Error " + e);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestCreateDirectory('TestCreateDirectoryText')" value="Create Directory"/>
-	<div class="outputText" type="text" id="TestCreateDirectoryText"></div>
+		promise.then(function () {
+			setText(textElement, `Created directory ${newDir}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, "Error " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="createDirectoryPre"></pre><script>insertScriptInPre('createDirectoryPre', 'createDirectoryScript');</script>
+	<input type="button" onclick="testCreateDirectory('testCreateDirectoryText')" value="Create Directory" />
+	<div class="outputText" type="text" id="testCreateDirectoryText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestDeleteDirectory(textElement) {
-			try {
-				var recursive = document.getElementById("recursiveDeleteCheckbox").checked;
+	<h3>Deleting a Directory</h3>
+	<script id="deleteDirectoryScript">
+function testDeleteDirectory(textElement) {
+	try {
+		var recursive = document.getElementById("recursiveDeleteCheckbox").checked;
 
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var newDir = filesDir + "/" + testDiretory;
-				var promise = airlock.io.deleteDirectory(newDir, recursive);
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var newDir = filesDir + "/" + testDiretory;
+		var promise = airlock.io.deleteDirectory(newDir, recursive);
 
-				promise.then(function() {
-					setText(textElement, `Deleted directory ${newDir}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestDeleteDirectory('TestDeleteDirectoryText')" value="Delete Directory"/><br/>
-	<input type="checkbox" id="recursiveDeleteCheckbox"/> Recursive<br/>
-	<div class="outputText" type="text" id="TestDeleteDirectoryText"></div>
+		promise.then(function () {
+			setText(textElement, `Deleted directory ${newDir}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="deleteDirectoryPre"></pre><script>insertScriptInPre('deleteDirectoryPre', 'deleteDirectoryScript');</script>
+	<input type="button" onclick="testDeleteDirectory('testDeleteDirectoryText')" value="Delete Directory" /><br />
+	<input type="checkbox" id="recursiveDeleteCheckbox" /> Recursive<br />
+	<div class="outputText" type="text" id="testDeleteDirectoryText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestFileExists(textElement) {
-			try {
-				var filePath = `${filesDir}/${testDiretory}/${textFileName}`;
+	<h3>Determining if a File Exists</h3>
+	<script id="fileExistsScript">
+function testFileExists(textElement) {
+	try {
+		var filePath = `${filesDir}/${testDiretory}/${textFileName}`;
 
-				var promise = airlock.io.fileExists(filePath);
+		var promise = airlock.io.fileExists(filePath);
 
-				promise.then(function(fileExists) {
-					setText(textElement, `File exists: ${fileExists}`);
-				}).catch(function(error) {
-					setText(textElement, `Error: ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestFileExists('TestFileExistsText')" value="Get File Exists"/><br/>
-	<div class="outputText" type="text" id="TestFileExistsText"></div>
+		promise.then(function (fileExists) {
+			setText(textElement, `File exists: ${fileExists}`);
+		}).catch(function (error) {
+			setText(textElement, `Error: ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="fileExistsPre"></pre><script>insertScriptInPre('fileExistsPre', 'fileExistsScript');</script>
+	<input type="button" onclick="testFileExists('testFileExistsText')" value="Get File Exists" /><br />
+	<div class="outputText" type="text" id="testFileExistsText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		var textFileName = "TestFile.txt";
-		var textFileCopyName = "TestFileCopy.txt";
-		var binaryFileName = "TestFile.bin";
-		var file1Handle;
+	<h3>Creating a Deleting Files</h3>
+	<script id="createDeleteFilesScript">
+var textFileName = "TestFile.txt";
+var textFileCopyName = "TestFileCopy.txt";
+var binaryFileName = "TestFile.bin";
+var file1Handle;
 
-		function TestCreateFile(textElement) {
-			try {
-				var selectElement = document.getElementById("creationFileMode");
-				var fileMode = selectElement.options[selectElement.selectedIndex].value;
+function testCreateFile(textElement) {
+	try {
+		var selectElement = document.getElementById("creationFileMode");
+		var fileMode = selectElement.options[selectElement.selectedIndex].value;
 
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var outputDir = `${filesDir}/${testDiretory}`;
-				var filePath = `${outputDir}/${textFileName}`;
-				var promise = airlock.io.openFile(filePath, fileMode);
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var outputDir = `${filesDir}/${testDiretory}`;
+		var filePath = `${outputDir}/${textFileName}`;
+		var promise = airlock.io.openFile(filePath, fileMode);
 
-				promise.then(function(fileHandle) {
-					file1Handle = fileHandle;
-					setText(textElement, `Success ${filePath}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+		promise.then(function (fileHandle) {
+			file1Handle = fileHandle;
+			setText(textElement, `Success ${filePath}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function TestCloseFile(textElement) {
-			try {
-				var promise = airlock.io.closeFile(file1Handle);
+function testCloseFile(textElement) {
+	try {
+		var promise = airlock.io.closeFile(file1Handle);
 
-				promise.then(function() {
-					setText(textElement, `File closed.`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+		promise.then(function () {
+			setText(textElement, `File closed.`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function TestDeleteFile(textElement, fileName) {
-			try {
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var outputDir = `${filesDir}/${testDiretory}`;
-				var filePath = `${outputDir}/${fileName}`;
+function testDeleteFile(textElement, fileName) {
+	try {
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var outputDir = `${filesDir}/${testDiretory}`;
+		var filePath = `${outputDir}/${fileName}`;
 
-				var promise = airlock.io.deleteFile(filePath);
+		var promise = airlock.io.deleteFile(filePath);
 
-				promise.then(function() {
-					setText(textElement, `File deleted.`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
+		promise.then(function () {
+			setText(textElement, `File deleted.`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="createDeleteFilesPre"></pre><script>insertScriptInPre('createDeleteFilesPre', 'createDeleteFilesScript');</script>
 	<div>
-		<input type="button" onclick="TestCreateFile('TestCreateFileText')" value="Open File" style="margin-bottom: 1em"/>
-		<div style="float: right"><span>Using mode:</span><br/>
+		<input type="button" onclick="testCreateFile('testCreateFileText')" value="Open File" style="margin-bottom: 1em" />
+		<div style="float: right">
+			<span>Using mode:</span><br />
 			<select id="creationFileMode" style="margin-bottom: 1em">
 				<option value="1">Create New</option>
 				<option value="2">Create</option>
@@ -209,329 +215,337 @@
 				<option value="5">Truncate</option>
 			</select>
 		</div>
-		<br/>
+		<br />
 	</div>
-	<input type="button" onclick="TestCloseFile('TestCreateFileText')" value="Close File"/><br/>
-	<input type="button" onclick="TestDeleteFile('TestCreateFileText', textFileName)" value="Delete File"/><br/>
-	<div class="outputText" type="text" id="TestCreateFileText"></div>
+	<input type="button" onclick="testCloseFile('testCreateFileText')" value="Close File" /><br />
+	<input type="button" onclick="testDeleteFile('testCreateFileText', textFileName)" value="Delete File" /><br />
+	<div class="outputText" type="text" id="testCreateFileText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestWriteTextToFile(textElement) {
-			try {
-				var textToWrite = document.getElementById('textToWrite').value;
+	<h3>Writing Text to a File</h3>
+	<script id="writeTextToFileScript">
+function testWriteTextToFile(textElement) {
+	try {
+		var textToWrite = document.getElementById('textToWrite').value;
 
-				var promise = airlock.io.writeText(file1Handle, textToWrite);
+		var promise = airlock.io.writeText(file1Handle, textToWrite);
 
-				promise.then(function() {
-					setText(textElement, "Done");
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+		promise.then(function () {
+			setText(textElement, "Done");
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function TestReadTextFromFile(textElement) {
-			try {
-				var fileLength = airlock.io.getFileSizeBytes(file1Handle);
-				var promise = airlock.io.readText(file1Handle, fileLength, 0);
+function testReadTextFromFile(textElement) {
+	try {
+		var fileLength = airlock.io.getFileSizeBytes(file1Handle);
+		var promise = airlock.io.readText(file1Handle, fileLength, 0);
 
-				promise.then(function(text) {
-					setText(textElement, text);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+		promise.then(function (text) {
+			setText(textElement, text);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function SeekToTextFile(textElement) {
-			try {
-				var position = document.getElementById('seekToTextFileValue').value;
-				airlock.io.seek(file1Handle, position);
+function SeekToTextFile(textElement) {
+	try {
+		var position = document.getElementById('seekToTextFileValue').value;
+		airlock.io.seek(file1Handle, position);
 
-				var newPosition = airlock.io.getFileOffset(file1Handle);
+		var newPosition = airlock.io.getFileOffset(file1Handle);
 
-				setText(textElement, `At position ${newPosition}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
+		setText(textElement, `At position ${newPosition}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="writeTextToFilePre"></pre><script>insertScriptInPre('writeTextToFilePre', 'writeTextToFileScript');</script>
 	<div>
-		Text to write:<br/>
-		<input type="text" id="textToWrite" value="test "/>
+		Text to write:<br />
+		<input type="text" id="textToWrite" value="test " />
 	</div>
-	<input type="button" onclick="TestWriteTextToFile('TestWriteToFileText')" value="Write to File"/><br/>
-	<input type="button" onclick="TestReadTextFromFile('TestWriteToFileText')" value="Read File"/><br/>
+	<input type="button" onclick="testWriteTextToFile('testWriteToFileText')" value="Write to File" /><br />
+	<input type="button" onclick="testReadTextFromFile('testWriteToFileText')" value="Read File" /><br />
 
 	<div>
-		<input type="text" id="seekToTextFileValue" value="0"/>
-		<input type="button" onclick="SeekToTextFile('TestWriteToFileText')" value="Seek to position"/>
+		<input type="text" id="seekToTextFileValue" value="0" />
+		<input type="button" onclick="SeekToTextFile('testWriteToFileText')" value="Seek to position" />
 	</div>
-	<br/>
-	<div class="outputText" type="text" id="TestWriteToFileText"></div>
+	<br />
+	<div class="outputText" type="text" id="testWriteToFileText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		var binaryFile1Handle = -1;
+	<h3>Writing Bytes to a File using Base64</h3>
+	<script id="base64FileScript">
+var binaryFile1Handle = -1;
 
-		function TestWriteBase64ToFile(textElement) {
-			try {
-				if (binaryFile1Handle == -1) {
-					var filePath = `${filesDir}/${binaryFileName}`;
-					var createFilePromise = airlock.io.openFile(filePath, 2); // 2 is Create
+function testWriteBase64ToFile(textElement) {
+	try {
+		if (binaryFile1Handle == -1) {
+			var filePath = `${filesDir}/${binaryFileName}`;
+			var createFilePromise = airlock.io.openFile(filePath, 2); // 2 is Create
 
-					createFilePromise.then(function(fileHandle) {
-						binaryFile1Handle = fileHandle;
-						TestWriteBase64ToFile(textElement);
-					}).catch(function(error) {
-						setText(textElement, `Error ${error}`);
-					});
+			createFilePromise.then(function (fileHandle) {
+				binaryFile1Handle = fileHandle;
+				testWriteBase64ToFile(textElement);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 
-					return;
-				}
-				var textToWrite = document.getElementById('textToWriteBase64').value;
-
-				var base64 = btoa(textToWrite);
-
-				var promise = airlock.io.writeBase64(binaryFile1Handle, base64);
-
-				promise.then(function() {
-					setText(textElement, "Done");
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
+			return;
 		}
+		var textToWrite = document.getElementById('textToWriteBase64').value;
 
-		function TestReadBase64FromFile(textElement) {
-			try {
-				var fileLength = airlock.io.getFileSizeBytes(binaryFile1Handle);
-				var promise = airlock.io.readBase64(binaryFile1Handle, fileLength, 0);
+		var base64 = btoa(textToWrite);
 
-				promise.then(function(base64) {
-					var text = atob(base64);
-					setText(textElement, text);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+		var promise = airlock.io.writeBase64(binaryFile1Handle, base64);
 
-		function SeekToBase64File(textElement) {
-			try {
-				var position = document.getElementById('seekToBase64FileValue').value;
-				airlock.io.seek(binaryFile1Handle, position);
+		promise.then(function () {
+			setText(textElement, "Done");
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-				var newPosition = airlock.io.getFileOffset(binaryFile1Handle);
+function testReadBase64FromFile(textElement) {
+	try {
+		var fileLength = airlock.io.getFileSizeBytes(binaryFile1Handle);
+		var promise = airlock.io.readBase64(binaryFile1Handle, fileLength, 0);
 
-				setText(textElement, `At position ${newPosition}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
+		promise.then(function (base64) {
+			var text = atob(base64);
+			setText(textElement, text);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+
+function SeekToBase64File(textElement) {
+	try {
+		var position = document.getElementById('seekToBase64FileValue').value;
+		airlock.io.seek(binaryFile1Handle, position);
+
+		var newPosition = airlock.io.getFileOffset(binaryFile1Handle);
+
+		setText(textElement, `At position ${newPosition}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="base64FilePre"></pre><script>insertScriptInPre('base64FilePre', 'base64FileScript');</script>
 	<div>
-		Text to write as Base64:<br/>
-		<input type="text" id="textToWriteBase64" value="Base64"/>
+		Text to write as Base64:<br />
+		<input type="text" id="textToWriteBase64" value="Base64" />
 	</div>
-	<input type="button" onclick="TestWriteBase64ToFile('TestWriteToFileBase64')" value="Write to File"/><br/>
-	<input type="button" onclick="TestReadBase64FromFile('TestWriteToFileBase64')" value="Read File"/><br/>
+	<input type="button" onclick="testWriteBase64ToFile('testWriteToFileBase64')" value="Write to File" /><br />
+	<input type="button" onclick="testReadBase64FromFile('testWriteToFileBase64')" value="Read File" /><br />
 
 	<div>
-		<input type="text" id="seekToBase64FileValue" value="0"/>
-		<input type="button" onclick="SeekToBase64File('TestWriteToFileBase64')" value="Seek to position"/>
+		<input type="text" id="seekToBase64FileValue" value="0" />
+		<input type="button" onclick="SeekToBase64File('testWriteToFileBase64')" value="Seek to position" />
 	</div>
-	<br/>
-	<div class="outputText" type="text" id="TestWriteToFileBase64"></div>
+	<br />
+	<div class="outputText" type="text" id="testWriteToFileBase64"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetFileInfo(textElement) {
-			try {
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var sourcePath = `${filesDir}/${testDiretory}/${textFileName}`;
+	<h3>Obtaining a Files Information</h3>
+	<script id="getFileInfoScript">
+function testGetFileInfo(textElement) {
+	try {
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var sourcePath = `${filesDir}/${testDiretory}/${textFileName}`;
 
-				var promise = airlock.io.getFileInfo(sourcePath);
+		var promise = airlock.io.getFileInfo(sourcePath);
 
-				promise.then(function(result) {
-					var resultString = getPropertyValues(result);
-					setText(textElement, resultString);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, "Error " + e);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetFileInfo('TestGetFileInfoText')" value="Get File Info"/><br/>
-	<div class="outputText" type="text" id="TestGetFileInfoText"></div>
+		promise.then(function (result) {
+			var resultString = getPropertyValues(result);
+			setText(textElement, resultString);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, "Error " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="getFileInfoPre"></pre><script>insertScriptInPre('getFileInfoPre', 'getFileInfoScript');</script>
+	<input type="button" onclick="testGetFileInfo('testGetFileInfoText')" value="Get File Info" /><br />
+	<div class="outputText" type="text" id="testGetFileInfoText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestTouch(textElement) {
-			try {
-				var sourcePath = `${filesDir}/${testDiretory}/${textFileName}`;
-				airlock.io.touch(sourcePath);
-				setText(textElement, "Touched. Use 'Get File Info' above to confirm the change.");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestTouch('TestTouchText')" value="Touch File (update modified)"/><br/>
-	<div class="outputText" type="text" id="TestTouchText"></div>
+	<h3>Touching a File</h3>
+	<script id="touchScript">
+function testTouch(textElement) {
+	try {
+		var sourcePath = `${filesDir}/${testDiretory}/${textFileName}`;
+		airlock.io.touch(sourcePath);
+		setText(textElement, "Touched. Use 'Get File Info' above to confirm the change.");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="touchPre"></pre><script>insertScriptInPre('touchPre', 'touchScript');</script>
+	<input type="button" onclick="testTouch('testTouchText')" value="Touch File (update modified)" /><br />
+	<div class="outputText" type="text" id="testTouchText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestCopyFile(textElement) {
-			try {
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var outputDir = `${filesDir}/${testDiretory}`;
-				var sourcePath = `${outputDir}/${textFileName}`;
-				var destinationPath = `${outputDir}/${textFileCopyName}`;
+	<h3>Copying a File</h3>
+	<script id="copyFileScript">
+function testCopyFile(textElement) {
+	try {
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var outputDir = `${filesDir}/${testDiretory}`;
+		var sourcePath = `${outputDir}/${textFileName}`;
+		var destinationPath = `${outputDir}/${textFileCopyName}`;
 
-				var promise = airlock.io.copyFile(sourcePath, destinationPath);
+		var promise = airlock.io.copyFile(sourcePath, destinationPath);
 
-				promise.then(function() {
-					setText(textElement, `File copied to: ${destinationPath}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
+		promise.then(function () {
+			setText(textElement, `File copied to: ${destinationPath}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
 
-				setText(textElement, `Copying file from ${sourcePath} to ${destinationPath}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestCopyFile('TestCopyFileText')" value="Copy File"/><br/>
-	<input type="button" onclick="TestDeleteFile('TestCopyFileText', textFileCopyName)" value="Delete Copied File"/><br/>
-	<div class="outputText" type="text" id="TestCopyFileText"></div>
+		setText(textElement, `Copying file from ${sourcePath} to ${destinationPath}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="copyFilePre"></pre><script>insertScriptInPre('copyFilePre', 'copyFileScript');</script>
+	<input type="button" onclick="testCopyFile('testCopyFileText')" value="Copy File" /><br />
+	<input type="button" onclick="testDeleteFile('testCopyFileText', textFileCopyName)" value="Delete Copied File" /><br />
+	<div class="outputText" type="text" id="testCopyFileText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		var movedFileName = "MovedFile.txt";
+	<h3>Moving a File</h3>
+	<script id="moveFileScript">
+var movedFileName = "MovedFile.txt";
 
-		function TestMoveFile(textElement) {
-			try {
-				var filesDir = airlock.io.getAppFilesDirectory();
-				var outputDir = `${filesDir}/${testDiretory}`;
-				var sourcePath = `${outputDir}/${textFileName}`;
-				var destinationPath = `${outputDir}/${movedFileName}`;
+function testMoveFile(textElement) {
+	try {
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var outputDir = `${filesDir}/${testDiretory}`;
+		var sourcePath = `${outputDir}/${textFileName}`;
+		var destinationPath = `${outputDir}/${movedFileName}`;
 
-				var promise = airlock.io.moveFile(sourcePath, destinationPath);
+		var promise = airlock.io.moveFile(sourcePath, destinationPath);
 
-				promise.then(function() {
-					setText(textElement, `File moved to: ${destinationPath}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
+		promise.then(function () {
+			setText(textElement, `File moved to: ${destinationPath}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
 
-				setText(textElement, `Moving file from ${sourcePath} to ${destinationPath}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestMoveFile('TestMoveFileText')" value="Move File"/><br/>
-	<input type="button" onclick="TestDeleteFile('TestMoveFileText', movedFileName)" value="Delete Moved File"/><br/>
-	<div class="outputText" type="text" id="TestMoveFileText"></div>
+		setText(textElement, `Moving file from ${sourcePath} to ${destinationPath}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="moveFilePre"></pre><script>insertScriptInPre('moveFilePre', 'moveFileScript');</script>
+	<input type="button" onclick="testMoveFile('testMoveFileText')" value="Move File" /><br />
+	<input type="button" onclick="testDeleteFile('testMoveFileText', movedFileName)" value="Delete Moved File" /><br />
+	<div class="outputText" type="text" id="testMoveFileText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetDirectories(textElement) {
-			try {
-				var outputDir = document.getElementById('recursiveDirectoriesRoot').value;
-				var pattern = document.getElementById('recursiveDirectoriesPattern').value;
-				var recursive = document.getElementById("recursiveDirectoriesCheckbox").checked;
-				var promise = airlock.io.getDirectories(outputDir, pattern, recursive);
+	<h3>Retrieving a List of Directories</h3>
+	<script id="getDirectoriesScript">
+function testGetDirectories(textElement) {
+	try {
+		var outputDir = document.getElementById('recursiveDirectoriesRoot').value;
+		var pattern = document.getElementById('recursiveDirectoriesPattern').value;
+		var recursive = document.getElementById("recursiveDirectoriesCheckbox").checked;
+		var promise = airlock.io.getDirectories(outputDir, pattern, recursive);
 
-				promise.then(function(result) {
-					setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
+		promise.then(function (result) {
+			setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
 
-				setText(textElement, `Getting file list in ${outputDir}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetDirectories('TestGetDirectoriesText')" value="Get Directories"/><br/>
+		setText(textElement, `Getting file list in ${outputDir}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getDirectoriesPre"></pre><script>insertScriptInPre('getDirectoriesPre', 'getDirectoriesScript');</script>
+	<input type="button" onclick="testGetDirectories('testGetDirectoriesText')" value="Get Directories" /><br />
 	<div>
-		Parent Directory:<br/>
-		<input type="text" id="recursiveDirectoriesRoot" value=""/>
+		Parent Directory:<br />
+		<input type="text" id="recursiveDirectoriesRoot" value="" />
 	</div>
 	<div>
-		Pattern:<br/>
-		<input type="text" id="recursiveDirectoriesPattern" value=""/>
+		Pattern:<br />
+		<input type="text" id="recursiveDirectoriesPattern" value="" />
 	</div>
-	<input type="checkbox" id="recursiveDirectoriesCheckbox"/> Recursive<br/>
-	<div class="outputText" type="text" id="TestGetDirectoriesText"></div>
+	<input type="checkbox" id="recursiveDirectoriesCheckbox" /> Recursive<br />
+	<div class="outputText" type="text" id="testGetDirectoriesText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetFiles(textElement) {
-			try {
-				var outputDir = document.getElementById('recursiveFilesRoot').value;
-				var pattern = document.getElementById('recursiveFilesPattern').value;
-				var recursive = document.getElementById("recursiveFilesCheckbox").checked;
-				var promise = airlock.io.getFiles(outputDir, pattern, recursive);
+	<h3>Retrieving the Files in a Directory</h3>
+	<script id="getFilesScript">
+function testGetFiles(textElement) {
+	try {
+		var outputDir = document.getElementById('recursiveFilesRoot').value;
+		var pattern = document.getElementById('recursiveFilesPattern').value;
+		var recursive = document.getElementById("recursiveFilesCheckbox").checked;
+		var promise = airlock.io.getFiles(outputDir, pattern, recursive);
 
-				promise.then(function(result) {
-					setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
-				}).catch(function(error) {
-					setText(textElement, `Error ${error}`);
-				});
+		promise.then(function (result) {
+			setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
+		}).catch(function (error) {
+			setText(textElement, `Error ${error}`);
+		});
 
-				setText(textElement, `Getting file list in ${outputDir}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetFiles('TestGetFilesText')" value="Get Files"/><br/>
+		setText(textElement, `Getting file list in ${outputDir}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getFilesPre"></pre><script>insertScriptInPre('getFilesPre', 'getFilesScript');</script>
+	<input type="button" onclick="testGetFiles('testGetFilesText')" value="Get Files" /><br />
 	<div>
-		Parent Directory:<br/>
-		<input type="text" id="recursiveFilesRoot" value=""/>
+		Parent Directory:<br />
+		<input type="text" id="recursiveFilesRoot" value="" />
 	</div>
 	<div>
-		Pattern:<br/>
-		<input type="text" id="recursiveFilesPattern" value="*.*"/>
+		Pattern:<br />
+		<input type="text" id="recursiveFilesPattern" value="*.*" />
 	</div>
-	<input type="checkbox" id="recursiveFilesCheckbox"/> Recursive<br/>
-	<div class="outputText" type="text" id="TestGetFilesText"></div>
+	<input type="checkbox" id="recursiveFilesCheckbox" /> Recursive<br />
+	<div class="outputText" type="text" id="testGetFilesText"></div>
 </div>
 
 </body>

@@ -18,115 +18,120 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestGetNetworkInfo(textElement) {
-			try {
-				var value = airlock.networking.getNetworkInfo();
-				showDialog(`connected: ${value.connected}
+	<h3>Obtaining Network Connection Information</h3>
+	<script id="getNetworkInfoScript">
+function testGetNetworkInfo(textElement) {
+	try {
+		var value = airlock.networking.getNetworkInfo();
+		var text = getPropertyValues(value);
+		showDialog(`connected: ${value.connected}
 approachingDataLimit: ${value.approachingDataLimit}
 roaming: ${value.roaming}
 networkConnectionType: ${value.networkConnectionType}
 limitData: ${value.limitData}
 ssid: ${value.ssid}
 ipAddress: ${value.ipAddress}`);
-			} catch (e) {
-				setText(textElement, "Error " + e);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetNetworkInfo('TestGetNetworkInfoText')" value="Get Network Info"/>
-	<div class="outputText" type="text" id="TestGetNetworkInfoText"></div>
+	} catch (e) {
+		setText(textElement, "Error " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="getNetworkInfoPre"></pre><script>insertScriptInPre('getNetworkInfoPre', 'getNetworkInfoScript');</script>
+	<input type="button" onclick="testGetNetworkInfo('testGetNetworkInfoText')" value="Get Network Info" />
+	<div class="outputText" type="text" id="testGetNetworkInfoText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestIsWifiEnabled(textElement) {
-			try {
-				var enabled = airlock.networking.isWifiEnabled();
-				setText(textElement, `Enabled: ${enabled}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+	<h3>Switching WiFi On and Off</h3>
+	<script id="wifiEnabledScript">
+function testIsWifiEnabled(textElement) {
+	try {
+		var enabled = airlock.networking.isWifiEnabled();
+		setText(textElement, `Enabled: ${enabled}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function TestSetWifiEnabled(textElement) {
-			try {
-				var enabled = airlock.networking.isWifiEnabled();
-				var newValue = !enabled;
-				airlock.networking.setWifiEnabled(newValue);
-				setText(textElement, `Set wifi enabled to ${newValue}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestIsWifiEnabled('TestWifiEnabledText')" value="isWifiEnabled"/><br/>
-	<input type="button" onclick="TestSetWifiEnabled('TestWifiEnabledText')" value="setWifiEnabled"/><br/>
-	<div class="outputText" type="text" id="TestWifiEnabledText"></div>
+function testSetWifiEnabled(textElement) {
+	try {
+		var enabled = airlock.networking.isWifiEnabled();
+		var newValue = !enabled;
+		airlock.networking.setWifiEnabled(newValue);
+		setText(textElement, `Set wifi enabled to ${newValue}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="wifiEnabledPre"></pre><script>insertScriptInPre('wifiEnabledPre', 'wifiEnabledScript');</script>
+	<input type="button" onclick="testIsWifiEnabled('testWifiEnabledText')" value="isWifiEnabled" /><br />
+	<input type="button" onclick="testSetWifiEnabled('testWifiEnabledText')" value="setWifiEnabled" /><br />
+	<div class="outputText" type="text" id="testWifiEnabledText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetWirelessNetworks(textElement) {
-			try {
-				setText(textElement, 'Fetching networks...');
-				var networksPromise = airlock.networking.getWirelessNetworks();
+	<h3>Retrieving Wireless Networks</h3>
+	<script id="getWirelessNetworksScript">
+function testGetWirelessNetworks(textElement) {
+	try {
+		setText(textElement, 'Fetching networks...');
+		var networksPromise = airlock.networking.getWirelessNetworks();
 
-				networksPromise.then(function(result) {
-					var text = '';
-					for (var i = 0; i < result.length; i++) {
-						var network = result[i];
-						var networkText = getPropertyValues(network);
-						text += networkText + "\n";
-					}
-					setText(textElement, 'Done');
-					showDialog(text);
-				}).catch(function(error) {
-					setText(textElement, error);
-				});
-
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
+		networksPromise.then(function (result) {
+			var text = '';
+			for (var i = 0; i < result.length; i++) {
+				var network = result[i];
+				var networkText = getPropertyValues(network);
+				text += networkText + "\n";
 			}
-		}
-	</script>
-	<input type="button" onclick="TestGetWirelessNetworks('TestGetWirelessNetworksText')" value="Get Wireless Networks"/>
-	<div class="outputText" type="text" id="TestGetWirelessNetworksText"></div>
+			setText(textElement, 'Done');
+			showDialog(text);
+		}).catch(function (error) {
+			setText(textElement, error);
+		});
+
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getWirelessNetworksPre"></pre><script>insertScriptInPre('getWirelessNetworksPre', 'getWirelessNetworksScript');</script>
+	<input type="button" onclick="testGetWirelessNetworks('testGetWirelessNetworksText')" value="Get Wireless Networks" />
+	<div class="outputText" type="text" id="testGetWirelessNetworksText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestSubscribeToConnectionChangedEvent(textElement) {
-			try {
-				airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
-				setText(textElement, 'Subscribed.');
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+	<h3>Monitoring the Network Connection</h3>
+	<script id="connectionChangedScript">
+function testSubscribeToConnectionChangedEvent(textElement) {
+	try {
+		airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
+		setText(textElement, 'Subscribed.');
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function handleConnectionChanged(args) {
-			setText('TestConnectionChangedEventText', getPropertyValues(args));
-		}
+function handleConnectionChanged(args) {
+	setText('testConnectionChangedEventText', getPropertyValues(args));
+}
 
-		function TestUnsubscribeToConnectionChangedEvent(textElement) {
-			try {
-				airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
-				setText(textElement, "Unsubscribed");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSubscribeToConnectionChangedEvent('TestConnectionChangedEventText')" value="Subscribe to Connection Changed"/><br/>
-	<input type="button" onclick="TestUnsubscribeToConnectionChangedEvent('TestConnectionChangedEventText')" value="Unsubscribe"/><br/>
-	<div class="outputText" type="text" id="TestConnectionChangedEventText"></div>
+function testUnsubscribeToConnectionChangedEvent(textElement) {
+	try {
+		airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
+		setText(textElement, "Unsubscribed");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="connectionChangedPre"></pre><script>insertScriptInPre('connectionChangedPre', 'connectionChangedScript');</script>
+	<input type="button" onclick="testSubscribeToConnectionChangedEvent('testConnectionChangedEventText')" value="Subscribe to Connection Changed" /><br />
+	<input type="button" onclick="testUnsubscribeToConnectionChangedEvent('testConnectionChangedEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testConnectionChangedEventText"></div>
 </div>
 
 </body>

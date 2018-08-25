@@ -32,236 +32,253 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestDecoderProperties(textElement) {
-			try {
-				var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
-				codabarDecoder.enabled = true;
-				codabarDecoder.notisEditingType = 1;
-				codabarDecoder.lengthMin = 10;
-				airlock.scanning.setDecoder(codabarDecoder);
-				setText(textElement, "Decoder set");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-			}
-		}
-	</script>
-	<input type="button" onclick="TestDecoderProperties('decoderPropertiesText')" value="Set decoder properties"/>
-	<div class="outputText" id="decoderPropertiesText"></div>
-</div>
-<div class="testDiv">
-	<script>
-		function TestGetDecoderById(textElement) {
-			try {
-				var decoder = airlock.scanning.getDecoderWithNativeId(71);
-				setText(textElement, `Decoder name: ${decoder.name}`);
-			} catch (e) {
-				setText(textElement, `Decoder get error ${e}`);
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetDecoderById('getDecoderByIdText')" value="Get decoder by ID"/>
-	<div class="outputText" id="getDecoderByIdText"></div>
-</div>
-	<div class="testDiv">
-	<script>
-		function TestGetDecoders(textElement) {
-			try {
-				var promise = airlock.scanning.getDecoders();
+	<h3>Retrieving a List of All Decoders</h3>
+	<script id="getAllDecodersScript">
+function testGetDecoders(textElement) {
+	try {
+		var promise = airlock.scanning.getDecoders();
 
-				promise.then(function (decoders) {
-					var text = getPropertyValues(decoders);
-					showDialog(text);
-				}).catch(function (error) {
-					setText(textElement, `Error: ${error}`);
-				});
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetDecoders('GetDecodersText')" value="Get all decoders"/>
+		promise.then(function (decoders) {
+			var text = getPropertyValues(decoders);
+			showDialog(text);
+		}).catch(function (error) {
+			setText(textElement, `Error: ${error}`);
+		});
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+	}
+}
+	</script><pre class="example" id="getAllDecodersPre"></pre><script>insertScriptInPre('getAllDecodersPre', 'getAllDecodersScript');</script>
+	<input type="button" onclick="testGetDecoders('GetDecodersText')" value="Get all decoders" />
 	<div class="outputText" id="GetDecodersText"></div>
 </div>
+
 <div class="testDiv">
-	<script>
-		function TestSetConfiguration(textElement) {
-			var config;
-			try {
-				config = airlock.scanning.getConfiguration();
-				config.DisplayMode = true;
-			} catch (e) {
-				setText(textElement, "Configuration get error " + e);
-				return;
-			}
-
-			try {
-				airlock.scanning.setConfiguration(config);
-			} catch (e) {
-				setText(textElement, "Configuration set error " + e);
-				return;
-			}
-
-			setText(textElement, "Configuration set");
-		}
-	</script>
-	<input type="button" onclick="TestSetConfiguration('setConfigurationText')" value="Set Configuration"/>
-	<div class="outputText" id="setConfigurationText"></div>
+	<h3>Retrieving a Decoder by ID</h3>
+	<script id="getDecoderByIdScript">
+function testGetDecoderById(textElement) {
+	try {
+		var decoder = airlock.scanning.getDecoderWithNativeId(71);
+		setText(textElement, `Decoder name: ${decoder.name}`);
+	} catch (e) {
+		setText(textElement, `Decoder get error ${e}`);
+	}
+}
+	</script><pre class="example" id="getDecoderByIdPre"></pre><script>insertScriptInPre('getDecoderByIdPre', 'getDecoderByIdScript');</script>
+	<input type="button" onclick="testGetDecoderById('getDecoderByIdText')" value="Get decoder by ID" />
+	<div class="outputText" id="getDecoderByIdText"></div>
 </div>
+
 <div class="testDiv">
-	<script>
-		function TestGetDecoderWithName(textElement) {
-			try {
-				var decoder = airlock.scanning.getDecoderWithName('codabar');
-				setText(textElement, decoder.name);
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetDecoderWithName('getDecoderWithNameText')" value="Get Decoder with Name"/>
+	<h3>Retrieving a Decoder by Name</h3>
+	<script id="getDecoderByNameScript">
+function testGetDecoderWithName(textElement) {
+	try {
+		var decoder = airlock.scanning.getDecoderWithName('codabar');
+		setText(textElement, decoder.name);
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getDecoderByNamePre"></pre><script>insertScriptInPre('getDecoderByNamePre', 'getDecoderByNameScript');</script>
+	<input type="button" onclick="testGetDecoderWithName('getDecoderWithNameText')" value="Get Decoder with Name" />
 	<div class="outputText" id="getDecoderWithNameText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestSetDecoder(textElement) {
-			try {
-				var decoder = airlock.scanning.getDecoderWithName('codabar');
-				decoder.enabled = !decoder.enabled;
-				airlock.scanning.setDecoder(decoder);
-				setText(textElement, `${decoder.name}  enabled: ${decoder.enabled}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSetDecoder('setDecoderText')" value="Set Decoder"/>
+	<h3>Retrieving and Setting Decoder Properties 1</h3>
+	<script id="setDecoderProperties1Script">
+function testDecoderProperties(textElement) {
+	try {
+		var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
+		codabarDecoder.enabled = true;
+		codabarDecoder.notisEditingType = 1;
+		codabarDecoder.lengthMin = 10;
+		airlock.scanning.setDecoder(codabarDecoder);
+		setText(textElement, "Decoder set");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+	}
+}
+	</script><pre class="example" id="setDecoderProperties1Pre"></pre><script>insertScriptInPre('setDecoderProperties1Pre', 'setDecoderProperties1Script');</script>
+	<input type="button" onclick="testDecoderProperties('decoderPropertiesText')" value="Set decoder properties" />
+	<div class="outputText" id="decoderPropertiesText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Retrieving and Setting Decoder Properties 2</h3>
+	<script id="setDecoderProperties2Script">
+function testSetDecoder(textElement) {
+	try {
+		var decoder = airlock.scanning.getDecoderWithName('codabar');
+		decoder.enabled = !decoder.enabled;
+		airlock.scanning.setDecoder(decoder);
+		setText(textElement, `${decoder.name}  enabled: ${decoder.enabled}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setDecoderProperties2Pre"></pre><script>insertScriptInPre('setDecoderProperties2Pre', 'setDecoderProperties2Script');</script>
+	<input type="button" onclick="testSetDecoder('setDecoderText')" value="Set Decoder" />
 	<div class="outputText" id="setDecoderText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetActive(textElement) {
-			try {
-				var active = airlock.scanning.isScannerActive();
-				setText(textElement, active + "");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetActive('getScannerActiveText')" value="Is Scanner Active"/>
+	<h3>Modifying the Device Configuration</h3>
+	<script id="setConfigurationScript">
+function testSetConfiguration(textElement) {
+	var config;
+	try {
+		config = airlock.scanning.getConfiguration();
+		config.DisplayMode = true;
+	} catch (e) {
+		setText(textElement, "Configuration get error " + e);
+		return;
+	}
+
+	try {
+		airlock.scanning.setConfiguration(config);
+	} catch (e) {
+		setText(textElement, "Configuration set error " + e);
+		return;
+	}
+
+	setText(textElement, "Configuration set");
+}
+	</script><pre class="example" id="setConfigurationPre"></pre><script>insertScriptInPre('setConfigurationPre', 'setConfigurationScript');</script>
+	<input type="button" onclick="testSetConfiguration('setConfigurationText')" value="Set Configuration" />
+	<div class="outputText" id="setConfigurationText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Detecting if the Barcode Reader is Active</h3>
+	<script id="getActiveScript">
+function testGetActive(textElement) {
+	try {
+		var active = airlock.scanning.isScannerActive();
+		setText(textElement, active + "");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getActivePre"></pre><script>insertScriptInPre('getActivePre', 'getActiveScript');</script>
+	<input type="button" onclick="testGetActive('getScannerActiveText')" value="Is Reader Active?" />
 	<div class="outputText" id="getScannerActiveText"></div>
 </div>
 <div class="testDiv">
-	<script>
-		function TestSetActive(textElement) {
-			try {
-				var active = airlock.scanning.getScannerActive();
-				airlock.scanning.setScannerActive(!active);
-				setText(textElement, 'Success');
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSetActive('setScannerActiveText')" value="Set Scanner Active"/>
+	<h3>Changing the Barcode Reader's Active State</h3>
+	<script id="setActiveScript">
+function testSetActive(textElement) {
+	try {
+		var active = airlock.scanning.getScannerActive();
+		airlock.scanning.setScannerActive(!active);
+		setText(textElement, 'Success');
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setActivePre"></pre><script>insertScriptInPre('setActivePre', 'setActiveScript');</script>
+	<input type="button" onclick="testSetActive('setScannerActiveText')" value="Set Scanner Active" />
 	<div class="outputText" id="setScannerActiveText"></div>
 </div>
 <div class="testDiv">
-	<script>
-		function TestGetReaderType(textElement) {
-			try {
-				var text = airlock.scanning.getReaderType();
-				setText(textElement, text + "");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetReaderType('getReaderTypeText')" value="Get Reader Type"/>
+	<h3>Retrieving the Reader Type</h3>
+	<script id="getReaderTypeScript">
+function testGetReaderType(textElement) {
+	try {
+		var text = airlock.scanning.getReaderType();
+		setText(textElement, text + "");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getReaderTypePre"></pre><script>insertScriptInPre('getReaderTypePre', 'getReaderTypeScript');</script>
+	<input type="button" onclick="testGetReaderType('getReaderTypeText')" value="Get Reader Type" />
 	<div class="outputText" id="getReaderTypeText"></div>
 </div>
 <div class="testDiv">
-	<script>
-		function TestGetScannerVersion(textElement) {
-			try {
-				var text = airlock.scanning.getScannerVersion();
-				setText(textElement, text + "");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetScannerVersion('getScannerVersionText')" value="Get Scanner Version"/>
-	<div class="outputText" id="getScannerVersionText"></div>
+	<h3>Obtaining the Reader's Firmware Version</h3>
+	<script id="getFirmwareVersionScript">
+function testGetFirmwareVersion(textElement) {
+	try {
+		var text = airlock.scanning.getFirmwareVersion();
+		setText(textElement, text + "");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getFirmwareVersionPre"></pre><script>insertScriptInPre('getFirmwareVersionPre', 'getFirmwareVersionScript');</script>
+	<input type="button" onclick="testGetFirmwareVersion('getFirmwareVersionText')" value="Get Firmware Version" />
+	<div class="outputText" id="getFirmwareVersionText"></div>
 </div>
 <div class="testDiv">
-	<script>
-		function TestGetServiceVersion(textElement) {
-			try {
-				var text = airlock.scanning.getServiceVersion();
-				setText(textElement, text + "");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetServiceVersion('getServiceVersionText')" value="Get Service Version"/>
-	<div class="outputText" type="text" id="getServiceVersionText"></div>
+	<h3>Obtaining the Reader's API Version</h3>
+	<script id="getApiVersionScript">
+function testGetApiVersion(textElement) {
+	try {
+		var text = airlock.scanning.getApiVersion();
+		setText(textElement, text + "");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getApiVersionPre"></pre><script>insertScriptInPre('getApiVersionPre', 'getApiVersionScript');</script>
+	<input type="button" onclick="testGetApiVersion('getApiVersionText')" value="Get API Version" />
+	<div class="outputText" type="text" id="getApiVersionText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestSubscribeToScanEvent(textElement) {
-			try {
-				airlock.scanning.onScan.addListener(handleScan);
-				setText(textElement, 'Subscribed.');
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
+	<h3>Monitoring Scan Read Events</h3>
+	<script id="subscribeToScanEventScript">
+function testSubscribeToScanEvent(textElement) {
+	try {
+		airlock.scanning.onScan.addListener(handleScan);
+		setText(textElement, 'Subscribed.');
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
 
-		function handleScan(args) {
-			setText('TestScanEventText', getPropertyValues(args));
-		}
+function handleScan(args) {
+	setText('testScanEventText', getPropertyValues(args));
+}
 
-		function TestUnsubscribeToScanEvent(textElement) {
-			try {
-				airlock.scanning.onScan.removeListener(handleScan);
-				setText(textElement, "Unsubscribed");
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSubscribeToScanEvent('TestScanEventText')" value="Subscribe to Scan Event"/><br/>
-	<input type="button" onclick="TestUnsubscribeToScanEvent('TestScanEventText')" value="Unsubscribe"/><br/>
-	<div class="outputText" type="text" id="TestScanEventText"></div>
+function testUnsubscribeToScanEvent(textElement) {
+	try {
+		airlock.scanning.onScan.removeListener(handleScan);
+		setText(textElement, "Unsubscribed");
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="subscribeToScanEventPre"></pre><script>insertScriptInPre('subscribeToScanEventPre', 'subscribeToScanEventScript');</script>
+	<input type="button" onclick="testSubscribeToScanEvent('testScanEventText')" value="Subscribe to Scan Event" /><br />
+	<input type="button" onclick="testUnsubscribeToScanEvent('testScanEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testScanEventText"></div>
 </div>
 	
 <div class="testDiv">
-	<script>
-		function TestBeginScan(textElement) {
-			try {
-				airlock.scanning.beginScan();
-				setText(textElement, "Begin scan...");
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-			}
-		}
-	</script>
-	<input type="button" onclick="TestBeginScan('BeginScanText')" value="Begin Scan" />
+	<h3>Activating the Software Trigger</h3>
+	<script id="beginScanScript">
+function testBeginScan(textElement) {
+	try {
+		airlock.scanning.beginScan();
+		setText(textElement, "Begin scan...");
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+	}
+}
+	</script><pre class="example" id="beginScanPre"></pre><script>insertScriptInPre('beginScanPre', 'beginScanScript');</script>
+	<input type="button" onclick="testBeginScan('BeginScanText')" value="Begin Scan" />
 	<div class="outputText" id="BeginScanText"></div>
 </div>
 

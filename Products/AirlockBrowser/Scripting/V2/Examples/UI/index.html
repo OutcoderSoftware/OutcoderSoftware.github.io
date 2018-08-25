@@ -18,52 +18,55 @@
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
 <div class="testDiv">
-	<script>
-		function TestSetFullScreen(textElement) {
-			try {
-				var fullScreen = airlock.ui.isFullScreen();
-				airlock.ui.setFullScreen(!fullScreen);
-				setText(textElement, `Set to ${fullScreen}`);
-			} catch (e) {
-				setText(textElement, `Error: ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSetFullScreen('setFullScreenText')" value="SetFullScreen"/>
+	<h3>Switching to and from Full Screen Mode</h3>
+	<script id="setFullScreenScript">
+function testSetFullScreen(textElement) {
+	try {
+		var fullScreen = airlock.ui.isFullScreen();
+		airlock.ui.setFullScreen(!fullScreen);
+		setText(textElement, `Set to ${fullScreen}`);
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setFullScreenPre"></pre><script>insertScriptInPre('setFullScreenPre', 'setFullScreenScript');</script>
+	<input type="button" onclick="testSetFullScreen('setFullScreenText')" value="SetFullScreen" />
 	<div class="outputText" type="text" id="setFullScreenText"></div>
 </div>
 <div class="testDiv">
-	<script>
-		function TestSetLaunchpadOpen(textElement) {
-			try {
-				var open = airlock.ui.isLaunchpadOpen();
-				airlock.ui.setLaunchpadOpen(!open);
-				setText(textElement, `Set to ${open}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestSetLaunchpadOpen('setLaunchpadOpenText')" value="SetLaunchpadOpen"/>
+	<h3>Opening and Closing the Launchpad</h3>
+	<script id="setLaunchpadOpenScript">
+function testSetLaunchpadOpen(textElement) {
+	try {
+		var open = airlock.ui.isLaunchpadOpen();
+		airlock.ui.setLaunchpadOpen(!open);
+		setText(textElement, `Set to ${open}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="setLaunchpadOpenPre"></pre><script>insertScriptInPre('setLaunchpadOpenPre', 'setLaunchpadOpenScript');</script>
+	<input type="button" onclick="testSetLaunchpadOpen('setLaunchpadOpenText')" value="SetLaunchpadOpen" />
 	<div class="outputText" type="text" id="setLaunchpadOpenText"></div>
 </div>
 
 <div class="testDiv">
-	<script>
-		function TestGetUILanguage(textElement) {
-			try {
-				var value = airlock.ui.getUILanguage();
-				setText(textElement, `Language: ${value}`);
-			} catch (e) {
-				setText(textElement, `Error ${e}`);
-				return;
-			}
-		}
-	</script>
-	<input type="button" onclick="TestGetUILanguage('TestGetUILanguageText')" value="GetUILanguage"/>
-	<div class="outputText" type="text" id="TestGetUILanguageText"></div>
+	<h3>Obtaining the UI Language Code</h3>
+	<script id="getUILanguageScript">
+function testGetUILanguage(textElement) {
+	try {
+		var value = airlock.ui.getUILanguage();
+		setText(textElement, `Language: ${value}`);
+	} catch (e) {
+		setText(textElement, `Error ${e}`);
+		return;
+	}
+}
+	</script><pre class="example" id="getUILanguagePre"></pre><script>insertScriptInPre('getUILanguagePre', 'getUILanguageScript');</script>
+	<input type="button" onclick="testGetUILanguage('testGetUILanguageText')" value="GetUILanguage" />
+	<div class="outputText" type="text" id="testGetUILanguageText"></div>
 </div>
 
 </body>

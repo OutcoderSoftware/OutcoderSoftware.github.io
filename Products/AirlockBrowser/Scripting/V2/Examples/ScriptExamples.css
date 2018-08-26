@@ -59,6 +59,9 @@ div.testDiv input {
 div.header {
 	padding: 8px;
 	background: #d21919;
+	background-image: url('../Images/Airlock_Logo_90.png');
+	background-repeat: no-repeat;
+	background-position: right;
 }
 
 div.header h2 {

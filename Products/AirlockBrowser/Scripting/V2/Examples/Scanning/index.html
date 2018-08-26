@@ -40,14 +40,13 @@ function testGetDecoders(textElement) {
 	try {
 		setText(textElement, `Getting all decoders...`);
 
-		var promise = airlock.scanning.getDecoders();
-
-		promise.then(function (decoders) {
-			var text = getPropertyValues(decoders);
-			showDialog(text);
-		}).catch(function (error) {
-			setText(textElement, `Error: ${error}`);
-		});
+		airlock.scanning.getDecoders()
+			.then(function (decoders) {
+				var text = getPropertyValues(decoders);
+				showDialog(text);
+			}).catch(function (error) {
+				setText(textElement, `Error: ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error: ${e}`);
 	}

@@ -43,13 +43,12 @@ function testDirectoryExists(textElement) {
 	try {
 		var directoryPath = `${filesDir}/${testDiretory}`;
 
-		var promise = airlock.io.directoryExists(directoryPath);
-
-		promise.then(function (fileExists) {
-			setText(textElement, `Directory exists: ${fileExists}`);
-		}).catch(function (error) {
-			setText(textElement, `Error: ${error}`);
-		});
+		airlock.io.directoryExists(directoryPath)
+			.then(function (fileExists) {
+				setText(textElement, `Directory exists: ${fileExists}`);
+			}).catch(function (error) {
+				setText(textElement, `Error: ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error: ${e}`);
 		return;
@@ -73,13 +72,12 @@ function testCreateDirectory(textElement) {
 
 		/* Create directory has no effect, and does not raise an error,
 		* if the directory already exists. */
-		var promise = airlock.io.createDirectory(newDir);
-
-		promise.then(function () {
-			setText(textElement, `Created directory ${newDir}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.createDirectory(newDir)
+			.then(function () {
+				setText(textElement, `Created directory ${newDir}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, "Error " + e);
 		return;
@@ -99,13 +97,12 @@ function testDeleteDirectory(textElement) {
 
 		var filesDir = airlock.io.getAppFilesDirectory();
 		var newDir = filesDir + "/" + testDiretory;
-		var promise = airlock.io.deleteDirectory(newDir, recursive);
-
-		promise.then(function () {
-			setText(textElement, `Deleted directory ${newDir}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.deleteDirectory(newDir, recursive)
+			.then(function () {
+				setText(textElement, `Deleted directory ${newDir}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -124,13 +121,12 @@ function testFileExists(textElement) {
 	try {
 		var filePath = `${filesDir}/${testDiretory}/${textFileName}`;
 
-		var promise = airlock.io.fileExists(filePath);
-
-		promise.then(function (fileExists) {
-			setText(textElement, `File exists: ${fileExists}`);
-		}).catch(function (error) {
-			setText(textElement, `Error: ${error}`);
-		});
+		airlock.io.fileExists(filePath)
+			.then(function (fileExists) {
+				setText(textElement, `File exists: ${fileExists}`);
+			}).catch(function (error) {
+				setText(textElement, `Error: ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error: ${e}`);
 		return;
@@ -142,7 +138,7 @@ function testFileExists(textElement) {
 </div>
 
 <div class="testDiv">
-	<h3>Creating a Deleting Files</h3>
+	<h3>Creating and Deleting Files</h3>
 	<script id="createDeleteFilesScript">
 var textFileName = "TestFile.txt";
 var textFileCopyName = "TestFileCopy.txt";
@@ -157,14 +153,13 @@ function testCreateFile(textElement) {
 		var filesDir = airlock.io.getAppFilesDirectory();
 		var outputDir = `${filesDir}/${testDiretory}`;
 		var filePath = `${outputDir}/${textFileName}`;
-		var promise = airlock.io.openFile(filePath, fileMode);
-
-		promise.then(function (fileHandle) {
-			file1Handle = fileHandle;
-			setText(textElement, `Success ${filePath}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.openFile(filePath, fileMode)
+			.then(function (fileHandle) {
+				file1Handle = fileHandle;
+				setText(textElement, `Success ${filePath}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -173,13 +168,12 @@ function testCreateFile(textElement) {
 
 function testCloseFile(textElement) {
 	try {
-		var promise = airlock.io.closeFile(file1Handle);
-
-		promise.then(function () {
-			setText(textElement, `File closed.`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.closeFile(file1Handle)
+			.then(function () {
+				setText(textElement, `File closed.`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -192,13 +186,12 @@ function testDeleteFile(textElement, fileName) {
 		var outputDir = `${filesDir}/${testDiretory}`;
 		var filePath = `${outputDir}/${fileName}`;
 
-		var promise = airlock.io.deleteFile(filePath);
-
-		promise.then(function () {
-			setText(textElement, `File deleted.`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.deleteFile(filePath)
+			.then(function () {
+				setText(textElement, `File deleted.`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -231,13 +224,12 @@ function testWriteTextToFile(textElement) {
 	try {
 		var textToWrite = document.getElementById('textToWrite').value;
 
-		var promise = airlock.io.writeText(file1Handle, textToWrite);
-
-		promise.then(function () {
-			setText(textElement, "Done");
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.writeText(file1Handle, textToWrite)
+			.then(function () {
+				setText(textElement, "Done");
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -247,13 +239,13 @@ function testWriteTextToFile(textElement) {
 function testReadTextFromFile(textElement) {
 	try {
 		var fileLength = airlock.io.getFileSizeBytes(file1Handle);
-		var promise = airlock.io.readText(file1Handle, fileLength, 0);
 
-		promise.then(function (text) {
-			setText(textElement, text);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.readText(file1Handle, fileLength, 0)
+			.then(function (text) {
+				setText(textElement, text);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -290,6 +282,56 @@ function SeekToTextFile(textElement) {
 </div>
 
 <div class="testDiv">
+	<h3>Reading a Line of Text</h3>
+	<script id="readLineScript">
+		function testReadLine(textElement) {
+			try {
+				airlock.io.readLine(file1Handle)
+					.then(function (text) {
+						setText(textElement, `${text}`);
+					}).catch(function (error) {
+						setText(textElement, `Error: ${error}`);
+					});
+			} catch (e) {
+				setText(textElement, `Error: ${e}`);
+				return;
+			}
+		}
+	</script><pre class="example" id="readLinePre"></pre>
+	<script>insertScriptInPre('readLinePre', 'readLineScript');</script>
+	<input type="button" onclick="testReadLine('testReadLineText')" value="Read Line" /><br />
+	<div class="outputText" type="text" id="testReadLineText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Reading All Text from a File</h3>
+	<script id="readAllTextScript">
+		function testReadAllText(textElement) {
+			try {
+				var filePath = `${filesDir}/${testDiretory}/${textFileName}`;
+
+				airlock.io.readAllText(filePath)
+					.then(function (text) {
+						setText(textElement, `${text}`);
+					}).catch(function (error) {
+						setText(textElement, `Error: ${error}`);
+					});
+			} catch (e) {
+				setText(textElement, `Error: ${e}`);
+				return;
+			}
+		}
+	</script><pre class="example" id="readAllTextPre"></pre>
+	<script>insertScriptInPre('readAllTextPre', 'readAllTextScript');</script>
+	<input type="button" onclick="testReadAllText('testReadAllTextText')" value="Read all text" /><br />
+	<div>
+		Please note that a sharing violation exception is thrown
+		if you fail to close the file before using this API.
+	</div><br />
+	<div class="outputText" type="text" id="testReadAllTextText"></div>
+</div>
+
+<div class="testDiv">
 	<h3>Writing Bytes to a File using Base64</h3>
 	<script id="base64FileScript">
 var binaryFile1Handle = -1;
@@ -313,13 +355,12 @@ function testWriteBase64ToFile(textElement) {
 
 		var base64 = btoa(textToWrite);
 
-		var promise = airlock.io.writeBase64(binaryFile1Handle, base64);
-
-		promise.then(function () {
-			setText(textElement, "Done");
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.writeBase64(binaryFile1Handle, base64)
+			.then(function () {
+				setText(textElement, "Done");
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -329,14 +370,14 @@ function testWriteBase64ToFile(textElement) {
 function testReadBase64FromFile(textElement) {
 	try {
 		var fileLength = airlock.io.getFileSizeBytes(binaryFile1Handle);
-		var promise = airlock.io.readBase64(binaryFile1Handle, fileLength, 0);
 
-		promise.then(function (base64) {
-			var text = atob(base64);
-			setText(textElement, text);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.readBase64(binaryFile1Handle, fileLength, 0)
+			.then(function (base64) {
+				var text = atob(base64);
+				setText(textElement, text);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -380,14 +421,13 @@ function testGetFileInfo(textElement) {
 		var filesDir = airlock.io.getAppFilesDirectory();
 		var sourcePath = `${filesDir}/${testDiretory}/${textFileName}`;
 
-		var promise = airlock.io.getFileInfo(sourcePath);
-
-		promise.then(function (result) {
-			var resultString = getPropertyValues(result);
-			setText(textElement, resultString);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.getFileInfo(sourcePath)
+			.then(function (result) {
+				var resultString = getPropertyValues(result);
+				setText(textElement, resultString);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, "Error " + e);
 		return;
@@ -426,13 +466,12 @@ function testCopyFile(textElement) {
 		var sourcePath = `${outputDir}/${textFileName}`;
 		var destinationPath = `${outputDir}/${textFileCopyName}`;
 
-		var promise = airlock.io.copyFile(sourcePath, destinationPath);
-
-		promise.then(function () {
-			setText(textElement, `File copied to: ${destinationPath}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.copyFile(sourcePath, destinationPath)
+			.then(function () {
+				setText(textElement, `File copied to: ${destinationPath}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 
 		setText(textElement, `Copying file from ${sourcePath} to ${destinationPath}`);
 	} catch (e) {
@@ -458,13 +497,12 @@ function testMoveFile(textElement) {
 		var sourcePath = `${outputDir}/${textFileName}`;
 		var destinationPath = `${outputDir}/${movedFileName}`;
 
-		var promise = airlock.io.moveFile(sourcePath, destinationPath);
-
-		promise.then(function () {
-			setText(textElement, `File moved to: ${destinationPath}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.moveFile(sourcePath, destinationPath)
+			.then(function () {
+				setText(textElement, `File moved to: ${destinationPath}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 
 		setText(textElement, `Moving file from ${sourcePath} to ${destinationPath}`);
 	} catch (e) {
@@ -486,13 +524,13 @@ function testGetDirectories(textElement) {
 		var outputDir = document.getElementById('recursiveDirectoriesRoot').value;
 		var pattern = document.getElementById('recursiveDirectoriesPattern').value;
 		var recursive = document.getElementById("recursiveDirectoriesCheckbox").checked;
-		var promise = airlock.io.getDirectories(outputDir, pattern, recursive);
 
-		promise.then(function (result) {
-			setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.getDirectories(outputDir, pattern, recursive)
+			.then(function (result) {
+				setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 
 		setText(textElement, `Getting file list in ${outputDir}`);
 	} catch (e) {
@@ -519,18 +557,18 @@ function testGetDirectories(textElement) {
 	<script id="getFilesScript">
 function testGetFiles(textElement) {
 	try {
-		var outputDir = document.getElementById('recursiveFilesRoot').value;
+		var directoryPath = document.getElementById('recursiveFilesRoot').value;
 		var pattern = document.getElementById('recursiveFilesPattern').value;
 		var recursive = document.getElementById("recursiveFilesCheckbox").checked;
-		var promise = airlock.io.getFiles(outputDir, pattern, recursive);
 
-		promise.then(function (result) {
-			setText(textElement, `${outputDir} contains: ${result.join("\n")}`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.io.getFiles(directoryPath, pattern, recursive)
+			.then(function (result) {
+				setText(textElement, `${directoryPath} contains: ${result.join("\n")}`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 
-		setText(textElement, `Getting file list in ${outputDir}`);
+		setText(textElement, `Getting file list in ${directoryPath}`);
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;

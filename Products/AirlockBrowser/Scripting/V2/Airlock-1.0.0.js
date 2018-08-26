@@ -86,10 +86,13 @@ airlock.scanning.getDecoderWithNativeId = function(id) {
  * @example
  * airlock.scanning.getDecoders()
  * .then(function (decoders) {
- *		var text = getPropertyValues(decoders);
- *		showDialog(text);
+ *		var text = "";
+ *		for (let i = 0; i < decoders.length; i++) {
+ *			text += decoders[i].name + ", ";
+ *		}
+ *		alert(text);
  *	}).catch(function (error) {
- *		setText(textElement, `Error: ${error}`);
+ *		alert(`Error: ${error}`);
  *	});
  */
 airlock.scanning.getDecoders = function() {
@@ -151,10 +154,10 @@ airlock.scanning.setConfiguration = function(configuration) {
  * @example
  * airlock.scanning.resetConfiguration()
  * .then(function (defaultSettingsApplied) {
- *		setText(textElement, "Configuration reset."
+ *		alert("Configuration reset."
 			+ (defaultSettingsApplied ? "" : "Restart required."));
  * }).catch(function (e) {
- *		setText(textElement, "Error: " + e);
+ *		alert("Error: " + e);
  *});
  */
 airlock.scanning.resetConfiguration = function() {
@@ -1121,13 +1124,22 @@ airlock.log.error = function(message, error) {
  * prior to this date and time are returned.
  * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
  * @example
- * airlock.log.getEntries()
- * .then(function (value) {
- *		setText(textElement, "Done");
- *		alert(value);
- * }).catch(function(error) {
- *		setText(textElement, `Error ${error}`);
- * });
+ * var startDate = new Date();
+ * // Create a Date object that indicates the time one minute ago.
+ * startDate.setMinutes(startDate.getMinutes() - 1);
+ *
+ * // Get Entries less than 1 minute old.
+ * airlock.log.getEntries(startDate)
+ *	.then(function (logEntries) {
+ *		let text = "";
+ *		for (let i = 0; i < logEntries.length; i++) {
+ *			let entry = logEntries[i];
+ *			text += getPropertyValues(entry) + "\n";
+ *		}
+ *		alert(text);
+ *	}).catch(function(error) {
+ *		alert(`Error ${error}`);
+ *	});
  */
 airlock.log.getEntries = function(startDate, endDate) {
 	return hsv12Private.makePromise("log.getEntries", startDate, endDate);
@@ -1144,6 +1156,18 @@ airlock.log.getEntries = function(startDate, endDate) {
  * @param {Date} [endDate] If supplied, only entries that were made
  * prior to this date and time are deleted.
  * @returns {number} The number of deleted log entries.
+ * @example
+ * var endDate = new Date();
+ * // Create a Date object that indicates the time one minute ago.
+ * endDate.setMinutes(endDate.getMinutes() - 1);
+ *
+ * // Delete Log Entries greater than 1 minute old.
+ * airlock.log.deleteEntries(null, endDate)
+ *		.then(function (value) {
+ *			alert(`Deleted ${value} entries.`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.log.deleteEntries = function(startDate, endDate) {
 	return hsv12Private.makePromise("log.deleteEntries", startDate, endDate);
@@ -1170,6 +1194,13 @@ airlock.io = {};
  * raised and the destination file is replaced with the source file.
  * @returns {Promise} Indicating completion or failure of the copy operation.
  * An error is produced by the Promise if an IO Exception is raised.
+ * @example
+ * airlock.io.copyFile(sourcePath, destinationPath)
+ *		.then(function () {
+ *			alert(`File copied to: ${destinationPath}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.copyFile = function(sourcePath, destinationPath, overwriteIfExists) {
 	return hsv12Private.makePromise("io.copyFile", sourcePath, destinationPath, overwriteIfExists);
@@ -1184,6 +1215,13 @@ airlock.io.copyFile = function(sourcePath, destinationPath, overwriteIfExists) {
  * @returns {Promise} Indicating completion or failure of the move operation.
  * An error is produced by the Promise if an IO Exception is thrown.
  * @see {@link https://docs.microsoft.com/en-us/dotnet/api/system.io.file.move}
+ * @example
+ * airlock.io.moveFile(sourcePath, destinationPath)
+ *	.then(function () {
+ *		alert(`File moved to: ${destinationPath}`);
+ *	}).catch(function (error) {
+ *		alert(`Error ${error}`);
+ *	});
  */
 airlock.io.moveFile = function(sourcePath, destinationPath) {
 	return hsv12Private.makePromise("io.moveFile", sourcePath, destinationPath);
@@ -1194,6 +1232,13 @@ airlock.io.moveFile = function(sourcePath, destinationPath) {
  * Returns a promise indicating success or failure of the operation.
  * @param {string} path The location of the file to be deleted.
  * @returns {Promise} If the promise is rejected it indicates the delete was unsuccessful.
+ * @example
+ * airlock.io.deleteFile(filePath)
+ *	.then(function () {
+ *		alert(`File deleted.`);
+ *	}).catch(function (error) {
+ *		alert(`Error ${error}`);
+ *	});
  */
 airlock.io.deleteFile = function(path) {
 	return hsv12Private.makePromise("io.deleteFile", path);
@@ -1203,6 +1248,13 @@ airlock.io.deleteFile = function(path) {
  * Returns a Promise indicating if the file at the specified location, exists.
  * @param {string} path The path to the file. Cannot be null.
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
+ * @example
+ * airlock.io.fileExists(filePath)
+ *	.then(function (fileExists) {
+ *		alert(`File exists: ${fileExists}`);
+ *	}).catch(function (error) {
+ *		alert(`Error: ${error}`);
+ *	});
  */
 airlock.io.fileExists = function(path) {
 	return hsv12Private.makePromise("io.fileExists", path);
@@ -1212,6 +1264,13 @@ airlock.io.fileExists = function(path) {
  * Returns a Promise indicating if the directory at the specified location, exists.
  * @param {string} path The path to the directory. Cannot be null.
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
+ * @example
+ * airlock.io.directoryExists(directoryPath)
+ *	.then(function (fileExists) {
+ *		alert(`Directory exists: ${fileExists}`);
+ *	}).catch(function (error) {
+ *		alert(`Error: ${error}`);
+ *	});
  */
 airlock.io.directoryExists = function(path) {
 	return hsv12Private.makePromise("io.directoryExists", path);
@@ -1273,6 +1332,16 @@ airlock.io.FileMode = {
  * what can be done with the file and whether the file
  * should be opened, created or so forth.
  * @returns {Promise<number>} A promise that resolves to a file identifier.
+ * @example
+ * var file1Handle;
+ *
+ * airlock.io.openFile(filePath, airlock.io.FileMode.OPEN_OR_CREATE)
+ *		.then(function (fileHandle) {
+ *			file1Handle = fileHandle;
+ *			alert(`Successfully opened ${filePath}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.openFile = function(path, fileMode) {
 	return hsv12Private.makePromise("io.openFile", path, fileMode);
@@ -1285,6 +1354,13 @@ airlock.io.openFile = function(path, fileMode) {
  * that was previously returned from openFile.
  * @returns {Promise} A promise that when resolved confirms
  * that the file has been closed.
+ * @example
+ * airlock.io.closeFile(file1Handle)
+ *		.then(function () {
+ *			alert(`File closed.`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.closeFile = function(handle) {
 	return hsv12Private.makePromise("io.closeFile", handle);
@@ -1297,6 +1373,13 @@ airlock.io.closeFile = function(handle) {
  * @param {string} path The path to the directory to be created.
  * @returns {Promise} When resolved the promise confirms
  * that the directory has been created.
+ * @example
+ * airlock.io.createDirectory(newDir)
+ *		.then(function () {
+ *			alert(`Created directory ${newDir}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.createDirectory = function(path) {
 	return hsv12Private.makePromise("io.createDirectory", path);
@@ -1311,6 +1394,13 @@ airlock.io.createDirectory = function(path) {
  * The default value is false.
  * @returns {Promise} When resolved the promise confirms
  * that the directory has been deleted.
+ * @example
+ * airlock.io.deleteDirectory(newDir, recursive)
+ *		.then(function () {
+ *			alert(`Deleted directory ${newDir}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.deleteDirectory = function(path, recursive) {
 	return hsv12Private.makePromise("io.deleteDirectory", path, recursive);
@@ -1324,6 +1414,13 @@ airlock.io.deleteDirectory = function(path, recursive) {
  * but it does not support regular expressions.
  * @param {boolean} [recursive] If true, files in nested directories are also returned.
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
+ * @example
+ * airlock.io.getFiles(directoryPath, "*.*", true)
+ *		.then(function (result) {
+ *			alert(`${directoryPath} contains: ${result.join("\n")}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.getFiles = function(directoryPath, searchPattern, recursive) {
 	return hsv12Private.makePromise("io.getFiles", directoryPath, searchPattern, recursive);
@@ -1337,6 +1434,13 @@ airlock.io.getFiles = function(directoryPath, searchPattern, recursive) {
  * but it does not support regular expressions.
  * @param {boolean} [recursive] If true, directories in nested directories are also returned.
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
+ * @example
+ * airlock.io.getDirectories(outputDir, "*.*", true)
+ *		.then(function (result) {
+ *			alert(`${outputDir} contains: ${result.join("\n")}`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.getDirectories = function(directoryPath, searchPattern, recursive) {
 	return hsv12Private.makePromise("io.getDirectories", directoryPath, searchPattern, recursive);
@@ -1359,6 +1463,13 @@ airlock.io.getDirectories = function(directoryPath, searchPattern, recursive) {
  * @param {string} path The path to the file.
  * @returns {FileInfo} The promise resolves a FileInfo object
  * that contains the directory, size, modified/created/accessed times.
+ * @example
+ * airlock.io.getFileInfo(sourcePath)
+ *		.then(function (result) {
+ *			alert(result.sizeBytes);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
  */
 airlock.io.getFileInfo = function(path) {
 	return hsv12Private.makePromise("io.getFileInfo", path);
@@ -1372,6 +1483,15 @@ airlock.io.getFileInfo = function(path) {
  * If not specified, the current file offset is used.
  * @returns {Promise<string>} A promise that resolves a string of text
  * read from the file.
+ * @example
+ * var fileLength = airlock.io.getFileSizeBytes(file1Handle);
+ *
+ * airlock.io.readText(file1Handle, fileLength, 0)
+ * 	.then(function (text) {
+ * 		alert(text);
+ * 	}).catch(function (error) {
+ * 		alert(`Error ${error}`);
+ * 	});
  */
 airlock.io.readText = function(handle, length, offset) {
 	return hsv12Private.makePromise("io.readText", handle, length, offset);
@@ -1385,6 +1505,16 @@ airlock.io.readText = function(handle, length, offset) {
  * If not specified, the current file offset is used.
  * @returns {Promise<string>} A promise that resolves
  * a base64 string read from the file.
+ * @example
+ * var fileLength = airlock.io.getFileSizeBytes(binaryFile1Handle);
+ * 
+ * airlock.io.readBase64(binaryFile1Handle, fileLength, 0)
+ * 	.then(function (base64) {
+ * 		var text = atob(base64);
+ * 		alert(text);
+ * 	}).catch(function (error) {
+ * 		alert(`Error ${error}`);
+ * 	});
  */
 airlock.io.readBase64 = function(handle, length, offset) {
 	return hsv12Private.makePromise("io.readBase64", handle, length, offset);
@@ -1395,6 +1525,15 @@ airlock.io.readBase64 = function(handle, length, offset) {
  * @param {string} filePath The path to the file.
  * @returns {Promise<string>} A promise that resolves a string
  * that is the contents of the file.
+ * @exception A sharing violation exception is thrown
+ * if you have an open file handle for the file when using this API.
+ * @example
+ * airlock.io.readAllText(filePath)
+ *	.then(function (text) {
+ *		alert(`${text}`);
+ *	}).catch(function (error) {
+ *		alert(`Error: ${error}`);
+ *	});
  */
 airlock.io.readAllText = function(filePath) {
 	return hsv12Private.makePromise("io.readAllText", filePath);
@@ -1405,6 +1544,13 @@ airlock.io.readAllText = function(filePath) {
  * @param {number} handle The file identifier.
  * @returns {Promise<string>} A promise that resolves
  * a line of text that was read from the file.
+ * @example
+ * airlock.io.readLine(file1Handle)
+ * 	.then(function (text) {
+ * 		alert(`${text}`);
+ * 	}).catch(function (error) {
+ * 		alert(`Error: ${error}`);
+ * 	});
  */
 airlock.io.readLine = function(handle) {
 	return hsv12Private.makePromise("io.readLine", handle);
@@ -1418,6 +1564,13 @@ airlock.io.readLine = function(handle) {
  * @param {string} text The text to write to the file.
  * @returns {Promise} A promise that when resolved
  * indicates success of the operation.
+ * @example
+ * airlock.io.writeText(file1Handle, "These pretzels are making me thirsty.")
+ * 	.then(function () {
+ * 		alert(textElement, "Done");
+ * 	}).catch(function (error) {
+ * 		alert(textElement, `Error ${error}`);
+ * 	});
  */
 airlock.io.writeText = function(handle, text) {
 	return hsv12Private.makePromise("io.writeText", handle, text);
@@ -1431,6 +1584,17 @@ airlock.io.writeText = function(handle, text) {
  * @param {string} base64String The base64 text to write to the file.
  * @returns {Promise} A promise that when resolved
  * indicates success of the operation.
+ * @example
+ * var textToWrite = "That rug really tied the room together.";
+ * 
+ * var base64 = btoa(textToWrite);
+ *
+ * airlock.io.writeBase64(binaryFile1Handle, base64)
+ * 	.then(function () {
+ * 		alert("Done");
+ * 	}).catch(function (error) {
+ * 		alert(`Error ${error}`);
+ * 	});
  */
 airlock.io.writeBase64 = function(handle, base64String) {
 	return hsv12Private.makePromise("io.writeBase64", handle, base64String);
@@ -1442,6 +1606,9 @@ airlock.io.writeBase64 = function(handle, base64String) {
  * it will occur at the location specified by the offset parameter.
  * @param {number} handle The file identifier.
  * @param {number} offset The offset in bytes to move to.
+ * @example
+ * let position = 1024; // 1024 bytes past the start of the file.
+ * airlock.io.seek(file1Handle, position);
  */
 airlock.io.seek = function(handle, offset) {
 	pageHost.ii.getResult("io.seek", handle, offset);

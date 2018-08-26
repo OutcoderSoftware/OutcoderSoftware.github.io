@@ -24,13 +24,12 @@
 	<script id="printPageScript">
 function testPrintPage(textElement) {
 	try {
-		var promise = airlock.printing.printPage();
-
-		promise.then(function () {
-			setText(textElement, `Request to print received.`);
-		}).catch(function (error) {
-			setText(textElement, `Error ${error}`);
-		});
+		airlock.printing.printPage()
+			.then(function () {
+				setText(textElement, `Request to print received.`);
+			}).catch(function (error) {
+				setText(textElement, `Error ${error}`);
+			});
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;

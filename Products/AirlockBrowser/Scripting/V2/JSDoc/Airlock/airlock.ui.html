@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: ui</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: ui</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="airlock.html">airlock</a>.</span>ui</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Provides various functions and events for workingwith the browser user interface.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line674">line 674</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getOrientationLock"><span class="type-signature">(static) </span>getOrientationLock<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="airlock.device.html#.OrientationLockType">airlock.device.OrientationLockType</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the screen orientation setting for the application.Screen orientation can be set globally, for all tabs via the app settings screen;for web applications, via the remote application dialog in the launchpad;or individual pages, using this JavaScript API.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line764">line 764</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The orientation enumeration value.0 is unlocked, 1 is locked portrait, 2 is locked landscape, 3 is system controlled.When the value is 3 (system controlled), an orientation value has not been set using this APIand the orientation lock cannot be determined because the current tabmay not be active. When 3, the locked or unlocked state is determinedby the configuration and/or user settings in the app.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="airlock.device.html#.OrientationLockType">airlock.device.OrientationLockType</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getUILanguage"><span class="type-signature">(static) </span>getUILanguage<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the name of the app's UI language.The name is a combination of an ISO 639 two-letterlowercase culture code associated with a languageand an ISO 3166 two-letter uppercase subculture codeassociated with a country or region.For example, en-AU denotes Australian english.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line685">line 685</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A language code resembling 'en-AU'.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isFullScreen"><span class="type-signature">(static) </span>isFullScreen<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get a value indicating whether the app is in full screen mode.When full screen, the app's application bar is reduced to an ellipsisand the tabs are hidden.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line696">line 696</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="airlock.ui.html#.setFullScreen">airlock.ui.setFullScreen</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if the browser is in full screen mode; false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isLaunchpadOpen"><span class="type-signature">(static) </span>isLaunchpadOpen<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a value indicating whether the sliding panel,containing web applications, is visible.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line718">line 718</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if the launchpad is open; false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setFullScreen"><span class="type-signature">(static) </span>setFullScreen<span class="signature">(fullScreen)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Changes the apps full screen mode.When full screen, the app's application bar is reduced to an ellipsisand the tabs are hidden.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fullScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new setting.If the value matches the current state, there is no effect.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line709">line 709</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="airlock.ui.html#.isFullScreen">airlock.ui.isFullScreen</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Occurs if fullScreen argument is undefined.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Exception</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setLaunchpadOpen"><span class="type-signature">(static) </span>setLaunchpadOpen<span class="signature">(open)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Changes the open state of the launchpad from opened to closed and vice versa.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>open</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new value. If the state of the launchpad matchesthe value of the parameter, no change occurs.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line728">line 728</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Occurs if argument is undefined.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Exception</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setOrientationLock"><span class="type-signature">(static) </span>setOrientationLock<span class="signature">(lockType)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the orientation for the browser tab, when it is active.The value set via this function overrides any orientation lock valuesfrom the settings within the app.Passing null to this function unsets any previously set value and causesthe browser to fall back to remote web application, or browser, settings.Screen orientation can be set globally, for all tabs via the app settings screen;for web applications, via the remote application dialog in the launchpad;or individual pages, using this JavaScript API.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>lockType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="airlock.device.html#.OrientationLockType">airlock.device.OrientationLockType</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The orientation enumeration value.0 is unlocked, 1 is locked portrait, 2 is locked landscape,3 is system controlled.When the value is 3 (system controlled), an orientation valuehas not been set using this API and the orientation lockcannot be determined because the current tabmay not be active. When 3, the locked or unlocked state is determinedby the configuration and/or user settings in the app.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line787">line 787</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Aug 27 2018 00:55:57 GMT+0200 (W. Europe Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

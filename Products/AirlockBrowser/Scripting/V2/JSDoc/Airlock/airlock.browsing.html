@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: browsing</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: browsing</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="airlock.html">airlock</a>.</span>browsing</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Allows modification of the user's web browsing experience.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line935">line 935</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getNavigationErrorAction"><span class="type-signature">(static) </span>getNavigationErrorAction<span class="signature">(url<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the navigation error action associate with the URL, if specified.If a URL is not specified, the navigation error action for the currentremote web application is returned. And, if that is not specified,the browser's navigation error action setting is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The URL of the page for whichto determine the navigation error action. Can be undefined.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line959">line 959</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The error action that is employed when a navigation error occurs.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getTextZoomLevel"><span class="type-signature">(static) </span>getTextZoomLevel<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the text zoom level for the page, which is a positive floating point number,where 1.0 is normal size. 2.0 is double the normal size.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line988">line 988</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The text zoom level,which is greater than 0; where 1.0 is normal size.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setNavigationErrorAction"><span class="type-signature">(static) </span>setNavigationErrorAction<span class="signature">(action<span class="signature-attributes">opt</span>, url<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the navigation error action associate with the specified URL.If a URL is not specified, the navigation error action for the currentremote web application is returned. And, if that is not specified,the browser's navigation error action setting is returned.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The action to perform when a navigation error occurs.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The URL of the page for whichto determine the navigation error action. Can be undefined.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line978">line 978</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Prevent navigation from a page with a broken link.airlock.browsing.setNavigationErrorAction(		airlock.networking.NavigationErrorAction.PREVENT_NAVIGATION,		"http://www.example.com/PageWith404.html");</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setTextZoomLevel"><span class="type-signature">(static) </span>setTextZoomLevel<span class="signature">(level)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the text zoom level for the page, which is a positive floating point number,where 1.0 is normal size. 2.0 is double the normal size.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>level</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The text zoom level,which is greater than 0; where 1.0 is normal size.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock-1.0.0.js.html">Airlock-1.0.0.js</a>, <a href="Airlock-1.0.0.js.html#line998">line 998</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Aug 27 2018 00:55:57 GMT+0200 (W. Europe Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -64,7 +64,7 @@ div.header {
 	background-position: right;
 }
 
-div.header h2 {
+div.header h2, h3 {
 	color: white;
 }
 

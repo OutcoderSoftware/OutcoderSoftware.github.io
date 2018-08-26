@@ -1,5 +1,5 @@
 ﻿
-var cllastScanArgs;
+var clLastScanArgs;
 
 /**
  * Subscribes to the airlock.scanning.onScan event.
@@ -10,7 +10,7 @@ var cllastScanArgs;
  */
 function BarCodeSetCallBack(jsFunctionName) {
 	airlock.scanning.onScan.addListener(function (args) {
-		cllastScanArgs = args;
+		clLastScanArgs = args;
 		window[jsFunctionName](args);
 	});
 
@@ -25,7 +25,7 @@ function BarCodeSetCallBack(jsFunctionName) {
  * @see {@link airlock.scanning.onScan.addListener}
  */
 function BarCodeGetReaderData() {
-	return cllastScanArgs;
+	return clLastScanArgs;
 }
 
 /**
@@ -34,6 +34,17 @@ function BarCodeGetReaderData() {
  */
 function BarCodeSoftScanTrigger() {
 	airlock.scanning.beginScan();
+}
+
+/**
+ * Places the reader into a ready state.
+ * You generally do not need to call this function because the scanner
+ * is placed into a ready state automatically.
+ * Calling this method is equivalent to calling BarCodeSetActive(true).
+ * @see {@link airlock.scanning.setScannerActive}
+ */
+function BarCodeInit() {
+	airlock.scanning.setScannerActive(true);
 }
 
 /**
@@ -130,7 +141,7 @@ function BarCodeGetDecodersStatus() {
 			var result = {};
 			for (var i = 0; i < decoders.length; i++) {
 				var decoder = decoders[i];
-				var propertyName = "enable" + decoder.name;
+				var propertyName = `enable${decoder.name}`;
 				result[propertyName] = decoder.enabled;
 				decoderMap.set(propertyName, decoder);
 			}
@@ -190,6 +201,14 @@ var clLastScanError;
  */
 function BarCodeGetErrorMsg() {
 	return clLastScanError;
+}
+
+/**
+ * Releases the resources of the scanner.
+ * This is equivalent to calling BarCodeSetActive(false).
+ */
+function BarCodeRelease() {
+	airlock.scanning.setScannerActive(false);
 }
 
 /**

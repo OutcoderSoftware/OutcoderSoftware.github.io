@@ -334,8 +334,18 @@ function testBeginScan(textElement) {
 		setText(textElement, `Error: ${e}`);
 	}
 }
+
+function testEndScan(textElement) {
+	try {
+		airlock.scanning.endScan();
+		setText(textElement, "Ended scan.");
+	} catch (e) {
+		setText(textElement, `Error: ${e}`);
+	}
+}
 	</script><pre class="example" id="beginScanPre"></pre><script>insertScriptInPre('beginScanPre', 'beginScanScript');</script>
-	<input type="button" onclick="testBeginScan('BeginScanText')" value="Begin Scan" />
+	<input type="button" onclick="testBeginScan('BeginScanText')" value="Begin Scan" /><br />
+	<input type="button" onclick="testEndScan('BeginScanText')" value="End Scan" />
 	<div class="outputText" id="BeginScanText"></div>
 </div>
 

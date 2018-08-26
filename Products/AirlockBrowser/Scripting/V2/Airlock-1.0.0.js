@@ -34,17 +34,17 @@ airlock.scanning = {};
 /**
  * Simulates pressing hardware trigger for the barcode reader.
  */
-airlock.scanning.beginScan = function () {
+airlock.scanning.beginScan = function() {
 	pageHost.ii.getResult("scanning.beginScan");
-}
+};
 
 /**
  * Ends the simulated pressing of the hardware trigger.
  * @see {@link airlock.scanning.beginScan}
  */
-airlock.scanning.endScan = function () {
+airlock.scanning.endScan = function() {
 	pageHost.ii.getResult("scanning.endScan");
-}
+};
 
 /**
  * Retrieves the decoder with the specified name.
@@ -54,11 +54,15 @@ airlock.scanning.endScan = function () {
  * @param {string} decoderName The name of the decoder. Cannot be null.
  * @returns {object} The decoder object that may allow you to modify its state.
  * @see {@link airlock.scanning.setDecoder}
+ * @example
+ * var decoder = airlock.scanning.getDecoderWithName('codabar');
+ * // Displays 'codabar'
+ * alert(decoder.name);
  */
-airlock.scanning.getDecoderWithName = function (decoderName) {
+airlock.scanning.getDecoderWithName = function(decoderName) {
 	pageHost.ii.assertArgNotNull(decoderName, "decoderName");
 	return pageHost.ii.getResult("scanning.getDecoderWithName", decoderName);
-}
+};
 
 /**
  * Retrieves the decoder with the specified native identifier,
@@ -66,49 +70,75 @@ airlock.scanning.getDecoderWithName = function (decoderName) {
  * @param {int} id The id of the decoder. Cannot be null.
  * @returns {object} The decoder object that may allow you to modify its state.
  * @see {@link airlock.scanning.setDecoder}
+ * @example
+ * var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
+ * // Displays 'codabar'
+ * alert(decoder.name);
  */
-airlock.scanning.getDecoderWithNativeId = function (id) {
+airlock.scanning.getDecoderWithNativeId = function(id) {
 	pageHost.ii.assertArgNotNull(id, "id");
 	return pageHost.ii.getResult("scanning.getDecoderWithNativeId", id);
-}
+};
 
 /**
  * Retrieves all decoders via a Promise.
- * @returns {Promise<Array.<object>} A list of all decoders.
+ * @returns {Promise<Array.<object>>} A list of all decoders.
+ * @example
+ * airlock.scanning.getDecoders()
+ * .then(function (decoders) {
+ *		var text = getPropertyValues(decoders);
+ *		showDialog(text);
+ *	}).catch(function (error) {
+ *		setText(textElement, `Error: ${error}`);
+ *	});
  */
-airlock.scanning.getDecoders = function () {
+airlock.scanning.getDecoders = function() {
 	return hsv12Private.makePromise("scanning.getDecoders");
-}
+};
 
 /**
  * Sets the values of a decoder.
  * @param {object} decoder The decoder object. Cannot be null.
- * @throws {Exception} If the device SDK is not supported. 
+ * @throws {Exception} If the device SDK is not supported.
+ * @example
+ * var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
+ * codabarDecoder.enabled = true;
+ * codabarDecoder.notisEditingType = 1;
+ * codabarDecoder.lengthMin = 10;
+ * airlock.scanning.setDecoder(codabarDecoder);
  */
-airlock.scanning.setDecoder = function (decoder) {
+airlock.scanning.setDecoder = function(decoder) {
 	pageHost.ii.assertArgNotNull(decoder, "decoder");
 	pageHost.ii.getResult("scanning.setDecoder", decoder);
-}
+};
 
 /**
  * Returns the scanner configuration as an object.
  * Fields can be set, and the configuration can be applied using setConfiguration.
  * @see {@link airlock.scanning.setConfiguration}
  * @return {object} The reader configuration.
+ * @example
+ * var config = airlock.scanning.getConfiguration();
+ * // Displays false
+ * alert(config.displayMode);
  */
-airlock.scanning.getConfiguration = function () {
+airlock.scanning.getConfiguration = function() {
 	return pageHost.ii.getResult("scanning.getConfiguration");
-}
+};
 
 /**
  * Applies the specified scanner configuration to the device.
  * @param {object} configuration The barcode reader configuration.
  * @exception {ScriptCallException} Thrown if the device SDK is not supported.
+ * @example
+ * var config = airlock.scanning.getConfiguration();
+ * config.displayMode = true;
+ * airlock.scanning.setConfiguration(config);
  */
-airlock.scanning.setConfiguration = function (configuration) {
+airlock.scanning.setConfiguration = function(configuration) {
 	pageHost.ii.assertArgNotNull(configuration, "configuration");
 	pageHost.ii.getResult("scanning.setConfiguration", configuration);
-}
+};
 
 /**
  * Resets the scanner configuration. Resets the current devices configuration
@@ -118,14 +148,26 @@ airlock.scanning.setConfiguration = function (configuration) {
  * @returns {Promise<boolean>} When resolved indicates the reset is complete.
  * If the resolve value is true, the new configuration has been applied.
  * If false, an app restart is required.
+ * @example
+ * airlock.scanning.resetConfiguration()
+ * .then(function (defaultSettingsApplied) {
+ *		setText(textElement, "Configuration reset."
+			+ (defaultSettingsApplied ? "" : "Restart required."));
+ * }).catch(function (e) {
+ *		setText(textElement, "Error: " + e);
+ *});
  */
-airlock.scanning.resetConfiguration = function () {
+airlock.scanning.resetConfiguration = function() {
 	return hsv12Private.makePromise("scanning.resetConfiguration");
-}
+};
 
 /**
  * Gets a value indicating whether the scanner is ready.
  * @returns {boolean} true if the scanner is started and usable; false otherwise.
+ * @example
+ * var active = airlock.scanning.isScannerActive();
+ * // Display true if active; false otherwise.
+ * alert(active);
  */
 airlock.scanning.isScannerActive = function () {
 	return pageHost.ii.getResult("scanning.isScannerActive");
@@ -136,34 +178,34 @@ airlock.scanning.isScannerActive = function () {
  * @param {boolean} active If true the scanner is placed in a started state.
  * If false, the scanner is stopped.
  */
-airlock.scanning.setScannerActive = function (active) {
+airlock.scanning.setScannerActive = function(active) {
 	pageHost.ii.getResult("scanning.setScannerActive", active);
-}
+};
 
 /**
  * Gets the reader type as reported by the device SDK.
  * @returns {string} The reader type as reported by the device SDK.
  */
-airlock.scanning.getReaderType = function () {
+airlock.scanning.getReaderType = function() {
 	return pageHost.ii.getResult("scanning.getReaderType");
-}
+};
 
 /**
  * Gets the reader firmware version as reported by the device SDK.
  * @returns {string} The reader firmware version as reported by the device SDK.
  */
-airlock.scanning.getFirmwareVersion = function () {
-	return pageHost.ii.getResult("scanning.getFirmwareVersion", active);
-}
+airlock.scanning.getFirmwareVersion = function() {
+	return pageHost.ii.getResult("scanning.getFirmwareVersion");
+};
 
 /**
  * Gets the API version of the device SDK. This value is retrieved
  * from the device SDK itself.
  * @returns {string} The API version reported by the device SDK.
  */
-airlock.scanning.getApiVersion = function () {
+airlock.scanning.getApiVersion = function() {
 	return pageHost.ii.getResult("scanning.getApiVersion");
-}
+};
 
 
 /**
@@ -192,6 +234,16 @@ airlock.scanning.getApiVersion = function () {
  *		airlock.device.onScan.removeListener(aFunction)
  * @event
  * @type {ScanEventArgs}
+ * @example
+ * // Subscribe
+ * airlock.scanning.onScan.addListener(handleScan);
+ *
+ * function handleScan(args) {
+ *		// Displays the barcode data.
+ *		alert(args.text);
+ * }
+ * // Unsubscribe
+ * airlock.scanning.onScan.removeListener(handleScan);
  */
 airlock.scanning.onScan = pageHost.ii.registerEvent('scanning.onScan');
 
@@ -209,13 +261,24 @@ airlock.scanning.onScan = pageHost.ii.registerEvent('scanning.onScan');
  *		airlock.device.onScanError.removeListener(aFunction)
  * @event
  * @type {ScanErrorEventArgs}
+ * @example
+ * // Subscribe
+ * airlock.scanning.onScanError.addListener(handleScanError);
+ *
+ * function handleScanError(args) {
+ *		// Display error info (if exists)
+ *		alert(args.errorInfo);
+ * }
+ * @example
+ * // Unsubscribe
+ * airlock.scanning.onScanError.removeListener(handleScanError);
  */
 airlock.scanning.onScanError = pageHost.ii.registerEvent('scanning.onScanError');
 
 /* Device */
 
 /**
- * Provides functions for interacting with the device at the OS.
+ * Provides functions for interacting with the device at the OS level.
  * @namespace
  */
 airlock.device = {};
@@ -223,18 +286,18 @@ airlock.device = {};
 /**
  * Sends the user to the Android home screen while minimizing the browser.
  */
-airlock.device.minimizeApp = function () {
+airlock.device.minimizeApp = function() {
 	pageHost.ii.getResult("device.minimizeApp", open);
-}
+};
 
 /**
  * Obtains the screen brightness, which is a float value
  * between 0 and 1.
  * @returns {float} brightness between 0 and 1.
  */
-airlock.device.getBrightness = function () {
+airlock.device.getBrightness = function() {
 	return pageHost.ii.getResult("device.getBrightness");
-}
+};
 
 /**
  * Sets the screen brightness to a value between 0 and 1.
@@ -242,9 +305,9 @@ airlock.device.getBrightness = function () {
  * to prevent the device being unusable.
  * @param {number} brightness A value between 0 and 1.
  */
-airlock.device.setBrightness = function (brightness) {
+airlock.device.setBrightness = function(brightness) {
 	pageHost.ii.getResult("device.setBrightness", brightness);
-}
+};
 
 /**
  * Enum RingerMode
@@ -272,10 +335,13 @@ airlock.device.getRingerMode = function () {
  * is incoming. Ringer mode may be 2 (normal), 0 (silent), or 1 (vibrate).
  * @param {airlock.device.RingerMode} mode Allowed values are
  * 2 (normal), 0 (silent), or 1 (vibrate)
+ * @example
+ * // Set the ringer mode to vibrate.
+ * airlock.device.setRingerMode(airlock.device.RingerMode.VIBRATE);
  */
-airlock.device.setRingerMode = function (mode) {
+airlock.device.setRingerMode = function(mode) {
 	pageHost.ii.getResult("device.setRingerMode", mode);
-}
+};
 
 /**
  * Enum StreamType
@@ -289,6 +355,9 @@ airlock.device.StreamType = {
 	MUSIC: 3,
 	ALARM: 4,
 	NOTIFICATION: 5,
+	/** Dual-tone multi-frequency (DTMF) tones are used by automated
+	 * dial-in systems such as voicemail or where prompts are used to navigate.
+	 */
 	DTMF: 8
 };
 
@@ -299,10 +368,13 @@ airlock.device.StreamType = {
  * Indicates the source of the volume.
  * @returns {number} A number between zero and getMaxVolume()
  * @see {@link airlock.device.getMaxVolume}
+ * @example
+ * // Gets the music stream volume.
+ * var value = airlock.device.getVolume(airlock.device.StreamType.MUSIC);
  */
-airlock.device.getVolume = function (streamType) {
+airlock.device.getVolume = function(streamType) {
 	return pageHost.ii.getResult("device.getVolume", streamType);
-}
+};
 
 /**
  * Sets a value between 0 and the maximum volume, which can be
@@ -311,10 +383,15 @@ airlock.device.getVolume = function (streamType) {
  * Indicates the source of the volume.
  * @param {number} volume A value between 0 and the maximum volume,
  * which can be retrieved using the getMaxVolume function.
+ * @example
+ * // Get the maximum music volume.
+ * var maxVolume = airlock.device.getMaxVolume(airlock.device.StreamType.MUSIC);
+ * // Set the music stream to maximum volume.
+ * airlock.device.setVolume(airlock.device.StreamType.MUSIC, value);
  */
-airlock.device.setVolume = function (streamType, volume) {
+airlock.device.setVolume = function(streamType, volume) {
 	pageHost.ii.getResult("device.setVolume", streamType, volume);
-}
+};
 
 /**
  * Gets the highest volume value that can be applied using
@@ -323,26 +400,29 @@ airlock.device.setVolume = function (streamType, volume) {
  * @param {airlock.device.StreamType} streamType
  * Indicates the source of the volume.
  * @returns {number} The maximum volume.
+ * @example
+ * // Get the maximum music volume.
+ * var maxVolume = airlock.device.getMaxVolume(airlock.device.StreamType.MUSIC);
  */
-airlock.device.getMaxVolume = function (streamType) {
+airlock.device.getMaxVolume = function(streamType) {
 	return pageHost.ii.getResult("device.getMaxVolume", streamType);
-}
+};
 
 /**
  * Causes the device to play its notification sound clip.
  */
-airlock.device.beep = function () {
+airlock.device.beep = function() {
 	pageHost.ii.getResult("device.beep");
-}
+};
 
 /**
  * Causes the device to vibrate for the specified duration.  
  * @param {number} [durationMS] The duration for which to vibrate,
  * in milliseconds. If not specified, a value of 100 MS is used.
  */
-airlock.device.vibrate = function (durationMS) {
+airlock.device.vibrate = function(durationMS) {
 	pageHost.ii.getResult("device.vibrate", durationMS);
-}
+};
 
 /**
  * Gets the length of time in milliseconds following user inactivity
@@ -358,9 +438,9 @@ airlock.device.getScreenTimeoutMS = function () {
  * where the OS deems the user to be inactive, and locks the screen.
  * @param {number} timeoutMS The length of time in milliseconds.
  */
-airlock.device.setScreenTimeoutMS = function (timeoutMS) {
+airlock.device.setScreenTimeoutMS = function(timeoutMS) {
 	pageHost.ii.getResult("device.setScreenTimeoutMS", timeoutMS);
-}
+};
 
 /**
  * @typedef DisplayInfo
@@ -380,17 +460,17 @@ airlock.device.setScreenTimeoutMS = function (timeoutMS) {
  * @property {string} model The model of the device.
  * @property {string} board The name of the underlying board, like 'goldfish'.
  * @property {string} hardware The name of the hardware
- * (from the kernal command line or /proc).
+ *		(from the kernal command line or /proc).
  * @property {string} serial A hardware serial, if available.
  * @property {string} deviceId A unique identifier for the device.
- * This value may change with a factory reset.
+ *		This value may change with a factory reset.
  * @property {string} apiLevel The Android build level (the SdkInt).
  * @property {string} sdk The Android build name. For example 'kitkat'.
  * @property {string} buildId Either a changelist number or a number like "M4-rc20"
  * @property {string} buildTime A long value that is a Unix epoch timestamp
- * (in milliseconds) indicating when the device's ROM was built
+ *		(in milliseconds) indicating when the device's ROM was built
  * @property {string} buildVersion The OS's user-visible version string.
- * E.g., "1.0" or "3.4b5".
+ *		E.g., "1.0" or "3.4b5".
  * @property {DisplayInfo} displayInfo Indicates the properties of the device display.
  */
 
@@ -399,9 +479,9 @@ airlock.device.setScreenTimeoutMS = function (timeoutMS) {
  * Gets a SystemInfo object containing various OS properties.
  * @returns {SystemInfo} Containing various OS properties.
  */
-airlock.device.getSystemInfo = function () {
+airlock.device.getSystemInfo = function() {
 	return pageHost.ii.getResult("device.getSystemInfo");
-}
+};
 
 /**
  * Causes the app to exit, and the user to be returned to the home screen.
@@ -409,18 +489,21 @@ airlock.device.getSystemInfo = function () {
  * to the user prior to exit. This helps to prevent the user from assuming
  * the app crashed. Default is true.
  */
-airlock.device.exitApp = function (showNotification) {
+airlock.device.exitApp = function(showNotification) {
 	pageHost.ii.getResult("device.exitApp", showNotification);
-}
+};
 
 /**
  * Launches the app specified by its package name.
  * A valid package name might be, for example, 'com.google.android.apps.photos'.
  * @param {string} packageName The Android package name of the app to open.
+ * @example
+ * // Launch Google Photos app
+ * airlock.device.launchApp('com.google.android.apps.photos');
  */
-airlock.device.launchApp = function (packageName) {
+airlock.device.launchApp = function(packageName) {
 	pageHost.ii.getResult("device.launchApp", packageName);
-}
+};
 
 /**
  * Gets a value indicating whether the display is currently locked.
@@ -431,9 +514,9 @@ airlock.device.launchApp = function (packageName) {
  * assigned device administration privileges.
  * @returns {Boolean} true if the screen is locked; false otherwise.
  */
-airlock.device.isScreenLocked = function () {
+airlock.device.isScreenLocked = function() {
 	return pageHost.ii.getResult("device.isScreenLocked");
-}
+};
 
 /**
  * Engages the devices screen lock.
@@ -445,7 +528,7 @@ airlock.device.isScreenLocked = function () {
  */
 airlock.device.lockScreen = function() {
 	pageHost.ii.getResult("device.lockScreen");
-}
+};
 
 /**
  * Disengages the devices screen lock.
@@ -457,7 +540,7 @@ airlock.device.lockScreen = function() {
  */
 airlock.device.unlockScreen = function() {
 	pageHost.ii.getResult("device.unlockScreen");
-}
+};
 
 /**
  * Enum PowerSource
@@ -466,7 +549,7 @@ airlock.device.unlockScreen = function() {
 airlock.device.PowerSource = {
 	BATTERY: 0,
 	EXTERNAL: 1
-}
+};
 
 /**
  * Enum BatteryState
@@ -478,7 +561,7 @@ airlock.device.PowerSource = {
 	DISCHARGING: 2,
 	FULL: 4,
 	NOT_CHARGING: 8
-}
+};
 
 /**
  * @typedef PowerInfo
@@ -497,10 +580,16 @@ airlock.device.PowerSource = {
 /**
  * Gets an object reprenting the device's power source and charging state.
  * @returns {PowerInfo} With fields representing the device's power source and charge level.
+ * @example
+ * var powerInfo = airlock.device.getPower();
+ * // Test for external power source.
+ * if (powerInfo.powerSource === airlock.device.PowerSource.EXTERNAL) {
+ *		// Perform power intensive task.
+ * }
  */
-airlock.device.getPower = function () {
+airlock.device.getPower = function() {
 	return pageHost.ii.getResult("device.getPower");
-}
+};
 
 /**
  * onPowerChanged Event. Is raised when the devices power source is changed;
@@ -512,6 +601,19 @@ airlock.device.getPower = function () {
  *		airlock.device.onPowerChanged.removeListener(afunctionReference)
  * @event
  * @type {PowerInfo}
+ * @example
+ * // Subscribe to event
+ * airlock.device.onPowerChanged.addListener(handlePowerChanged);
+ *
+ * function handlePowerChanged(args) {
+ *		if (args.powerSource === airlock.device.PowerSource.BATTERY) {
+ *			// Using battery. Display remaining battery percentage.
+ *			alert(args.remainingBatteryPercent)
+ *		}
+ * }
+ *
+ * // Unsubscribe
+ * airlock.device.onPowerChanged.removeListener(handlePowerChanged);
  */
 airlock.device.onPowerChanged = pageHost.ii.registerEvent("device.onPowerChanged");
 
@@ -523,6 +625,18 @@ airlock.device.onPowerChanged = pageHost.ii.registerEvent("device.onPowerChanged
  */
 airlock.printing = {};
 
+/**
+ * Displays the print dialog, allowing the user to send the page to the printer.
+ * @returns {Primise} When resolved, the print request has been handed to the OS,
+ * which ordinarily displays a print dialog.
+ * @example
+ * airlock.printing.printPage()
+ * .then(function () {
+ *		alert('Print request sent to OS');
+ * }).catch(function (e) {
+ *		alert("Error sending print request " + e);
+ * });
+ */
 airlock.printing.printPage = function () {
 	return hsv12Private.makePromise("printing.printPage");
 };
@@ -561,9 +675,9 @@ airlock.ui = {};
  * For example, en-AU denotes Australian english.
  * @returns {string} A language code resembling 'en-AU'.
  */
-airlock.ui.getUILanguage = function () {
+airlock.ui.getUILanguage = function() {
 	return pageHost.ii.getResult("ui.getUILanguage");
-}
+};
 
 /**
  * Get a value indicating whether the app is in full screen mode.
@@ -572,9 +686,9 @@ airlock.ui.getUILanguage = function () {
  * @returns {boolean} true if the browser is in full screen mode; false otherwise.
  * @see {@link airlock.ui.setFullScreen}
  */
-airlock.ui.isFullScreen = function () {
+airlock.ui.isFullScreen = function() {
 	return pageHost.ii.getResult("ui.isFullScreen");
-}
+};
 
 /**
  * Changes the apps full screen mode.
@@ -585,18 +699,18 @@ airlock.ui.isFullScreen = function () {
  * If the value matches the current state, there is no effect.
  * @exception {Exception} Occurs if fullScreen argument is undefined.
  */
-airlock.ui.setFullScreen = function (fullScreen) {
+airlock.ui.setFullScreen = function(fullScreen) {
 	pageHost.ii.getResult("ui.setFullScreen", fullScreen);
-}
+};
 
 /**
  * Gets a value indicating whether the sliding panel,
  * containing web applications, is visible.
  * @returns {boolean} true if the launchpad is open; false otherwise.
  */
-airlock.ui.isLaunchpadOpen = function () {
+airlock.ui.isLaunchpadOpen = function() {
 	return pageHost.ii.getResult("ui.isLaunchpadOpen");
-}
+};
 
 /**
  * Changes the open state of the launchpad from opened to closed and vice versa.
@@ -604,9 +718,9 @@ airlock.ui.isLaunchpadOpen = function () {
  * the value of the parameter, no change occurs.
  * @exception {Exception} Occurs if argument is undefined.
  */
-airlock.ui.setLaunchpadOpen = function (open) {
+airlock.ui.setLaunchpadOpen = function(open) {
 	pageHost.ii.getResult("ui.setLaunchpadOpen", open);
-}
+};
 
 /**
  * Enum OrientationLockType
@@ -623,9 +737,9 @@ airlock.device.OrientationLockType = {
 	/**
 	 * The locked or unlocked state is determined
 	 * by the configuration and/or user settings in the app.
-	 */ 
+	 */
 	SYSTEM_CONTROLLED: 3
-}
+};
 
 /**
  * Gets the screen orientation setting for the application.
@@ -639,9 +753,9 @@ airlock.device.OrientationLockType = {
  * may not be active. When 3, the locked or unlocked state is determined
  * by the configuration and/or user settings in the app.
  */
-airlock.ui.getOrientationLock = function () {
+airlock.ui.getOrientationLock = function() {
 	return pageHost.ii.getResult("ui.getOrientationLock");
-}
+};
 
 /**
  * Sets the orientation for the browser tab, when it is active.
@@ -662,9 +776,9 @@ airlock.ui.getOrientationLock = function () {
  * may not be active. When 3, the locked or unlocked state is determined
  * by the configuration and/or user settings in the app.
  */
-airlock.ui.setOrientationLock = function (lockType) {
+airlock.ui.setOrientationLock = function(lockType) {
 	pageHost.ii.getResult("ui.setOrientationLock", lockType);
-}
+};
 
 /* Networking */
 
@@ -713,10 +827,14 @@ airlock.networking.NetworkConnectionType = {
  * Gets the information for the current network connection, if any.
  * @see {@link NetworkInfo}
  * @returns {NetworkInfo} The network connection information.
+ * @example
+ * var info = airlock.networking.getNetworkInfo();
+ * // Display the SSID
+ * alert(info.ssid);
  */
-airlock.networking.getNetworkInfo = function () {
+airlock.networking.getNetworkInfo = function() {
 	return pageHost.ii.getResult("networking.getNetworkInfo");
-}
+};
 
 /**
  * @typedef WirelessNetwork
@@ -740,30 +858,64 @@ airlock.networking.getNetworkInfo = function () {
 /**
  * Gets a promise that returns a list of WirelessNetwork objects.
  * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
- * a list of wireless networks when fulfilled.
- * The promis may take several seconds to resolve.
+ *		a list of wireless networks when fulfilled.
+ *		The promis may take several seconds to resolve.
+ * @example
+ * airlock.networking.getWirelessNetworks()
+ * .then(function (result) {
+ *		var text = '';
+ *		// Get the SSID's for each network.
+ *		for (var i = 0; i < result.length; i++) {
+ *			var network = result[i];
+ *			text += network.ssid + "\n";
+ *		}
+ *		alert(text);
+ * }).catch(function (error) {
+ *		alert("Error: " + error);
+ * });
  */
-airlock.networking.getWirelessNetworks = function () {
+airlock.networking.getWirelessNetworks = function() {
 	return hsv12Private.makePromise("networking.getWirelessNetworksAsync");
-}
+};
 
 /**
  * Gets or sets whether the device
  * is able to connect to wireless networks.
  * @returns {boolean} True if able to connect; false otherwise.
  */
-airlock.networking.isWifiEnabled = function () {
+airlock.networking.isWifiEnabled = function() {
 	return pageHost.ii.getResult("networking.isWifiEnabled");
-}
+};
 
 /**
  * Enables or disables wireless networking.
  * @param {boolean} enabled If true, WIFI is enabled; false, it is disabled.
  */
-airlock.networking.setWifiEnabled = function (enabled) {
+airlock.networking.setWifiEnabled = function(enabled) {
 	pageHost.ii.getResult("networking.setWifiEnabled", enabled);
-}
+};
 
+/**
+ * onConnectionChanged Event. This event is raised when the device
+ * connects or disconnects to/from a network.
+ * To subscribe to the event use:
+ *		airlock.networking.onConnectionChanged.addListener(function (networkInfo) {})
+ * To unsubscribe to the event use:
+ *		airlock.networking.onConnectionChanged.removeListener(afunctionReference)
+ * @event
+ * @type {NetworkInfo}
+ * @example
+ * // Subscribe to event
+ * airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
+ *
+ * function handleConnectionChanged(args) {
+ *		// Display whether the device is connected to a network.
+ *		alert(args.connected);
+ * }
+ *
+ * // Unsubscribe
+ * airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
+ */
 airlock.networking.onConnectionChanged = pageHost.ii.registerEvent("networking.onConnectionChanged");
 
 /* Browsing */
@@ -780,7 +932,9 @@ airlock.browsing = {};
  * @enum {number}
  */
 airlock.networking.NavigationErrorAction = {
+	/** Displays the error page. */
 	REDIRECT_TO_ERROR_PAGE: 0,
+	/** Prevents navigation to the page and does not display an error. */
 	PREVENT_NAVIGATION: 1
 };
 
@@ -794,9 +948,9 @@ airlock.networking.NavigationErrorAction = {
  * @returns {airlock.networking.NavigationErrorAction}
  * The error action that is employed when a navigation error occurs.
  */
-airlock.browsing.getNavigationErrorAction = function (url) {
+airlock.browsing.getNavigationErrorAction = function(url) {
 	return pageHost.ii.getResult("browsing.getNavigationErrorAction", url);
-}
+};
 
 /**
  * Sets the navigation error action associate with the specified URL.
@@ -807,10 +961,15 @@ airlock.browsing.getNavigationErrorAction = function (url) {
  * The action to perform when a navigation error occurs.
  * @param {string} [url] The URL of the page for which
  * to determine the navigation error action. Can be undefined.
+ * @example
+ * // Prevent navigation from a page with a broken link.
+ * airlock.browsing.setNavigationErrorAction(
+ *		airlock.networking.NavigationErrorAction.PREVENT_NAVIGATION,
+ *		"http://www.example.com/PageWith404.html");
  */
-airlock.browsing.setNavigationErrorAction = function (action, url) {
+airlock.browsing.setNavigationErrorAction = function(action, url) {
 	pageHost.ii.getResult("browsing.setNavigationErrorAction", action, url);
-}
+};
 
 /**
  * Gets the text zoom level for the page, which is a positive floating point number,
@@ -818,9 +977,9 @@ airlock.browsing.setNavigationErrorAction = function (action, url) {
  * @returns {number} The text zoom level,
  * which is greater than 0; where 1.0 is normal size. 
  */
-airlock.browsing.getTextZoomLevel = function () {
+airlock.browsing.getTextZoomLevel = function() {
 	return pageHost.ii.getResult("browsing.getTextZoomLevel");
-}
+};
 
 /**
  * Sets the text zoom level for the page, which is a positive floating point number,
@@ -828,9 +987,9 @@ airlock.browsing.getTextZoomLevel = function () {
  * @param {number} level The text zoom level,
  * which is greater than 0; where 1.0 is normal size.
  */
-airlock.browsing.setTextZoomLevel = function (level) {
+airlock.browsing.setTextZoomLevel = function(level) {
 	pageHost.ii.getResult("browsing.setTextZoomLevel", level);
-}
+};
 
 
 /* Logging */
@@ -846,7 +1005,7 @@ airlock.log = {};
  * @type {number}
  */
 airlock.log.LogLevel = {
-	
+
 	/** The least restrictive level. */
 	ALL: 0,
 	/** For debugging purposes. More verbose than the Info level
@@ -865,15 +1024,18 @@ airlock.log.LogLevel = {
 	FATAL: 32,
 	/** Logging is disabled. */
 	NONE: 64
-}
+};
 
 /**
  * Sets the minimum log level
  * @param {airlock.log.LogLevel} level Any log messages below this threshold are ignored.
+ * @example
+ * // Limit logging to warning message or higher.
+ * airlock.log.setMinLevel(airlock.log.LogLevel.WARN);
  */
-airlock.log.setMinLevel = function (level) {
+airlock.log.setMinLevel = function(level) {
 	pageHost.ii.getResult("log.setMinLevel", level);
-}
+};
 
 /**
  * Writes a log entry at the LogLevel.DEBUG level.
@@ -882,10 +1044,12 @@ airlock.log.setMinLevel = function (level) {
  * @param {string} message The text content to write to the log.
  * @param {string} [error] An error associated with the entry. Can be null.
  * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.debug("Message from my web page");
  */
-airlock.log.debug = function (message, error) {
+airlock.log.debug = function(message, error) {
 	pageHost.ii.log.writeLog(2, message, error);
-}
+};
 
 /**
  * Writes a log entry at the LogLevel.INFO level.
@@ -894,10 +1058,12 @@ airlock.log.debug = function (message, error) {
  * @param {string} message The text content to write to the log.
  * @param {string} [error] An error associated with the entry. Can be null.
  * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.info("Message from my web page");
  */
-airlock.log.info = function (message, error) {
+airlock.log.info = function(message, error) {
 	pageHost.ii.log.writeLog(4, message, error);
-}
+};
 
 /**
  * Writes a log entry at the LogLevel.WARN level.
@@ -906,10 +1072,12 @@ airlock.log.info = function (message, error) {
  * @param {string} message The text content to write to the log.
  * @param {string} [error] An error associated with the entry. Can be null.
  * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.warn("Message from my web page", error);
  */
-airlock.log.warn = function (message, error) {
+airlock.log.warn = function(message, error) {
 	pageHost.ii.log.writeLog(8, message, error);
-}
+};
 
 /**
  * Writes a log entry at the LogLevel.ERROR level.
@@ -918,10 +1086,12 @@ airlock.log.warn = function (message, error) {
  * @param {string} message The text content to write to the log.
  * @param {string} [error] An error associated with the entry. Can be null.
  * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.info("Message from my web page", error);
  */
-airlock.log.error = function (message, error) {
+airlock.log.error = function(message, error) {
 	pageHost.ii.log.writeLog(16, message, error);
-}
+};
 
 
 /**
@@ -950,10 +1120,18 @@ airlock.log.error = function (message, error) {
  * @param {Date} [endDate] If supplied, only entries that were made
  * prior to this date and time are returned.
  * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
+ * @example
+ * airlock.log.getEntries()
+ * .then(function (value) {
+ *		setText(textElement, "Done");
+ *		alert(value);
+ * }).catch(function(error) {
+ *		setText(textElement, `Error ${error}`);
+ * });
  */
-airlock.log.getEntries = function (startDate, endDate) {
+airlock.log.getEntries = function(startDate, endDate) {
 	return hsv12Private.makePromise("log.getEntries", startDate, endDate);
-}
+};
 
 /**
  * Deletes the log entries via a Promise.
@@ -967,9 +1145,9 @@ airlock.log.getEntries = function (startDate, endDate) {
  * prior to this date and time are deleted.
  * @returns {number} The number of deleted log entries.
  */
-airlock.log.deleteEntries = function (startDate, endDate) {
+airlock.log.deleteEntries = function(startDate, endDate) {
 	return hsv12Private.makePromise("log.deleteEntries", startDate, endDate);
-}
+};
 
 
 /* IO */
@@ -993,9 +1171,9 @@ airlock.io = {};
  * @returns {Promise} Indicating completion or failure of the copy operation.
  * An error is produced by the Promise if an IO Exception is raised.
  */
-airlock.io.copyFile = function (sourcePath, destinationPath, overwriteIfExists) {
+airlock.io.copyFile = function(sourcePath, destinationPath, overwriteIfExists) {
 	return hsv12Private.makePromise("io.copyFile", sourcePath, destinationPath, overwriteIfExists);
-}
+};
 
 /**
  * Moves the file at the specified sourcePath to the destinationPath.
@@ -1007,9 +1185,9 @@ airlock.io.copyFile = function (sourcePath, destinationPath, overwriteIfExists) 
  * An error is produced by the Promise if an IO Exception is thrown.
  * @see {@link https://docs.microsoft.com/en-us/dotnet/api/system.io.file.move}
  */
-airlock.io.moveFile = function (sourcePath, destinationPath) {
+airlock.io.moveFile = function(sourcePath, destinationPath) {
 	return hsv12Private.makePromise("io.moveFile", sourcePath, destinationPath);
-}
+};
 
 /**
  * Deletes a file at the specified location.
@@ -1017,27 +1195,27 @@ airlock.io.moveFile = function (sourcePath, destinationPath) {
  * @param {string} path The location of the file to be deleted.
  * @returns {Promise} If the promise is rejected it indicates the delete was unsuccessful.
  */
-airlock.io.deleteFile = function (path) {
+airlock.io.deleteFile = function(path) {
 	return hsv12Private.makePromise("io.deleteFile", path);
-}
+};
 
 /**
  * Returns a Promise indicating if the file at the specified location, exists.
  * @param {string} path The path to the file. Cannot be null.
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
  */
-airlock.io.fileExists = function (path) {
+airlock.io.fileExists = function(path) {
 	return hsv12Private.makePromise("io.fileExists", path);
-}
+};
 
 /**
  * Returns a Promise indicating if the directory at the specified location, exists.
  * @param {string} path The path to the directory. Cannot be null.
  * @returns {Promise<boolean>} True if the file exists; false otherwise.
  */
-airlock.io.directoryExists = function (path) {
+airlock.io.directoryExists = function(path) {
 	return hsv12Private.makePromise("io.directoryExists", path);
-}
+};
 
 /**
  * Enum FileMode
@@ -1082,8 +1260,8 @@ airlock.io.FileMode = {
 	 * throws an IOException exception, and any attempt
 	 * to read fails and throws a NotSupportedException exception.
 	 */
-	APPEND: 6 
-}
+	APPEND: 6
+};
 
 /**
  * Use this function to open or create a file.
@@ -1096,9 +1274,9 @@ airlock.io.FileMode = {
  * should be opened, created or so forth.
  * @returns {Promise<number>} A promise that resolves to a file identifier.
  */
-airlock.io.openFile = function (path, fileMode) {
+airlock.io.openFile = function(path, fileMode) {
 	return hsv12Private.makePromise("io.openFile", path, fileMode);
-}
+};
 
 /**
  * Closes the file stream that is presently open for the file.
@@ -1108,9 +1286,9 @@ airlock.io.openFile = function (path, fileMode) {
  * @returns {Promise} A promise that when resolved confirms
  * that the file has been closed.
  */
-airlock.io.closeFile = function (handle) {
+airlock.io.closeFile = function(handle) {
 	return hsv12Private.makePromise("io.closeFile", handle);
-}
+};
 
 /**
  * Creates a directory at the specified path.
@@ -1120,9 +1298,9 @@ airlock.io.closeFile = function (handle) {
  * @returns {Promise} When resolved the promise confirms
  * that the directory has been created.
  */
-airlock.io.createDirectory = function (path) {
+airlock.io.createDirectory = function(path) {
 	return hsv12Private.makePromise("io.createDirectory", path);
-}
+};
 
 /**
  * Deletes the directory at the specified location.
@@ -1134,9 +1312,9 @@ airlock.io.createDirectory = function (path) {
  * @returns {Promise} When resolved the promise confirms
  * that the directory has been deleted.
  */
-airlock.io.deleteDirectory = function (path, recursive) {
+airlock.io.deleteDirectory = function(path, recursive) {
 	return hsv12Private.makePromise("io.deleteDirectory", path, recursive);
-}
+};
 
 /**
  * Returns a list of file names (including their paths) via a Promise.
@@ -1147,9 +1325,9 @@ airlock.io.deleteDirectory = function (path, recursive) {
  * @param {boolean} [recursive] If true, files in nested directories are also returned.
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  */
-airlock.io.getFiles = function (directoryPath, searchPattern, recursive) {
+airlock.io.getFiles = function(directoryPath, searchPattern, recursive) {
 	return hsv12Private.makePromise("io.getFiles", directoryPath, searchPattern, recursive);
-}
+};
 
 /**
  * Returns a list of directory names (including their paths) via a Promise.
@@ -1160,9 +1338,9 @@ airlock.io.getFiles = function (directoryPath, searchPattern, recursive) {
  * @param {boolean} [recursive] If true, directories in nested directories are also returned.
  * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  */
-airlock.io.getDirectories = function (directoryPath, searchPattern, recursive) {
+airlock.io.getDirectories = function(directoryPath, searchPattern, recursive) {
 	return hsv12Private.makePromise("io.getDirectories", directoryPath, searchPattern, recursive);
-}
+};
 
 /**
  * @typedef FileInfo
@@ -1182,9 +1360,9 @@ airlock.io.getDirectories = function (directoryPath, searchPattern, recursive) {
  * @returns {FileInfo} The promise resolves a FileInfo object
  * that contains the directory, size, modified/created/accessed times.
  */
-airlock.io.getFileInfo = function (path) {
+airlock.io.getFileInfo = function(path) {
 	return hsv12Private.makePromise("io.getFileInfo", path);
-}
+};
 
 /**
  * Reads the contents of a file as text.
@@ -1195,9 +1373,9 @@ airlock.io.getFileInfo = function (path) {
  * @returns {Promise<string>} A promise that resolves a string of text
  * read from the file.
  */
-airlock.io.readText = function (handle, length, offset) {
+airlock.io.readText = function(handle, length, offset) {
 	return hsv12Private.makePromise("io.readText", handle, length, offset);
-}
+};
 
 /**
  * Reads the contents of a file as bytes and returns them as a base64 string.
@@ -1208,9 +1386,9 @@ airlock.io.readText = function (handle, length, offset) {
  * @returns {Promise<string>} A promise that resolves
  * a base64 string read from the file.
  */
-airlock.io.readBase64 = function (handle, length, offset) {
+airlock.io.readBase64 = function(handle, length, offset) {
 	return hsv12Private.makePromise("io.readBase64", handle, length, offset);
-}
+};
 
 /**
  * Reads the entire contents of a file as text.
@@ -1218,9 +1396,9 @@ airlock.io.readBase64 = function (handle, length, offset) {
  * @returns {Promise<string>} A promise that resolves a string
  * that is the contents of the file.
  */
-airlock.io.readAllText = function (filePath) {
+airlock.io.readAllText = function(filePath) {
 	return hsv12Private.makePromise("io.readAllText", filePath);
-}
+};
 
 /**
  * Reads a line of text from a file.
@@ -1228,9 +1406,9 @@ airlock.io.readAllText = function (filePath) {
  * @returns {Promise<string>} A promise that resolves
  * a line of text that was read from the file.
  */
-airlock.io.readLine = function (handle) {
+airlock.io.readLine = function(handle) {
 	return hsv12Private.makePromise("io.readLine", handle);
-}
+};
 
 /**
  * Writes the specified text to a file
@@ -1241,9 +1419,9 @@ airlock.io.readLine = function (handle) {
  * @returns {Promise} A promise that when resolved
  * indicates success of the operation.
  */
-airlock.io.writeText = function (handle, text) {
+airlock.io.writeText = function(handle, text) {
 	return hsv12Private.makePromise("io.writeText", handle, text);
-}
+};
 
 /**
  * Writes the specified base64 string to a file
@@ -1254,9 +1432,9 @@ airlock.io.writeText = function (handle, text) {
  * @returns {Promise} A promise that when resolved
  * indicates success of the operation.
  */
-airlock.io.writeBase64 = function (handle, base64String) {
+airlock.io.writeBase64 = function(handle, base64String) {
 	return hsv12Private.makePromise("io.writeBase64", handle, base64String);
-}
+};
 
 /**
  * Seeks to a location (byte offset) within a file.
@@ -1265,9 +1443,9 @@ airlock.io.writeBase64 = function (handle, base64String) {
  * @param {number} handle The file identifier.
  * @param {number} offset The offset in bytes to move to.
  */
-airlock.io.seek = function (handle, offset) {
+airlock.io.seek = function(handle, offset) {
 	pageHost.ii.getResult("io.seek", handle, offset);
-}
+};
 
 /**
  * Gets the current location (byte offset) within a file.
@@ -1276,35 +1454,35 @@ airlock.io.seek = function (handle, offset) {
  * @param {number} handle The file identifier.
  * @returns {number} The current offset in bytes.
  */
-airlock.io.getFileOffset = function (handle) {
+airlock.io.getFileOffset = function(handle) {
 	return pageHost.ii.getResult("io.getFileOffset", handle);
-}
+};
 
 /**
  * Gets the size of a file in bytes.
  * @param {number} handle The file identifier.
  * @returns {number} The size of the file in bytes.
  */
-airlock.io.getFileSizeBytes = function (handle) {
+airlock.io.getFileSizeBytes = function(handle) {
 	return pageHost.ii.getResult("io.getFileSizeBytes", handle);
-}
+};
 
 /**
  * Updates the last modified timestamp of a file to the current time.
  * @param {string} filePath The file path.
  */
-airlock.io.touch = function (filePath) {
+airlock.io.touch = function(filePath) {
 	pageHost.ii.getResult("io.touch", filePath);
-}
+};
 
 /**
  * Gets Airlock Browser's files directory.
  * This is typically located at /data/data/com.outcoder.ibrowser/files
  * @returns {string} The path to the application's files directory.
  */
-airlock.io.getAppFilesDirectory = function () {
+airlock.io.getAppFilesDirectory = function() {
 	return pageHost.ii.getResult("io.getAppFilesDirectory");
-}
+};
 
 /**
  * Gets the path to the shared directory on the device.
@@ -1312,6 +1490,6 @@ airlock.io.getAppFilesDirectory = function () {
  * @returns {string} The path to the device's shared storage location for apps.
  * @see {@link https://developer.android.com/reference/android/os/Environment#getExternalStorageDirectory()}
  */
-airlock.io.getExternalStorageDirectory = function () {
+airlock.io.getExternalStorageDirectory = function() {
 	return pageHost.ii.getResult("io.getExternalStorageDirectory");
-}
+};

@@ -12,7 +12,7 @@
 	<script src="../ScriptExamples.js"></script>
 	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
 	<script>
-		pageHostState.onReady("handleAirlockReady()");
+		airlockState.onReady("handleAirlockReady()");
 		var filesDir;
 		function handleAirlockReady() {
 
@@ -64,7 +64,7 @@ function testDirectoryExists(textElement) {
 <div class="testDiv">
 	<h3>Creating a Directory</h3>
 	<script id="createDirectoryScript">
-var testDiretory = "AirlockTesting";
+var testDiretory = "AirlockExamples";
 
 function testCreateDirectory(textElement) {
 	try {

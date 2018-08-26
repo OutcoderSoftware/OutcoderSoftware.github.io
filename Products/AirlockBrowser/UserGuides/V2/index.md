@@ -380,24 +380,40 @@ If the keyboard wedge is enabled, this field indicates if the barcode data will 
 
 ## Leveraging the Airlock Browser JavaScript API
 
-You can invoke the Airlock Browser JavaScript APIs via an on-page script or from a remote web application JavaScript event handler. In this section you look at the *barcode reader*, *print* and *text to speech* APIs.
+You can invoke the Airlock Browser JavaScript APIs via an on-page script or from a remote web application JavaScript event handler. 
+
+> **NOTE:**
+Before we get started, please note that there exists [comprehensive working examples](http://outcoder.com/Products/AirlockBrowser/Scripting/V2/Examples/) for the APIs listed in this section.
+
+In this section you explore the following sets of APIs:
+* `browsing` Allows modification of the user's web browsing experience.
+* `device` Provides functions for interacting with the device at the OS level.
+* `io` Provides APIs for reading and writing files.
+* `log` Provides persistent logging capabilities.
+* `networking` Provides functions and events for working with the network capabilities of a device.
+* `printing` Allows for printing of documents.
+* `scanning` Provides various functions for working with the hardware barcode scanner.
+* `speech` Brings text to speech capabilities to your web application.
+* `ui` Allows you to control various user interface elements within the browser.
+
+Each of these is a sub-namespace within the `airlock` namespace.
 
 > **NOTE:** JavaScript APIs can only be called from a page with a domain that matches one of the domains of a web profile, present on the launchpad. This prevents unauthorized web sites from invoking a function from a web page.
 
 ### Ensuring Airlock is Ready to Receive Commands
 
-The JavaScript object that you use to call through to Airlock Browser is named `pageHost`. The `pageHost` object is available after web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `pageHost` has been initialized. To determine when the `pageHost` object is initialized, use the `pageHostState.onready` function, as shown in the following example:
+The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been initialized. To determine when the `airlock` object is initialized, use the `airlockState.onready` function, as shown in the following example:
 
 ```js
 <html>
 <head>
 	<script>
-		pageHostState.onReady("HandleAirlockReady()");
+		airlockState.onReady("HandleAirlockReady()");
 
-		function HandleAirlockReady() {
-			var decoder = pageHost.scanning.getDecoderWithNativeId(71);
-			decoder.Enabled = false;
-			pageHost.scanning.setDecoder(decoder);
+		function handleAirlockReady() {
+			var decoder = airlock.scanning.getDecoderWithNativeId(71);
+			decoder.enabled = false;
+			airlock.scanning.setDecoder(decoder);
 		}
 	</script>
 </head>
@@ -414,10 +430,10 @@ Airlock Browser provides a JavaScript API that allows you to fully configure the
 
 #### Retrieving a Decoder's Configuration
 
-The `pageHost.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
+The `airlock.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
 
 ```js
-var decoder = pageHost.scanning.getDecoderWithName('Code39');
+var decoder = airlock.scanning.getDecoderWithName('Code39');
 ```
 
 > **NOTE:** Decoder names are *not* case sensitive. For example, calling `getDecoderWithName` with a value 'Code39' is equivalent to calling the same method with 'CODE39'.
@@ -425,7 +441,7 @@ var decoder = pageHost.scanning.getDecoderWithName('Code39');
 Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
 
 ```js
-var decoder = pageHost.scanning.getDecoderWithNativeId(71);
+var decoder = airlock.scanning.getDecoderWithNativeId(71);
 ```
 
 All properties that are configurable within Airlock Browser's device configuration are also configurable via JavaScript.
@@ -434,17 +450,17 @@ For a list of configurable properties, see the device types respective guide:
 
 * [CipherLab](../DeviceSdks/CipherLab/DecoderProperties)
 
-> **NOTE:** You must call the `setDecoder` function of the `pageHost.scanner` object for the setting to be applied. See the following example:
+> **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
 
 ```js
-var codabarDecoder = pageHost.scanning.getDecoderWithNativeId(71);
+var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
 codabarDecoder.Enabled = true;
 codabarDecoder.NotisEditingType = 1;
 codabarDecoder.LengthMin = 10;
-var setResult = pageHost.scanning.setDecoder(decoder);
+var setResult = airlock.scanning.setDecoder(decoder);
 ```
 
-The `pageHost.scanning.setDecoder` function returns an object indicating the success or failure of the call. The result object has a boolean `successful` field, and an `error` field that is populated if the `successful` property is `false`. The following example displays an alert box with the result of the `setDecoder` function call:
+The `airlock.scanning.setDecoder` function returns an object indicating the success or failure of the call. The result object has a boolean `successful` field, and an `error` field that is populated if the `successful` property is `false`. The following example displays an alert box with the result of the `setDecoder` function call:
 
 ```js
 alert("Decoder set: " + setResult.successful + "   " + setResult.error);
@@ -455,7 +471,7 @@ alert("Decoder set: " + setResult.successful + "   " + setResult.error);
 You are able to launch the print service, installed on a device, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To launch the print service to print the current active page, use the following:
 
 ```javascript
-pageHost.printing.printPage();
+airlock.printing.printPage();
 ```
 
 ### Leveraging Airlock's Text to Speech Capability with JavaScript
@@ -463,7 +479,7 @@ pageHost.printing.printPage();
 You can have Airlock Browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:
 
 ```javascript
-pageHost.speech.speakText("Hi from Airlock Browser");
+airlock.speech.speakText("Hi from Airlock Browser");
 ```
 
 ### Adding Client-Side CSS to Pages

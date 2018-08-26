@@ -136,7 +136,7 @@ function testSetConfiguration(textElement) {
 	var config;
 	try {
 		config = airlock.scanning.getConfiguration();
-		config.DisplayMode = true;
+		config.displayMode = true;
 	} catch (e) {
 		setText(textElement, "Configuration get error " + e);
 		return;
@@ -168,7 +168,7 @@ function testResetConfiguration(textElement) {
 				+ (defaultSettingsApplied ? "" : "Restart required."));
 		}).catch(function (e) {
 			setText(textElement, "Error: " + e);
-		})
+		});
 }
 	</script><pre class="example" id="resetConfigurationPre"></pre>
 	<script>insertScriptInPre('resetConfigurationPre', 'resetConfigurationScript');</script>

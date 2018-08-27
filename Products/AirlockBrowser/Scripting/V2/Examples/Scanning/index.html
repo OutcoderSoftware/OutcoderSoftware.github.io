@@ -196,7 +196,7 @@ function testGetActive(textElement) {
 	<script id="setActiveScript">
 function testSetActive(textElement) {
 	try {
-		var active = airlock.scanning.getScannerActive();
+		var active = airlock.scanning.isScannerActive();
 		airlock.scanning.setScannerActive(!active);
 		setText(textElement, 'Success');
 	} catch (e) {

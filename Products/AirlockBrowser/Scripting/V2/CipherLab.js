@@ -1,4 +1,9 @@
-﻿
+﻿/**
+ * @file Provides a script interface for interacting with Airlock Browser
+ * @version 1.0.0
+ * @copyright Outcoder Sarl 2018. All Rights Reserved.
+ */
+
 var clLastScanArgs;
 
 /**

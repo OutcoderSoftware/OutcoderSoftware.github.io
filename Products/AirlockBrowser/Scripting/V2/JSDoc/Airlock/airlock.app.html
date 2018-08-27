@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: speech</title>
+    <title>JSDoc: Namespace: app</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: speech</h1>
+    <h1 class="page-title">Namespace: app</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="airlock.html">airlock</a>.</span>speech</h2>
+            <span class="ancestors"><a href="airlock.html">airlock</a>.</span>app</h2>
         
     
 </header>
@@ -38,7 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Provides text-to-speech services.</div>
+            <div class="description">Provides licensing, updates, and versioning APIs.</div>
         
 
         
@@ -73,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line693">line 693</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -112,7 +112,7 @@
     
 
     
-    <h4 class="name" id=".speakText"><span class="type-signature">(static) </span>speakText<span class="signature">(text)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".getVersion"><span class="type-signature">(static) </span>getVersion<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#AppVersion">AppVersion</a>}</span></h4>
     
 
     
@@ -120,7 +120,7 @@
 
 
 <div class="description">
-    Uses the devices text-to-speech capability to speek the specified text.
+    Gets the version of Airlock Browser.
 </div>
 
 
@@ -129,55 +129,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>text</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The text to speek.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -213,7 +164,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line699">line 699</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -236,6 +187,136 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The app version,containing a version name and code.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#AppVersion">AppVersion</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isLicensed"><span class="type-signature">(static) </span>isLicensed<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get a value indicating whether the app has a validlicense installed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if licensed; false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 

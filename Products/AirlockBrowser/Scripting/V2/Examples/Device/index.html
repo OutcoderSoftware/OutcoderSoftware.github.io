@@ -134,7 +134,7 @@ function testVibrate(textElement) {
 </div>
 
 <div class="testDiv">
-	<h3>Geting Screen Timeout</h3>
+	<h3>Getting Screen Timeout</h3>
 	<script id="getScreenTimeoutScript">
 function testGetScreenTimeoutMS(textElement) {
 	try {
@@ -158,10 +158,13 @@ function testGetScreenTimeoutMS(textElement) {
 function testSetScreenTimeoutMS(textElement) {
 	try {
 		var currentTimeout = airlock.device.getScreenTimeoutMS();
-		var value = currentTimeout > 100000 ? 30000 : 200000;
+		var twoMinutesMS = 1000 * 60 * 2;
+		var thritySecondsMS = 1000 * 30;
+		var halfHourMS = 1000 * 60 * 30;
+		var value = currentTimeout < twoMinutesMS ? halfHourMS : thritySecondsMS;
 
 		airlock.device.setScreenTimeoutMS(value);
-		setText(textElement, `Set Screen TimeoutMS to ${value}`);
+		setText(textElement, `Set Screen TimeoutMS to ${value / 1000 / 60} minutes.`);
 	} catch (e) {
 		setText(textElement, `Error ${e}`);
 		return;
@@ -225,34 +228,6 @@ function testUnlockScreen(textElement) {
 	<input type="button" onclick="testIsScreenLocked('testLockScreenText')" value="Is Screen Locked" /><br />
 	<input type="button" onclick="testUnlockScreen('testLockScreenText')" value="Unlock Screen" /><br />
 	<div class="outputText" type="text" id="testLockScreenText"></div>
-</div>
-
-<div class="testDiv">
-	<h3>Engaging the Orientation Lock</h3>
-	<script id="orientationLockScript">
-function testSetOrientationLock(textElement) {
-	try {
-		var oldValue = airlock.device.getOrientationLock();
-		var value = oldValue + 1;
-		if (value > 3) {
-			value = 0;
-		}
-		airlock.device.setOrientationLock(value);
-		setText(textElement, `Set Screen Orientation from ${oldValue} to ${value}`);
-	} catch (e) {
-		setText(textElement, `Error ${e}`);
-		return;
-	}
-}
-	</script>
-	<pre class="example" id="orientationLockPre"></pre>
-	<script>insertScriptInPre('orientationLockPre', 'orientationLockScript');</script>
-	<div>
-		Orientation lock can be set to 0 (unlocked), 1 (locked portrait), 2 (locked landscape), or 3 (system controlled).
-		When set to 3, the locked or unlocked state is determined by the configuration and/or user settings in the app.
-	</div>
-	<input type="button" onclick="testSetOrientationLock('testSetOrientationLockText')" value="Set Orientation Lock" />
-	<div class="outputText" type="text" id="testSetOrientationLockText"></div>
 </div>
 
 <div class="testDiv">

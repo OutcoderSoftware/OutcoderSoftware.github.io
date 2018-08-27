@@ -1,44 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: Airlock-1.0.0.js</title>
+﻿/**
+ * @file Provides a script interface for interacting with Airlock Browser
+ * @version 1.0.0
+ * @copyright Outcoder Sarl 2018. All Rights Reserved.
+ */
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: Airlock-1.0.0.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>﻿
 /**
  * The root namespace for Airlock Browser.
  * @namespace 
  */
 var airlock = airlock || {};
 
+/**
+ * Provides licensing, updates, and versioning APIs.
+ * @namespace 
+ */
 airlock.app = {};
 
+/**
+ * @typedef AppVersion
+ * @property {string} name The version name. For example "1.0".
+ * @property {number} code The version code which is incremented upon
+ * each release. A previous version has a lower version code.
+ */
+
+/**
+ * Gets the version of Airlock Browser.
+ * @returns {AppVersion} The app version,
+ * containing a version name and code.
+ */
 airlock.app.getVersion = function() {
 	return pageHost.ii.getResult("app.getVersion");
 };
 
+/**
+ * Get a value indicating whether the app has a valid
+ * license installed.
+ * @returns {boolean} True if licensed; false otherwise.
+ */
 airlock.app.isLicensed = function() {
 	return pageHost.ii.getResult("app.isLicensed");
 };
@@ -120,12 +118,12 @@ airlock.scanning.getDecoderWithNativeId = function(id) {
 
 /**
  * Retrieves all decoders via a Promise.
- * @returns {Promise&lt;Array.&lt;object>>} A list of all decoders.
+ * @returns {Promise<Array.<object>>} A list of all decoders.
  * @example
  * airlock.scanning.getDecoders()
  * .then(function (decoders) {
  *		var text = "";
- *		for (let i = 0; i &lt; decoders.length; i++) {
+ *		for (let i = 0; i < decoders.length; i++) {
  *			text += decoders[i].name + ", ";
  *		}
  *		alert(text);
@@ -186,7 +184,7 @@ airlock.scanning.setConfiguration = function(configuration) {
  * and removes any settings stored for the barcode reader, including
  * decoder settings and so forth. An app restart may be required by
  * some device brands.
- * @returns {Promise&lt;boolean>} When resolved indicates the reset is complete.
+ * @returns {Promise<boolean>} When resolved indicates the reset is complete.
  * If the resolve value is true, the new configuration has been applied.
  * If false, an app restart is required.
  * @example
@@ -210,9 +208,9 @@ airlock.scanning.resetConfiguration = function() {
  * // Display true if active; false otherwise.
  * alert(active);
  */
-airlock.scanning.isScannerActive = function () {
+airlock.scanning.isScannerActive = function() {
 	return pageHost.ii.getResult("scanning.isScannerActive");
-}
+};
 
 /**
  * Starts or stops the scanner.
@@ -367,9 +365,9 @@ airlock.device.RingerMode = {
  * is incoming. Ringer mode may be 2 (normal), 0 (silent), or 1 (vibrate).
  * @returns {airlock.device.RingerMode} 2 (normal), 0 (silent), or 1 (vibrate)
  */
-airlock.device.getRingerMode = function () {
+airlock.device.getRingerMode = function() {
 	return pageHost.ii.getResult("device.getRingerMode");
-}
+};
 
 /**
  * Sets the ringer mode of the device.
@@ -472,9 +470,9 @@ airlock.device.vibrate = function(durationMS) {
  * where the OS deems the user to be inactive, and locks the screen.
  * @returns {number} The length of time in milliseconds.
  */
-airlock.device.getScreenTimeoutMS = function () {
+airlock.device.getScreenTimeoutMS = function() {
 	return pageHost.ii.getResult("device.getScreenTimeoutMS");
-}
+};
 
 /**
  * Sets the length of time in milliseconds following user inactivity
@@ -861,7 +859,7 @@ airlock.networking.NetworkConnectionType = {
  * @property {boolean} roaming Gets a value indicating whether
  * the mobile broadband account is relying on a third-party telecom;
  * which may mean increased data usage costs for the user.
- * If &lt;c>true&lt;/c>, usage should be minimized.
+ * If <c>true</c>, usage should be minimized.
  * @property {string} ssid The Service Set Identifier. SSID is a case sensitive,
  * 32 alphanumeric character unique identifier attached to the header
  * of packets sent over a wireless local-area network (WLAN).
@@ -903,7 +901,7 @@ airlock.networking.getNetworkInfo = function() {
 
 /**
  * Gets a promise that returns a list of WirelessNetwork objects.
- * @returns {Promise&lt;Array.&lt;WirelessNetwork>>} A promise that containing
+ * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
  *		a list of wireless networks when fulfilled.
  *		The promis may take several seconds to resolve.
  * @example
@@ -911,7 +909,7 @@ airlock.networking.getNetworkInfo = function() {
  * .then(function (result) {
  *		var text = '';
  *		// Get the SSID's for each network.
- *		for (var i = 0; i &lt; result.length; i++) {
+ *		for (var i = 0; i < result.length; i++) {
  *			var network = result[i];
  *			text += network.ssid + "\n";
  *		}
@@ -1166,7 +1164,7 @@ airlock.log.error = function(message, error) {
  * after this date and time are returned.
  * @param {Date} [endDate] If supplied, only entries that were made
  * prior to this date and time are returned.
- * @returns {Promise&lt;Array.&lt;LogEntry>>} Resolves a list of log entries.
+ * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
  * @example
  * var startDate = new Date();
  * // Create a Date object that indicates the time one minute ago.
@@ -1176,7 +1174,7 @@ airlock.log.error = function(message, error) {
  * airlock.log.getEntries(startDate)
  *	.then(function (logEntries) {
  *		let text = "";
- *		for (let i = 0; i &lt; logEntries.length; i++) {
+ *		for (let i = 0; i < logEntries.length; i++) {
  *			let entry = logEntries[i];
  *			text += getPropertyValues(entry) + "\n";
  *		}
@@ -1291,7 +1289,7 @@ airlock.io.deleteFile = function(path) {
 /**
  * Returns a Promise indicating if the file at the specified location, exists.
  * @param {string} path The path to the file. Cannot be null.
- * @returns {Promise&lt;boolean>} True if the file exists; false otherwise.
+ * @returns {Promise<boolean>} True if the file exists; false otherwise.
  * @example
  * airlock.io.fileExists(filePath)
  *	.then(function (fileExists) {
@@ -1307,7 +1305,7 @@ airlock.io.fileExists = function(path) {
 /**
  * Returns a Promise indicating if the directory at the specified location, exists.
  * @param {string} path The path to the directory. Cannot be null.
- * @returns {Promise&lt;boolean>} True if the file exists; false otherwise.
+ * @returns {Promise<boolean>} True if the file exists; false otherwise.
  * @example
  * airlock.io.directoryExists(directoryPath)
  *	.then(function (fileExists) {
@@ -1376,7 +1374,7 @@ airlock.io.FileMode = {
  * @param {airlock.io.FileMode} fileMode The file mode, which determines
  * what can be done with the file and whether the file
  * should be opened, created or so forth.
- * @returns {Promise&lt;number>} A promise that resolves to a file identifier.
+ * @returns {Promise<number>} A promise that resolves to a file identifier.
  * @example
  * var file1Handle;
  *
@@ -1458,7 +1456,7 @@ airlock.io.deleteDirectory = function(path, recursive) {
  * This parameter can contain a combination of valid literal path and wildcard (* and ?) characters,
  * but it does not support regular expressions.
  * @param {boolean} [recursive] If true, files in nested directories are also returned.
- * @returns {Promise&lt;Array.&lt;string>>} The names of the files identified as matching the query.
+ * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  * @example
  * airlock.io.getFiles(directoryPath, "*.*", true)
  *		.then(function (result) {
@@ -1478,7 +1476,7 @@ airlock.io.getFiles = function(directoryPath, searchPattern, recursive) {
  * This parameter can contain a combination of valid literal path and wildcard (* and ?) characters,
  * but it does not support regular expressions.
  * @param {boolean} [recursive] If true, directories in nested directories are also returned.
- * @returns {Promise&lt;Array.&lt;string>>} The names of the files identified as matching the query.
+ * @returns {Promise<Array.<string>>} The names of the files identified as matching the query.
  * @example
  * airlock.io.getDirectories(outputDir, "*.*", true)
  *		.then(function (result) {
@@ -1526,7 +1524,7 @@ airlock.io.getFileInfo = function(path) {
  * @param {number} length The length (in bytes) of the file to read.
  * @param {number} [offset] The offset within the file to start reading.
  * If not specified, the current file offset is used.
- * @returns {Promise&lt;string>} A promise that resolves a string of text
+ * @returns {Promise<string>} A promise that resolves a string of text
  * read from the file.
  * @example
  * var fileLength = airlock.io.getFileSizeBytes(file1Handle);
@@ -1548,7 +1546,7 @@ airlock.io.readText = function(handle, length, offset) {
  * @param {number} length The length (in bytes) of the file to read.
  * @param {number} [offset] The offset within the file to start reading.
  * If not specified, the current file offset is used.
- * @returns {Promise&lt;string>} A promise that resolves
+ * @returns {Promise<string>} A promise that resolves
  * a base64 string read from the file.
  * @example
  * var fileLength = airlock.io.getFileSizeBytes(binaryFile1Handle);
@@ -1568,7 +1566,7 @@ airlock.io.readBase64 = function(handle, length, offset) {
 /**
  * Reads the entire contents of a file as text.
  * @param {string} filePath The path to the file.
- * @returns {Promise&lt;string>} A promise that resolves a string
+ * @returns {Promise<string>} A promise that resolves a string
  * that is the contents of the file.
  * @exception A sharing violation exception is thrown
  * if you have an open file handle for the file when using this API.
@@ -1587,7 +1585,7 @@ airlock.io.readAllText = function(filePath) {
 /**
  * Reads a line of text from a file.
  * @param {number} handle The file identifier.
- * @returns {Promise&lt;string>} A promise that resolves
+ * @returns {Promise<string>} A promise that resolves
  * a line of text that was read from the file.
  * @example
  * airlock.io.readLine(file1Handle)
@@ -1704,26 +1702,11 @@ airlock.io.getAppFilesDirectory = function() {
  */
 airlock.io.getExternalStorageDirectory = function() {
 	return pageHost.ii.getResult("io.getExternalStorageDirectory");
-};</code></pre>
-        </article>
-    </section>
+};
 
 
 
 
-</div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3><a href="global.html">Global</a></h3>
-</nav>
 
-<br class="clear">
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Aug 27 2018 14:51:11 GMT+0200 (W. Europe Daylight Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>

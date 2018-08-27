@@ -5,6 +5,16 @@
  */
 var airlock = airlock || {};
 
+airlock.app = {};
+
+airlock.app.getVersion = function() {
+	return pageHost.ii.getResult("app.getVersion");
+};
+
+airlock.app.isLicensed = function() {
+	return pageHost.ii.getResult("app.isLicensed");
+};
+
 /**
  * @callback EventListener Called when an airlock.Event is fired.
  * @param {object} args An event argument object containing values

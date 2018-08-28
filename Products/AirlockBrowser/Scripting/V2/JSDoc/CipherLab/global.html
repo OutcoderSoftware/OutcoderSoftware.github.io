@@ -961,7 +961,7 @@
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>airlock.scanning.getReaderType</li>
+            <li>airlock.scanning.getReaderModel</li>
         </ul>
     </dd>
     
@@ -2598,7 +2598,7 @@
     
 
     
-    <h4 class="name" id="JSCloseBrowser"><span class="type-signature"></span>JSCloseBrowser<span class="signature">(showNotification<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="JSCloseBrowser"><span class="type-signature"></span>JSCloseBrowser<span class="signature">(appPackageName<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -2606,7 +2606,7 @@
 
 
 <div class="description">
-    Causes the app to exit, and the user to be returned to the home screen.
+    Exits the app and launches a third-party appspecified using its package name. If no package is specified,the app just exits.
 </div>
 
 
@@ -2644,13 +2644,13 @@
 
         <tr>
             
-                <td class="name"><code>showNotification</code></td>
+                <td class="name"><code>appPackageName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
             
@@ -2670,7 +2670,7 @@
 
             
 
-            <td class="description last">If true, a notification is displayedto the user prior to exit. This helps to prevent the user from assumingthe app crashed. Default is true.</td>
+            <td class="description last">The package to launch upon exit.</td>
         </tr>
 
     
@@ -2711,19 +2711,12 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line585">line 585</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line595">line 595</a>
     </li></ul></dd>
     
 
     
 
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>airlock.device.exitApp</li>
-        </ul>
-    </dd>
     
 
     
@@ -2741,6 +2734,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the package exists; false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -2876,7 +2891,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line609">line 609</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line619">line 619</a>
     </li></ul></dd>
     
 
@@ -3040,7 +3055,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line620">line 620</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line630">line 630</a>
     </li></ul></dd>
     
 
@@ -3204,7 +3219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line705">line 705</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line715">line 715</a>
     </li></ul></dd>
     
 
@@ -3368,7 +3383,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line692">line 692</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line702">line 702</a>
     </li></ul></dd>
     
 
@@ -3532,7 +3547,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line645">line 645</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line655">line 655</a>
     </li></ul></dd>
     
 
@@ -3647,7 +3662,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line655">line 655</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line665">line 665</a>
     </li></ul></dd>
     
 
@@ -3762,7 +3777,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line666">line 666</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line676">line 676</a>
     </li></ul></dd>
     
 
@@ -3928,7 +3943,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line679">line 679</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line689">line 689</a>
     </li></ul></dd>
     
 
@@ -4115,7 +4130,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line729">line 729</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line739">line 739</a>
     </li></ul></dd>
     
 
@@ -4302,7 +4317,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line717">line 717</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line727">line 727</a>
     </li></ul></dd>
     
 
@@ -4489,7 +4504,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line781">line 781</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line791">line 791</a>
     </li></ul></dd>
     
 
@@ -4654,7 +4669,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line743">line 743</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line753">line 753</a>
     </li></ul></dd>
     
 
@@ -4841,7 +4856,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line757">line 757</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line767">line 767</a>
     </li></ul></dd>
     
 
@@ -6072,7 +6087,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line769">line 769</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line779">line 779</a>
     </li></ul></dd>
     
 
@@ -6236,7 +6251,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line791">line 791</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line801">line 801</a>
     </li></ul></dd>
     
 
@@ -6975,7 +6990,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line595">line 595</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line584">line 584</a>
     </li></ul></dd>
     
 
@@ -7506,7 +7521,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line635">line 635</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line645">line 645</a>
     </li></ul></dd>
     
 
@@ -8341,7 +8356,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line806">line 806</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line816">line 816</a>
     </li></ul></dd>
     
 
@@ -8917,7 +8932,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Aug 28 2018 18:22:18 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Aug 28 2018 20:44:49 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

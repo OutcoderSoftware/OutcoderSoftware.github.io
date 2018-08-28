@@ -287,53 +287,36 @@ function testUnsubscribeToPowerChanged(textElement) {
 <div class="testDiv">
 	<h3>Obtaining OS System Information</h3>
 	<script id="osInfoScript">
-function testGetSystemInfo(textElement) {
-	try {
-		var value = airlock.device.getSystemInfo();
-		var text = getPropertyValues(value);
-		setText(textElement, text);
-	} catch (e) {
-		setText(textElement, "Error: " + e);
-		return;
-	}
-}
+		function testGetSystemInfo(textElement) {
+			try {
+				var value = airlock.device.getSystemInfo();
+				var text = getPropertyValues(value);
+				setText(textElement, text);
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
 	</script><pre class="example" id="osInfoPre"></pre><script>insertScriptInPre('osInfoPre', 'osInfoScript');</script>
 	<input type="button" onclick="testGetSystemInfo('testGetSystemInfoText')" value="Get System Info" />
 	<div class="outputText" type="text" id="testGetSystemInfoText"></div>
 </div>
 
 <div class="testDiv">
-	<h3>Exiting the Browser</h3>
-	<script id="exitingBrowserScript">
-function testExitApp(textElement) {
+	<h3>Determine if an App is Installed</h3>
+	<script id="isPackageInstalledScript">
+function testIsPackageInstalled(textElement) {
 	try {
-		airlock.device.exitApp(true);
-		setText(textElement, "Closing...");
+		var installed = airlock.device.isPackageInstalled('com.google.android.apps.photos');
+		setText(textElement, installed ? "Installed" : "Not Installed");
 	} catch (e) {
 		setText(textElement, "Error: " + e);
 		return;
 	}
 }
-	</script><pre class="example" id="exitingBrowserPre"></pre><script>insertScriptInPre('exitingBrowserPre', 'exitingBrowserScript');</script>
-	<input type="button" onclick="testExitApp('testExitAppText')" value="Exit App" />
-	<div class="outputText" type="text" id="testExitAppText"></div>
-</div>
-
-<div class="testDiv">
-	<h3>Minimizing the Browser</h3>
-	<script id="minimizingBrowserScript">
-function testMinimizeApp(textElement) {
-	try {
-		airlock.device.minimizeApp();
-		setText(textElement, "Minimize attempted");
-	} catch (e) {
-		setText(textElement, "Error: " + e);
-		return;
-	}
-}
-	</script><pre class="example" id="minimizingBrowserPre"></pre><script>insertScriptInPre('minimizingBrowserPre', 'minimizingBrowserScript');</script>
-	<input type="button" onclick="testMinimizeApp('minimizeAppText')" value="Minimize App" />
-	<div class="outputText" type="text" id="minimizeAppText"></div>
+	</script><pre class="example" id="isPackageInstalledPre"></pre><script>insertScriptInPre('isPackageInstalledPre', 'isPackageInstalledScript');</script>
+	<input type="button" onclick="testIsPackageInstalled('testIsPackageInstalledText')" value="Is Package Installed?" />
+	<div class="outputText" type="text" id="testIsPackageInstalledText"></div>
 </div>
 
 <div class="testDiv">

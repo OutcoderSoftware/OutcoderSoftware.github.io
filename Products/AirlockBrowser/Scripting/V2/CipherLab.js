@@ -85,10 +85,10 @@ function BarCodeSetActive(active) {
 /**
  * Gets the reader type as reported by the device SDK.
  * @returns {string} The reader type as reported by the device SDK.
- * @see {@link airlock.scanning.getReaderType}
+ * @see {@link airlock.scanning.getReaderModel}
  */
 function BarCodeGetReaderType() {
-	return airlock.scanning.getReaderType();
+	return airlock.scanning.getReaderModel();
 }
 
 /**
@@ -135,7 +135,7 @@ function BarCodeSetReaderOutputConfiguration(configuration) {
  * @returns {string} The API service version reported by the device SDK.
  */
 function BarCodeGetReaderServiceVersion() {
-	return pageHost.ii.getResult("scanning.getServiceVersion");
+	return pageHost.ii.getResult("scanning.getApiVersionWithPatch");
 }
 
 /**
@@ -267,7 +267,7 @@ function JSFullScreenMode(fullScreen) {
  * @see {@link airlock.device.minimizeApp}
  */
 function JSMinimizeBrowser() {
-	airlock.device.minimizeApp();
+	airlock.app.minimize();
 }
 
 /**
@@ -576,17 +576,6 @@ function JSGetSystemInfo() {
 }
 
 /**
- * Causes the app to exit, and the user to be returned to the home screen.
- * @param {boolean} [showNotification] If true, a notification is displayed
- * to the user prior to exit. This helps to prevent the user from assuming
- * the app crashed. Default is true.
- * @see {@link airlock.device.exitApp}
- */
-function JSCloseBrowser(/*appPackageName*/) {
-	airlock.device.exitApp();
-}
-
-/**
  * Launches the app specified by its package name.
  * A valid package name might be, for example, 'com.google.android.apps.photos'.
  * @param {string} packageName The Android package name of the app to open.
@@ -594,6 +583,27 @@ function JSCloseBrowser(/*appPackageName*/) {
  */
 function JSLaunchApp(packageName) {
 	airlock.device.launchApp(packageName);
+}
+
+/**
+ * Exits the app and launches a third-party app
+ * specified using its package name. If no package is specified,
+ * the app just exits.
+ * @param {string} [appPackageName] The package to launch upon exit.
+ * @returns {boolean} True if the package exists; false otherwise.
+ */
+function JSCloseBrowser(appPackageName) {
+	if (!appPackageName) {
+		airlock.app.exit();
+		return true;
+	}
+
+	if (!airlock.device.isPackageInstalled(appPackageName)) {
+		return false;
+	}
+
+	airlock.app.exitAndLaunchApp(appPackageName);
+	return true;
 }
 
 /**

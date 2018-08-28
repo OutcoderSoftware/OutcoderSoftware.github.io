@@ -53,5 +53,56 @@ function testIsLicensed(textElement) {
 	<div class="outputText" type="text" id="isLicensedText"></div>
 </div>
 
+<div class="testDiv">
+	<h3>Exiting the App</h3>
+	<script id="exitingBrowserScript">
+		function testExitApp(textElement) {
+			try {
+				airlock.app.exit(true);
+				setText(textElement, "Closing...");
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+	</script><pre class="example" id="exitingBrowserPre"></pre><script>insertScriptInPre('exitingBrowserPre', 'exitingBrowserScript');</script>
+	<input type="button" onclick="testExitApp('testExitAppText')" value="Exit App" />
+	<div class="outputText" type="text" id="testExitAppText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Exit and Launch Another App</h3>
+	<script id="exitAndLaunchAppScript">
+function testExitAndLaunchApp(textElement) {
+	try {
+		airlock.app.exitAndLaunchApp('com.google.android.apps.photos', true);
+		setText(textElement, "Closing...");
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="exitAndLaunchAppPre"></pre><script>insertScriptInPre('exitAndLaunchAppPre', 'exitAndLaunchAppScript');</script>
+	<input type="button" onclick="testExitAndLaunchApp('testExitAndLaunchAppText')" value="Exit and Launch" />
+	<div class="outputText" type="text" id="testExitAndLaunchAppText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Minimizing the Browser</h3>
+	<script id="minimizingBrowserScript">
+function testMinimizeApp(textElement) {
+	try {
+		airlock.app.minimize();
+		setText(textElement, "Minimize attempted");
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="minimizingBrowserPre"></pre><script>insertScriptInPre('minimizingBrowserPre', 'minimizingBrowserScript');</script>
+	<input type="button" onclick="testMinimizeApp('minimizeAppText')" value="Minimize App" />
+	<div class="outputText" type="text" id="minimizeAppText"></div>
+</div>
+
 </body>
 </html>

@@ -159,9 +159,9 @@ function testSetScreenTimeoutMS(textElement) {
 	try {
 		var currentTimeout = airlock.device.getScreenTimeoutMS();
 		var twoMinutesMS = 1000 * 60 * 2;
-		var thritySecondsMS = 1000 * 30;
+		var thirtySecondsMS = 1000 * 30;
 		var halfHourMS = 1000 * 60 * 30;
-		var value = currentTimeout < twoMinutesMS ? halfHourMS : thritySecondsMS;
+		var value = currentTimeout < twoMinutesMS ? halfHourMS : thirtySecondsMS;
 
 		airlock.device.setScreenTimeoutMS(value);
 		setText(textElement, "Set Screen TimeoutMS to " + value / 1000 / 60 + " minutes.");

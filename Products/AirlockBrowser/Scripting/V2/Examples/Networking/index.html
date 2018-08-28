@@ -25,14 +25,13 @@
 function testGetNetworkInfo(textElement) {
 	try {
 		var value = airlock.networking.getNetworkInfo();
-		var text = getPropertyValues(value);
-		showDialog(`connected: ${value.connected}
-approachingDataLimit: ${value.approachingDataLimit}
-roaming: ${value.roaming}
-networkConnectionType: ${value.networkConnectionType}
-limitData: ${value.limitData}
-ssid: ${value.ssid}
-ipAddress: ${value.ipAddress}`);
+		showDialog("connected: " + value.connected +
+			"\napproachingDataLimit: " + value.approachingDataLimit +
+			"\nroaming: " + value.roaming +
+			"\nnetworkConnectionType: " + value.networkConnectionType +
+			"\nlimitData: " + value.limitData +
+			"\nssid: " + value.ssid +
+			"\nipAddress: " + value.ipAddress);
 	} catch (e) {
 		setText(textElement, "Error " + e);
 		return;
@@ -49,9 +48,9 @@ ipAddress: ${value.ipAddress}`);
 function testIsWifiEnabled(textElement) {
 	try {
 		var enabled = airlock.networking.isWifiEnabled();
-		setText(textElement, `Enabled: ${enabled}`);
+		setText(textElement, "Enabled: " + enabled);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error " + e);
 		return;
 	}
 }
@@ -61,9 +60,9 @@ function testSetWifiEnabled(textElement) {
 		var enabled = airlock.networking.isWifiEnabled();
 		var newValue = !enabled;
 		airlock.networking.setWifiEnabled(newValue);
-		setText(textElement, `Set wifi enabled to ${newValue}`);
+		setText(textElement, "Set wifi enabled to " + newValue);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -95,7 +94,7 @@ function testGetWirelessNetworks(textElement) {
 		});
 
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -112,7 +111,7 @@ function testSubscribeToConnectionChangedEvent(textElement) {
 		airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
 		setText(textElement, 'Subscribed.');
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -126,7 +125,7 @@ function testUnsubscribeToConnectionChangedEvent(textElement) {
 		airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
 		setText(textElement, "Unsubscribed");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

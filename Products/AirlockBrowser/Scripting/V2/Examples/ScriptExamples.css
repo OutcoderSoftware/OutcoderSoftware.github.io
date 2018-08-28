@@ -168,7 +168,6 @@ table {
 
 input {
 	margin: 40px 25px;
-
 	display: block;
 	border: none;
 	padding: 10px 0;
@@ -180,7 +179,7 @@ input {
 	background-position: -200px 0;
 	background-size: 200px 100%;
 	background-repeat: no-repeat;
-	color: #0e6252;
+	color: #9BC53D;
 }
 input:focus, input:valid {
 	box-shadow: none;

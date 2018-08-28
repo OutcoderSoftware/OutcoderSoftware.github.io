@@ -38,17 +38,17 @@
 	<script id="getAllDecodersScript">
 function testGetDecoders(textElement) {
 	try {
-		setText(textElement, `Getting all decoders...`);
+		setText(textElement, "Getting all decoders...");
 
 		airlock.scanning.getDecoders()
 			.then(function (decoders) {
 				var text = getPropertyValues(decoders);
 				showDialog(text);
 			}).catch(function (error) {
-				setText(textElement, `Error: ${error}`);
+				setText(textElement, "Error: " + error);
 			});
 	} catch (e) {
-		setText(textElement, `Error: ${e}`);
+		setText(textElement, "Error: " + e);
 	}
 }
 	</script><pre class="example" id="getAllDecodersPre"></pre><script>insertScriptInPre('getAllDecodersPre', 'getAllDecodersScript');</script>
@@ -62,9 +62,9 @@ function testGetDecoders(textElement) {
 function testGetDecoderById(textElement) {
 	try {
 		var decoder = airlock.scanning.getDecoderWithNativeId(71);
-		setText(textElement, `Decoder name: ${decoder.name}`);
+		setText(textElement, "Decoder name: " + decoder.name);
 	} catch (e) {
-		setText(textElement, `Decoder get error ${e}`);
+		setText(textElement, "Decoder get error " + e);
 	}
 }
 	</script><pre class="example" id="getDecoderByIdPre"></pre><script>insertScriptInPre('getDecoderByIdPre', 'getDecoderByIdScript');</script>
@@ -80,7 +80,7 @@ function testGetDecoderWithName(textElement) {
 		var decoder = airlock.scanning.getDecoderWithName('codabar');
 		setText(textElement, decoder.name);
 	} catch (e) {
-		setText(textElement, `Error: ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -101,7 +101,7 @@ function testDecoderProperties(textElement) {
 		airlock.scanning.setDecoder(codabarDecoder);
 		setText(textElement, "Decoder set");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 	}
 }
 	</script><pre class="example" id="setDecoderProperties1Pre"></pre><script>insertScriptInPre('setDecoderProperties1Pre', 'setDecoderProperties1Script');</script>
@@ -117,9 +117,9 @@ function testSetDecoder(textElement) {
 		var decoder = airlock.scanning.getDecoderWithName('codabar');
 		decoder.enabled = !decoder.enabled;
 		airlock.scanning.setDecoder(decoder);
-		setText(textElement, `${decoder.name}  enabled: ${decoder.enabled}`);
+		setText(textElement, decoder.name + " enabled: " + decoder.enabled);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -183,7 +183,7 @@ function testGetActive(textElement) {
 		var active = airlock.scanning.isScannerActive();
 		setText(textElement, active + "");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -200,7 +200,7 @@ function testSetActive(textElement) {
 		airlock.scanning.setScannerActive(!active);
 		setText(textElement, 'Success');
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -216,7 +216,7 @@ function testGetReaderType(textElement) {
 		var text = airlock.scanning.getReaderType();
 		setText(textElement, text + "");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -232,7 +232,7 @@ function testGetFirmwareVersion(textElement) {
 		var text = airlock.scanning.getFirmwareVersion();
 		setText(textElement, text + "");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -248,7 +248,7 @@ function testGetApiVersion(textElement) {
 		var text = airlock.scanning.getApiVersion();
 		setText(textElement, text + "");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -265,7 +265,7 @@ function testSubscribeToScanEvent(textElement) {
 		airlock.scanning.onScan.addListener(handleScan);
 		setText(textElement, 'Subscribed.');
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -279,7 +279,7 @@ function testUnsubscribeToScanEvent(textElement) {
 		airlock.scanning.onScan.removeListener(handleScan);
 		setText(textElement, "Unsubscribed");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -297,14 +297,14 @@ function testSubscribeToErrorEvent(textElement) {
 		airlock.scanning.onScanError.addListener(handleScanError);
 		setText(textElement, 'Subscribed.');
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
 
 function handleScanError(args) {
 	setText('testScanErrorEventText', "Received scan error notification.");
-	setTimeout(setText('testScanErrorEventText', "Listening..."), 4000);
+	window.setTimeout(setText('testScanErrorEventText', "Listening..."), 4000);
 }
 
 function testUnsubscribeToErrorEvent(textElement) {
@@ -312,7 +312,7 @@ function testUnsubscribeToErrorEvent(textElement) {
 		airlock.scanning.onScanError.removeListener(handleScanError);
 		setText(textElement, "Unsubscribed");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -330,7 +330,7 @@ function testBeginScan(textElement) {
 		airlock.scanning.beginScan();
 		setText(textElement, "Begin scan...");
 	} catch (e) {
-		setText(textElement, `Error: ${e}`);
+		setText(textElement, "Error: " + e);
 	}
 }
 
@@ -339,7 +339,7 @@ function testEndScan(textElement) {
 		airlock.scanning.endScan();
 		setText(textElement, "Ended scan.");
 	} catch (e) {
-		setText(textElement, `Error: ${e}`);
+		setText(textElement, "Error: " + e);
 	}
 }
 	</script><pre class="example" id="beginScanPre"></pre><script>insertScriptInPre('beginScanPre', 'beginScanScript');</script>

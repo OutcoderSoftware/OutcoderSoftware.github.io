@@ -121,12 +121,30 @@ function BarCodeSetReaderOutputConfiguration(configuration) {
 }
 
 /**
+ * Gets the API service version of the device SDK. This value is retrieved
+ * from the device SDK itself. There are two version numbers in the current environment for developers.
+ * One is "Reader Service Version" and the other is "Reader API version".
+ * The two correspond to two different entities.
+ * API and its version number are only modified when there are new functions,
+ * while reader service and its version number are modified whenever the code
+ * of reader service is modified, including both bug fixes and new implementations.
+ * So these two version numbers change independently.
+ * If there is a new function implemented, both version numbers will change
+ * but if the change is simply a bug fix with no API declarations changes
+ * then only the version of the reader service will change.
+ * @returns {string} The API service version reported by the device SDK.
+ */
+function BarCodeGetReaderServiceVersion() {
+	return pageHost.ii.getResult("scanning.getServiceVersion");
+}
+
+/**
  * Gets the API version of the device SDK. This value is retrieved
  * from the device SDK itself.
  * @returns {string} The API version reported by the device SDK.
  * @see {@link airlock.scanning.getApiVersion}
  */
-function BarCodeGetReaderServiceVersion() {
+function BarCodeGetApiVersion() {
 	return airlock.scanning.getApiVersion();
 }
 
@@ -345,12 +363,34 @@ function JSSetDeviceVolume(streamType, volume) {
 }
 
 /**
- * Writes a log message at the specified level.
+ * Writes a log message at the specified level. 
  * @param {airlock.log.LogLevel} level The log level of the message.
+ * All is 1, Debug is 2, Info is 3, Warn is 4, Error is 5
  * @param {string} message The text to write to the log.
  */
 function JSLog(level, message) {
-	pageHost.ii.log.writeLog(level, message);
+	var mappedLevel = 1;
+	switch (level) {
+		case 1:
+			mappedLevel = 1;
+			break;
+		case 2:
+			mappedLevel = 2;
+			break;
+		case 3:
+			mappedLevel = 4;
+			break;
+		case 4:
+			mappedLevel = 8;
+			break;
+		case 5:
+			mappedLevel = 16;
+			break;
+	}
+
+	/* The offset is 1, to exclude this method
+	 from determining the line number identification and so forth. */
+	pageHost.ii.log.writeLog(mappedLevel, message, 1);
 }
 
 /**
@@ -441,23 +481,24 @@ function JSGetAutoRotate() {
  * Sets the orientation for the browser tab, when it is active.
  * The value set via this function overrides any orientation lock values
  * from the settings within the app.
- * Passing null to this function unsets any previously set value and causes
- * the browser to fall back to remote web application, or browser, settings.
- * Screen orientation can be set globally, for all tabs via the app settings screen;
- * for web applications, via the remote application dialog in the launchpad;
- * or individual pages, using this JavaScript API.
- * @param {airlock.device.OrientationLockType} lockType
- * The orientation enumeration value.
- * 0 is unlocked, 1 is locked portrait, 2 is locked landscape,
- * 3 is system controlled.
- * When the value is 3 (system controlled), an orientation value
- * has not been set using this API and the orientation lock
- * cannot be determined because the current tab
- * may not be active. When 3, the locked or unlocked state is determined
- * by the configuration and/or user settings in the app.
+ * @param {number} mode 1 is unlocked, 2 is locked portrait, 3 is locked landscape.
  * @see {@link airlock.device.setOrientationLock}
  */
-function JSSetAutoRotate(lockType) {
+function JSSetAutoRotate(mode) {
+	var lockType;
+	switch (mode) {
+		case 1:
+			lockType = airlock.ui.OrientationLockType.UNLOCKED;
+			break;
+		case 2:
+			lockType = airlock.ui.OrientationLockType.LOCK_PORTRAIT;
+			break;
+		case 3:
+			lockType = airlock.ui.OrientationLockType.LOCK_LANDSCAPE;
+			break;
+		default:
+			lockType = airlock.ui.OrientationLockType.SYSTEM_CONTROLLED;
+	}
 	airlock.device.setOrientationLock(lockType);
 }
 

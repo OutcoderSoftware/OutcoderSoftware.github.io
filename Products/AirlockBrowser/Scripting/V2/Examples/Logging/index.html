@@ -23,11 +23,11 @@
 	<script id="writeLogScript">
 function testWriteLog(textElement) {
 	try {
-		var value = `Test message ${makeRandomId()}`;
+		var value = "Test message " + makeRandomId();
 		airlock.log.debug(value);
-		setText(textElement, `Wrote log message:${value}`);
+		setText(textElement, "Wrote log message:" + value);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -47,17 +47,17 @@ function testGetLogEntries(textElement) {
 		airlock.log.getEntries()
 			.then(function (logEntries) {
 				setText(textElement, "Retrieved entries.");
-				let text = "";
-				for (let i = 0; i < logEntries.length; i++) {
-					let entry = logEntries[i];
+				var text = "";
+				for (var i = 0; i < logEntries.length; i++) {
+					var entry = logEntries[i];
 					text += getPropertyValues(entry) + "\n";
 				}
 				showDialog(text);
 			}).catch(function (error) {
-				setText(textElement, `Error ${error}`);
+				setText(textElement, "Error " + error);
 			});
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -80,18 +80,18 @@ function testGetLogEntriesDateRange(textElement) {
 		airlock.log.getEntries(startDate)
 			.then(function (logEntries) {
 				setText(textElement, "Retrieved entries.");
-				let text = "";
-				for (let i = 0; i < logEntries.length; i++) {
-					let entry = logEntries[i];
+				var text = "";
+				for (var i = 0; i < logEntries.length; i++) {
+					var entry = logEntries[i];
 					text += getPropertyValues(entry) + "\n";
 				}
 				showDialog(text);
 			}).catch(function (error) {
-				setText(textElement, `Error ${error}`);
+				setText(textElement, "Error " + error);
 			});
 
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -108,12 +108,12 @@ function testDeleteLogEntries(textElement) {
 	try {
 		airlock.log.deleteEntries()
 			.then(function (value) {
-				setText(textElement, `Deleted ${value} entries.`);
+				setText(textElement, "Deleted " + value + " entries.");
 			}).catch(function (error) {
-				setText(textElement, `Error ${error}`);
+				setText(textElement, "Error " + error);
 			});
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -133,12 +133,12 @@ function testDeleteLogEntriesDateRange(textElement) {
 
 		airlock.log.deleteEntries(null, endDate)
 			.then(function (value) {
-				setText(textElement, `Deleted ${value} entries.`);
+				setText(textElement, "Deleted " + value + " entries.");
 			}).catch(function (error) {
-				setText(textElement, `Error ${error}`);
+				setText(textElement, "Error " + error);
 			});
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

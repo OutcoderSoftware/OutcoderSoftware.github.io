@@ -27,7 +27,8 @@ function getPropertyValues(obj, seenItems) {
 			//text += getPropertyValues(propertyValue);
 		}
 
-		text += `${propertyName}: ${propertyValue}\n`;
+		text += propertyName + ": " + propertyValue + "\n";
+		//text += `${propertyName}: ${propertyValue}\n`;
 	}
 	return text;
 }

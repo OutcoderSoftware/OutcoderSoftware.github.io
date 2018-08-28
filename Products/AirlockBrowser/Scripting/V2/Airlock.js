@@ -354,8 +354,19 @@ airlock.device.setBrightness = function(brightness) {
  * @readonly
  */
 airlock.device.RingerMode = {
+	/** Ringer mode that may be audible and may vibrate.
+	 * It will be audible if the volume before changing out of this mode was audible.
+	 * It will vibrate if the vibrate setting is on.
+	 */
 	NORMAL: 2,
+	/** Ringer mode that will be silent and will not vibrate.
+	 * (This overrides the vibrate setting.)
+	 */
 	SILENT: 0,
+	/** Ringer mode that will be silent and will vibrate.
+	 * (This will cause the phone ringer to always vibrate,
+	 * but the notification vibrate to only vibrate if set.)
+	 */
 	VIBRATE: 1
 };
 
@@ -389,16 +400,24 @@ airlock.device.setRingerMode = function(mode) {
  * @readonly
  */
 airlock.device.StreamType = {
+	/** Suggests using the default stream type.
+	 * This may not be used in all places a stream type is needed. */
 	NOTIFICATION_DEFAULT: -1,
+	/** Used to identify the volume of audio streams for phone calls. */
 	VOICE_CALL: 0,
+	/** Used to identify the volume of audio streams for system sounds. */
 	SYSTEM: 1,
+	/** Used to identify the volume of audio streams for the phone ring. */
 	RING: 2,
+	/** Used to identify the volume of audio streams for music playback. */
 	MUSIC: 3,
+	/** Used to identify the volume of audio streams for alarms. */
 	ALARM: 4,
+	/** Used to identify the volume of audio streams for notifications. */
 	NOTIFICATION: 5,
-	/** Dual-tone multi-frequency (DTMF) tones are used by automated
-	 * dial-in systems such as voicemail or where prompts are used to navigate.
-	 */
+	/** Used to identify the volume of audio streams for DTMF Tones.
+	 * Dual-tone multi-frequency (DTMF) tones are used by automated
+	 * dial-in systems such as voicemail or where prompts are used to navigate. */
 	DTMF: 8
 };
 
@@ -589,7 +608,9 @@ airlock.device.unlockScreen = function() {
  * @readonly
  */
 airlock.device.PowerSource = {
+	/** A battery power source. */
 	BATTERY: 0,
+	/** An external power supply such as mains power. */
 	EXTERNAL: 1
 };
 
@@ -598,11 +619,16 @@ airlock.device.PowerSource = {
  * @type {number}
  * @readonly
  */
-airlock.device.PowerSource = {
+airlock.device.BatteryState = {
+	/** The battery state is unknown. */
 	UNKNOWN: 0,
+	/** Indicates the unit is charging. */
 	CHARGING: 1,
+	/** Indicates the battery is running down. */
 	DISCHARGING: 2,
+	/** Battery is fully charged. */
 	FULL: 4,
+	/** Battery is not charging. */
 	NOT_CHARGING: 8
 };
 
@@ -616,7 +642,7 @@ airlock.device.PowerSource = {
  * Note that this value may not be indicative of the time until
  * the device runs out of charge, as the device may be connected
  * to mains power and charging. See the batteryState value.
- * @property {airlock.device.PowerSource} batteryState
+ * @property {airlock.device.BatteryState} batteryState
  * Indicates the charging state of battery.
  */
 
@@ -770,13 +796,15 @@ airlock.ui.setLaunchpadOpen = function(open) {
  * @enum {number}
  * @readonly
  */
-airlock.device.OrientationLockType = {
+airlock.ui.OrientationLockType = {
 	/**
 	 * Indicates the orientation is dynamic and free
 	 * to be rotated to portrait or landscape.
 	 */
 	UNLOCKED: 0,
+	/** The browser tab is locked to the portrait orientation. */
 	LOCK_PORTRAIT: 1,
+	/** The browser tab is locked to the landscape orientation. */
 	LOCK_LANDSCAPE: 2,
 	/**
 	 * The locked or unlocked state is determined
@@ -810,7 +838,7 @@ airlock.ui.getOrientationLock = function() {
  * Screen orientation can be set globally, for all tabs via the app settings screen;
  * for web applications, via the remote application dialog in the launchpad;
  * or individual pages, using this JavaScript API.
- * @param {airlock.device.OrientationLockType} lockType
+ * @param {airlock.ui.OrientationLockType} lockType
  * The orientation enumeration value.
  * 0 is unlocked, 1 is locked portrait, 2 is locked landscape,
  * 3 is system controlled.
@@ -839,8 +867,11 @@ airlock.networking = {};
  * @readonly
  */
 airlock.networking.NetworkConnectionType = {
+	/** No network connection. */
 	NONE: 0,
+	/** Connected to a local area network. */
 	LAN: 1,
+	/** Connected to a mobile broadband network. */
 	MOBILE_BROADBAND: 2
 };
 
@@ -1093,7 +1124,7 @@ airlock.log.setMinLevel = function(level) {
  * airlock.log.debug("Message from my web page");
  */
 airlock.log.debug = function(message, error) {
-	pageHost.ii.log.writeLog(2, message, error);
+	pageHost.ii.log.writeLog(2, message, error, 1);
 };
 
 /**
@@ -1107,7 +1138,7 @@ airlock.log.debug = function(message, error) {
  * airlock.log.info("Message from my web page");
  */
 airlock.log.info = function(message, error) {
-	pageHost.ii.log.writeLog(4, message, error);
+	pageHost.ii.log.writeLog(4, message, error, 1);
 };
 
 /**
@@ -1121,7 +1152,7 @@ airlock.log.info = function(message, error) {
  * airlock.log.warn("Message from my web page", error);
  */
 airlock.log.warn = function(message, error) {
-	pageHost.ii.log.writeLog(8, message, error);
+	pageHost.ii.log.writeLog(8, message, error, 1);
 };
 
 /**
@@ -1135,7 +1166,7 @@ airlock.log.warn = function(message, error) {
  * airlock.log.info("Message from my web page", error);
  */
 airlock.log.error = function(message, error) {
-	pageHost.ii.log.writeLog(16, message, error);
+	pageHost.ii.log.writeLog(16, message, error, 1);
 };
 
 

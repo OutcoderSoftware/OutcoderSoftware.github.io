@@ -25,15 +25,15 @@
 function testSetTextZoomLevel(textElement) {
 	try {
 		var level = airlock.browsing.getTextZoomLevel();
-		level += .11;
-		if (level > 1.7) {
+		level += .31;
+		if (level > 1.5) {
 			level = 1.0;
 		}
 		airlock.browsing.setTextZoomLevel(level);
 
-		setText(textElement, `Set Text Zoom to ${level}`);
+		setText(textElement, "Set Text Zoom to " + level);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -54,9 +54,9 @@ function testSetNavigationErrorAction(textElement) {
 		var url = useUrl ? document.getElementById('ErrorActionUrl').textContent : null;
 
 		airlock.browsing.setNavigationErrorAction(Number(action), url);
-		setText(textElement, `Set value to ${action}`);
+		setText(textElement, "Set value to " + action);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

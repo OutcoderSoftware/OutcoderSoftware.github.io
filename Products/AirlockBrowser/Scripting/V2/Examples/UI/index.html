@@ -26,9 +26,9 @@ function testSetFullScreen(textElement) {
 	try {
 		var fullScreen = airlock.ui.isFullScreen();
 		airlock.ui.setFullScreen(!fullScreen);
-		setText(textElement, `Set to ${!fullScreen}`);
+		setText(textElement, "Set to " + !fullScreen);
 	} catch (e) {
-		setText(textElement, `Error: ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -43,9 +43,9 @@ function testSetLaunchpadOpen(textElement) {
 	try {
 		var open = airlock.ui.isLaunchpadOpen();
 		airlock.ui.setLaunchpadOpen(!open);
-		setText(textElement, `Set to ${!open}`);
+		setText(textElement, "Set to " + !open);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -65,9 +65,9 @@ function testSetOrientationLock(textElement) {
 			value = 0;
 		}
 		airlock.ui.setOrientationLock(value);
-		setText(textElement, `Set Screen Orientation from ${oldValue} to ${value}`);
+		setText(textElement, "Set Screen Orientation from " + oldValue + " to " + value);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -88,9 +88,9 @@ function testSetOrientationLock(textElement) {
 function testGetUILanguage(textElement) {
 	try {
 		var value = airlock.ui.getUILanguage();
-		setText(textElement, `Language: ${value}`);
+		setText(textElement, "Language: " + value);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

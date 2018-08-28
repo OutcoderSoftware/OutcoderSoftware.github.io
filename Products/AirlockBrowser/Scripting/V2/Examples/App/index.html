@@ -25,9 +25,9 @@
 function testGetVersion(textElement) {
 	try {
 		var appVersion = airlock.app.getVersion();
-		setText(textElement, `Version Name: ${appVersion.name}, Version Code: ${appVersion.code}`);
+		setText(textElement, "Version Name: " + appVersion.name + ", Version Code: " + appVersion.code);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -44,7 +44,7 @@ function testIsLicensed(textElement) {
 		var licensed = airlock.app.isLicensed();
 		setText(textElement, licensed ? "Licensed" : "Not Licensed");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

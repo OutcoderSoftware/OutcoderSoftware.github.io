@@ -25,14 +25,14 @@
 function testSetBrightness(textElement) {
 	try {
 		var brightness = airlock.device.getBrightness();
-		brightness += .1;
-		if (brightness > 1) {
-			brightness = .1;
+		brightness -= .1;
+		if (brightness < .2) {
+			brightness = 1;
 		}
 		airlock.device.setBrightness(brightness);
-		setText(textElement, `Set brightness to ${brightness}`);
+		setText(textElement, "Set brightness to " + brightness);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -54,9 +54,9 @@ function testSetRingerMode(textElement) {
 			value = 0;
 		}
 		airlock.device.setRingerMode(value);
-		setText(textElement, `Set Mode to ${value}`);
+		setText(textElement, "Set Mode to " + value);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -81,9 +81,9 @@ function testSetVolume(output1, output2) {
 			value = 0;
 		}
 		airlock.device.setVolume(streamType, value);
-		setText(output1, `Set value to ${value}`);
+		setText(output1, "Set value to " + value);
 	} catch (e) {
-		setText(output1, `Error ${e}`);
+		setText(output1, "Error: " + e);
 		return;
 	}
 }
@@ -103,7 +103,7 @@ function testBeep(textElement) {
 		airlock.device.beep();
 		setText(textElement, "Beeped!");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -122,7 +122,7 @@ function testVibrate(textElement) {
 		airlock.device.vibrate(100);
 		setText(textElement, "Vibrated!");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -139,9 +139,9 @@ function testVibrate(textElement) {
 function testGetScreenTimeoutMS(textElement) {
 	try {
 		var value = airlock.device.getScreenTimeoutMS();
-		setText(textElement, `${value} MS`);
+		setText(textElement, value + " MS");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -164,9 +164,9 @@ function testSetScreenTimeoutMS(textElement) {
 		var value = currentTimeout < twoMinutesMS ? halfHourMS : thritySecondsMS;
 
 		airlock.device.setScreenTimeoutMS(value);
-		setText(textElement, `Set Screen TimeoutMS to ${value / 1000 / 60} minutes.`);
+		setText(textElement, "Set Screen TimeoutMS to " + value / 1000 / 60 + " minutes.");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -183,9 +183,9 @@ function testSetScreenTimeoutMS(textElement) {
 function testLockScreen(textElement) {
 	try {
 		airlock.device.lockScreen();
-		setText(textElement, `Locked streen.`);
+		setText(textElement, "Locked streen.");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -193,9 +193,9 @@ function testLockScreen(textElement) {
 function testIsScreenLocked(textElement) {
 	try {
 		var locked = airlock.device.isScreenLocked();
-		setText(textElement, `Screen locked: ${locked}`);
+		setText(textElement, "Screen locked: " + locked);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -203,17 +203,17 @@ function testIsScreenLocked(textElement) {
 function testUnlockScreen(textElement) {
 	try {
 		airlock.device.lockScreen();
-		setTimeout(function () {
+		window.setTimeout(function () {
 			try {
 				airlock.device.unlockScreen();
-				setText(textElement, `Screen unlocked.`);
+				setText(textElement, "Screen unlocked.");
 			} catch (e2) {
-				setText(textElement, `Error ${e2}`);
+				setText(textElement, "Error " + e2);
 			}
 		}, 4000);
 
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -239,7 +239,7 @@ function testGetPower(textElement) {
 		var text = getPropertyValues(value);
 		setText(textElement, text);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -258,7 +258,7 @@ function testSubscribeToPowerChanged(textElement) {
 		airlock.device.onPowerChanged.addListener(handlePowerChanged);
 		setText(textElement, 'Subscribed.');
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -272,7 +272,7 @@ function testUnsubscribeToPowerChanged(textElement) {
 		airlock.device.onPowerChanged.removeListener(handlePowerChanged);
 		setText(textElement, "Unsubscribed");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -293,7 +293,7 @@ function testGetSystemInfo(textElement) {
 		var text = getPropertyValues(value);
 		setText(textElement, text);
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -310,7 +310,7 @@ function testExitApp(textElement) {
 		airlock.device.exitApp(true);
 		setText(textElement, "Closing...");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -327,7 +327,7 @@ function testMinimizeApp(textElement) {
 		airlock.device.minimizeApp();
 		setText(textElement, "Minimize attempted");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }
@@ -344,7 +344,7 @@ function testLaunchApp(textElement) {
 		airlock.device.launchApp('com.google.android.apps.photos');
 		setText(textElement, "Launching app...");
 	} catch (e) {
-		setText(textElement, `Error ${e}`);
+		setText(textElement, "Error: " + e);
 		return;
 	}
 }

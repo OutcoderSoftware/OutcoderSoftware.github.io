@@ -259,7 +259,18 @@ Airlock Browser can be configured remotely using an exported configuration file.
 
 Changing the Configuration File URL causes the browser to immediately attempt to download the configuration file and import the configuration. If configuration importation succeeds, a success message is displayed.
 
-### License Server Address
+### License Server API Key
+
+The License Server API Key is a value that is assigned to you by Outcoder or a third-party representitive. This key allows you to assign, unassign, and reassign licenses for devices within your organization. All devices in your organization should have the same License Server API Key.
+
+You can set the value directly, using the License Server API Key field. Or, you can set this value by placing the key in a file on the device. 
+
+The file must be named *ApiKey.txt* and must have the following path:
+[External Storage Directory]/Enterprise/Browser/ApiKey.txt
+
+> **TIP:** You can find the location of the external storage directory by browsing to the [IO example page](../../Scripting/V2/Examples/IO/#testGetKnowDirectoriesText) on your device, and using the *Get External Directory* button.
+
+
 
 Once you procure a license for Airlock Browser, there are two ways to apply the license. You can manually import the license using the Import License button in Administration -> Manage License. Alternatively, you can set a License Server address on the Device tab of the Settings screen. When using a License Server, the Outcoder License Server needs to be installed and running on a computer that is reachable on your organization's intranet. For further information regarding the Outcoder License Server, please see the [Outcoder License Server](http://www.outcoder.com/Products/LicenseServer/) User Guide, available on the Outcoder website.
 
@@ -352,6 +363,8 @@ If *Before Barcode Wedge* is selected, the script is invoked before text is inse
 
 > **NOTE:** When *Before Barcode Wedge* is selected, the *Keyboard Wedge* option must be enabled in the Web Application Profile settings for the script to be invoked.
 
+> **NOTE:** To receive a notification when a barcode scan occurs, you can also use the *On Page Load* option to subscribe to the `airlock.scanning.onScan` event. The `onScan` event is described later in this guide.
+
 If *After Barcode Scan* is selected, the script is invoked after a barcode scan is performed, regardless of the *Keyboard Wedge* option in the Web Application Profile settings.
 
 JavaScript may be entered directly into the JavaScript field. Alternatively, use the Import button in the application bar to browse for a JavaScript file. This allows you to edit the file with the convenience of a desktop editor. 
@@ -378,12 +391,12 @@ Indicates whether the currently active field is to be populated with the barcode
 * `InsertMode`  
 If the keyboard wedge is enabled, this field indicates if the barcode data will replace or be prepended or appended to the active text field.
 
-## Leveraging the Airlock Browser JavaScript API
+## Using Airlock Browser's JavaScript API
 
 You can invoke the Airlock Browser JavaScript APIs via an on-page script or from a remote web application JavaScript event handler. 
 
 > **NOTE:**
-Before we get started, please note that there exists [comprehensive working examples](http://outcoder.com/Products/AirlockBrowser/Scripting/V2/Examples/) for the APIs listed in this section.
+Before we get started, please note that there exists [comprehensive working examples](../../Scripting/V2/Examples/) for the APIs listed in this section.
 
 In this section you explore the following sets of APIs:
 * `browsing` Allows modification of the user's web browsing experience.
@@ -422,11 +435,17 @@ The JavaScript object that you use to call through to Airlock Browser is named `
 </html>
 ```
 
+### Enabling Intellisense
+
+During development of your web application, you can include the [Airlock.js](../../Scripting/V2/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, a long with examples. This aids in increasing the speed of development and reduces errors from typos.
+
+> **NOTE:** Airlock Browser includes 80+ APIs for controlling and interacting with the browsers. Only a small subset are covered in this guide. Please see the [Live Examples](../../Scripting/V2/Examples/) and [API Documentation](../../Scripting/V2/JSDoc/Airlock/) for more information.
+
 ### Configuring the Barcode Reader via JavaScript
 
 Airlock Browser provides a JavaScript API that allows you to fully configure the mobile computer's hardware barcode reader.
 
-> **NOTE:** Configuration changes applied via JavaScript do *not* result in permanent changes to the device configuration with Airlock Browser. The device configuration, as specified in Airlock Browser's device configuration settings, is restored when Airlock Browser is restarted. 
+> **NOTE:** Configuration changes applied via JavaScript do *not* result in permanent changes to the device configuration with Airlock Browser. The device configuration, as specified in Airlock Browser's device configuration settings, is restored when Airlock Browser is restarted. The one exception to this is the `airlock.scanning.resetConfiguration()` function, which does alter the devices configuration across app restarts.
 
 #### Retrieving a Decoder's Configuration
 
@@ -453,18 +472,47 @@ For a list of configurable properties, see the device types respective guide:
 > **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
 
 ```js
-var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
-codabarDecoder.Enabled = true;
-codabarDecoder.NotisEditingType = 1;
-codabarDecoder.LengthMin = 10;
-var setResult = airlock.scanning.setDecoder(decoder);
+try {
+	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
+	codabarDecoder.enabled = true;
+	codabarDecoder.notisEditingType = 1;
+	codabarDecoder.lengthMin = 10;
+	airlock.scanning.setDecoder(codabarDecoder);
+	alert("Decoder set");
+} catch (e) {
+	alert("Error: " + e);
+}
 ```
 
-The `airlock.scanning.setDecoder` function returns an object indicating the success or failure of the call. The result object has a boolean `successful` field, and an `error` field that is populated if the `successful` property is `false`. The following example displays an alert box with the result of the `setDecoder` function call:
+The `airlock.scanning.setDecoder` function raises an exception if the decoder value's are unable to be set. 
+
+### Monitoring Network Connectivity
+Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, subscribe to the `onConnectionChanged` event, like so:
 
 ```js
-alert("Decoder set: " + setResult.successful + "   " + setResult.error);
+airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
+
+function handleConnectionChanged(args) {
+	alert(args.connected);
+}
 ```
+
+The `onConnectionChanged` event handler receives a `NetworkInfo` object. For a complete list of properties see the [NetworkInfo type](../../Scripting/V2/JSDoc/Airlock/global.html#NetworkInfo).
+
+You can also request the network information by calling `getNetworkInfo`, like so:
+
+```js
+var value = airlock.networking.getNetworkInfo();
+alert("connected: " + value.connected +
+	"\napproachingDataLimit: " + value.approachingDataLimit +
+	"\nroaming: " + value.roaming +
+	"\nnetworkConnectionType: " + value.networkConnectionType +
+	"\nlimitData: " + value.limitData +
+	"\nssid: " + value.ssid +
+	"\nipAddress: " + value.ipAddress);
+```
+
+For a live example see the [Networking examples page](../../Scripting/V2/Examples/Networking/).
 
 ### Printing a Page via JavaScript
 
@@ -474,7 +522,7 @@ You are able to launch the print service, installed on a device, from either a J
 airlock.printing.printPage();
 ```
 
-### Leveraging Airlock's Text to Speech Capability with JavaScript
+### Using Text to Speech with JavaScript
 
 You can have Airlock Browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:
 
@@ -482,7 +530,7 @@ You can have Airlock Browser speak any text, from either a JavaScript event hand
 airlock.speech.speakText("Hi from Airlock Browser");
 ```
 
-### Adding Client-Side CSS to Pages
+## Adding Client-Side CSS to Pages
 If you have a legacy web application that was not designed for a mobile device, you may apply custom CSS to the page to improve its appearance and usability. Tap the *CSS* button on the Web Application Profile screen to display the CSS editor.
 
 When a page loads, the CSS is applied.
@@ -511,66 +559,6 @@ The Application's *Scan Terminator* option allows you to provide a key, or keys,
 
 ## Interacting with the Browser via On-Page JavaScript
 In addition to Airlock Browsers client-side JavaScript, you can also interact with the browser using on-page JavaScript. Airlock Browser offers a JavaScript API that is consumable from web pages to respond to power events, monitor network availability, and handle barcode scanning events.
-
-### Defining an On-Page Scan Handler
-You declare an on-page scan handler using a meta tag, placed in the *Head* element of an HTML document, as shown in the following example:
-
-```html
-<meta http-equiv="ScannerNavigate" 
-      content="Javascript:onScannerNavigate('%s', '%s', '%s', '%s', '%s', '%s');"/>
-```
-
-The *http-equiv* attribute indicates to Airlock Browser that when a scan event occurs, to call the *onScannerNavigate* function. The `%s` arguments are replaced at runtime with the following:
-* barcodeData
-* deviceId
-* symbology
-* timestamp
-* dataLength
-* label
-
-The example application, which comes pre-installed with Airlock Browser, demonstrates the on-page scan handling capability. Its scan handler function is shown in the following excerpt:
-
-```javascript
-function onScannerNavigate(barcodeData, deviceId, 
-            symbology, timestamp, dataLength, label)
-{
-    var messageDiv = document.getElementById("messageDiv");
-    messageDiv.innerText =
-        label + "<br />"
-        + barcodeData + "<br />"
-        + deviceId + "<br />"
-        + symbology + "<br />"
-        + timestamp + "<br />"
-        + dataLength;
-}
-```    
-
-On the page there exists a div `<div id="messageDiv"></div>`. When a scan event occurs the div is populated with the content of values supplied to the *onScannerNavigate* function.
-
-You can use the barcode scan information to perform whatever custom activity you require.
-
-### Monitoring Network Connectivity
-Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, declare the function in a meta-tag, as shown:
-
-```html
-<meta http-equiv="SignalNavigate" 
-      content="Javascript:onSignalNavigate('%s', '%s', '%s');"/>
-```
-
-The example application, which comes pre-installed with Airlock Browser, demonstrates the network connection monitoring capability. Its handler function is shown in the following excerpt:
-
-```javascript
-function onSignalNavigate(signalStrength, essID, macaddress)
-{
-    var messageDiv = document.getElementById("messageDiv");
-    messageDiv.innerText =
-        signalStrength + " <br /> "
-        + essID + " <br /> "
-        + macaddress + " <br /> ";
-}
-```
-
-On the page there exists a div `<div id="messageDiv"></div>`. When a network connectivity event occurs the div is populated with the content of values supplied to the *onSignalNavigate* function.
 
 ## Using the History Screen
 The History screen displays a searchable list of pages URLs, grouped by day. (See Figure 17.)

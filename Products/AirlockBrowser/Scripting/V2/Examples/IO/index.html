@@ -584,5 +584,34 @@ function testGetFiles(textElement) {
 	<div class="outputText" type="text" id="testGetFilesText"></div>
 </div>
 
+<div class="testDiv">
+	<h3>Get Known Directories</h3>
+	<script id="getKnowDirectoriesScript">
+function testGetAppFilesDirectory(textElement) {
+	try {
+		var directoryPath = airlock.io.getAppFilesDirectory();
+		setText(textElement, directoryPath);
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+
+function testGetExternalDirectory(textElement) {
+	try {
+		var directoryPath = airlock.io.getExternalStorageDirectory();
+		setText(textElement, directoryPath);
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="getKnowDirectoriesPre"></pre><script>insertScriptInPre('getKnowDirectoriesPre', 'getKnowDirectoriesScript');</script>
+	<input type="button" onclick="testGetAppFilesDirectory('testGetKnowDirectoriesText')" value="Get App Files Directory" /><br />
+	<input type="button" onclick="testGetExternalDirectory('testGetKnowDirectoriesText')" value="Get External Directory" /><br />
+	<!-- Don't change the id of the following element because it is referenced by the user guide. -->
+	<div class="outputText" type="text" id="testGetKnowDirectoriesText"></div>
+</div>
+
 </body>
 </html>

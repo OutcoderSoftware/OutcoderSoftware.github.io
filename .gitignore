@@ -12,6 +12,7 @@ Gemfile.lock
 *.user
 *.userosscache
 *.sln.docstates
+*.md.saved.bak
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

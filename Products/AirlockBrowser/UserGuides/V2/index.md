@@ -41,18 +41,21 @@ redirect_from:
 	* [Styling the App with a Custom Theme](#styling-the-app-with-a-custom-theme)
 * [Using the Device Settings tab](#using-the-device-settings-tab)
 	* [Configuration File URL](#configuration-file-url)
-	* [License Server Address](#license-server-address)
+	* [License Server API Key](#license-server-api-key)
 	* [Configuring Device Vendor Specific Settings](#configuring-device-vendor-specific-settings)
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
-* [Leveraging the Airlock Browser JavaScript API](#leveraging-the-airlock-browser-javascript-api)
+* [Using Airlock Browser's JavaScript API](#using-airlock-browsers-javascript-api)
 	* [Ensuring Airlock is Ready to Receive Commands](#ensuring-airlock-is-ready-to-receive-commands)
+	* [Enabling Intellisense](#enabling-intellisense)
 	* [Configuring the Barcode Reader via JavaScript](#configuring-the-barcode-reader-via-javascript)
+	* [Monitoring Network Connectivity](#monitoring-network-connectivity)
 	* [Printing a Page via JavaScript](#printing-a-page-via-javascript)
-	* [Leveraging Airlock's Text to Speech Capability with JavaScript](#leveraging-airlocks-text-to-speech-capability-with-javascript)
-	* [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
+	* [Using Text to Speech with JavaScript](#using-text-to-speech-with-javascript)
+	* [Setting Advanced Scripting Permission](#setting-advanced-scripting-permission)
+* [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
 	* [Limiting Screen Rotation](#limiting-screen-rotation)
 	* [Improving Text Readability](#improving-text-readability)
@@ -60,12 +63,12 @@ redirect_from:
 	* [Understanding the Scan Insert Mode](#understanding-the-scan-insert-mode)
 	* [Using a Scan Terminator](#using-a-scan-terminator)
 * [Interacting with the Browser via On-Page JavaScript](#interacting-with-the-browser-via-on-page-javascript)
-	* [Defining an On-Page Scan Handler](#defining-an-on-page-scan-handler)
-	* [Monitoring Network Connectivity](#monitoring-network-connectivity)
 * [Using the History Screen](#using-the-history-screen)
 * [Creating and Editing Bookmarks](#creating-and-editing-bookmarks)
 
 [//]: # (TOC End)
+
+
 
 ## Introduction
 
@@ -270,12 +273,16 @@ The file must be named *ApiKey.txt* and must have the following path:
 
 > **TIP:** You can find the location of the external storage directory by browsing to the [IO example page](../../Scripting/V2/Examples/IO/#testGetKnowDirectoriesText) on your device, and using the *Get External Directory* button.
 
+Once you procure a license for Airlock Browser, there are two ways to apply the license. The first, is to automatically have the license applied by setting the correct License Server API Key on each device. You can then manage and distribute purchased licenses using the [Outcoder License Manager](../../../LicenseManager/V1/UserGuide/).
 
-
-Once you procure a license for Airlock Browser, there are two ways to apply the license. You can manually import the license using the Import License button in Administration -> Manage License. Alternatively, you can set a License Server address on the Device tab of the Settings screen. When using a License Server, the Outcoder License Server needs to be installed and running on a computer that is reachable on your organization's intranet. For further information regarding the Outcoder License Server, please see the [Outcoder License Server](http://www.outcoder.com/Products/LicenseServer/) User Guide, available on the Outcoder website.
+Alternatively, if your device does not have internet access, you can manually import the license using the Import License button in Administration -> Manage License. 
 
 ### Configuring Device Vendor Specific Settings
-Airlock Browser allows configuration of vendor specific settings for devices manufactured by Honeywell, Panasonic, Zebra, Datalogic, and Bluebird. Different device types offer different options for their hardware. To configure Airlock Browser for a specific device type, tap *Vendor Configurations* from the *Device* tab of the Settings screen. A list of device vendors is displayed. Tapping a vendor name opens the *Device Configuration* screen for that vendor. (See Figure 8.)
+Airlock Browser allows configuration of vendor specific settings for devices manufactured by Bluebird, CipherLab, Honeywell, Panasonic, and Zebra. Different device types offer different options for their hardware. To configure Airlock Browser for a specific device type, tap *Vendor Configurations* from the *Device* tab of the Settings screen. A list of device vendors is displayed. Tapping a vendor name opens the *Device Configuration* screen for that vendor. (See Figure 8.)
+
+If the device you are using is a supported device you are taken directly to the vendor configuration settings for the device type.
+
+> **TIP:** To create a configuration supporting multiple device vendors, export the configuration from one device manufacturer and import it to a device from another manufacturer. You can then configure the device from the second manufacturer, while still retaining the configuration for the first.
 
 The list of available settings varies for each of the vendor device types.
 
@@ -399,6 +406,7 @@ You can invoke the Airlock Browser JavaScript APIs via an on-page script or from
 Before we get started, please note that there exists [comprehensive working examples](../../Scripting/V2/Examples/) for the APIs listed in this section.
 
 In this section you explore the following sets of APIs:
+* `app` Provides licensing, updates, versioning, and APIs for exiting the app.
 * `browsing` Allows modification of the user's web browsing experience.
 * `device` Provides functions for interacting with the device at the OS level.
 * `io` Provides APIs for reading and writing files.
@@ -417,7 +425,7 @@ Each of these is a sub-namespace within the `airlock` namespace.
 
 The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been initialized. To determine when the `airlock` object is initialized, use the `airlockState.onready` function, as shown in the following example:
 
-```js
+```html
 <html>
 <head>
 	<script>
@@ -451,7 +459,7 @@ Airlock Browser provides a JavaScript API that allows you to fully configure the
 
 The `airlock.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
 
-```js
+```javascript
 var decoder = airlock.scanning.getDecoderWithName('Code39');
 ```
 
@@ -459,7 +467,7 @@ var decoder = airlock.scanning.getDecoderWithName('Code39');
 
 Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
 
-```js
+```javascript
 var decoder = airlock.scanning.getDecoderWithNativeId(71);
 ```
 
@@ -471,7 +479,7 @@ For a list of configurable properties, see the device types respective guide:
 
 > **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
 
-```js
+```javascript
 try {
 	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
 	codabarDecoder.enabled = true;
@@ -489,7 +497,7 @@ The `airlock.scanning.setDecoder` function raises an exception if the decoder va
 ### Monitoring Network Connectivity
 Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, subscribe to the `onConnectionChanged` event, like so:
 
-```js
+```javascript
 airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
 
 function handleConnectionChanged(args) {
@@ -501,7 +509,7 @@ The `onConnectionChanged` event handler receives a `NetworkInfo` object. For a c
 
 You can also request the network information by calling `getNetworkInfo`, like so:
 
-```js
+```javascript
 var value = airlock.networking.getNetworkInfo();
 alert("connected: " + value.connected +
 	"\napproachingDataLimit: " + value.approachingDataLimit +
@@ -529,6 +537,18 @@ You can have Airlock Browser speak any text, from either a JavaScript event hand
 ```javascript
 airlock.speech.speakText("Hi from Airlock Browser");
 ```
+
+### Setting Advanced Scripting Permission
+
+Some APIs present in the `airlock.device` namespace require that Airlock Browser be granted [device admin privileges](https://developer.android.com/guide/topics/admin/device-admin). The following APIs require this:
+
+* `airlock.device.lockScreen()`
+* `airlock.device.unlockScreen()`
+* `airlock.device.isScreenLocked()`
+
+To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
+
+Calling these functions without device admin, raises an JavaScript error.
 
 ## Adding Client-Side CSS to Pages
 If you have a legacy web application that was not designed for a mobile device, you may apply custom CSS to the page to improve its appearance and usability. Tap the *CSS* button on the Web Application Profile screen to display the CSS editor.

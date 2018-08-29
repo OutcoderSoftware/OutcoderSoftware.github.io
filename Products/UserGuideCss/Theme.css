@@ -42,10 +42,17 @@ h4 {
 h5, h6 { 
     font-size: 1em;
 }
-a, a:visited {
+
+a {
 	text-decoration: none;
-	color: #777;
+	color: #d21919;
 }
+
+a:visited {
+	text-decoration: none;
+	color: #d21919;
+}
+
 a:hover {
     text-decoration: underline;
 }

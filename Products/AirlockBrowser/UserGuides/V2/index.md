@@ -423,13 +423,13 @@ Each of these is a sub-namespace within the `airlock` namespace.
 
 ### Ensuring Airlock is Ready to Receive Commands
 
-The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after the web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been initialized. To determine when the `airlock` object is initialized, use the `airlockState.onready` function, as shown in the following example:
+The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after the web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been properly initialized. To determine when the `airlock` object is initialized, use the `airlock.onReady` function, as shown in the following example:
 
 ```html
 <html>
 <head>
 	<script>
-		airlockState.onReady("HandleAirlockReady()");
+		airlock.onReady("handleAirlockReady()");
 
 		function handleAirlockReady() {
 			var decoder = airlock.scanning.getDecoderWithNativeId(71);
@@ -442,6 +442,8 @@ The JavaScript object that you use to call through to Airlock Browser is named `
 </body>
 </html>
 ```
+
+The specified function is called immediately following the `window.onload` event. The parameter to the `onReady` function is a string containing JavaScript.
 
 ### Enabling Intellisense
 

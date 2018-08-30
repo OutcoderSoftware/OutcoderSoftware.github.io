@@ -423,7 +423,7 @@ Each of these is a sub-namespace within the `airlock` namespace.
 
 ### Ensuring Airlock is Ready to Receive Commands
 
-The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been initialized. To determine when the `airlock` object is initialized, use the `airlockState.onready` function, as shown in the following example:
+The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after the web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been initialized. To determine when the `airlock` object is initialized, use the `airlockState.onready` function, as shown in the following example:
 
 ```html
 <html>

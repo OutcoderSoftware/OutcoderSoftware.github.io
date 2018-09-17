@@ -257,9 +257,9 @@ function BarCodeSetSymbology(decoder) {
  */
 function JSFullScreenMode(fullScreen) {
 	if (fullScreen === null) {
-		return airlock.device.isFullScreen();
+		return airlock.ui.isFullScreen();
 	}
-	return airlock.device.setFullScreen(fullScreen);
+	return airlock.ui.setFullScreen(fullScreen);
 }
 
 /**
@@ -429,7 +429,7 @@ function JSVibrate(/*onTime, offTime, count*/) {
 
 /**
  * Gets a value indicating whether the display is currently locked.
- * The function requires device administration privilidges be assigned to the app.
+ * The function requires device administration privileges be assigned to the app.
  * You can do this via the Enterprise Administration screen within Airlock Browser.
  * @see {@link https://developer.android.com/guide/topics/admin/device-admin}
  * @exception {Exception} Occurs if Airlock Browser has not been
@@ -443,7 +443,7 @@ function JSGetDisplaySleep() {
 
 /**
  * Engages or disengages the devices screen lock.
- * The function requires device administration privilidges be assigned to the app.
+ * The function requires device administration privileges be assigned to the app.
  * You can do this via the Enterprise Administration screen within Airlock Browser.
  * @param {boolean} enable If true the display is locked. If false, its unlocked.
  * @see {@link https://developer.android.com/guide/topics/admin/device-admin}
@@ -474,7 +474,7 @@ function JSSetDisplaySleep(enable) {
  * @see {@link airlock.device.getOrientationLock}
  */
 function JSGetAutoRotate() {
-	return airlock.device.getOrientationLock();
+	return airlock.ui.getOrientationLock();
 }
 
 /**
@@ -499,16 +499,16 @@ function JSSetAutoRotate(mode) {
 		default:
 			lockType = airlock.ui.OrientationLockType.SYSTEM_CONTROLLED;
 	}
-	airlock.device.setOrientationLock(lockType);
+	airlock.ui.setOrientationLock(lockType);
 }
 
 /**
- * Gets an object reprenting the device's power source and charging state.
+ * Gets an object representing the device's power source and charging state.
  * @returns {PowerInfo} With fields representing the device's power source and charge level.
  * @see {@link airlock.device.getPower}
  */
 function JSGetBatteryLevel() {
-	return airlock.device.getPower();
+	return airlock.device.getPower().remainingBatteryPercent;
 }
 
 /**
@@ -522,7 +522,7 @@ function JSGetBatteryLevel() {
  * @see {@link airlock.device.getUILanguage}
  */
 function JSGetDisplayLanguage() {
-	return airlock.device.getUILanguage();
+	return airlock.ui.getUILanguage();
 }
 
 /**
@@ -532,7 +532,7 @@ function JSGetDisplayLanguage() {
  * @see {@link airlock.device.getNetworkInfo}
  */
 function JSGetCurrentSsid() {
-	var info = airlock.device.getNetworkInfo();
+	var info = airlock.networking.getNetworkInfo();
 	return info.ssid;
 }
 
@@ -540,11 +540,11 @@ function JSGetCurrentSsid() {
  * Gets a promise that returns a list of WirelessNetwork objects.
  * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
  * a list of wireless networks when fulfilled.
- * The promis may take several seconds to resolve.
+ * The promise may take several seconds to resolve.
  * @see {@link airlock.device.getWirelessNetworks}
  */
 function JSGetSsidList() {
-	return airlock.device.getWirelessNetworks();
+	return airlock.networking.getWirelessNetworks();
 }
 
 /**
@@ -681,7 +681,7 @@ function JSFileGetSDDir() {
  * Use this function to open a file.
  * It returns a handle (file identifier) to the file, via a Promise.
  * Once the handle is obtained, the file can be written to
- * or read from using the identifer.
+ * or read from using the identifier.
  * @param {string} path The path to the file.
  * @returns {Promise<number>} A promise that resolves to a file identifier.
  * @see {@link airlock.io.openFile}
@@ -694,7 +694,7 @@ function JSFileOpen(path) {
  * Use this function to create a file.
  * It returns a handle (file identifier) to the file, via a Promise.
  * Once the handle is obtained, the file can be written to using
- * the identifer.
+ * the identifier.
  * @param {string} path The path to the file.
  * @returns {Promise<number>} A promise that resolves to a file identifier.
  * @see {@link airlock.io.openFile}

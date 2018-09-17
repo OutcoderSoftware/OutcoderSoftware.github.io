@@ -350,7 +350,7 @@ airlock.scanning.onScan = airlock.scanning.onScan
 
 /**
  * @typedef ScanErrorEventArgs
- * @property {object} errorInfo SDK depenedent information regarding the error.
+ * @property {object} errorInfo SDK dependent information regarding the error.
  * @property {Date} timestamp Indicates when the scan failed.
  */
 
@@ -576,7 +576,7 @@ airlock.device.setScreenTimeoutMS = function(timeoutMS) {
  * @property {string} model The model of the device.
  * @property {string} board The name of the underlying board, like 'goldfish'.
  * @property {string} hardware The name of the hardware
- *		(from the kernal command line or /proc).
+ *		(from the kernel command line or /proc).
  * @property {string} serial A hardware serial, if available.
  * @property {string} deviceId A unique identifier for the device.
  *		This value may change with a factory reset.
@@ -616,7 +616,7 @@ airlock.device.isPackageInstalled = function (packageName) {
 
 /**
  * Gets a value indicating whether the display is currently locked.
- * The function requires device administration privilidges be assigned to the app.
+ * The function requires device administration privileges be assigned to the app.
  * You can do this via the Enterprise Administration screen within Airlock Browser.
  * @see {@link https://developer.android.com/guide/topics/admin/device-admin}
  * @exception {Exception} Occurs if Airlock Browser has not been
@@ -629,7 +629,7 @@ airlock.device.isScreenLocked = function() {
 
 /**
  * Engages the devices screen lock.
- * The function requires device administration privilidges be assigned to the app.
+ * The function requires device administration privileges be assigned to the app.
  * You can do this via the Enterprise Administration screen within Airlock Browser.
  * @see {@link https://developer.android.com/guide/topics/admin/device-admin}
  * @exception {Exception} Occurs if Airlock Browser has not been
@@ -641,7 +641,7 @@ airlock.device.lockScreen = function() {
 
 /**
  * Disengages the devices screen lock.
- * The function requires device administration privilidges be assigned to the app.
+ * The function requires device administration privileges be assigned to the app.
  * You can do this via the Enterprise Administration screen within Airlock Browser.
  * @see {@link https://developer.android.com/guide/topics/admin/device-admin}
  * @exception {Exception} Occurs if Airlock Browser
@@ -696,7 +696,7 @@ airlock.device.BatteryState = {
  */
 
 /**
- * Gets an object reprenting the device's power source and charging state.
+ * Gets an object representing the device's power source and charging state.
  * @returns {PowerInfo} With fields representing the device's power source and charge level.
  * @example
  * var powerInfo = airlock.device.getPower();
@@ -747,7 +747,7 @@ airlock.printing = {};
 
 /**
  * Displays the print dialog, allowing the user to send the page to the printer.
- * @returns {Primise} When resolved, the print request has been handed to the OS,
+ * @returns {Promise} When resolved, the print request has been handed to the OS,
  * which ordinarily displays a print dialog.
  * @example
  * airlock.printing.printPage()
@@ -771,8 +771,8 @@ airlock.printing.printPage = function () {
 airlock.speech = {};
 
 /**
- * Uses the devices text-to-speech capability to speek the specified text.
- * @param {string} text The text to speek.
+ * Uses the devices text-to-speech capability to speak the specified text.
+ * @param {string} text The text to speak.
  */
 airlock.speech.speakText = function (text) {
 	pageHost.ii.getResult("speech.speakText", text);
@@ -986,7 +986,7 @@ airlock.networking.getNetworkInfo = function() {
  * Gets a promise that returns a list of WirelessNetwork objects.
  * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
  *		a list of wireless networks when fulfilled.
- *		The promis may take several seconds to resolve.
+ *		The promise may take several seconds to resolve.
  * @example
  * airlock.networking.getWirelessNetworks()
  * .then(function (result) {
@@ -1149,7 +1149,7 @@ airlock.log.LogLevel = {
 	ERROR: 16,
 	/** When the application is no longer
 	* able to function or is in an unreliable state.
-	* Highly restrive logging. */
+	* Highly restrictive logging. */
 	FATAL: 32,
 	/** Logging is disabled. */
 	NONE: 64
@@ -1453,7 +1453,7 @@ airlock.io.FileMode = {
  * Use this function to open or create a file.
  * It returns a handle (file identifier) to the file, via a Promise.
  * Once the handle is obtained, the file can be written to
- * or read from using the identifer (depending on the specified fileMode).
+ * or read from using the identifier (depending on the specified fileMode).
  * @param {string} path The path to the file.
  * @param {airlock.io.FileMode} fileMode The file mode, which determines
  * what can be done with the file and whether the file

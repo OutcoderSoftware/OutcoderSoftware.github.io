@@ -1112,6 +1112,7 @@ airlock.browsing.getTextZoomLevel = function() {
 /**
  * Sets the text zoom level for the page, which is a positive floating point number,
  * where 1.0 is normal size. 2.0 is double the normal size.
+ * The specified value is clamped between 0.1 and 5.0.
  * @param {number} level The text zoom level,
  * which is greater than 0; where 1.0 is normal size.
  */

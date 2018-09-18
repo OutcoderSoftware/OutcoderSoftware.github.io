@@ -101,6 +101,7 @@ function testSetVolume(output1, output2) {
 function testBeep(textElement) {
 	try {
 		airlock.device.beep();
+		// Also supported is airlock.device.beep(duration, frequency);
 		setText(textElement, "Beeped!");
 	} catch (e) {
 		setText(textElement, "Error: " + e);
@@ -115,11 +116,49 @@ function testBeep(textElement) {
 </div>
 
 <div class="testDiv">
+	<h3>Sounding Multiple Tones</h3>
+	<script id="tonesScript">
+function testTones(textElement) {
+	try {
+		var soundMS = document.getElementById("soundMS").value;
+		var silenceMS = document.getElementById("silenceMS").value;
+		var repetitions = document.getElementById("repetitions").value;
+		var frequency = document.getElementById("frequency").value;
+
+		airlock.device.soundToneFollowedBySilence(soundMS, silenceMS, repetitions, frequency);
+		setText(textElement, "Sounded tones.");
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script>
+	<pre class="example" id="tonesPre"></pre>
+	<script>insertScriptInPre('tonesPre', 'tonesScript');</script>
+	<div style="padding: 12px">
+		Sound MS
+		<input id="soundMS" type="text" value="80" />
+		Silence MS
+		<input id="silenceMS" type="text" value="50" />
+		Repetitions
+		<input id="repetitions" type="text" value="5" />
+		Frequency
+		<input id="frequency" type="text" value="1200" />
+	</div>
+	<input type="button" onclick="testTones('testTonesText')" value="Sound tones" />
+	<div class="outputText" type="text" id="testTonesText"></div>
+</div>
+
+<div class="testDiv">
 	<h3>Vibrating the Device</h3>
 	<script id="vibrateScript">
 function testVibrate(textElement) {
 	try {
-		airlock.device.vibrate(100);
+		var durationMS = document.getElementById("durationMS").value;
+		var intervalMS = document.getElementById("intervalMS").value;
+		var vibrateCount = document.getElementById("vibrateCount").value;
+
+		airlock.device.vibrate(durationMS, intervalMS, vibrateCount);
 		setText(textElement, "Vibrated!");
 	} catch (e) {
 		setText(textElement, "Error: " + e);
@@ -129,6 +168,14 @@ function testVibrate(textElement) {
 	</script>
 	<pre class="example" id="vibratePre"></pre>
 	<script>insertScriptInPre('vibratePre', 'vibrateScript');</script>
+	<div style="padding: 12px">
+		Duration MS (Optional)
+		<input id="durationMS" type="text" value="80" />
+		Interval MS (Optional)
+		<input id="intervalMS" type="text" value="50" />
+		Count (Optional)
+		<input id="vibrateCount" type="text" value="3" />
+	</div>
 	<input type="button" onclick="testVibrate('testVibrateText')" value="Vibrate"/>
 	<div class="outputText" type="text" id="testVibrateText"></div>
 </div>
@@ -319,21 +366,5 @@ function testIsPackageInstalled(textElement) {
 	<div class="outputText" type="text" id="testIsPackageInstalledText"></div>
 </div>
 
-<div class="testDiv">
-	<h3>Launching a Third-Party App</h3>
-	<script id="launchingAppScript">
-function testLaunchApp(textElement) {
-	try {
-		airlock.device.launchApp('com.google.android.apps.photos');
-		setText(textElement, "Launching app...");
-	} catch (e) {
-		setText(textElement, "Error: " + e);
-		return;
-	}
-}
-	</script><pre class="example" id="launchingAppPre"></pre><script>insertScriptInPre('launchingAppPre', 'launchingAppScript');</script>
-	<input type="button" onclick="testLaunchApp('testLaunchAppText')" value="Launch App" />
-	<div class="outputText" type="text" id="testLaunchAppText"></div>
-</div>
 </body>
 </html>

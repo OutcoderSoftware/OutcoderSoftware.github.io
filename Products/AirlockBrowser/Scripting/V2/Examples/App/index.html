@@ -103,6 +103,23 @@ function testMinimizeApp(textElement) {
 	<input type="button" onclick="testMinimizeApp('minimizeAppText')" value="Minimize App" />
 	<div class="outputText" type="text" id="minimizeAppText"></div>
 </div>
+	
+<div class="testDiv">
+	<h3>Launching a Third-Party App</h3>
+	<script id="launchingAppScript">
+		function testLaunchApp(textElement) {
+			try {
+				airlock.app.launchApp('com.google.android.apps.photos');
+				setText(textElement, "Launching app...");
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+	</script><pre class="example" id="launchingAppPre"></pre><script>insertScriptInPre('launchingAppPre', 'launchingAppScript');</script>
+	<input type="button" onclick="testLaunchApp('testLaunchAppText')" value="Launch App" />
+	<div class="outputText" type="text" id="testLaunchAppText"></div>
+</div>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.0.1
+ * @version 1.1.0
  * @copyright Outcoder Sarl 2018. All Rights Reserved.
  */
 
@@ -525,19 +525,40 @@ airlock.device.getMaxVolume = function(streamType) {
 };
 
 /**
- * Causes the device to play its notification sound clip.
+ * Plays a tone for the specified duration and at the specified frequency.
+ * @param {number} [durationMS] The duration in milliseconds. If not specified
+ * a default value is used. This default value is determined by the application settings.
+ * @param {number} [toneFrequency] The frequency of the tone played. If not specified
+ * a default value is used. This default value is determined by the application settings.
  */
-airlock.device.beep = function() {
-	pageHost.ii.getResult("device.beep");
+airlock.device.beep = function(durationMS, toneFrequency) {
+	pageHost.ii.getResult("device.beep", durationMS, toneFrequency);
+};
+
+/**
+ * Plays a tone at the specified frequency, followed by silence.
+ * This is repeated for the specified play count.
+ * @param {number} soundMS The duration of the tone for each repetition. Must be greater than 0. 
+ * @param {number} silenceMS The duration of silence following the tone for each repetition.
+ * Must be greater than or equal to 0.
+ * @param {number} playCount The number of times to play the tone followed by silence.
+ * Must be greater than 0.
+ * @param {number} toneFrequency The audible frequency of the sound. Must be greater than 0.
+ */
+airlock.device.soundToneFollowedBySilence = function (soundMS, silenceMS, playCount, toneFrequency) {
+	pageHost.ii.getResult("device.soundToneFollowedBySilence", soundMS, silenceMS, playCount, toneFrequency);
 };
 
 /**
  * Causes the device to vibrate for the specified duration.  
- * @param {number} [durationMS] The duration for which to vibrate,
+ * @param {number} [vibrateMS] The duration for which to vibrate,
  * in milliseconds. If not specified, a value of 100 MS is used.
+ * @param {number} [intervalMS] The pause time in milliseconds between repetitions.
+ *	Default is 0.
+ * @param {number} [count] The number of times to vibrate then pause.
  */
-airlock.device.vibrate = function(durationMS) {
-	pageHost.ii.getResult("device.vibrate", durationMS);
+airlock.device.vibrate = function (vibrateMS, intervalMS, count) {
+	pageHost.ii.getResult("device.vibrate", vibrateMS, intervalMS, count);
 };
 
 /**

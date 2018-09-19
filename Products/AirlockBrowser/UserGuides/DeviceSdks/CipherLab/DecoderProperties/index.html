@@ -38,26 +38,263 @@
 		div.decoder {
 			padding-bottom: 20px
 		}
+		th.decoderNameTH {
+			width: 16em;
+		}
+		th.decoderTypeTH {
+			width: 5em;
+		}
+		th.decoderDefaultValueTH {
+			width: 12em;
+		}
+		th.decoderValuesTH {
+			width: auto;
+		}
 	</style>
 </head>
 <body style="padding: 20px;">
+<h1>CipherLab Configuration</h1>
+<div class="decoder">
+	<div class="decoderHeader">
+		<div class="decoderName">Scanning Configuration</div>
+	</div>
+		<div class="sectionTitle">Properties</div>
+	<table class="properties">
+		<tr>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>								
+		</tr>
+		<tr>
+		<td class="decoderNameCell">ledDurationMS</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell"></td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">beepSound</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">vibrationCount</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">1</td>	
+		<td class="decoderValuesCell">[0, 10]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">clearPreviousData</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">showCodeType</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">showCodeLength</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">characterSet</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">prefixCode</td>
+		<td class="decoderTypeCell">string</td>
+		<td class="decoderDefaultValueCell"></td>	
+		<td class="decoderValuesCell"></td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">suffixCode</td>
+		<td class="decoderTypeCell">string</td>
+		<td class="decoderDefaultValueCell"></td>	
+		<td class="decoderValuesCell"></td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">delimiter</td>
+		<td class="decoderTypeCell">string</td>
+		<td class="decoderDefaultValueCell"></td>	
+		<td class="decoderValuesCell"></td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">addonSecurityLevel</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">10</td>	
+		<td class="decoderValuesCell">[2, 30]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">laserOnTimeMS</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">1000</td>	
+		<td class="decoderValuesCell">[500, 9900]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">projectAimingPattern</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">true</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">decodingIllumination</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">true</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">displayMode</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">illuminationPowerLevel</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">10</td>	
+		<td class="decoderValuesCell">[0, 10]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">interCharacterGapSize</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (Normal), 1 (Large)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">negativeBarcodes</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">pickListModeEnabled</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">presentationUsageTimeOutSeconds</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">900</td>	
+		<td class="decoderValuesCell">[1, 1800]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">redundancyLevel</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (Level1), 1 (Level2), 2 (Level3), 3 (Level4)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">scanAngleType</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (Wide), 1 (Narrow)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">scanMode</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">securityLevel</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">2</td>	
+		<td class="decoderValuesCell">[0, 3]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">timeoutBetweenSameSymbologyMS</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">1000</td>	
+		<td class="decoderValuesCell">[0, 9900]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">transmitCodeIdType</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">aimerMode</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">centerDecoding</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">true</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">centerDecodingTolerance</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">[0, 100]</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">transmitCodeIdChar</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (None), 1 (AimCodeId)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">triggerMode</td>
+		<td class="decoderTypeCell">number</td>
+		<td class="decoderDefaultValueCell">0</td>	
+		<td class="decoderValuesCell">0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">notifyBarcodeReadSuccessful</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">true</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">notifyBarcodeReadFailed</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	<tr>
+		<td class="decoderNameCell">vibrateUponBarcodeNotification</td>
+		<td class="decoderTypeCell">boolean</td>
+		<td class="decoderDefaultValueCell">false</td>	
+		<td class="decoderValuesCell">true, false</td>				
+	</tr>
+	</table>
+</div>
+
+
+
+<h2>CipherLab Barcode Decoders</h2>
 <div class="decoder">
 	<div class="decoderHeader">
 		<div class="decoderName">AustralianPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">116</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -65,19 +302,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Aztec</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">122</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -85,19 +324,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Chinese2Of5</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">121</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -105,54 +346,63 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Codabar</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">71</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ClsiEditingEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">clsiEditingEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>NotisEditingType</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">notisEditingType</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (None), 1 (ABCDUpper), 2 (AbcdLower)</td>
 	</tr>
 	<tr>
-		<td>NotisEditingEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">notisEditingEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>VerifyCheckDigit</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">verifyCheckDigit</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (None), 1 (Modulo16), 2 (Modulo7DR), 3 (ModuloBoth)</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -160,39 +410,45 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Code11</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">103</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>NumberOfCheckDigits</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">numberOfCheckDigits</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (None), 1 (One), 2 (Two)</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -200,34 +456,39 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Code128</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">73</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>SecurityLevel</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">securityLevel</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (High), 1 (Normal)</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -235,54 +496,63 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Code39</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">65</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ConvertToCode32</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToCode32</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>ConvertToCode32Prefix</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToCode32Prefix</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>FullAsciiEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">fullAsciiEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>VerifyCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">verifyCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -290,29 +560,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Code93</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">72</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -320,44 +594,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Composite</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">21</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>C</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">c</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>AB</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">ab</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Tlc39Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">tlc39Enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Mode</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">mode</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">1</td>
+		<td class="decoderValuesCell">0 (UpcNeverLinked), 1 (UpcAlwaysLinked), 2 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>EmulationModeEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">emulationModeEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -365,19 +646,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">UccCoupon</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">120</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -385,44 +668,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">DataMatrix</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">109</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>FieldSeparator</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">fieldSeparator</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>MirrorImage</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">mirrorImage</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (Never), 1 (Always), 2 (Auto)</td>
 	</tr>
 	<tr>
-		<td>ApplicationIdentifierMark1</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">applicationIdentifierMark1</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ApplicationIdentifierMark2</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">applicationIdentifierMark2</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ApplicationIdentifierEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">applicationIdentifierEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -430,19 +720,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">DutchPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">117</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -450,49 +742,57 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Ean13</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">80</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Addon2</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon2</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>Addon5</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon5</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>BooklandIsbnFormat</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">booklandIsbnFormat</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (Isbn10), 1 (Isbn13)</td>
 	</tr>
 	<tr>
-		<td>ConvertToIsbn</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToIsbn</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>ConvertToIssn</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToIssn</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -500,39 +800,45 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Ean8</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">77</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Addon2</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon2</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>Addon5</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon5</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>ConvertToEan13</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToEan13</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -540,29 +846,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Industrial2Of5</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">68</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -570,19 +880,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">JapanPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">115</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -590,24 +902,27 @@
 	<div class="decoderHeader">
 		<div class="decoderName">UKPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">114</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -615,44 +930,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Upce1</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">97</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Addon2</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon2</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>Addon5</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon5</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>ConvertToUpca</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToUpca</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Preamble</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">preamble</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">10</td>
+		<td class="decoderValuesCell">0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -660,39 +982,45 @@
 	<div class="decoderHeader">
 		<div class="decoderName">GS1128</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">85</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>ApplicationIdentifierMark1</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">applicationIdentifierMark1</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ApplicationIdentifierMark2</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">applicationIdentifierMark2</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>ApplicationIdentifierEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">applicationIdentifierEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>FieldSeparator</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">fieldSeparator</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -700,29 +1028,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">GS1DataBar14</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">91</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>ConvertToUpcEan</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToUpcEan</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>SecurityLevel</td>
-		<td>int</td>
-		<td>[0, 0]</td>
+		<td class="decoderNameCell">securityLevel</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">1</td>
+		<td class="decoderValuesCell">[0, 3]</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -730,29 +1062,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">GS1DataBarExpanded</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">93</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>SecurityLevel</td>
-		<td>int</td>
-		<td>[0, 0]</td>
+		<td class="decoderNameCell">securityLevel</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">1</td>
+		<td class="decoderValuesCell">[0, 3]</td>
 	</tr>
 	<tr>
-		<td>FieldSeparator</td>
-		<td>string</td>
-		<td></td>
+		<td class="decoderNameCell">fieldSeparator</td>
+		<td class="decoderTypeCell">string</td>		
+		<td class="decoderDefaultValueCell"></td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -760,29 +1096,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">GS1DataBarLimited</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">92</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>ConvertToUpcEan</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToUpcEan</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>SecurityLevel</td>
-		<td>int</td>
-		<td>[0, 0]</td>
+		<td class="decoderNameCell">securityLevel</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">3</td>
+		<td class="decoderValuesCell">[1, 4]</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -790,44 +1130,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Interleaved2Of5</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">69</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>CheckDigitVerification</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">checkDigitVerification</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (Disable), 1 (Uss), 2 (Opcc)</td>
 	</tr>
 	<tr>
-		<td>ConvertToEan13</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToEan13</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -835,29 +1182,33 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Isbt128</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">64</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Concatenation</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">concatenation</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">2</td>
+		<td class="decoderValuesCell">0 (Disable), 1 (Enable), 2 (Auto)</td>
 	</tr>
 	<tr>
-		<td>ConcatenationRedundancy</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">concatenationRedundancy</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">10</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -865,19 +1216,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Korean3Of5</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">56</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -885,44 +1238,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Matrix2Of5</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">75</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>VerifyCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">verifyCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>RedundancyEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">redundancyEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -930,19 +1290,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">MaxiCode</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">110</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -950,24 +1312,27 @@
 	<div class="decoderHeader">
 		<div class="decoderName">MicroPdf417</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">108</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Code128Emulation</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">code128Emulation</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -975,19 +1340,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">MicroQR</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">123</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -995,44 +1362,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Msi</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">83</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>CheckDigitAlgorithm</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">checkDigitAlgorithm</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (Modulo1011), 1 (DoubleModulo10)</td>
 	</tr>
 	<tr>
-		<td>CheckDigitOption</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">checkDigitOption</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (OneDigit), 1 (TwoDigits)</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1040,34 +1414,39 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Pdf417</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">107</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>TransmitMode</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">transmitMode</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (PassThroughAllSymbols), 1 (BufferAllSymbols), 2 (TransmitAnySymbolInSet)</td>
 	</tr>
 	<tr>
-		<td>EscapeCharacterEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">escapeCharacterEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitControlHeader</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitControlHeader</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1075,39 +1454,45 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Plessey</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">84</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>UnconventionalStop</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">unconventionalStop</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1115,19 +1500,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">QRCode</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">111</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1135,34 +1522,39 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Telepen</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">90</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>LengthMin</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMin</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">4</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>LengthMax</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">lengthMax</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">55</td>
+		<td class="decoderValuesCell"></td>
 	</tr>
 	<tr>
-		<td>TelepenFormat</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">telepenFormat</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (Ascii), 1 (Numeric)</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1170,19 +1562,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">TriopticCode39</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">101</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1190,44 +1584,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Upca</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">94</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Addon2</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon2</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>Addon5</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon5</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>ConvertToEan13</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToEan13</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Preamble</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">preamble</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">10</td>
+		<td class="decoderValuesCell">0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1235,44 +1636,51 @@
 	<div class="decoderHeader">
 		<div class="decoderName">Upce0</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">74</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Addon2</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon2</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>Addon5</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">addon5</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">0</td>
+		<td class="decoderValuesCell">0 (IgnoresAddon), 1 (AutoDiscriminate)</td>
 	</tr>
 	<tr>
-		<td>ConvertToUpca</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">convertToUpca</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">false</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Preamble</td>
-		<td>int</td>
-		<td></td>
+		<td class="decoderNameCell">preamble</td>
+		<td class="decoderTypeCell">number</td>		
+		<td class="decoderDefaultValueCell">10</td>
+		<td class="decoderValuesCell">0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1280,19 +1688,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">UpuFicsPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">125</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1300,34 +1710,39 @@
 	<div class="decoderHeader">
 		<div class="decoderName">USPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">22</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>PlanetEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">planetEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>PostnetEnabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">postnetEnabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>TransmitCheckDigit</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">transmitCheckDigit</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>
@@ -1335,19 +1750,21 @@
 	<div class="decoderHeader">
 		<div class="decoderName">UspsPostal</div>
 		<div><span class="fieldTitle">Native ID:</span>
-			<span class="fieldValue">0</span></div>
+			<span class="fieldValue">124</span></div>
 	</div>
 	<div class="sectionTitle">Properties</div>
 	<table class="properties">
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Valid Values</th>
+			<th class="decoderNameTH">Name</th>
+			<th class="decoderTypeTH">Type</th>	
+			<th class="decoderDefaultValueTH">Default</th>
+			<th class="decoderValuesTH">Valid Values</th>
 		</tr>
 		<tr>
-		<td>Enabled</td>
-		<td>bool</td>
-		<td>true, false</td>
+		<td class="decoderNameCell">enabled</td>
+		<td class="decoderTypeCell">boolean</td>		
+		<td class="decoderDefaultValueCell">true</td>
+		<td class="decoderValuesCell">true, false</td>
 	</tr>
 	</table>
 </div>

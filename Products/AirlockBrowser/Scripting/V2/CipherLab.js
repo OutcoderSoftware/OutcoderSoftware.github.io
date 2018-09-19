@@ -852,3 +852,22 @@ function JSGetFileSize(handle) {
 function JSSetHttpErrorAction(action, url) {
 	airlock.browsing.setNavigationErrorAction(action, url);
 }
+
+/**
+ * Gets the set of preferences.
+ * Properties of the configuration object vary depending
+ * on the device SDK.
+ * @returns {object} The configuration object.
+ */
+function BarCodeGetUserPreferences() {
+	return airlock.scanning.getConfiguration();
+}
+
+/**
+ * Sets the configuration.
+ * Properties of the configuration object vary depending on the device SDK.
+ * @param {object} userPreference The configuration object.
+ */
+function BarCodeSetUserPreferences(userPreference) {
+	airlock.scanning.setConfiguration(userPreference);
+}

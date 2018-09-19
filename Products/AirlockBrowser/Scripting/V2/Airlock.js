@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.1.1
+ * @version 1.1.2
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -86,9 +86,9 @@ airlock.app.minimize = function () {
 
 /**
  * Causes the app to exit, and the user to be returned to the home screen.
- * @param {boolean} [showNotification] If true, a notification is displayed
+ * @param {boolean} [showNotification=true] If true, a notification is displayed
  * to the user prior to exit. This helps to prevent the user from assuming
- * the app crashed. Default is true.
+ * the app crashed.
  */
 airlock.app.exit = function (showNotification) {
 	pageHost.ii.getResult("app.exit", showNotification);
@@ -99,7 +99,7 @@ airlock.app.exit = function (showNotification) {
  * on the system.
  * @param {string} appPackageName The package name of an app that should
  * be launched after the app exits.
- * @param {boolean} [showNotification] If true, a notification is displayed
+ * @param {boolean} [showNotification=true] If true, a notification is displayed
  * to the user prior to exit. This helps to prevent the user from assuming
  * the app crashed. Default is true.
  */
@@ -553,8 +553,7 @@ airlock.device.soundToneFollowedBySilence = function (soundMS, silenceMS, playCo
  * Causes the device to vibrate for the specified duration.  
  * @param {number} [vibrateMS] The duration for which to vibrate,
  * in milliseconds. If not specified, a value of 100 MS is used.
- * @param {number} [intervalMS] The pause time in milliseconds between repetitions.
- *	Default is 0.
+ * @param {number} [intervalMS=0] The pause time in milliseconds between repetitions.
  * @param {number} [count] The number of times to vibrate then pause.
  */
 airlock.device.vibrate = function (vibrateMS, intervalMS, count) {
@@ -1538,9 +1537,8 @@ airlock.io.createDirectory = function(path) {
  * Deletes the directory at the specified location.
  * A promise is returned indicating success or failure of the operation.
  * @param {string} path The file system path to the directory that is to be deleted.
- * @param {boolean} [recursive] If true, then the directory and its contents are deleted.
- * If false, and the directory is not empty, then an IOException is raised.
- * The default value is false.
+ * @param {boolean} [recursive=false] If true, then the directory and its contents are deleted.
+ * If false, and the directory is not empty, an IOException is raised.
  * @returns {Promise} When resolved the promise confirms
  * that the directory has been deleted.
  * @example

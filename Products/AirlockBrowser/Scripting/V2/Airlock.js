@@ -1,7 +1,7 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.1.0
- * @copyright Outcoder Sarl 2018. All Rights Reserved.
+ * @version 1.1.1
+ * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
 /**
@@ -32,7 +32,7 @@ airlock.onReady = airlock.onReady ||
 	};
 
 /**
- * @callback EventListener Called when an airlock.Event is fired.
+ * @callback airlock.EventListener Called when an airlock.Event is fired.
  * @param {object} args An event argument object containing values
  * pertaining to the particular event.
  */
@@ -40,9 +40,9 @@ airlock.onReady = airlock.onReady ||
 /**
  * @typedef airlock.Event
  * @type {object}
- * @property {function(EventListener):undefined} addListener
+ * @property {function(airlock.EventListener):undefined} addListener
  * Adds a listener for the event. listener is a function that a
- * @property {function(EventListener):undefined} removeListener
+ * @property {function(airlock.EventListener):undefined} removeListener
  * Removes a previously added listener.
  */
 
@@ -53,7 +53,7 @@ airlock.onReady = airlock.onReady ||
 airlock.app = {};
 
 /**
- * @typedef AppVersion
+ * @typedef airlock.app.AppVersion
  * @property {string} name The version name. For example "1.0".
  * @property {number} code The version code which is incremented upon
  * each release. A previous version has a lower version code.
@@ -61,7 +61,7 @@ airlock.app = {};
 
 /**
  * Gets the version of Airlock Browser.
- * @returns {AppVersion} The app version,
+ * @returns {airlock.app.AppVersion} The app version,
  * containing a version name and code.
  */
 airlock.app.getVersion = function() {
@@ -309,7 +309,7 @@ airlock.scanning.getApiVersion = function() {
 
 
 /**
- * @typedef ScanEventArgs
+ * @typedef airlock.scanning.ScanEventArgs
  * @property {string} rawDataInBase64 The raw barcode data in Base64 format (if available).
  * @property {string} text The processed barcode data.
  * @property {string|Number} nativeSymbologyId The identifier used
@@ -333,7 +333,7 @@ airlock.scanning.getApiVersion = function() {
  * To unsubscribe to the event use:
  *		airlock.device.onScan.removeListener(aFunction)
  * @event
- * @type {ScanEventArgs}
+ * @type {airlock.scanning.ScanEventArgs}
  * @example
  * // Subscribe
  * airlock.scanning.onScan.addListener(handleScan);
@@ -349,7 +349,7 @@ airlock.scanning.onScan = airlock.scanning.onScan
 	|| pageHost.ii.registerEvent('scanning.onScan');
 
 /**
- * @typedef ScanErrorEventArgs
+ * @typedef airlock.scanning.ScanErrorEventArgs
  * @property {object} errorInfo SDK dependent information regarding the error.
  * @property {Date} timestamp Indicates when the scan failed.
  */
@@ -361,7 +361,7 @@ airlock.scanning.onScan = airlock.scanning.onScan
  * To unsubscribe to the event use:
  *		airlock.device.onScanError.removeListener(aFunction)
  * @event
- * @type {ScanErrorEventArgs}
+ * @type {airlock.scanning.ScanErrorEventArgs}
  * @example
  * // Subscribe
  * airlock.scanning.onScanError.addListener(handleScanError);
@@ -580,7 +580,7 @@ airlock.device.setScreenTimeoutMS = function(timeoutMS) {
 };
 
 /**
- * @typedef DisplayInfo
+ * @typedef airlock.device.DisplayInfo
  * @property {number} widthPixels Width of the screen in pixels.
  * @property {number} heightPixels Height of the screen in pixels.
  * @property {number} density The logical density of the display.
@@ -591,7 +591,7 @@ airlock.device.setScreenTimeoutMS = function(timeoutMS) {
  */
 
 /**
- * @typedef SystemInfo
+ * @typedef airlock.device.SystemInfo
  * @property {string} manufacturer The manufacturer of the device.
  * @property {string} brand The brand of the device.
  * @property {string} model The model of the device.
@@ -608,13 +608,13 @@ airlock.device.setScreenTimeoutMS = function(timeoutMS) {
  *		(in milliseconds) indicating when the device's ROM was built
  * @property {string} buildVersion The OS's user-visible version string.
  *		E.g., "1.0" or "3.4b5".
- * @property {DisplayInfo} displayInfo Indicates the properties of the device display.
+ * @property {airlock.device.DisplayInfo} displayInfo Indicates the properties of the device display.
  */
 
 
 /**
  * Gets a SystemInfo object containing various OS properties.
- * @returns {SystemInfo} Containing various OS properties.
+ * @returns {airlock.device.SystemInfo} Containing various OS properties.
  */
 airlock.device.getSystemInfo = function() {
 	return pageHost.ii.getResult("device.getSystemInfo");
@@ -703,7 +703,7 @@ airlock.device.BatteryState = {
 };
 
 /**
- * @typedef PowerInfo
+ * @typedef airlock.device.PowerInfo
  * @property {airlock.device.PowerSource} powerSource 0 is battery, 1 is external (mains power)
  * @property {number} remainingBatteryMinutes
  * An estimate of the number of minutes of remaining battery charge.
@@ -718,7 +718,7 @@ airlock.device.BatteryState = {
 
 /**
  * Gets an object representing the device's power source and charging state.
- * @returns {PowerInfo} With fields representing the device's power source and charge level.
+ * @returns {airlock.device.PowerInfo} With fields representing the device's power source and charge level.
  * @example
  * var powerInfo = airlock.device.getPower();
  * // Test for external power source.
@@ -739,7 +739,7 @@ airlock.device.getPower = function() {
  * To unsubscribe to the event use:
  *		airlock.device.onPowerChanged.removeListener(afunctionReference)
  * @event
- * @type {PowerInfo}
+ * @type {airlock.device.PowerInfo}
  * @example
  * // Subscribe to event
  * airlock.device.onPowerChanged.addListener(handlePowerChanged);
@@ -949,7 +949,7 @@ airlock.networking.NetworkConnectionType = {
 };
 
 /**
- * @typedef NetworkInfo
+ * @typedef airlock.networking.NetworkInfo
  * @type {object}
  * @property {boolean} approachingDataLimit Gets a value indicating whether
  * the mobile broadband account is approaching a data limit.
@@ -973,8 +973,8 @@ airlock.networking.NetworkConnectionType = {
 
 /**
  * Gets the information for the current network connection, if any.
- * @see {@link NetworkInfo}
- * @returns {NetworkInfo} The network connection information.
+ * @see {@link airlock.networking.NetworkInfo}
+ * @returns {airlock.networking.NetworkInfo} The network connection information.
  * @example
  * var info = airlock.networking.getNetworkInfo();
  * // Display the SSID
@@ -985,7 +985,7 @@ airlock.networking.getNetworkInfo = function() {
 };
 
 /**
- * @typedef WirelessNetwork
+ * @typedef airlock.networking.WirelessNetwork
  * @type {object}
  * @property {string} bssid The address of the access point.
  * @property {string} ssid The Service Set Identifier.
@@ -1005,7 +1005,7 @@ airlock.networking.getNetworkInfo = function() {
 
 /**
  * Gets a promise that returns a list of WirelessNetwork objects.
- * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
+ * @returns {Promise<Array.<airlock.networking.WirelessNetwork>>} A promise that containing
  *		a list of wireless networks when fulfilled.
  *		The promise may take several seconds to resolve.
  * @example
@@ -1051,7 +1051,7 @@ airlock.networking.setWifiEnabled = function(enabled) {
  * To unsubscribe to the event use:
  *		airlock.networking.onConnectionChanged.removeListener(afunctionReference)
  * @event
- * @type {NetworkInfo}
+ * @type {airlock.networking.NetworkInfo}
  * @example
  * // Subscribe to event
  * airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
@@ -1246,7 +1246,7 @@ airlock.log.error = function(message, error) {
 
 
 /**
- * @typedef LogEntry
+ * @typedef airlock.log.LogEntry
  * @property {string} message The text content of the log entry.
  * @property {string} exception The error associated with this entry. Can be undefined.
  * @property {Date} occuredUtc The time and date in universal time
@@ -1270,7 +1270,7 @@ airlock.log.error = function(message, error) {
  * after this date and time are returned.
  * @param {Date} [endDate] If supplied, only entries that were made
  * prior to this date and time are returned.
- * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
+ * @returns {Promise<Array.<airlock.log.LogEntry>>} Resolves a list of log entries.
  * @example
  * var startDate = new Date();
  * // Create a Date object that indicates the time one minute ago.
@@ -1596,7 +1596,7 @@ airlock.io.getDirectories = function(directoryPath, searchPattern, recursive) {
 };
 
 /**
- * @typedef FileInfo
+ * @typedef airlock.io.FileInfo
  * @property {string} directory The path to the file's directory.
  * @property {Number} sizeBytes  The size of the file in bytes.
  * @property {Date} modifiedTime The date and time that the file was last modified in universal time.
@@ -1610,7 +1610,7 @@ airlock.io.getDirectories = function(directoryPath, searchPattern, recursive) {
 /**
  * Retrieves the information pertaining to the file at the specified location.
  * @param {string} path The path to the file.
- * @returns {FileInfo} The promise resolves a FileInfo object
+ * @returns {airlock.io.FileInfo} The promise resolves a FileInfo object
  * that contains the directory, size, modified/created/accessed times.
  * @example
  * airlock.io.getFileInfo(sourcePath)

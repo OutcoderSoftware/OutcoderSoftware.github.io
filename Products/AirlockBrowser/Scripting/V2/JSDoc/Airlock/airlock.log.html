@@ -965,7 +965,7 @@
     
 
     
-    <h4 class="name" id=".getEntries"><span class="type-signature">(static) </span>getEntries<span class="signature">(startDate<span class="signature-attributes">opt</span>, endDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#LogEntry">LogEntry</a>>>}</span></h4>
+    <h4 class="name" id=".getEntries"><span class="type-signature">(static) </span>getEntries<span class="signature">(startDate<span class="signature-attributes">opt</span>, endDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="airlock.log.html#.LogEntry">airlock.log.LogEntry</a>>>}</span></h4>
     
 
     
@@ -1149,7 +1149,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#LogEntry">LogEntry</a>>></span>
+<span class="param-type">Promise.&lt;Array.&lt;<a href="airlock.log.html#.LogEntry">airlock.log.LogEntry</a>>></span>
 
 
     </dd>
@@ -1690,6 +1690,258 @@
     
 
     
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id=".LogEntry">LogEntry</h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The text content of the log entry.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>exception</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The error associated with this entry. Can be undefined.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>occuredUtc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The time and date in universal timewhen this entry was written to the log.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>logLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="airlock.log.html#.LogLevel">airlock.log.LogLevel</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The log level of this entry.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The URL of the page or JavaScript filewhere the log entry was written.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>The</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">line number in the file where the callto write to the log was made.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>function</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the functionwhere the log call took place.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1248">line 1248</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+    
 
     
 </article>
@@ -1702,13 +1954,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Sep 19 2018 21:08:19 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Sep 20 2018 00:27:18 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

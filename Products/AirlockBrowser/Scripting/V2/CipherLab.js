@@ -26,7 +26,7 @@ function BarCodeSetCallBack(jsFunctionName) {
 
 /**
  * Gets the result of the last scan event.
- * @returns {ScanEventArgs} The last scan event args.
+ * @returns {airlock.scanning.ScanEventArgs} The last scan event args.
  * @see {@link airlock.scanning.onScan.addListener}
  */
 function BarCodeGetReaderData() {
@@ -396,7 +396,7 @@ function JSLog(level, message) {
 
 /**
  * Reads the log and returns the entries using a Promise.
- * @returns {Promise<Array.<LogEntry>>} Resolves a list of log entries.
+ * @returns {Promise<Array.<airlock.log.LogEntry>>} Resolves a list of log entries.
  * @see {@link airlock.log.getEntries}
  */
 function JSReadLogFile() {
@@ -540,7 +540,7 @@ function JSSetAutoRotate(mode) {
 
 /**
  * Gets an object representing the device's power source and charging state.
- * @returns {PowerInfo} With fields representing the device's power source and charge level.
+ * @returns {airlock.device.PowerInfo} With fields representing the device's power source and charge level.
  * @see {@link airlock.device.getPower}
  */
 function JSGetBatteryLevel() {
@@ -563,8 +563,8 @@ function JSGetDisplayLanguage() {
 
 /**
  * Gets the information for the current network connection, if any.
- * @see {@link NetworkInfo}
- * @returns {NetworkInfo} The network connection information.
+ * @see {@link airlock.device.NetworkInfo}
+ * @returns {airlock.device.NetworkInfo} The network connection information.
  * @see {@link airlock.device.getNetworkInfo}
  */
 function JSGetCurrentSsid() {
@@ -574,10 +574,10 @@ function JSGetCurrentSsid() {
 
 /**
  * Gets a promise that returns a list of WirelessNetwork objects.
- * @returns {Promise<Array.<WirelessNetwork>>} A promise that containing
+ * @returns {Promise<Array.<airlock.networking.WirelessNetwork>>} A promise that containing
  * a list of wireless networks when fulfilled.
  * The promise may take several seconds to resolve.
- * @see {@link airlock.device.getWirelessNetworks}
+ * @see {@link airlock.networking.getWirelessNetworks}
  */
 function JSGetSsidList() {
 	return airlock.networking.getWirelessNetworks();
@@ -604,7 +604,7 @@ function JSGetWifiPower() {
 
 /**
  * Gets a SystemInfo object containing various OS properties.
- * @returns {SystemInfo} Containing various OS properties.
+ * @returns {airlock.device.SystemInfo} Containing various OS properties.
  * @see {@link airlock.device.getSystemInfo}
  */
 function JSGetSystemInfo() {

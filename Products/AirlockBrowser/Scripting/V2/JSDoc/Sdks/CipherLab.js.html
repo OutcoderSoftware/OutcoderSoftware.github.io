@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: CipherLab.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: CipherLab.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @file CipherLab specific APIs for use with Airlock Browser.
+ * @version 1.0.6837.25184
+ * @copyright Outcoder Sàrl 2018. All Rights Reserved.
+ */
+
+ /**
+ * The root namespace for CipherLab.
+ * @namespace 
+ */
+airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
+
+/**
+ * @typedef airlock.sdks.cipherLab.CipherLabDeviceConfiguration
+ * @property {number} ledDurationMS=0 
+ * @property {number} beepSound=0  Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep)
+ * @property {number} vibrationCount=1  Valid values are [0, 10]
+ * @property {boolean} clearPreviousData=false 
+ * @property {boolean} showCodeType=false 
+ * @property {boolean} showCodeLength=false 
+ * @property {number} characterSet=0  Valid values are 0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS)
+ * @property {string} prefixCode 
+ * @property {string} suffixCode 
+ * @property {string} delimiter 
+ * @property {number} addonSecurityLevel=10  Valid values are [2, 30]
+ * @property {number} laserOnTimeMS=1000  Valid values are [500, 9900]
+ * @property {boolean} projectAimingPattern=true 
+ * @property {boolean} decodingIllumination=true 
+ * @property {boolean} displayMode=false 
+ * @property {number} illuminationPowerLevel=10  Valid values are [0, 10]
+ * @property {number} interCharacterGapSize=0  Valid values are 0 (Normal), 1 (Large)
+ * @property {number} negativeBarcodes=0  Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect)
+ * @property {boolean} pickListModeEnabled=false 
+ * @property {number} presentationUsageTimeOutSeconds=900  Valid values are [1, 1800]
+ * @property {number} redundancyLevel=0  Valid values are 0 (Level1), 1 (Level2), 2 (Level3), 3 (Level4)
+ * @property {number} scanAngleType=0  Valid values are 0 (Wide), 1 (Narrow)
+ * @property {number} scanMode=0  Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)
+ * @property {number} securityLevel=2  Valid values are [0, 3]
+ * @property {number} timeoutBetweenSameSymbologyMS=1000  Valid values are [0, 9900]
+ * @property {boolean} transmitCodeIdType=false 
+ * @property {number} aimerMode=0  Valid values are 0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead)
+ * @property {boolean} centerDecoding=true 
+ * @property {number} centerDecodingTolerance=0  Valid values are [0, 100]
+ * @property {number} transmitCodeIdChar=0  Valid values are 0 (None), 1 (AimCodeId)
+ * @property {number} triggerMode=0  Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)
+ * @property {boolean} notifyBarcodeReadSuccessful=true 
+ * @property {boolean} notifyBarcodeReadFailed=false 
+ * @property {boolean} vibrateUponBarcodeNotification=false 
+ */
+ 
+/**
+ * CipherLab Barcode Decoders
+ * @namespace 
+ */
+ airlock.sdks.cipherLab.decoders =  airlock.sdks.cipherLab.decoders || {};
+
+/**
+ * @typedef airlock.sdks.cipherLab.decoders.AustralianPostal
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Aztec
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Chinese2Of5
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Codabar
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} clsiEditingEnabled=false 
+ * @property {number} notisEditingType=0  Valid values are 0 (None), 1 (ABCDUpper), 2 (AbcdLower)
+ * @property {boolean} notisEditingEnabled=true 
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {number} verifyCheckDigit=0  Valid values are 0 (None), 1 (Modulo16), 2 (Modulo7DR), 3 (ModuloBoth)
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Code11
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {number} numberOfCheckDigits=0  Valid values are 0 (None), 1 (One), 2 (Two)
+ * @property {boolean} transmitCheckDigit=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Code128
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {number} securityLevel=0  Valid values are 0 (High), 1 (Normal)
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Code39
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} convertToCode32=false 
+ * @property {boolean} convertToCode32Prefix=false 
+ * @property {boolean} fullAsciiEnabled=false 
+ * @property {boolean} verifyCheckDigit=false 
+ * @property {boolean} transmitCheckDigit=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Code93
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Composite
+ * @property {boolean} c=true 
+ * @property {boolean} ab=false 
+ * @property {boolean} tlc39Enabled=false 
+ * @property {number} mode=1  Valid values are 0 (UpcNeverLinked), 1 (UpcAlwaysLinked), 2 (AutoDiscriminate)
+ * @property {boolean} emulationModeEnabled=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.UccCoupon
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.DataMatrix
+ * @property {string} fieldSeparator 
+ * @property {number} mirrorImage=0  Valid values are 0 (Never), 1 (Always), 2 (Auto)
+ * @property {string} applicationIdentifierMark1 
+ * @property {string} applicationIdentifierMark2 
+ * @property {boolean} applicationIdentifierEnabled=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.DutchPostal
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Ean13
+ * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} booklandIsbnFormat=0  Valid values are 0 (Isbn10), 1 (Isbn13)
+ * @property {boolean} convertToIsbn=false 
+ * @property {boolean} convertToIssn=false 
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Ean8
+ * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {boolean} convertToEan13=false 
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Industrial2Of5
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.JapanPostal
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.UKPostal
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Upce1
+ * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {boolean} convertToUpca=false 
+ * @property {number} preamble=10  Valid values are 0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.GS1128
+ * @property {string} applicationIdentifierMark1 
+ * @property {string} applicationIdentifierMark2 
+ * @property {boolean} applicationIdentifierEnabled=false 
+ * @property {string} fieldSeparator 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBar14
+ * @property {boolean} convertToUpcEan=false 
+ * @property {number} securityLevel=1  Valid values are [0, 3]
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBarExpanded
+ * @property {number} securityLevel=1  Valid values are [0, 3]
+ * @property {string} fieldSeparator 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBarLimited
+ * @property {boolean} convertToUpcEan=false 
+ * @property {number} securityLevel=3  Valid values are [1, 4]
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Interleaved2Of5
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {number} checkDigitVerification=0  Valid values are 0 (Disable), 1 (Uss), 2 (Opcc)
+ * @property {boolean} convertToEan13=false 
+ * @property {boolean} transmitCheckDigit=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Isbt128
+ * @property {number} concatenation=2  Valid values are 0 (Disable), 1 (Enable), 2 (Auto)
+ * @property {number} concatenationRedundancy=10 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Korean3Of5
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Matrix2Of5
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} verifyCheckDigit=false 
+ * @property {boolean} transmitCheckDigit=false 
+ * @property {boolean} redundancyEnabled=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.MaxiCode
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.MicroPdf417
+ * @property {boolean} code128Emulation=false 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.MicroQR
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Msi
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {number} checkDigitAlgorithm=0  Valid values are 0 (Modulo1011), 1 (DoubleModulo10)
+ * @property {number} checkDigitOption=0  Valid values are 0 (OneDigit), 1 (TwoDigits)
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Pdf417
+ * @property {number} transmitMode=0  Valid values are 0 (PassThroughAllSymbols), 1 (BufferAllSymbols), 2 (TransmitAnySymbolInSet)
+ * @property {boolean} escapeCharacterEnabled=true 
+ * @property {boolean} transmitControlHeader=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Plessey
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} unconventionalStop=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.QRCode
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Telepen
+ * @property {number} lengthMin=4 
+ * @property {number} lengthMax=55 
+ * @property {number} telepenFormat=0  Valid values are 0 (Ascii), 1 (Numeric)
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.TriopticCode39
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Upca
+ * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {boolean} convertToEan13=false 
+ * @property {number} preamble=10  Valid values are 0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.Upce0
+ * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
+ * @property {boolean} convertToUpca=false 
+ * @property {number} preamble=10  Valid values are 0 (None), 10 (SystemCharacter), 20 (SystemCharacterAndCtyCode)
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.UpuFicsPostal
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.USPostal
+ * @property {boolean} planetEnabled=true 
+ * @property {boolean} postnetEnabled=true 
+ * @property {boolean} transmitCheckDigit=true 
+ * @property {boolean} enabled=true 
+ */
+
+ /**
+ * @typedef airlock.sdks.cipherLab.decoders.UspsPostal
+ * @property {boolean} enabled=true 
+ */
+
+ 
+
+ </code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="airlock.sdks.cipherLab.html">cipherLab</a></li><li><a href="airlock.sdks.cipherLab.decoders.html">decoders</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Sep 20 2018 14:02:03 GMT+0200 (W. Europe Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

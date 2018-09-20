@@ -1,7 +1,7 @@
 
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6837.1243
+ * @version 1.0.6837.25184
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -9,10 +9,10 @@
  * The root namespace for CipherLab.
  * @namespace 
  */
-var cipherLab = cipherLab || {};
+airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
 /**
- * @typedef cipherLab.CipherLabDeviceConfiguration
+ * @typedef airlock.sdks.cipherLab.CipherLabDeviceConfiguration
  * @property {number} ledDurationMS=0 
  * @property {number} beepSound=0  Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep)
  * @property {number} vibrationCount=1  Valid values are [0, 10]
@@ -53,25 +53,25 @@ var cipherLab = cipherLab || {};
  * CipherLab Barcode Decoders
  * @namespace 
  */
-cipherLab.decoders = cipherLab.decoders || {};
+ airlock.sdks.cipherLab.decoders =  airlock.sdks.cipherLab.decoders || {};
 
 /**
- * @typedef cipherLab.decoders.AustralianPostal
+ * @typedef airlock.sdks.cipherLab.decoders.AustralianPostal
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Aztec
+ * @typedef airlock.sdks.cipherLab.decoders.Aztec
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Chinese2Of5
+ * @typedef airlock.sdks.cipherLab.decoders.Chinese2Of5
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Codabar
+ * @typedef airlock.sdks.cipherLab.decoders.Codabar
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} clsiEditingEnabled=false 
@@ -83,7 +83,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Code11
+ * @typedef airlock.sdks.cipherLab.decoders.Code11
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {number} numberOfCheckDigits=0  Valid values are 0 (None), 1 (One), 2 (Two)
@@ -92,7 +92,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Code128
+ * @typedef airlock.sdks.cipherLab.decoders.Code128
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {number} securityLevel=0  Valid values are 0 (High), 1 (Normal)
@@ -100,7 +100,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Code39
+ * @typedef airlock.sdks.cipherLab.decoders.Code39
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} convertToCode32=false 
@@ -112,14 +112,14 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Code93
+ * @typedef airlock.sdks.cipherLab.decoders.Code93
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Composite
+ * @typedef airlock.sdks.cipherLab.decoders.Composite
  * @property {boolean} c=true 
  * @property {boolean} ab=false 
  * @property {boolean} tlc39Enabled=false 
@@ -129,12 +129,12 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.UccCoupon
+ * @typedef airlock.sdks.cipherLab.decoders.UccCoupon
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.DataMatrix
+ * @typedef airlock.sdks.cipherLab.decoders.DataMatrix
  * @property {string} fieldSeparator 
  * @property {number} mirrorImage=0  Valid values are 0 (Never), 1 (Always), 2 (Auto)
  * @property {string} applicationIdentifierMark1 
@@ -144,12 +144,12 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.DutchPostal
+ * @typedef airlock.sdks.cipherLab.decoders.DutchPostal
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Ean13
+ * @typedef airlock.sdks.cipherLab.decoders.Ean13
  * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} booklandIsbnFormat=0  Valid values are 0 (Isbn10), 1 (Isbn13)
@@ -160,7 +160,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Ean8
+ * @typedef airlock.sdks.cipherLab.decoders.Ean8
  * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {boolean} convertToEan13=false 
@@ -169,25 +169,25 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Industrial2Of5
+ * @typedef airlock.sdks.cipherLab.decoders.Industrial2Of5
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.JapanPostal
+ * @typedef airlock.sdks.cipherLab.decoders.JapanPostal
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.UKPostal
+ * @typedef airlock.sdks.cipherLab.decoders.UKPostal
  * @property {boolean} transmitCheckDigit=true 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Upce1
+ * @typedef airlock.sdks.cipherLab.decoders.Upce1
  * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {boolean} convertToUpca=false 
@@ -197,7 +197,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.GS1128
+ * @typedef airlock.sdks.cipherLab.decoders.GS1128
  * @property {string} applicationIdentifierMark1 
  * @property {string} applicationIdentifierMark2 
  * @property {boolean} applicationIdentifierEnabled=false 
@@ -206,28 +206,28 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.GS1DataBar14
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBar14
  * @property {boolean} convertToUpcEan=false 
  * @property {number} securityLevel=1  Valid values are [0, 3]
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.GS1DataBarExpanded
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBarExpanded
  * @property {number} securityLevel=1  Valid values are [0, 3]
  * @property {string} fieldSeparator 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.GS1DataBarLimited
+ * @typedef airlock.sdks.cipherLab.decoders.GS1DataBarLimited
  * @property {boolean} convertToUpcEan=false 
  * @property {number} securityLevel=3  Valid values are [1, 4]
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Interleaved2Of5
+ * @typedef airlock.sdks.cipherLab.decoders.Interleaved2Of5
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {number} checkDigitVerification=0  Valid values are 0 (Disable), 1 (Uss), 2 (Opcc)
@@ -237,19 +237,19 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Isbt128
+ * @typedef airlock.sdks.cipherLab.decoders.Isbt128
  * @property {number} concatenation=2  Valid values are 0 (Disable), 1 (Enable), 2 (Auto)
  * @property {number} concatenationRedundancy=10 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Korean3Of5
+ * @typedef airlock.sdks.cipherLab.decoders.Korean3Of5
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Matrix2Of5
+ * @typedef airlock.sdks.cipherLab.decoders.Matrix2Of5
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} verifyCheckDigit=false 
@@ -259,23 +259,23 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.MaxiCode
+ * @typedef airlock.sdks.cipherLab.decoders.MaxiCode
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.MicroPdf417
+ * @typedef airlock.sdks.cipherLab.decoders.MicroPdf417
  * @property {boolean} code128Emulation=false 
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.MicroQR
+ * @typedef airlock.sdks.cipherLab.decoders.MicroQR
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Msi
+ * @typedef airlock.sdks.cipherLab.decoders.Msi
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {number} checkDigitAlgorithm=0  Valid values are 0 (Modulo1011), 1 (DoubleModulo10)
@@ -285,7 +285,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Pdf417
+ * @typedef airlock.sdks.cipherLab.decoders.Pdf417
  * @property {number} transmitMode=0  Valid values are 0 (PassThroughAllSymbols), 1 (BufferAllSymbols), 2 (TransmitAnySymbolInSet)
  * @property {boolean} escapeCharacterEnabled=true 
  * @property {boolean} transmitControlHeader=true 
@@ -293,7 +293,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Plessey
+ * @typedef airlock.sdks.cipherLab.decoders.Plessey
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {boolean} transmitCheckDigit=true 
@@ -302,12 +302,12 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.QRCode
+ * @typedef airlock.sdks.cipherLab.decoders.QRCode
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Telepen
+ * @typedef airlock.sdks.cipherLab.decoders.Telepen
  * @property {number} lengthMin=4 
  * @property {number} lengthMax=55 
  * @property {number} telepenFormat=0  Valid values are 0 (Ascii), 1 (Numeric)
@@ -315,12 +315,12 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.TriopticCode39
+ * @typedef airlock.sdks.cipherLab.decoders.TriopticCode39
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.Upca
+ * @typedef airlock.sdks.cipherLab.decoders.Upca
  * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {boolean} convertToEan13=false 
@@ -330,7 +330,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.Upce0
+ * @typedef airlock.sdks.cipherLab.decoders.Upce0
  * @property {number} addon2=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {number} addon5=0  Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate)
  * @property {boolean} convertToUpca=false 
@@ -340,12 +340,12 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.UpuFicsPostal
+ * @typedef airlock.sdks.cipherLab.decoders.UpuFicsPostal
  * @property {boolean} enabled=true 
  */
 
  /**
- * @typedef cipherLab.decoders.USPostal
+ * @typedef airlock.sdks.cipherLab.decoders.USPostal
  * @property {boolean} planetEnabled=true 
  * @property {boolean} postnetEnabled=true 
  * @property {boolean} transmitCheckDigit=true 
@@ -353,7 +353,7 @@ cipherLab.decoders = cipherLab.decoders || {};
  */
 
  /**
- * @typedef cipherLab.decoders.UspsPostal
+ * @typedef airlock.sdks.cipherLab.decoders.UspsPostal
  * @property {boolean} enabled=true 
  */
 

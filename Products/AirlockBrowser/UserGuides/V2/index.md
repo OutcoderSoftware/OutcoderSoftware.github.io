@@ -475,9 +475,7 @@ var decoder = airlock.scanning.getDecoderWithNativeId(71);
 
 All properties that are configurable within Airlock Browser's device configuration are also configurable via JavaScript.
 
-For a list of configurable properties, see the device types respective guide:
-
-* [CipherLab](../DeviceSdks/CipherLab/DecoderProperties)
+For a list of configurable properties, see the [Device SDK API Documentation](Products/AirlockBrowser/Scripting/V2/JSDoc/Sdks/)
 
 > **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
 

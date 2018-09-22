@@ -104,7 +104,7 @@ function BarCodeGetScannerVersion() {
  * Returns the scanner configuration as an object.
  * Fields can be set, and the configuration can be applied using setConfiguration.
  * @see {@link BarCodeSetReaderOutputConfiguration}
- * @return {object} The reader configuration.
+ * @return {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} The reader configuration.
  * @see {@link airlock.scanning.getConfiguration}
  */
 function BarCodeGetReaderOutputConfiguration() {
@@ -113,7 +113,7 @@ function BarCodeGetReaderOutputConfiguration() {
 
 /**
  * Applies the specified scanner configuration to the device.
- * @param {object} configuration The barcode reader configuration.
+ * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} configuration The barcode reader configuration.
  * @see {@link airlock.scanning.setConfiguration}
  */
 function BarCodeSetReaderOutputConfiguration(configuration) {
@@ -502,15 +502,29 @@ function JSSetDisplaySleep(enable) {
  * for web applications, via the remote application dialog in the launchpad;
  * or individual pages, using this JavaScript API.
  * @returns {airlock.device.OrientationLockType} The orientation enumeration value.
- * 0 is unlocked, 1 is locked portrait, 2 is locked landscape, 3 is system controlled.
- * When the value is 3 (system controlled), an orientation value has not been set using this API
- * and the orientation lock cannot be determined because the current tab
- * may not be active. When 3, the locked or unlocked state is determined
- * by the configuration and/or user settings in the app.
+ * 1 is unlocked, 2 is locked portrait, 3 is locked landscape.
  * @see {@link airlock.device.getOrientationLock}
  */
 function JSGetAutoRotate() {
-	return airlock.ui.getOrientationLock();
+	var value = airlock.ui.getOrientationLock();
+	var lockType;
+
+	switch (value) {
+		case airlock.ui.OrientationLockType.UNLOCKED:
+			lockType = 1;
+			break;
+		case airlock.ui.OrientationLockType.LOCK_PORTRAIT:
+			lockType = 2;
+			break;
+		case airlock.ui.OrientationLockType.LOCK_LANDSCAPE:
+			lockType = 3;
+			break;
+		default:
+			lockType = 1; /* Don't know what to return here because the API 
+			 * is slightly incompatible with Airlocks. It's better to use the Airlock API. */
+	}
+
+	return lockType;
 }
 
 /**
@@ -533,7 +547,7 @@ function JSSetAutoRotate(mode) {
 			lockType = airlock.ui.OrientationLockType.LOCK_LANDSCAPE;
 			break;
 		default:
-			lockType = airlock.ui.OrientationLockType.SYSTEM_CONTROLLED;
+			throw "Invalid value mode. Must be a number. 1, 2, or 3.";
 	}
 	airlock.ui.setOrientationLock(lockType);
 }
@@ -857,7 +871,7 @@ function JSSetHttpErrorAction(action, url) {
  * Gets the set of preferences.
  * Properties of the configuration object vary depending
  * on the device SDK.
- * @returns {object} The configuration object.
+ * @returns {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} The configuration object.
  */
 function BarCodeGetUserPreferences() {
 	return airlock.scanning.getConfiguration();
@@ -866,7 +880,7 @@ function BarCodeGetUserPreferences() {
 /**
  * Sets the configuration.
  * Properties of the configuration object vary depending on the device SDK.
- * @param {object} userPreference The configuration object.
+ * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} userPreference The configuration object.
  */
 function BarCodeSetUserPreferences(userPreference) {
 	airlock.scanning.setConfiguration(userPreference);

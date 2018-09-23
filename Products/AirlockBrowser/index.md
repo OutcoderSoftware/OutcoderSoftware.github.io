@@ -25,7 +25,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
   <div class="container">
     <div class="row">
       <div class="col-lg-6">
-        <h2 class="text-left">Introducing Airlock Browser</h2>
+        <h2 class="text-left">Boost Productivity with a Modern Industrial Browser</h2>
         <hr class="hr-left">
         <div class="row">
           
@@ -208,7 +208,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>In addition, numerous features, many of which, can be enabled or disabled by the administrator, such as:</h2>
+                <h2>Other features include:</h2>
                 <br/><br/>
             </div>
         </div>

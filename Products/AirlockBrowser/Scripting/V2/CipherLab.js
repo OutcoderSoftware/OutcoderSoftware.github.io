@@ -4,7 +4,7 @@
  * @copyright Outcoder Sarl 2018. All Rights Reserved.
  */
 
-var clLastScanArgs;
+var clLastScanText = "";
 
 /**
  * Subscribes to the airlock.scanning.onScan event.
@@ -15,7 +15,7 @@ var clLastScanArgs;
  */
 function BarCodeSetCallBack(jsFunctionName) {
 	airlock.scanning.onScan.addListener(function (args) {
-		clLastScanArgs = args;
+		clLastScanText = args.text;
 		window[jsFunctionName](args);
 	});
 
@@ -26,11 +26,12 @@ function BarCodeSetCallBack(jsFunctionName) {
 
 /**
  * Gets the result of the last scan event.
+ * Requires that the BarcodeSetCallBack be called once.
  * @returns {airlock.scanning.ScanEventArgs} The last scan event args.
  * @see {@link airlock.scanning.onScan.addListener}
  */
 function BarCodeGetReaderData() {
-	return clLastScanArgs;
+	return clLastScanText;
 }
 
 /**
@@ -213,7 +214,7 @@ function BarCodeGetSymbology(decoderName) {
 	return airlock.scanning.getDecoderWithName(decoderName);
 }
 
-var clLastScanError;
+var clLastScanError = "";
 
 /**
  * Gets the last scan error. Requires subscription to the scan

@@ -1,12 +1,25 @@
 
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6837.25184
+ * @version 1.0.6849.39184
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
  /**
- * The root namespace for CipherLab.
+ * Airlock Browser's root namespace.
+ * @namespace 
+ * @see <a href="../../Airlock/airlock.html">airlock</a>
+ */
+ airlock = airlock || {};
+
+ /**
+ * Contains device SDK specific APIs.
+ * @namespace 
+ */
+ airlock.sdks = airlock.sdks || {};
+
+ /**
+ * The root namespace for CipherLab specific APIs.
  * @namespace 
  */
 airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
@@ -24,7 +37,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {string} suffixCode 
  * @property {string} delimiter 
  * @property {number} addonSecurityLevel=10  Valid values are [2, 30]
- * @property {number} laserOnTimeMS=1000  Valid values are [500, 9900]
+ * @property {number} laserOnTimeMS=3000  Valid values are [500, 9900]
  * @property {boolean} projectAimingPattern=true 
  * @property {boolean} decodingIllumination=true 
  * @property {boolean} displayMode=false 
@@ -33,10 +46,10 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {number} negativeBarcodes=0  Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect)
  * @property {boolean} pickListModeEnabled=false 
  * @property {number} presentationUsageTimeOutSeconds=900  Valid values are [1, 1800]
- * @property {number} redundancyLevel=0  Valid values are 0 (Level1), 1 (Level2), 2 (Level3), 3 (Level4)
+ * @property {number} redundancyLevel=1  Valid values are 1 (Level1), 2 (Level2), 3 (Level3), 4 (Level4)
  * @property {number} scanAngleType=0  Valid values are 0 (Wide), 1 (Narrow)
  * @property {number} scanMode=0  Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)
- * @property {number} securityLevel=2  Valid values are [0, 3]
+ * @property {number} securityLevel=0  Valid values are [0, 3]
  * @property {number} timeoutBetweenSameSymbologyMS=1000  Valid values are [0, 9900]
  * @property {boolean} transmitCodeIdType=false 
  * @property {number} aimerMode=0  Valid values are 0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead)

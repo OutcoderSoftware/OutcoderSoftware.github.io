@@ -7,3 +7,7 @@ figcaption {
 	font-size: .8em;
 	font-style: italic;
 }
+
+.userGuideSection {
+	padding: 50px 0 50px 0; 
+}

@@ -41,7 +41,8 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
            <div class="about-3-cont-txt" style="padding-top:0px;">
               <ul class="wow fadeInUp">
                 <li><a href="Downloads/">Download Airlock Browser for Android</a></li>
-                <li><a href="UserGuides/V2/">View the User Guide</a></li>
+                <li><a href="UserGuides/V2/">User Guide</a></li>
+				<li><a href="Scripting/V2/">Developer Resources</a></li>
               </ul>
             </div>
         </div>

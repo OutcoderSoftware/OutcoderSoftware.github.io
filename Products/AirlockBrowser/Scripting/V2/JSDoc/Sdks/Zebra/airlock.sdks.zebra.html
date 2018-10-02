@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: cipherLab</title>
+    <title>JSDoc: Namespace: zebra</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: cipherLab</h1>
+    <h1 class="page-title">Namespace: zebra</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2>cipherLab</h2>
+        <h2>
+            <span class="ancestors"><a href="airlock.html">airlock</a><a href="airlock.sdks.html">.sdks</a>.</span>zebra</h2>
         
     
 </header>
@@ -37,7 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">The root namespace for CipherLab.</div>
+            <div class="description">The root namespace for Zebra specific APIs.</div>
         
 
         
@@ -72,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line12">line 12</a>
+        <a href="Zebra.js.html">Zebra.js</a>, <a href="Zebra.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -102,7 +103,7 @@
         <h3 class="subsection-title">Namespaces</h3>
 
         <dl>
-            <dt><a href="airlock.sdks.cipherLab.decoders.html">decoders</a></dt>
+            <dt><a href="airlock.sdks.zebra.decoders.html">decoders</a></dt>
             <dd></dd>
         </dl>
     
@@ -116,7 +117,7 @@
 
         
                 
-<h4 class="name" id=".CipherLabDeviceConfiguration">CipherLabDeviceConfiguration</h4>
+<h4 class="name" id=".EmdkDeviceConfiguration">EmdkDeviceConfiguration</h4>
 
 
 
@@ -155,13 +156,13 @@
 
         <tr>
             
-                <td class="name"><code>ledDurationMS</code></td>
+                <td class="name"><code>enableIlluminationMode</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -172,7 +173,7 @@
             
                 <td class="default">
                 
-                    0
+                    true
                 
                 </td>
             
@@ -184,36 +185,7 @@
 
         <tr>
             
-                <td class="name"><code>beepSound</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vibrationCount</code></td>
+                <td class="name"><code>viewFinderMode</code></td>
             
 
             <td class="type">
@@ -235,101 +207,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 10]</td>
+            <td class="description last">Valid values are 0 (Enabled), 1 (StaticReticle)</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>clearPreviousData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>showCodeType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>showCodeLength</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>characterSet</code></td>
+                <td class="name"><code>viewfinderOffsetX</code></td>
             
 
             <td class="type">
@@ -351,14 +236,304 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS)</td>
+            <td class="description last"></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>prefixCode</code></td>
+                <td class="name"><code>viewfinderOffsetY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>viewfinderSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>continuousReadContinuousReadEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>continuousReadDifferentSymbolTimeoutMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>continuousReadSameSymbolTimeoutMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>adaptiveScanningEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>beamWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Normal), 1 (Narrow), 2 (Wide)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>powerMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Optimized), 1 (High), 2 (Low), 3 (AlwaysOn)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decodeAudioFeedbackMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Both), 1 (Disable), 2 (Local), 3 (Remote)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>audioStreamType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Alarms), 1 (Media), 2 (Ringer)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decodeAudioFeedbackUri</code></td>
             
 
             <td class="type">
@@ -375,6 +550,8 @@
             
                 <td class="default">
                 
+                    content://media/internal/audio/media/88
+                
                 </td>
             
 
@@ -385,13 +562,13 @@
 
         <tr>
             
-                <td class="name"><code>suffixCode</code></td>
+                <td class="name"><code>decodeLedFeedback</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -402,6 +579,8 @@
             
                 <td class="default">
                 
+                    false
+                
                 </td>
             
 
@@ -412,13 +591,13 @@
 
         <tr>
             
-                <td class="name"><code>delimiter</code></td>
+                <td class="name"><code>decodeLedFeedbackMode</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -429,6 +608,37 @@
             
                 <td class="default">
                 
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Both), 1 (Disable), 2 (Local), 3 (Remote)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decodeLedTimeMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    75
+                
                 </td>
             
 
@@ -439,7 +649,471 @@
 
         <tr>
             
-                <td class="name"><code>addonSecurityLevel</code></td>
+                <td class="name"><code>beamTimerMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    15000
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inverse1DMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Auto), 1 (Disabled), 2 (Enabled)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>enableLcdMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>linearSecurityLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (AllThrice), 1 (AllTwice), 2 (LongAndShort), 3 (ShortOrCodabar)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lowPowerTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    250
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>codeIdType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (None), 1 (AIM), 2 (Symbol)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aimTimerMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aimType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    4
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (ContinuousRead), 1 (PressAndRelease), 2 (TimedHold), 3 (TimedRelease), 4 (Trigger)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>differentSymbolTimeoutMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>illuminationMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (On), 1 (Off)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>oneDQuietZoneLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Level0), 1 (Level1), 2 (Level2), 3 (Level3)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>picklistEx</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Disabled), 1 (Hardware), 2 (Software)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>poorQualityDecodeEffortLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (Level0), 1 (Level1), 2 (Level2), 3 (Level3)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sameSymbolTimeoutMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>aimingPattern</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Valid values are 0 (On), 1 (Off)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>connectionIdleTimeSeconds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    600
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>illuminationBrightness</code></td>
             
 
             <td class="type">
@@ -461,587 +1135,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are [2, 30]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>laserOnTimeMS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    1000
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [500, 9900]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>projectAimingPattern</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
             <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>decodingIllumination</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>displayMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>illuminationPowerLevel</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    10
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [0, 10]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>interCharacterGapSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (Normal), 1 (Large)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>negativeBarcodes</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pickListModeEnabled</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>presentationUsageTimeOutSeconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    900
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [1, 1800]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>redundancyLevel</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (Level1), 1 (Level2), 2 (Level3), 3 (Level4)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>scanAngleType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (Wide), 1 (Narrow)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>scanMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>securityLevel</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    2
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [0, 3]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>timeoutBetweenSameSymbologyMS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    1000
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [0, 9900]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transmitCodeIdType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>aimerMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>centerDecoding</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>centerDecodingTolerance</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are [0, 100]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transmitCodeIdChar</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (None), 1 (AimCodeId)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>triggerMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>
         </tr>
 
     
@@ -1167,7 +1261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line14">line 14</a>
+        <a href="Zebra.js.html">Zebra.js</a>, <a href="Zebra.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -1197,13 +1291,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="airlock.sdks.cipherLab.html">cipherLab</a></li><li><a href="airlock.sdks.cipherLab.decoders.html">decoders</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.sdks.html">sdks</a></li><li><a href="airlock.sdks.zebra.html">zebra</a></li><li><a href="airlock.sdks.zebra.decoders.html">decoders</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 01 2018 18:35:22 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Oct 02 2018 21:46:26 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,6 +1,6 @@
 /**
  * @file Honeywell specific APIs for use with Airlock Browser.
- * @version 1.0.6850.31683
+ * @version 1.0.6850.33656
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 

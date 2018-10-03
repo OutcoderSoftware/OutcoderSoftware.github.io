@@ -204,7 +204,7 @@ airlock.scanning.getDecoders = function() {
  * var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
  * codabarDecoder.enabled = true;
  * codabarDecoder.notisEditingType = 1;
- * codabarDecoder.lengthMin = 10;
+ * codabarDecoder.length1 = 10;
  * airlock.scanning.setDecoder(codabarDecoder);
  */
 airlock.scanning.setDecoder = function(decoder) {

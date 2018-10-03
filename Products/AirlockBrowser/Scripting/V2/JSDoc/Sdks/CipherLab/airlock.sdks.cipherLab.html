@@ -73,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line25">line 25</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -156,7 +156,7 @@
 
         <tr>
             
-                <td class="name"><code>ledDurationMS</code></td>
+                <td class="name"><code>ledDuration</code></td>
             
 
             <td class="type">
@@ -185,7 +185,7 @@
 
         <tr>
             
-                <td class="name"><code>beepSound</code></td>
+                <td class="name"><code>readerBeep</code></td>
             
 
             <td class="type">
@@ -207,14 +207,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep)</td>
+            <td class="description last">Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>vibrationCount</code></td>
+                <td class="name"><code>vibrationCounter</code></td>
             
 
             <td class="type">
@@ -236,7 +236,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 10]</td>
+            <td class="description last">Valid values are [0, 10].</td>
         </tr>
 
     
@@ -301,7 +301,7 @@
 
         <tr>
             
-                <td class="name"><code>showCodeLength</code></td>
+                <td class="name"><code>showCodeLen</code></td>
             
 
             <td class="type">
@@ -330,7 +330,7 @@
 
         <tr>
             
-                <td class="name"><code>characterSet</code></td>
+                <td class="name"><code>szCharsetName</code></td>
             
 
             <td class="type">
@@ -352,14 +352,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS)</td>
+            <td class="description last">Valid values are 0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>prefixCode</code></td>
+                <td class="name"><code>szPrefixCode</code></td>
             
 
             <td class="type">
@@ -386,7 +386,7 @@
 
         <tr>
             
-                <td class="name"><code>suffixCode</code></td>
+                <td class="name"><code>szSuffixCode</code></td>
             
 
             <td class="type">
@@ -413,7 +413,7 @@
 
         <tr>
             
-                <td class="name"><code>delimiter</code></td>
+                <td class="name"><code>useDelim</code></td>
             
 
             <td class="type">
@@ -462,14 +462,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are [2, 30]</td>
+            <td class="description last">Valid values are [2, 30].</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>laserOnTimeMS</code></td>
+                <td class="name"><code>laserOnTime</code></td>
             
 
             <td class="type">
@@ -491,14 +491,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are [500, 9900]</td>
+            <td class="description last">Valid values are [500, 9900].</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>projectAimingPattern</code></td>
+                <td class="name"><code>decodingAimingPattern</code></td>
             
 
             <td class="type">
@@ -520,7 +520,7 @@
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">A value that specifies whether to project the aiming pattern on every barcode capture.</td>
         </tr>
 
     
@@ -585,7 +585,7 @@
 
         <tr>
             
-                <td class="name"><code>illuminationPowerLevel</code></td>
+                <td class="name"><code>decodingIlluminationPowerLevel</code></td>
             
 
             <td class="type">
@@ -607,14 +607,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 10]</td>
+            <td class="description last">Valid values are [0, 10].</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>interCharacterGapSize</code></td>
+                <td class="name"><code>interCharGapSize</code></td>
             
 
             <td class="type">
@@ -636,7 +636,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (Normal), 1 (Large)</td>
+            <td class="description last">A value that specifies the intercharacter gap size for Code 39 and Codabar, 					which is typically quite small. Due to various barcode printing technologies, 					this gap can grow larger than the maximum size allowed and prevent the scan engine 					from decoding a barcode. If this problem occurs, set it to "Large Intercharacter Gaps" 					to tolerate these out-of-specification barcodes. 					Valid values are 0 (Normal), 1 (Large).</td>
         </tr>
 
     
@@ -665,14 +665,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect)</td>
+            <td class="description last">Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>pickListModeEnabled</code></td>
+                <td class="name"><code>pickListMode</code></td>
             
 
             <td class="type">
@@ -701,7 +701,7 @@
 
         <tr>
             
-                <td class="name"><code>presentationUsageTimeOutSeconds</code></td>
+                <td class="name"><code>timeoutPresentationMode</code></td>
             
 
             <td class="type">
@@ -723,7 +723,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are [1, 1800]</td>
+            <td class="description last">A value that specifies the minimum time interval between reading two identical barcodes. 					This helps prevent the scanner from accidentally reading the same barcode twice. 					This parameter applies to Continuous and Presentation modes. 					Valid values are [1, 1800].</td>
         </tr>
 
     
@@ -752,14 +752,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are 1 (Level1), 2 (Level2), 3 (Level3), 4 (Level4)</td>
+            <td class="description last">A value that specifies decode redundancy. Higher redundancy levels 					should be selected for deteriorated barcode quality. 					Valid values are 1 (Level1), 2 (Level2), 3 (Level3), 4 (Level4).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>scanAngleType</code></td>
+                <td class="name"><code>scanAngle</code></td>
             
 
             <td class="type">
@@ -781,36 +781,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (Wide), 1 (Narrow)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>scanMode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
-
-            <td class="description last">Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>
+            <td class="description last">Valid values are 0 (Wide), 1 (Narrow).</td>
         </tr>
 
     
@@ -839,14 +810,14 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 3]</td>
+            <td class="description last">Valid values are [0, 3].</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>timeoutBetweenSameSymbologyMS</code></td>
+                <td class="name"><code>timeoutBetweenSameSymbol</code></td>
             
 
             <td class="type">
@@ -868,36 +839,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 9900]</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transmitCodeIdType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
+            <td class="description last">A value that specifies the minimum time interval in milliseconds 					between reading two identical barcodes. This helps prevent the scanner 					from accidentally reading the same barcode twice. This parameter applies 					to Continuous and Presentation modes. 					0 ~ 9900 *1000 (millisecond) 0 ~ 2550 *300 (millisecond) for the EX25 scan engine only 					Valid values are [0, 9900].</td>
         </tr>
 
     
@@ -926,7 +868,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead)</td>
+            <td class="description last">Valid values are 0 (Typical), 1 (OnePullAimAndRead), 2 (OnePullAimSecondPullRead).</td>
         </tr>
 
     
@@ -984,7 +926,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are [0, 100]</td>
+            <td class="description last">Valid values are [0, 100].</td>
         </tr>
 
     
@@ -1013,7 +955,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (None), 1 (AimCodeId)</td>
+            <td class="description last">Valid values are 0 (None), 1 (AimCodeId).</td>
         </tr>
 
     
@@ -1042,7 +984,7 @@
                 </td>
             
 
-            <td class="description last">Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode)</td>
+            <td class="description last">Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).</td>
         </tr>
 
     
@@ -1107,7 +1049,7 @@
 
         <tr>
             
-                <td class="name"><code>vibrateUponBarcodeNotification</code></td>
+                <td class="name"><code>barcodeVibrate</code></td>
             
 
             <td class="type">
@@ -1168,7 +1110,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line27">line 27</a>
+        <a href="CipherLab.js.html">CipherLab.js</a>, <a href="CipherLab.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -1204,7 +1146,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Oct 02 2018 21:46:24 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Oct 03 2018 17:37:07 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

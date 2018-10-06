@@ -886,3 +886,22 @@ function BarCodeGetUserPreferences() {
 function BarCodeSetUserPreferences(userPreference) {
 	airlock.scanning.setConfiguration(userPreference);
 }
+
+/**
+ * Gets the set of preferences.
+ * Properties of the configuration object vary depending
+ * on the device SDK.
+ * @returns {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} The configuration object.
+ */
+function BarCodeGetNotificationParams() {
+	return airlock.scanning.getConfiguration();
+}
+
+/**
+ * Sets the configuration.
+ * Properties of the configuration object vary depending on the device SDK.
+ * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} userPreference The configuration object.
+ */
+function BarCodeSetNotificationParams(userPreference) {
+	airlock.scanning.setConfiguration(userPreference);
+}

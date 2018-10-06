@@ -8,18 +8,6 @@ title: Airlock Browser Programming Guide
 
 ## Table of Contents
 
-[//]: # (TOC Begin)
-* [Introduction](#introduction)
-	* [Ensuring Airlock is Ready to Receive Commands](#ensuring-airlock-is-ready-to-receive-commands)
-	* [Enabling Intellisense](#enabling-intellisense)
-	* [Configuring the Barcode Reader via JavaScript](#configuring-the-barcode-reader-via-javascript)
-	* [Monitoring Network Connectivity](#monitoring-network-connectivity)
-	* [Printing a Page via JavaScript](#printing-a-page-via-javascript)
-	* [Using Text to Speech with JavaScript](#using-text-to-speech-with-javascript)
-	* [Setting Advanced Scripting Permission](#setting-advanced-scripting-permission)
-
-[//]: # (TOC End)
-
 
 ## Introduction
 
@@ -27,7 +15,7 @@ Airlock Browser includes a rich set of client-side JavaScript APIs that allow yo
 Airlock Browser JavaScript APIs via can be invoked from an on-page script or from a remote web application JavaScript event handler. 
 
 > **NOTE:**
-Please note that there exists [comprehensive working examples](../../Scripting/V2/Examples/) for the APIs listed in this document.
+Please note that there exists [comprehensive working examples](../../Scripting/V2/Samples/) for the APIs listed in this document.
 
 In this document you explore the following sets of APIs, which are grouped together in the following JavaScript namespaces:
 * `airlock.app` Provides licensing, updates, versioning, and APIs for exiting the app.
@@ -41,9 +29,9 @@ In this document you explore the following sets of APIs, which are grouped toget
 * `airlock.speech` Brings text to speech capabilities to your web application.
 * `airlock.ui` Allows you to control various user interface elements within the browser.
 
-> **NOTE:** For security reasons, the JavaScript APIs can only be called from a page with a domain that matches one of the domains of a web profile, present on the launchpad. This prevents unauthorized web sites from invoking a function from a web page.
+> **NOTE:** For security reasons, the JavaScript APIs can only be called from a page with a domain that matches one of the domains of a web profile, present on the launchpad. This prevents unauthorized web sites from invoking a function from a web page. The launchpad is the panel that slides in from left to right. More information regarding the launchpad can be found in the [User Guide](../#overview-of-the-user-interface)
 
-### Ensuring Airlock is Ready to Receive Commands
+## Ensuring Airlock is Ready to Receive Commands
 
 The JavaScript object that you use to call through to Airlock Browser is named `airlock`. The `airlock` object is available after the web page is loaded. The HTML `body.onload` event or other events that indicate that the page has loaded may occur before `airlock` has been properly initialized. To determine when the `airlock` object is initialized, use the `airlock.onReady` function, as shown in the following example:
 
@@ -67,13 +55,41 @@ The JavaScript object that you use to call through to Airlock Browser is named `
 
 The specified function is called immediately following the `window.onload` event. The parameter to the `onReady` function is a string containing JavaScript.
 
-### Enabling Intellisense
+## Enabling Intellisense
 
-During development of your web application, you can include the [Airlock.js](../../../Scripting/V2/JavaScript/Airlock/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, a long with examples. This aids in increasing the speed of development and reduces errors from typos.
+During development of your web application, you can include the  [Airlock.js](../../../Scripting/V2/JavaScript/Airlock/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, a long with examples. This aids in increasing the speed of development and reduces errors from typos.
 
 In addition, you can also find JavaScript files with type definitions for various 
 
-> **NOTE:** Airlock Browser includes 80+ APIs for controlling and interacting with the browsers. Only a small subset are covered in this guide. Please see the [Live Examples](../../Scripting/V2/Examples/) and [API Documentation](../../Scripting/V2/JSDoc/Airlock/) for more information.
+> **NOTE:** Airlock Browser includes 80+ APIs for controlling and interacting with the browsers. Only a small subset are covered in this guide. Please see the [Live Samples](../../../Scripting/V2/Samples/) and [API Documentation](../../../Scripting/V2/JSDoc/Airlock/) for more information.
+
+## Exploring the App Namespace
+
+The `airlock.app` namespace contains functions for licensing, updates, versioning, and APIs for exiting the app.
+
+To see the APIs in this namespace in action, please see the [samples for the app namespace](../../../Scripting/V2/Samples/App/).
+
+### Retrieving the Airlock Browser Version Number
+
+To retrieve the version number of the application call the `airlock.app.getVersion()` function. This function returns an `airlock.app.AppVersion` object containing a name property, which is a string with a value resembling `2.0.13`; and a code property, which is a number correlating to the numeric version number of the app; for example 132013. 
+
+Knowing the version number of the application allows you, for example to test whether an API feature is supported, or whether an app update needs to be rolled out to the device.
+
+### Determining if Airlock Browser is Licensed
+
+Managing the licenses for application across your organization can be an arduous task. While the Outcoder Licensing System allows you to pinpoint those devices that have, or have not been, assigned a license, the JavaScript API also allows you to query the browser for its licensed status.
+
+To retrieve the license status of Airlock Browser call its `airlock.app.isLicensed()` function. This function returns a Boolean value indicating whether or not a valid license is in place.
+
+### Minimizing the Browser
+
+Airlock Browser allows you to minimize the app via its `airlock.app.minimize()` function. When this function is called, the browser is deactivated and the user is returned to the Android start screen.
+
+### Exiting the Browser
+
+Sometimes you may wish to close the Airlock Browser app. This is achieve by calling the `airlock.app.exit()` function, which causes Airlock Browser to close all of its related activities and return the user to the Android start screen.
+
+### 
 
 ### Configuring the Barcode Reader via JavaScript
 
@@ -97,18 +113,18 @@ Alternatively, you can retrieve the decoder object using its SDK identifier. To 
 var decoder = airlock.scanning.getDecoderWithNativeId(71);
 ```
 
-All properties that are configurable within Airlock Browser's device configuration are also configurable via JavaScript.
+All properties that are configurable within Airlock Browser's device configuration screen are also configurable via JavaScript.
 
-For a list of configurable properties, see the [Device SDK API Documentation](Products/AirlockBrowser/Scripting/V2/JSDoc/Sdks/)
+For a list of configurable properties specific to the device you're using, see the [Device Specific Resource Documentation](../../../Scripting/V2/#device-specific-resources)
 
-> **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
+Once you have obtained a decoder object, you can set its values and then push it back to the app using the `setDecoder` function, as shown in the following example:
 
 ```javascript
 try {
 	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
 	codabarDecoder.enabled = true;
 	codabarDecoder.notisEditingType = 1;
-	codabarDecoder.lengthMin = 10;
+	codabarDecoder.length1 = 10;
 	airlock.scanning.setDecoder(codabarDecoder);
 	alert("Decoder set");
 } catch (e) {
@@ -116,7 +132,11 @@ try {
 }
 ```
 
-The `airlock.scanning.setDecoder` function raises an exception if the decoder value's are unable to be set. 
+> **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
+
+The `airlock.scanning.setDecoder` function throws an exception if the decoder values are unable to be set. 
+
+For a live example see the [Scanning examples page](../../../Scripting/V2/Samples/Scanning/).
 
 ### Monitoring Network Connectivity
 Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, subscribe to the `onConnectionChanged` event, like so:
@@ -129,7 +149,7 @@ function handleConnectionChanged(args) {
 }
 ```
 
-The `onConnectionChanged` event handler receives a `NetworkInfo` object. For a complete list of properties see the [NetworkInfo type](../../Scripting/V2/JSDoc/Airlock/global.html#NetworkInfo).
+The `onConnectionChanged` event handler receives a `NetworkInfo` object. For a complete list of properties see the [NetworkInfo type](../../../Scripting/V2/JSDoc/Airlock/airlock.networking.html#.NetworkInfo).
 
 You can also request the network information by calling `getNetworkInfo`, like so:
 
@@ -144,7 +164,7 @@ alert("connected: " + value.connected +
 	"\nipAddress: " + value.ipAddress);
 ```
 
-For a live example see the [Networking examples page](../../Scripting/V2/Examples/Networking/).
+For a live example see the [Networking samples](../../../Scripting/V2/Samples/Networking/).
 
 ### Printing a Page via JavaScript
 
@@ -153,6 +173,8 @@ You are able to launch the print service, installed on a device, from either a J
 ```javascript
 airlock.printing.printPage();
 ```
+
+For a live example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
 
 ### Using Text to Speech with JavaScript
 
@@ -172,4 +194,4 @@ Some APIs present in the `airlock.device` namespace require that Airlock Browser
 
 To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
 
-Calling these functions without device admin, raises an JavaScript error.
+> **NOTE:** Calling these functions without device admin, raises a JavaScript error.

@@ -6,7 +6,7 @@ title: Airlock Browser Developer Resources
 
 * [User Guide](../../UserGuides/V2/)
 * [Programming Guide](../../UserGuides/V2/ProgrammingGuide)
-* [Live Examples](Examples)
+* [Live Samples](Samples)
 
 This page contains links to various JavaScript files and their associated documentation.
 You can reference the JavaScript files during development to provide intellisense,

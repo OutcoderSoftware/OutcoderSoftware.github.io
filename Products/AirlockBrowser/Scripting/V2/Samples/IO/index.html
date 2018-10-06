@@ -3,17 +3,18 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-	<title>Airlock Browser Scripting - IO</title>
+	<title>Airlock Browser Scripting - IO with Promises</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="../Airlock-1.0.0.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link href="../../../CodeFormatting/prism.css" rel="stylesheet" />
 	<script src="../ScriptExamples.js"></script>
 	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
 	<script>
-		airlockState.onReady("handleAirlockReady()");
+		airlock.onReady("handleAirlockReady()");
+
 		var filesDir;
+
 		function handleAirlockReady() {
 
 			filesDir = airlock.io.getAppFilesDirectory();
@@ -28,7 +29,7 @@
 <script src="../../../CodeFormatting/prism.js"></script>
 <div class="header">
 	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
-	<h2>IO</h2>
+	<h2>IO with Promises</h2>
 </div>
 <div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
 
@@ -59,7 +60,7 @@ function testDirectoryExists(textElement) {
 <div class="testDiv">
 	<h3>Creating a Directory</h3>
 	<script id="createDirectoryScript">
-var testDiretory = "AirlockExamples";
+var testDiretory = "AirlockSamples";
 
 function testCreateDirectory(textElement) {
 	try {
@@ -211,6 +212,42 @@ function testDeleteFile(textElement, fileName) {
 	<input type="button" onclick="testCloseFile('testCreateFileText')" value="Close File" /><br />
 	<input type="button" onclick="testDeleteFile('testCreateFileText', textFileName)" value="Delete File" /><br />
 	<div class="outputText" type="text" id="testCreateFileText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Chaining Directory and File Promises</h3>
+	<script id="chainIOPromisesScript">
+function testchainIOPromises(textElement) {
+	try {
+		var directoryPath = filesDir + "/" + testDiretory;
+		var filePath = directoryPath + "/touchedFile.txt";
+
+		airlock.io.directoryExists(directoryPath)
+			.then(function (exists) {
+				if (!exists) {
+					alert("Creating directory.");
+					return airlock.io.createDirectory(directoryPath);
+				}
+				/* Directory already exists. */
+				return Promise.resolve();
+			}).then(function () {
+				return airlock.io.touch(filePath);
+			}).then(function() {
+				return airlock.io.getFileInfo(filePath);
+			}).then(function(fileInfo) {
+				setText(textElement, "File modified: " + fileInfo.modifiedTime);
+			}).catch(function (error) {
+				setText(textElement, "Error: " + error);
+			});
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="chainIOPromisesPre"></pre>
+	<script>insertScriptInPre('chainIOPromisesPre', 'chainIOPromisesScript');</script>
+	<input type="button" onclick="testchainIOPromises('testchainIOPromisesText')" value="Create Directory and File" /><br />
+	<div class="outputText" type="text" id="testchainIOPromisesText"></div>
 </div>
 
 <div class="testDiv">

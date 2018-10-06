@@ -73,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1075">line 1075</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -102,6 +102,157 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".NavigationErrorAction"><span class="type-signature">(static, readonly) </span>NavigationErrorAction<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    Enum for navigation error action.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>REDIRECT_TO_ERROR_PAGE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Displays the error page.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PREVENT_NAVIGATION</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Prevents navigation to the page and does not display an error.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -112,7 +263,7 @@
     
 
     
-    <h4 class="name" id=".getNavigationErrorAction"><span class="type-signature">(static) </span>getNavigationErrorAction<span class="signature">(url<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a>}</span></h4>
+    <h4 class="name" id=".getNavigationErrorAction"><span class="type-signature">(static) </span>getNavigationErrorAction<span class="signature">(url<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="airlock.browsing.html#.NavigationErrorAction">airlock.browsing.NavigationErrorAction</a>}</span></h4>
     
 
     
@@ -225,7 +376,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1099">line 1099</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -263,7 +414,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a></span>
+<span class="param-type"><a href="airlock.browsing.html#.NavigationErrorAction">airlock.browsing.NavigationErrorAction</a></span>
 
 
     </dd>
@@ -333,7 +484,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1128">line 1128</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line181">line 181</a>
     </li></ul></dd>
     
 
@@ -397,7 +548,7 @@
 
 
 <div class="description">
-    Sets the navigation error action associate with the specified URL.If a URL is not specified, the navigation error action for the currentremote web application is returned. And, if that is not specified,the browser's navigation error action setting is returned.
+    Sets the navigation error action associate with the specified URL.
 </div>
 
 
@@ -441,7 +592,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="airlock.networking.html#.NavigationErrorAction">airlock.networking.NavigationErrorAction</a></span>
+<span class="param-type"><a href="airlock.browsing.html#.NavigationErrorAction">airlock.browsing.NavigationErrorAction</a></span>
 
 
             
@@ -535,7 +686,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1118">line 1118</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -564,7 +715,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Prevent navigation from a page with a broken link.airlock.browsing.setNavigationErrorAction(		airlock.networking.NavigationErrorAction.PREVENT_NAVIGATION,		"http://www.example.com/PageWith404.html");</code></pre>
+    <pre class="prettyprint"><code>// Prevent navigation from a page with a broken link.airlock.browsing.setNavigationErrorAction(		airlock.browsing.NavigationErrorAction.PREVENT_NAVIGATION,		"http://www.example.com/PageWith404.html");</code></pre>
 
 
 
@@ -675,7 +826,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1139">line 1139</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line192">line 192</a>
     </li></ul></dd>
     
 
@@ -725,7 +876,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 06 2018 15:24:02 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 07 2018 00:16:55 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

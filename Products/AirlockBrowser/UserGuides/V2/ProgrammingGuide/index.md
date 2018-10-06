@@ -201,7 +201,7 @@ Sometimes you need detailed information about the device on which your applicati
 * {airlock.device.DisplayInfo} `displayInfo` Indicates the properties of the device display.
  
  The `airlock.device.DisplayInfo` type is useful for determining the display capabilities of the device and contains the following properties:
- 
+
 * `widthPixels` {number} Width of the screen in pixels.
 * `heightPixels` {number} Height of the screen in pixels.
 * `density` {number} The logical density of the display.
@@ -209,6 +209,239 @@ Sometimes you need detailed information about the device on which your applicati
 * `widthDpi` {number} The physical pixels per inch of the screen in the X dimension.
 * `heightDpi` {number} The physical pixels per inch of the screen in the Y dimension.
 * `densityDpi` {number} The screen density expressed as dots per inch.
+
+## Reading and Writing Files
+
+Airlock Browser offers an extensive set of APIs for reading and writing files, and creating and searching for files and directories.
+
+### A Note about JavaScript Promises
+
+While some functions are synchronous, most of the functions in the `airlock.io` namespace are asynchronous and use JavaScript promises. Promises is a feature of modern JavaScript and provides an elegant way of handling callbacks from asynchronous code. Some of the JavaScript APIs, especially those in the `airlock.io` and `airlock.networking` namespaces, can potentially take seconds to complete. Rather than lock the UI thread of the browser, some calls are performed on a background thread and returned to the your code via a promise. 
+
+If you're new to promises, please see one of the many tutorials online covering promises. In this section you see how to employ promises to read and write files in a asynchronous manner. 
+
+You see later in this section how you can use the async/await features of EcmaScript 2015, to treat promises in a synchronous manner; greatly simplifying your code. So, if the Promise code structure seems a little daunting or complex, take a look at what can be achieved with async/await in Android 9.
+
+### Copying a File
+
+To copy a file use the `airlock.io.copyFile(sourcePath, destinationPath, overwriteIfExists)` function. It accepts a string path to an existing file and a destination path, which denotes where to place the copied file. If `overwriteIfExists` is `false`, and a file already exists with the `destinationPath`, then a exception is thrown.
+
+The `copyFile` function is an asynchronous operation and returns a promise. To no for certain if the function completed successfully or if an exception was raised, you need to use the promise. See the following example:
+
+```js
+airlock.io.moveFile(sourcePath, destinationPath)
+ 	.then(function () {
+ 		alert(`File moved to: ${destinationPath}`);
+ 	}).catch(function (error) {
+ 		alert(`Error ${error}`);
+ 	});
+```
+
+If and when the file is copied correctly, the 'then' function is called. If an exception is thrown, then you have the opportunity to handle it in the `catch` function.
+
+### Deleting a File
+
+To delete a file call the `airlock.io.deleteFile(path)` function, as demonstrated in the following example:
+
+```js
+airlock.io.deleteFile(filePath)
+	.then(function () {
+		alert(`File deleted.`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+ ```
+
+### Determining if a File Exists
+
+To test for the exists of a file use the `airlock.io.fileExists(filePath)` function, as shown:
+
+```js
+airlock.io.fileExists(filePath)
+	.then(function (fileExists) {
+		alert(`File exists: ${fileExists}`);
+	}).catch(function (error) {
+		alert(`Error: ${error}`);
+	});
+ ```
+
+`true` is provided to the `then` function if the file exists; `false` otherwise.
+
+### Determining if a Directory Exists
+
+To test for the exists of a directory use the `airlock.io.directoryExists(directoryPath)` function, as shown:
+
+```js
+airlock.io.directoryExists(directoryPath)
+	.then(function (fileExists) {
+		alert(`Directory exists: ${fileExists}`);
+	}).catch(function (error) {
+		alert(`Error: ${error}`);
+	});
+```
+
+`true` is provided to the `then` function if the directory exists; `false` otherwise.
+
+### Working with Directories
+
+Before you can create a file in a directory, you must be certain that the directory exists. To test for the existance of a directory use the `airlock.io.directoryExists(directoryPath)` function, as shown in the following example:
+
+```js
+airlock.io.directoryExists(directoryPath)
+    .then(function (exists) {
+		alert(`Directory exists: ${exists}`);
+		// Create a file etc.
+	}).catch(function (error) {
+		alert(`Error: ${error}`);
+	});
+```
+
+If `exists` is `false` then use the `airlock.io.createDirectory(newDir)` function to create a new directory, as shown:
+
+```js
+airlock.io.directoryExists(directoryPath)
+    .then(function (exists) {
+		if (!exists) {
+		    airlock.io.createDirectory(newDir)
+	        .then(function () {
+		alert(`Created directory ${newDir}`);
+	})
+		}
+	}).catch(function (error) {
+		alert(`Error: ${error}`);
+	});
+```
+
+```js
+airlock.io.createDirectory(newDir)
+	.then(function () {
+		alert(`Created directory ${newDir}`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+ ```
+
+### Creating or Opening Files
+
+The `airlock.io.openFile(path, fileMode)` function is a cornerstone in Airlock Browser for working with files. The `fileMode` parameter determines the behavior of the function; whether it creates or opens an existing file; whether is truncates or appends to a file, are determined by the parameter. See the following example:
+
+```js
+var file1Handle;
+
+airlock.io.openFile(filePath, airlock.io.FileMode.OPEN)
+	.then(function (fileHandle) {
+		file1Handle = fileHandle;
+		alert(`Successfully opened ${filePath}`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+```
+
+The return value of the `openFile` function is an identifier or *handle* that you use to read, write, and close the file when you are done with it. You see examples of using the handle subsequent sections.
+
+The `airlock.io.FileMode` enumeration properties are described in the following list:
+
+* `CREATE_NEW` (numeric value 1): Specifies that the operating system should create a new file. If the file already exists, an IOException exception is thrown.
+* `CREATE` (numeric value 2): Specifies that the operating system should create a new file.
+If the file already exists, it will be overwritten. This requires Write permission.
+FileMode.Create is equivalent to requesting that if the file does not exist,
+use CreateNew; otherwise, use Truncate. If the file already exists
+but is a hidden file, an UnauthorizedAccessException exception is thrown.
+* `OPEN` (numeric value 3): Specifies that the operating system should open an existing file.
+A FileNotFoundException exception is thrown if the file does not exist.
+* `OPEN_OR_CREATE`: 4, Specifies that the operating system should open a file if it exists;
+otherwise, a new file should be created.
+* `TRUNCATE` (numeric value 5): Specifies that the operating system should open an existing file.
+When the file is opened, it should be truncated so that its size is zero bytes.
+This requires Write permission. Attempting to read from a file opened
+with FileMode.Truncate causes an ArgumentException exception.
+* `APPEND` (numeric value 6): Opens the file if it exists and seeks to the end of the file,
+or creates a new file. This requires Append permission.
+FileMode.Append can be used only in conjunction with FileAccess.Write.
+Trying to seek to a position before the end of the file
+throws an IOException exception, and any attempt
+to read fails and throws a NotSupportedException exception.
+
+### Chaining Promises when Working with Files
+
+A common scenario when working with files is that you need to perform an asynchronous
+operation and then wait for the result. In the following example, you see how to test
+if a directory exists, if it doesn't, it is created. A file is then created using
+the `airlock.io.touch` function, and its file information retrieved. Each of these steps
+occurs asynchronously, yet together they complete sequentially.
+
+```js
+var directoryPath = filesDir + "/" + testDiretory;
+var filePath = directoryPath + "/touchedFile.txt";
+
+airlock.io.directoryExists(directoryPath)
+	.then(function (exists) {
+		if (!exists) {
+			alert("Creating directory.");
+			return airlock.io.createDirectory(directoryPath);
+		}
+		/* Directory already exists. 
+		 * Return an immediately completing promise. */
+		return Promise.resolve();
+	}).then(function () {
+		return airlock.io.touch(filePath);
+	}).then(function() {
+		return airlock.io.getFileInfo(filePath);
+	}).then(function(fileInfo) {
+		setText(textElement, "File modified: " + fileInfo.modifiedTime);
+	}).catch(function (error) {
+		setText(textElement, "Error: " + error);
+	});
+```
+
+If an exception is raised in any of the steps leading up to displaying the modified time, 
+it can be handled in the `catch` function.
+
+### Simplifying Your Code with Async/Await
+
+If you're planning on supporting only devices running Android 9 and above, you can simplify 
+your asynchronous code by using the new async and await features of ECMAScript 2015, which make it possible to treat promises as though they were synchronous!
+
+For example, the code example in the chaining promises example can be rewritten as follows:
+
+```js
+async function testAwaitIOPromises(textElement) {
+	try {
+		var directoryPath = filesDir + "/" + testDiretory;
+		var filePath = directoryPath + "/touchedFile.txt";
+		
+		var exists = await airlock.io.directoryExists(directoryPath);
+		if (!exists) {
+			alert("Creating directory.");
+			await airlock.io.createDirectory(directoryPath);
+		}
+		await airlock.io.touch(filePath);
+		var fileInfo = await airlock.io.getFileInfo(filePath);
+		setText(textElement, "File modified: " + fileInfo.modifiedTime);
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+```
+
+Here you see we are able to do away with the `.then()` handler chains, and treat the code
+in the same manner as a synchronous code block.
+
+> **NOTE:** JavaScript that makes use of the `await` keyword, must be decorated with the `async` keyword.
+
+### Closing a File
+
+Once you've opened a file, it is kept open until Airlock Browser is exited or deactivated. To close the file, so it is available for other processes, use the `airlock.io.closeFile(file1Handle)` function; passing it the file handle returned by the `openFile` function. See the following example:
+
+```js
+airlock.io.closeFile(file1Handle)
+	.then(function () {
+		alert(`File closed.`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+ ```
 
 ### Detecting if an Application Package is Installed
 

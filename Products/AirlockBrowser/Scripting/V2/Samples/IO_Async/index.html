@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>Airlock Browser Scripting - IO with Async/Await</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link href="../../../CodeFormatting/prism.css" rel="stylesheet" />
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+	<script>
+		airlock.onReady("handleAirlockReady()");
+
+		var filesDir;
+
+		function handleAirlockReady() {
+
+			filesDir = airlock.io.getAppFilesDirectory();
+
+			var listDirectory = airlock.io.getExternalStorageDirectory();
+			document.getElementById('recursiveDirectoriesRoot').value = listDirectory;
+			document.getElementById('recursiveFilesRoot').value = listDirectory;
+		}
+
+		var testDiretory = "AirlockSamples";
+	</script>
+</head>
+<body>
+<script src="../../../CodeFormatting/prism.js"></script>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>IO with Async/Await</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<h3>Using Await for Directory and File Promises</h3>
+	<script id="awaitIOPromisesScript">
+async function testAwaitIOPromises(textElement) {
+	try {
+		var directoryPath = filesDir + "/" + testDiretory;
+		var filePath = directoryPath + "/touchedFile.txt";
+		
+		var exists = await airlock.io.directoryExists(directoryPath);
+		if (!exists) {
+			alert("Creating directory.");
+			await airlock.io.createDirectory(directoryPath);
+		}
+		await airlock.io.touch(filePath);
+		var fileInfo = await airlock.io.getFileInfo(filePath);
+		setText(textElement, "File modified: " + fileInfo.modifiedTime);
+
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="awaitIOPromisesPre"></pre>
+	<script>insertScriptInPre('awaitIOPromisesPre', 'awaitIOPromisesScript');</script>
+	<input type="button" onclick="testAwaitIOPromises('testAwaitIOPromisesText')" value="Create Directory and File" /><br />
+	<div class="outputText" type="text" id="testAwaitIOPromisesText"></div>
+</div>
+
+
+<div class="testDiv">
+	<h3>Deleting a Directory using Async/Await</h3>
+	<script id="deleteDirectoryScript">
+async function testDeleteDirectory(textElement) {
+	try {
+		var recursive = document.getElementById("recursiveDeleteCheckbox").checked;
+
+		var filesDir = airlock.io.getAppFilesDirectory();
+		var newDir = filesDir + "/" + testDiretory;
+		await airlock.io.deleteDirectory(newDir, recursive);
+		setText(textElement, "Deleted directory " + newDir);
+
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="deleteDirectoryPre"></pre><script>insertScriptInPre('deleteDirectoryPre', 'deleteDirectoryScript');</script>
+	<input type="button" onclick="testDeleteDirectory('testDeleteDirectoryText')" value="Delete Directory" /><br />
+	<input type="checkbox" id="recursiveDeleteCheckbox" checked="checked" /> Recursive<br />
+	<div class="outputText" type="text" id="testDeleteDirectoryText"></div>
+</div>
+
+</body>
+</html>

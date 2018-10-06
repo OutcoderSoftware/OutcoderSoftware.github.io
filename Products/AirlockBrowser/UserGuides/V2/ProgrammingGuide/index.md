@@ -186,29 +186,29 @@ To retrieve the current lock screen timeout value use the `airlock.device.getScr
 
 Sometimes you need detailed information about the device on which your application is running. Using the `airlock.device.getSystemInfo()` function you can retrieve detailed information regarding the device, operating system, and display properties; as well as a unique device identifier. `getSystemInfo()` returns a `airlock.device.SystemInfo` object, with the following properties:
 
-* {string} `manufacturer` The manufacturer of the device.
-* {string} `brand` The brand of the device.
-* {string} `model` The model of the device.
-* {string} `board` The name of the underlying board, like 'goldfish'.
-* {string} `hardware` The name of the hardware (from the kernel command line or /proc).
-* {string} `serial` A hardware serial, if available.
-* {string} `deviceId` A unique identifier for the device. This value may change with a factory reset.
-* {string} `apiLevel` The Android build level (the SdkInt).
-* {string} `sdk` The Android build name. For example 'kitkat'.
-* {string} `buildId` Either a changelist number or a number like "M4-rc20"
-* {string} `buildTime` A long value that is a Unix epoch timestamp (in milliseconds) indicating when the device's ROM was built
-* {string} `buildVersion` The OS's user-visible version string. E.g., "1.0" or "3.4b5".
+* `manufacturer` {string} The manufacturer of the device.
+* `brand` {string} The brand of the device.
+* `model` {string} The model of the device.
+* `board` {string} The name of the underlying board, like 'goldfish'.
+* `hardware` {string} The name of the hardware (from the kernel command line or /proc).
+* `serial` {string} A hardware serial, if available.
+* `deviceId` {string} A unique identifier for the device. This value may change with a factory reset.
+* `apiLevel` {string} The Android build level (the SdkInt).
+* `sdk` {string} The Android build name. For example 'kitkat'.
+* `buildId` {string} Either a changelist number or a number like "M4-rc20"
+* `buildTime` {string} A long value that is a Unix epoch timestamp (in milliseconds) indicating when the device's ROM was built
+* `buildVersion` {string} The OS's user-visible version string. E.g., "1.0" or "3.4b5".
 * {airlock.device.DisplayInfo} `displayInfo` Indicates the properties of the device display.
  
  The `airlock.device.DisplayInfo` type is useful for determining the display capabilities of the device and contains the following properties:
  
-* {number} `widthPixels` Width of the screen in pixels.
-* {number} `heightPixels` Height of the screen in pixels.
-* {number} `density` The logical density of the display.
-* {number} `scaledDensity` A scaling factor for fonts on the display.
-* {number} `widthDpi` The physical pixels per inch of the screen in the X dimension.
-* {number} `heightDpi` The physical pixels per inch of the screen in the Y dimension.
-* {number} `densityDpi` The screen density expressed as dots per inch.
+* `widthPixels` {number} Width of the screen in pixels.
+* `heightPixels` {number} Height of the screen in pixels.
+* `density` {number} The logical density of the display.
+* `scaledDensity` {number} A scaling factor for fonts on the display.
+* `widthDpi` {number} The physical pixels per inch of the screen in the X dimension.
+* `heightDpi` {number} The physical pixels per inch of the screen in the Y dimension.
+* `densityDpi` {number} The screen density expressed as dots per inch.
 
 ### Detecting if an Application Package is Installed
 
@@ -262,8 +262,8 @@ The properties of the `PowerInfo` type are described in the following list:
 * {airlock.device.PowerSource} `powerSource`
 	* `BATTERY` (0): A battery power source.
 	* `EXTERNAL` (1): An external power supply such as mains power.
-* {number} `remainingBatteryMinutes`: An estimate of the number of minutes of remaining battery charge.
-* {number} `remainingBatteryPercent`: A value between 0 and 100 indicating the battery charge remaining. Note that this value may not be indicative of the time until the device runs out of charge, as the device may be connected to mains power and charging. See the `batteryState` value.
+* `remainingBatteryMinutes` {number}: An estimate of the number of minutes of remaining battery charge.
+* `remainingBatteryPercent` {number}: A value between 0 and 100 indicating the battery charge remaining. Note that this value may not be indicative of the time until the device runs out of charge, as the device may be connected to mains power and charging. See the `batteryState` value.
 * {airlock.device.BatteryState} `batteryState` Indicates the charging state of battery.
     * `UNKNOWN` (0): The battery state is unknown. 
 	* `CHARGING` (1): Indicates the unit is charging.

@@ -19,7 +19,7 @@ Please note that there exists [comprehensive working examples](../../Scripting/V
 
 In this document you explore the following sets of APIs, which are grouped together in the following JavaScript namespaces:
 * `airlock.app` Provides licensing, updates, versioning, and APIs for exiting the app.
-* `airlock.browsing` Allows modification of the user's web browsing experience.
+* `airlock.browsing` Allows you to control the user's web browsing experience.
 * `airlock.device` Provides functions for interacting with the device at the OS level.
 * `airlock.io` Provides APIs for reading and writing files.
 * `airlock.log` Provides persistent logging capabilities.
@@ -100,6 +100,147 @@ As with the `airlock.app.exit` function, you can specify whether the user is not
 ### Launching Another App
 
 If you wish Airlock Browser to remain open, but require another app to be launched, use the `airlock.app.launchApp(packageName)` function. This function throws an exception if the specified package name cannot be found. To determine if a package is installed on the device, use the `airlock.device.isPackageInstalled(packageName)` function.
+
+## Controlling the App's Browsing Behavior
+
+The `airlock.browsing` namespace contains functions that allow you to control the user's web browsing experience.
+
+### Defining the Navigation Error Action
+
+Sometimes a network outage may occur, or a link on a page may result in a not found HTTP 404 error. In this situation you can choose to either show an error page, or simply ignore the error and prevent navigation. This is done using the `airlock.browsing.setNavigationErrorAction(action, url)`. Sets the navigation error action associate with the specified URL.
+
+The `action` parameter of the function is a `airlock.browsing.NavigationErrorAction` type, and can be either 0 (`REDIRECT_TO_ERROR_PAGE`) or 1 (`PREVENT_NAVIGATION`).
+
+To retrieve an error action for a particular page use the `airlock.browsing.getNavigationErrorAction(url)` function. This function gets the navigation error action associate with the URL, if specified. If a URL is not specified, the navigation error action for the current remote web application is returned. And, if that is not specified, the browser's navigation error action setting is returned.
+
+### Configuring the Text Size for a Page
+
+The text on a page can often appear too small on some devices. This may be because of the screen size of the device, or because the web page was not created with mobile devices in mind. To counteract that, Airlock Browser provides a `airlock.browsing.setTextZoomLevel(level)` function, that allows you to set the size of the text according to the viewing requirements of your users. 
+The specified `level` parameter is a floating point number where 1.0 is the normal size for the text. 2.0, for example, indicates double the normal size. The specified value is clamped between 0.1 and 5.0. In other words, if you provide a value outside that range, the the nearest valid value is used.
+
+To retrieve the current text size use `airlock.browsing.getTextZoomLevel()`.
+
+## Interacting with the Device at the OS Level
+
+The `airlock.device` namespace provides functions for interacting with the device at the OS level, such as changing the screen brightness or sounding a tone.
+
+### Changing the Screen's Brightness
+
+To retrieve the screen current brightness level, use the `airlock.device.getBrightness()` function, which returns a floating point value between 0 and 1, where 1 indicates maximum brightness.
+
+To change the screen brightness level, use the `airlock.device.setBrightness(brightness)` function, which accepts a floating point number between 0 and 1. The specified value is clamped between 0.1 and 1.0 to prevent the device being unusable.
+
+### Configuring the Ringer Mode of the Device
+
+Ordinarily an Android device is capable of sounding an audible alert and/or vibrating when an incoming call is received. You configure this behavior using the `airlock.device.setRingerMode(mode)` function, which accepts a `airlock.device.RingerMode` enumeration value. 
+
+* A value of 2 (`NORMAL`) specifies that the ringer mode may be audible and may vibrate. It will be audible if the volume before changing out of this mode was audible. It will vibrate if the vibrate setting is on.
+* A value of 1 (`VIBRATE`) specifies that the ringer is silent and will vibrate. This value causes the phone ringer to always vibrate.
+* A value of 0 (`SILENT`) specifies that the ringer is silent and will not vibrate. (This overrides the vibrate setting.)
+
+The get the current ringer mode use the `airlock.device.getRingerMode()` function.
+
+### Controlling Device Volume
+
+Airlock Browser allows you to control various volume streams via the `airlock.device.setVolume(streamType, volume)`. `streamType` is a `airlock.device.StreamType` enumeration value, with the following values:
+
+* `VOICE_CALL` (0): used to identify the volume of audio streams for phone calls.
+* `SYSTEM` (1): Used to identify the volume of audio streams for system sounds.
+* `RING` (2): Used to identify the volume of audio streams for the phone ring.
+* `MUSIC` (3):,Used to identify the volume of audio streams for music playback.
+* `ALARM` (4): ,Used to identify the volume of audio streams for alarms.
+* `NOTIFICATION` (5),Used to identify the volume of audio streams for notifications.
+* `DTMF` (8): Used to identify the volume of audio streams for DTMF Tones. Dual-tone multi-frequency (DTMF) tones are used by automated dial-in systems such as voicemail or where prompts are used to navigate.
+
+The `volume` parameter is a number between 0 and the maximum volume. To determine the maximum volume for a particular stream, use the `getMaxVolume` function, as demonstrated:
+
+```js
+var maxVolume = airlock.device.getMaxVolume(airlock.device.StreamType.MUSIC);
+```
+
+To retrieve the current volume level for a particular stream, use the `airlock.device.getMaxVolume(streamType)` function.
+
+### Sounding an Audible Beep
+
+Airlock Browser allows you to sound an audible beep for a specified duration and frequency using the `airlock.device.beep(durationMS, toneFrequency)` function, where `durationMS` is the duration of the sound in milliseconds, and `toneFrequency` is the frequency in Hertz.
+
+### Creating a Custom Beep
+
+If a single toned beep doesn't fit your needs, then you can use the `airlock.device.soundToneFollowedBySilence(soundMS, silenceMS, playCount, toneFrequency)` function to sound multiple beeps. The function plays a tone at the specified `toneFrequency` for the specified number of times; each time followed by a period of silence. The `soundMS` parameter determines the duration of the tone at each repetition, and the `silenceMS` determines the duration of the silence interval following the tone. Both are in milliseconds.
+
+### Vibrating the Device
+
+In noisy environments, supplementing audible alerts with vibration can make your application more usable. To vibrate the device for a specified duration use the `airlock.device.vibrate(vibrateMS, intervalMS, count)` function. All three parameters of the `vibrate` function are optional. By default the `vibrate` function vibrates the device for 100 milliseconds. You can change this duration by specifying the `vibrateMS` parameter. In addition you can also specify an interval of non-vibration and a `count` value, which causes the device to vibrate and then pause vibration repeatedly. This operates much like the `soundToneFollowedBySilence` function, described above.
+
+### Controlling when the Screen Times-out
+
+You can improve the battery life of the device, and in some scenarios increase security of your applications, by reducing the amount of time needed to engage the lock screen after the user becomes inactive. 
+
+To set the lock screen timeout value use the `airlock.device.setScreenTimeoutMS(timeoutMS)` function. The `timeoutMS` parameter specifies the duration in milliseconds before the lock screen is engaged.
+
+> **NOTE:** Decreasing the time-out value substantially can negatively affect the usability of the app if the user is required to authenticate to regain access.
+
+To retrieve the current lock screen timeout value use the `airlock.device.getScreenTimeoutMS()` function.
+
+### Retrieve Detailed Device Information
+
+Sometimes you need detailed information about the device on which your application is running. Using the `airlock.device.getSystemInfo()` function you can retrieve detailed information regarding the device, operating system, and display properties; as well as a unique device identifier. `getSystemInfo()` returns a `airlock.device.SystemInfo` object, with the following properties:
+
+* {string} `manufacturer` The manufacturer of the device.
+* {string} `brand` The brand of the device.
+* {string} `model` The model of the device.
+* {string} `board` The name of the underlying board, like 'goldfish'.
+* {string} `hardware` The name of the hardware (from the kernel command line or /proc).
+* {string} `serial` A hardware serial, if available.
+* {string} `deviceId` A unique identifier for the device. This value may change with a factory reset.
+* {string} `apiLevel` The Android build level (the SdkInt).
+* {string} `sdk` The Android build name. For example 'kitkat'.
+* {string} `buildId` Either a changelist number or a number like "M4-rc20"
+* {string} `buildTime` A long value that is a Unix epoch timestamp (in milliseconds) indicating when the device's ROM was built
+* {string} `buildVersion` The OS's user-visible version string. E.g., "1.0" or "3.4b5".
+* {airlock.device.DisplayInfo} `displayInfo` Indicates the properties of the device display.
+ 
+ The `airlock.device.DisplayInfo` type is useful for determining the display capabilities of the device and contains the following properties:
+ 
+* {number} widthPixels Width of the screen in pixels.
+* {number} heightPixels Height of the screen in pixels.
+* {number} density The logical density of the display.
+* {number} scaledDensity A scaling factor for fonts on the display.
+* {number} widthDpi The physical pixels per inch of the screen in the X dimension.
+* {number} heightDpi The physical pixels per inch of the screen in the Y dimension.
+* {number} densityDpi The screen density expressed as dots per inch.
+
+### Detecting if an Application Package is Installed
+
+Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.
+
+### Locking and Unlocking the Screen
+
+When the devices screen times-out, or the user explicitly engages the lock-screen, your application is able to unlock the screen using the `airlock.device.unlockScreen()` function. 
+
+You can also choose to engage the lock screen by calling the `airlock.device.lockScreen()` function.
+
+To determine the current state of the lock screen; whether it is locked or unlocked, use the `airlock.device.isScreenLocked()` function.
+
+The lock screen APIs comprise a special set of functions that require explicit permission be granted while the app is running. This step only needs to be undertaken once, but if it is not, an exception is raised when attempting to read or set the locked state of the screen. You can do this via the Enterprise Administration screen within Airlock Browser. See the following section.
+
+### Setting Advanced Scripting Permission
+
+Some APIs present in the `airlock.device` namespace require that Airlock Browser be granted [device admin privileges](https://developer.android.com/guide/topics/admin/device-admin). The following APIs require this:
+
+* `airlock.device.lockScreen()`
+* `airlock.device.unlockScreen()`
+* `airlock.device.isScreenLocked()`
+
+To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
+
+> **NOTE:** Calling these functions without device admin, raises a JavaScript error.
+
+### Monitoring the Power State of the Device
+
+It's important to notify the user if the device battery is running low and if a current activity is in danger of not being able to be completed because of an imminent device shutdown. The `airlock.device.onPowerChanged` event allows you to monitor, in real-time, the power state of the device. It provides you with a notification when the device battery level changes by two percent, or when the device is plugged or unplugged from an external power supply.
+
+
 
 ### Configuring the Barcode Reader via JavaScript
 
@@ -194,14 +335,3 @@ You can have Airlock Browser speak any text, from either a JavaScript event hand
 airlock.speech.speakText("Hi from Airlock Browser");
 ```
 
-### Setting Advanced Scripting Permission
-
-Some APIs present in the `airlock.device` namespace require that Airlock Browser be granted [device admin privileges](https://developer.android.com/guide/topics/admin/device-admin). The following APIs require this:
-
-* `airlock.device.lockScreen()`
-* `airlock.device.unlockScreen()`
-* `airlock.device.isScreenLocked()`
-
-To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
-
-> **NOTE:** Calling these functions without device admin, raises a JavaScript error.

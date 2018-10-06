@@ -87,9 +87,19 @@ Airlock Browser allows you to minimize the app via its `airlock.app.minimize()` 
 
 ### Exiting the Browser
 
-Sometimes you may wish to close the Airlock Browser app. This is achieve by calling the `airlock.app.exit()` function, which causes Airlock Browser to close all of its related activities and return the user to the Android start screen.
+Sometimes you may wish to close the Airlock Browser app. This is achieve by calling the `airlock.app.exit(showNotification)` function, which causes Airlock Browser to close all of its related activities and return the user to the Android start screen. 
 
-### 
+By default a notification is displayed to the user, informing him or her that the app is about to exit. You can override this behavior by specifying the Boolean showNotification parameter.
+
+### Exiting the Browser and Launching Another App
+
+Supplemental to the `airlock.app.exit()` function is the `airlock.app.exitAndLaunchApp(package, showNotifaction)` function, which causes the app to exit, and the specified app package to be launched if present on the system.
+
+As with the `airlock.app.exit` function, you can specify whether the user is notified, using the function's `showNotification` parameter.
+
+### Launching Another App
+
+If you wish Airlock Browser to remain open, but require another app to be launched, use the `airlock.app.launchApp(packageName)` function. This function throws an exception if the specified package name cannot be found. To determine if a package is installed on the device, use the `airlock.device.isPackageInstalled(packageName)` function.
 
 ### Configuring the Barcode Reader via JavaScript
 

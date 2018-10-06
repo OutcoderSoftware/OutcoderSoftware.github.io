@@ -202,13 +202,13 @@ Sometimes you need detailed information about the device on which your applicati
  
  The `airlock.device.DisplayInfo` type is useful for determining the display capabilities of the device and contains the following properties:
  
-* {number} widthPixels Width of the screen in pixels.
-* {number} heightPixels Height of the screen in pixels.
-* {number} density The logical density of the display.
-* {number} scaledDensity A scaling factor for fonts on the display.
-* {number} widthDpi The physical pixels per inch of the screen in the X dimension.
-* {number} heightDpi The physical pixels per inch of the screen in the Y dimension.
-* {number} densityDpi The screen density expressed as dots per inch.
+* {number} `widthPixels` Width of the screen in pixels.
+* {number} `heightPixels` Height of the screen in pixels.
+* {number} `density` The logical density of the display.
+* {number} `scaledDensity` A scaling factor for fonts on the display.
+* {number} `widthDpi` The physical pixels per inch of the screen in the X dimension.
+* {number} `heightDpi` The physical pixels per inch of the screen in the Y dimension.
+* {number} `densityDpi` The screen density expressed as dots per inch.
 
 ### Detecting if an Application Package is Installed
 
@@ -239,6 +239,45 @@ To grant Airlock Browser device admin privileges, use the *Enable device adminis
 ### Monitoring the Power State of the Device
 
 It's important to notify the user if the device battery is running low and if a current activity is in danger of not being able to be completed because of an imminent device shutdown. The `airlock.device.onPowerChanged` event allows you to monitor, in real-time, the power state of the device. It provides you with a notification when the device battery level changes by two percent, or when the device is plugged or unplugged from an external power supply.
+
+To subscribe to the event call the `addListener` function of the event as shown in the following example:
+
+```js
+airlock.device.onPowerChanged.addListener(handlePowerChanged);
+```
+
+The `handlePowerChanged` parameter is a function in your code that will receive a `airlock.device.PowerInfo` object when the event is raised; as demonstrated by the following:
+
+```js
+function handlePowerChanged(args) {
+	if (args.powerSource === airlock.device.PowerSource.BATTERY) {
+		// Using battery. Display remaining battery percentage.
+		alert(args.remainingBatteryPercent)
+	}
+}
+```
+
+The properties of the `PowerInfo` type are described in the following list:
+
+* {airlock.device.PowerSource} `powerSource`
+	* `BATTERY` (0): A battery power source.
+	* `EXTERNAL` (1): An external power supply such as mains power.
+* {number} `remainingBatteryMinutes`: An estimate of the number of minutes of remaining battery charge.
+* {number} `remainingBatteryPercent`: A value between 0 and 100 indicating the battery charge remaining. Note that this value may not be indicative of the time until the device runs out of charge, as the device may be connected to mains power and charging. See the `batteryState` value.
+* {airlock.device.BatteryState} `batteryState` Indicates the charging state of battery.
+    * `UNKNOWN` (0): The battery state is unknown. 
+	* `CHARGING` (1): Indicates the unit is charging.
+	* `DISCHARGING` (2): Indicates the battery is running down.
+	* `FULL` (4): Battery is fully charged.
+	* `NOT_CHARGING` (8): Battery is not charging.
+
+> **NOTE:** The `onPowerChanged` is raised when the devices power source changes, or when the remaining battery percent changes by 2 or more percent. The reason why it is 2 percent and not 1 percent, is that when the device is charging and sitting on about 100%, the remaining charge level will frequently oscillate, up and down, by 1 percent. This can unnecessarily burden your page with events calls.
+	
+To remove a listener from the `onPowerChanged` event, use the `removeListener(function)` function, as shown:
+
+```js
+airlock.device.onPowerChanged.removeListener(handlePowerChanged);
+```
 
 
 

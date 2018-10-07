@@ -210,6 +210,32 @@ Sometimes you need detailed information about the device on which your applicati
 * `heightDpi` {number} The physical pixels per inch of the screen in the Y dimension.
 * `densityDpi` {number} The screen density expressed as dots per inch.
 
+### Detecting if an Application Package is Installed
+
+Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.
+
+### Locking and Unlocking the Screen
+
+When the devices screen times-out, or the user explicitly engages the lock-screen, your application is able to unlock the screen using the `airlock.device.unlockScreen()` function. 
+
+You can also choose to engage the lock screen by calling the `airlock.device.lockScreen()` function.
+
+To determine the current state of the lock screen; whether it is locked or unlocked, use the `airlock.device.isScreenLocked()` function.
+
+The lock screen APIs comprise a special set of functions that require explicit permission be granted while the app is running. This step only needs to be undertaken once, but if it is not, an exception is raised when attempting to read or set the locked state of the screen. You can do this via the Enterprise Administration screen within Airlock Browser. See the following section.
+
+### Setting Advanced Scripting Permission
+
+Some APIs present in the `airlock.device` namespace require that Airlock Browser be granted [device admin privileges](https://developer.android.com/guide/topics/admin/device-admin). The following APIs require this:
+
+* `airlock.device.lockScreen()`
+* `airlock.device.unlockScreen()`
+* `airlock.device.isScreenLocked()`
+
+To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
+
+> **NOTE:** Calling these functions without device admin, raises a JavaScript error.
+
 ## Reading and Writing Files
 
 Airlock Browser offers an extensive set of APIs for reading and writing files, and creating and searching for files and directories.
@@ -725,6 +751,8 @@ To delete log entries using the JavaScript API, use the `airlock.log.deleteEntri
 
 Airlock Browser allows you to control the devices network connection, monitor network events, and to retrieve information regarding wireless networks in the devices vicinity.
 
+For working examples of the functions shown in this section see the [Networking samples](../../../Scripting/V2/Samples/Networking/).
+
 ### Retrieving a List of Wireless Networks
 
 To retrieve a list of wireless networks, use the `airlock.networking.getWirelessNetworks` function. This function returns a function, and it may take several seconds to resolve. See the following usage example:
@@ -784,16 +812,19 @@ include a backslash character (\) before each quotation mark. (e.g. \"example\")
 To retrieve the current connection information use the `airlock.networking.getNetworkInfo()` function. This function returns an `airlock.networking.NetworkInfo` object synchronously. See the following usage example:
 
 ```js
-var info = airlock.networking.getNetworkInfo();
-// Display the SSID
-alert(info.ssid);
+var value = airlock.networking.getNetworkInfo();
+alert("connected: " + value.connected +
+	"\napproachingDataLimit: " + value.approachingDataLimit +
+	"\nroaming: " + value.roaming +
+	"\nnetworkConnectionType: " + value.networkConnectionType +
+	"\nlimitData: " + value.limitData +
+	"\nssid: " + value.ssid +
+	"\nipAddress: " + value.ipAddress);
 ```
 
 ### Monitoring Network Connection Changes
 
-To monitor changes to the network connection, such as when the device loses or gains
-network connectivity, subscribe to the `airlock.networking.onConnectionChanged` event,
-as demonstrated in the following example:
+Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, subscribe to the `airlock.networking.onConnectionChanged` event, as demonstrated in the following example:
 
 ```js
 // Subscribe to event
@@ -833,33 +864,52 @@ For a live example see the [Printing examples page](../../../Scripting/V2/Sample
 
 Industrial mobile computers often have a built-in hardware barcode scanner. The `airlock.scanning` namespace provides various functions for working with the hardware barcode scanner.
 
+### Configuring the Barcode Reader via JavaScript
 
+Airlock Browser provides a JavaScript API that allows you to fully configure the mobile computer's hardware barcode reader.
 
-### Detecting if an Application Package is Installed
+> **NOTE:** Configuration changes applied via JavaScript do *not* result in permanent changes to the device configuration with Airlock Browser. The device configuration, as specified in Airlock Browser's device configuration settings, is restored when Airlock Browser is restarted. The one exception to this is the `airlock.scanning.resetConfiguration()` function, which does alter the devices configuration across app restarts.
 
-Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.
+#### Retrieving a Decoder's Configuration
 
-### Locking and Unlocking the Screen
+The `airlock.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
 
-When the devices screen times-out, or the user explicitly engages the lock-screen, your application is able to unlock the screen using the `airlock.device.unlockScreen()` function. 
+```javascript
+var decoder = airlock.scanning.getDecoderWithName('Code39');
+```
 
-You can also choose to engage the lock screen by calling the `airlock.device.lockScreen()` function.
+> **NOTE:** Decoder names are *not* case sensitive. For example, calling `getDecoderWithName` with a value 'Code39' is equivalent to calling the same method with 'CODE39'.
 
-To determine the current state of the lock screen; whether it is locked or unlocked, use the `airlock.device.isScreenLocked()` function.
+Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
 
-The lock screen APIs comprise a special set of functions that require explicit permission be granted while the app is running. This step only needs to be undertaken once, but if it is not, an exception is raised when attempting to read or set the locked state of the screen. You can do this via the Enterprise Administration screen within Airlock Browser. See the following section.
+```javascript
+var decoder = airlock.scanning.getDecoderWithNativeId(71);
+```
 
-### Setting Advanced Scripting Permission
+All properties that are configurable within Airlock Browser's device configuration screen are also configurable via JavaScript.
 
-Some APIs present in the `airlock.device` namespace require that Airlock Browser be granted [device admin privileges](https://developer.android.com/guide/topics/admin/device-admin). The following APIs require this:
+For a list of configurable properties specific to the device you're using, see the [Device Specific Resource Documentation](../../../Scripting/V2/#device-specific-resources)
 
-* `airlock.device.lockScreen()`
-* `airlock.device.unlockScreen()`
-* `airlock.device.isScreenLocked()`
+Once you have obtained a decoder object, you can set its values and then push it back to the app using the `setDecoder` function, as shown in the following example:
 
-To grant Airlock Browser device admin privileges, use the *Enable device administration* link on the  Administration screen of the app.
+```javascript
+try {
+	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
+	codabarDecoder.enabled = true;
+	codabarDecoder.notisEditingType = 1;
+	codabarDecoder.length1 = 10;
+	airlock.scanning.setDecoder(codabarDecoder);
+	alert("Decoder set");
+} catch (e) {
+	alert("Error: " + e);
+}
+```
 
-> **NOTE:** Calling these functions without device admin, raises a JavaScript error.
+> **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied.
+
+The `airlock.scanning.setDecoder` function throws an exception if the decoder values are unable to be set. 
+
+For a working example see the [Scanning samples page](../../../Scripting/V2/Samples/Scanning/).
 
 ### Monitoring the Power State of the Device
 
@@ -906,80 +956,8 @@ airlock.device.onPowerChanged.removeListener(handlePowerChanged);
 
 
 
-### Configuring the Barcode Reader via JavaScript
 
-Airlock Browser provides a JavaScript API that allows you to fully configure the mobile computer's hardware barcode reader.
 
-> **NOTE:** Configuration changes applied via JavaScript do *not* result in permanent changes to the device configuration with Airlock Browser. The device configuration, as specified in Airlock Browser's device configuration settings, is restored when Airlock Browser is restarted. The one exception to this is the `airlock.scanning.resetConfiguration()` function, which does alter the devices configuration across app restarts.
-
-#### Retrieving a Decoder's Configuration
-
-The `airlock.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
-
-```javascript
-var decoder = airlock.scanning.getDecoderWithName('Code39');
-```
-
-> **NOTE:** Decoder names are *not* case sensitive. For example, calling `getDecoderWithName` with a value 'Code39' is equivalent to calling the same method with 'CODE39'.
-
-Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
-
-```javascript
-var decoder = airlock.scanning.getDecoderWithNativeId(71);
-```
-
-All properties that are configurable within Airlock Browser's device configuration screen are also configurable via JavaScript.
-
-For a list of configurable properties specific to the device you're using, see the [Device Specific Resource Documentation](../../../Scripting/V2/#device-specific-resources)
-
-Once you have obtained a decoder object, you can set its values and then push it back to the app using the `setDecoder` function, as shown in the following example:
-
-```javascript
-try {
-	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
-	codabarDecoder.enabled = true;
-	codabarDecoder.notisEditingType = 1;
-	codabarDecoder.length1 = 10;
-	airlock.scanning.setDecoder(codabarDecoder);
-	alert("Decoder set");
-} catch (e) {
-	alert("Error: " + e);
-}
-```
-
-> **NOTE:** You must call the `setDecoder` function of the `airlock.scanner` object for the setting to be applied. See the following example:
-
-The `airlock.scanning.setDecoder` function throws an exception if the decoder values are unable to be set. 
-
-For a live example see the [Scanning examples page](../../../Scripting/V2/Samples/Scanning/).
-
-### Monitoring Network Connectivity
-Airlock Browser detects when there is a change in network connectivity, and can notify your page via a JavaScript handler. To define a network connectivity JavaScript handler, subscribe to the `onConnectionChanged` event, like so:
-
-```javascript
-airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
-
-function handleConnectionChanged(args) {
-	alert(args.connected);
-}
-```
-
-The `onConnectionChanged` event handler receives a `NetworkInfo` object. For a complete list of properties see the [NetworkInfo type](../../../Scripting/V2/JSDoc/Airlock/airlock.networking.html#.NetworkInfo).
-
-You can also request the network information by calling `getNetworkInfo`, like so:
-
-```javascript
-var value = airlock.networking.getNetworkInfo();
-alert("connected: " + value.connected +
-	"\napproachingDataLimit: " + value.approachingDataLimit +
-	"\nroaming: " + value.roaming +
-	"\nnetworkConnectionType: " + value.networkConnectionType +
-	"\nlimitData: " + value.limitData +
-	"\nssid: " + value.ssid +
-	"\nipAddress: " + value.ipAddress);
-```
-
-For a live example see the [Networking samples](../../../Scripting/V2/Samples/Networking/).
 
 ### Using Text to Speech with JavaScript
 

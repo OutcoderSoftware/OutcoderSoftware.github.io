@@ -619,6 +619,67 @@ typically resembles */data/data/com.outcoder.ibrowser/files*.
 
 To retrieve the path to the external files directory use the `airlock.io.getExternalStorageDirectory()` function. This function gets the path to the shared directory on the device, which may or may not be located on an SD card.
 
+## Recording Application Activity using the Logging API
+
+Logging is an important aspect of any application. It allows you to analyze errors, record unexpected events, and gives you insight into the usage of the application.
+
+Airlock Browser provides you with an application log that is internally stored within a database. Providing you with thread-safe logging capabilities across multiple pages.
+
+Log entries not only record messages and error information, but also include the file location of when logging information, making it easy to identify the origin of the logging activity.
+
+The following demonstrates how to write to the log at the debug level:
+
+```js
+airlock.log.debug("Message from my web page");
+```
+
+There are 4 log functions, with increasing levels of priority:
+
+* debug
+* info
+* warn
+* error
+
+You can set the minimum logging level using the `airlock.log.setMinLevel(level)` function such that any logging events received having a lesser level are ignored and not written to the database.
+
+For example, if we call `airlock.log.setMinLevel(airlock.log.LogLevel.WARN)`, and the call `airlock.log.info("A message.")`, the "A message." string is not written to the log database. If, however, we call `airlock.log.warn("A message.")` the "A message." string is written to the database. By specifying the minimum log level you can tailor the logging according to your requirements. During development you might want to specify a less restrictive log level such as `airlock.log.LogLevel.debug` to receive more logging messages.
+
+While there are only 4 log functions for writing log entries, these 4 are not indicative of all of the log levels. There are three others, as shown in the `LogLevel` enumeration below:
+
+* `ALL` (0): The least restrictive level.
+* `DEBUG` (2): For debugging purposes. More verbose than the Info level
+* and less verbose than the Trace level.
+* `INFO` (4): Signifies verbose information. More verbose than the Warn level 
+and less verbose than the Debug level.
+* `WARN` (8): Signifies a warning from e.g. an unexpected event.
+* `ERROR` (16): When an application error occurs.
+* `FATAL` (32): When the application is no longer
+able to function or is in an unreliable state.
+Highly restrictive logging.
+* `NONE` (64): Logging is disabled.
+
+Using `NONE` as the minimum log level allows you to switch off logging. Using `ALL` lets everything through. The `FATAL` level is not used at this time.
+
+### Retrieving Log Entries
+
+To retrieve a list of log entries use the `airlock.log.getEntries(startDate, endDate)` function. The `startDate` and `endDate` parameters are both optional, and allow you to specify a time interval that log entries must fall between to be returned. In other words, if supplied, only those entries that fall between `startDate` and `endDate` are returned. 
+
+> **NOTE:** When specifying an interval, you do not need to specify both a start date and an end date. 
+
+The result of the `getEntries` function is a list of `airlock.log.LogEntry` objects; each of which containing the following properties:
+
+ * @property {string} message The text content of the log entry.
+ * @property {string} exception The error associated with this entry. Can be undefined.
+ * @property {Date} occuredUtc The time and date in universal time
+ * when this entry was written to the log.
+ * @property {airlock.log.LogLevel} logLevel The log level of this entry.
+ * @property {string} url The URL of the page or JavaScript file
+ * where the log entry was written.
+ * @property {number} The line number in the file where the call
+ * to write to the log was made.
+ * @property {string} function The name of the function
+ * where the log call took place.
+
 ### Detecting if an Application Package is Installed
 
 Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.

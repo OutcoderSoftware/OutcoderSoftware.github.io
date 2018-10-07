@@ -607,6 +607,18 @@ To retrieve the current offset within a file, use the synchronous `airlock.io.ge
 var position = airlock.io.getFileOffset(file1Handle);
 ```
 
+### Updating the Timestamp or Creating a File using the Touch Function
+
+The `airlock.io.touch(filePath)` function allows you to easily set the last modified date
+of a specified file to the current time. Calling this function with a file path that does not exist causes the file to be created. If the file cannot be created or the operation fails for whatever reason, an JavaScript exception is thrown.
+
+### Retrieving the Location of Special Directories
+
+Internally, Airlock Browser saves files to the location identified by the `airlock.io.getAppFilesDirectory()` function. This function returns a string that
+typically resembles */data/data/com.outcoder.ibrowser/files*.
+
+To retrieve the path to the external files directory use the `airlock.io.getExternalStorageDirectory()` function. This function gets the path to the shared directory on the device, which may or may not be located on an SD card.
+
 ### Detecting if an Application Package is Installed
 
 Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.

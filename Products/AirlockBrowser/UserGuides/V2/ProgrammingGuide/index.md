@@ -218,9 +218,9 @@ Airlock Browser offers an extensive set of APIs for reading and writing files, a
 
 While some functions are synchronous, most of the functions in the `airlock.io` namespace are asynchronous and use JavaScript promises. Promises is a feature of modern JavaScript and provides an elegant way of handling callbacks from asynchronous code. Some of the JavaScript APIs, especially those in the `airlock.io` and `airlock.networking` namespaces, can potentially take seconds to complete. Rather than lock the UI thread of the browser, some calls are performed on a background thread and returned to the your code via a promise. 
 
-If you're new to promises, please see one of the many tutorials online covering promises. In this section you see how to employ promises to read and write files in a asynchronous manner. 
+If you are new to promises, please see one of the many tutorials online covering promises. In this section you see how to employ promises to read and write files in a asynchronous manner. 
 
-You see later in this section how you can use the async/await features of EcmaScript 2015, to treat promises in a synchronous manner; greatly simplifying your code. So, if the Promise code structure seems a little daunting or complex, take a look at what can be achieved with async/await in Android 9.
+You see later in this section how you can use the async/await features of EcmaScript 2015, to treat promises in a synchronous manner; greatly simplifying your code. So, if the Promise code structure seems a little daunting or complex, take a look at the section entitled [Simplifying Your Code with Async/Await](#simplifying-your-code-with-asyncawait) to see what can be achieved with async/await in Android 7.0 (Nougat) onward.
 
 ### Copying a File
 
@@ -362,6 +362,8 @@ Trying to seek to a position before the end of the file
 throws an IOException exception, and any attempt
 to read fails and throws a NotSupportedException exception.
 
+When you receive back a file handle, Airlock Browser maintains the current position within the file. Thus, when writing or reading data from the file, its optional to specify the location within the file; as you see in later in this section.
+
 ### Chaining Promises when Working with Files
 
 A common scenario when working with files is that you need to perform an asynchronous
@@ -399,7 +401,7 @@ it can be handled in the `catch` function.
 
 ### Simplifying Your Code with Async/Await
 
-If you're planning on supporting only devices running Android 9 and above, you can simplify 
+If you're planning on supporting only devices running Android 7.0 and above, you can simplify 
 your asynchronous code by using the new async and await features of ECMAScript 2015, which make it possible to treat promises as though they were synchronous!
 
 For example, the code example in the chaining promises example can be rewritten as follows:
@@ -442,6 +444,103 @@ airlock.io.closeFile(file1Handle)
 		alert(`Error ${error}`);
 	});
  ```
+ 
+ ### Deleting a Directory
+ 
+ Airlock Browser allows you to delete a directory using the `airlock.io.deleteDirectory(path, recursive)` function. The Boolean `recursive` parameter tells Airlock Browser to delete the directory and its contents. If the directory is not empty and `recursive` is false, an exception is thrown. See the following example:
+ 
+ ```js
+airlock.io.deleteDirectory(newDir, recursive)
+	.then(function () {
+		alert(`Deleted directory ${newDir}`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+ ```
+ 
+ ### Searching for Files or Directories
+ 
+ The following two functions exists to allow you to search for a file or directory matching a particular pattern:
+ 
+ * airlock.io.getFiles(directoryPath, searchPattern, recursive)
+ * airlock.io.getDirectories(directoryPath, searchPattern, recursive)
+ 
+ Both return promises resulting in a list of strings. 
+ The `directoryPath` parameter is the path of the directory to look in.
+ The search pattern to match against the names of directories.
+ The `searchPattern` parameter can contain a combination of valid literal path and wildcard (* and ?) characters, but it does not support regular expressions.
+ If `true` the Boolean `recursive` parameter causes nested directories to be included in the search. 
+ 
+The following example demonstrates how to retrieve a list of all directories beneath a specified directory, which includes all subdirectories:
+ 
+ ```js
+airlock.io.getDirectories(outputDir, "*.*", true)
+	.then(function (result) {
+		alert(`${outputDir} contains: ${result.join("\n")}`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+ ```
+
+Likewise, to retrieve a list of all files in the specified directory and subdirectories, you could use the following:
+
+```js
+airlock.io.getFiles(directoryPath, "*.*", true)
+	.then(function (result) {
+		alert(`${directoryPath} contains: ${result.join("\n")}`);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+```
+
+### Retrieving File Information
+
+To retrieve a file's information use the `airlock.io.getFileInfo(path)` function, which accepts a string parameter representing the path to the file. See the following example:
+
+```js
+airlock.io.getFileInfo(sourcePath)
+	.then(function (result) {
+		alert(result.sizeBytes);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+```
+
+The resulting object is a `airlock.io.FileInfo` object, with the following properties:
+
+ * `directory` {string}The path to the file's directory.
+ * `sizeBytes` {Number}  The size of the file in bytes.
+ * `modifiedTime` {Date} The date and time that the file was last modified in universal time.
+ * `modifiedTimeUtc` {Date} The date and time that the file was last modified in universal time.
+ * `creationTime` {Date} The date and time that the file was created.
+ * `creationTimeUtc` {Date} The date and time that the file was created in universal time.
+ * `accessedTime` {Date} The date and time that the file was last accessed.
+ * `accessedTimeUtc` {Date} The date and time that the file was last accessed in universal time.
+
+### Reading a File's Contents as Text
+
+To read a segment of a file as text use the `airlock.io.readText(handle, length, offset)`.
+The `handle` parameter is acquired when you first open or create the file. The `length` parameter is the length of the segment to read in characters. The encoding of the file is determined automatically. If the encoding cannot be determine, UTF-8 is used.
+
+The `offset` parameter is optional and specifies where in the file to start reading. Airlock Browser maintains the current position within the file for you.
+
+### Reading a Binary File's Contents as Base64
+
+Use the `airlock.io.readBase64(handle, length, offset)` function to read the contents of a binary file as a Base64 string. The `handle` parameter is acquired when you first open or create the file. The `length` parameter is the length of the segment to read in characters. 
+
+The `offset` parameter denotes where within the file to start reading. If not specified, the current file offset is used.
+
+See the following usage example:
+
+```js
+airlock.io.readBase64(binaryFile1Handle, fileLength, 0)
+	.then(function (base64) {
+		var text = atob(base64);
+		alert(text);
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+```
 
 ### Detecting if an Application Package is Installed
 

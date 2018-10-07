@@ -13,6 +13,19 @@
 	<script>
 		airlock.onReady("handleAirlockReady()");
 
+		function supportsAsync() {
+			try {
+				eval("(async function() {})");
+				return true;
+			} catch (e) {
+				return false;
+			}
+		}
+
+		if (!supportsAsync()) {
+			alert("Async is not supported. You may need to update your mobile operating system.");
+		}
+
 		var filesDir;
 
 		function handleAirlockReady() {

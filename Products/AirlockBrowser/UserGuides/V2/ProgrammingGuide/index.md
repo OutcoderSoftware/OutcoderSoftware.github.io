@@ -666,19 +666,61 @@ To retrieve a list of log entries use the `airlock.log.getEntries(startDate, end
 
 > **NOTE:** When specifying an interval, you do not need to specify both a start date and an end date. 
 
+The following example demonstrates how to retrieve the log entries using a promise:
+
+```js
+var startDate = new Date();
+// Create a Date object that indicates the time one minute ago.
+startDate.setMinutes(startDate.getMinutes() - 1);
+
+// Get Entries less than 1 minute old.
+airlock.log.getEntries(startDate)
+    .then(function (logEntries) {
+		let text = "";
+		for (let i = 0; i < logEntries.length; i++) {
+			let entry = logEntries[i];
+			text += entry.message + "\n";
+		}
+		alert(text);
+	}).catch(function(error) {
+		alert(`Error ${error}`);
+	});
+```
+
+Alternatively, if using an async/await approach, you could use:
+
+```js
+try {
+    await airlock.log.getEntries(startDate);
+    let text = "";
+	for (let i = 0; i < logEntries.length; i++) {
+		let entry = logEntries[i];
+		text += entry.message + "\n";
+	}
+	alert(text);
+} catch (error) {
+    alert(`Error ${error}`);
+}
+```
+
+> **NOTE:** The use of `let` keyword and string interpolation using the ` back-tick symbol may not be supported on older mobile operating systems.
+
 The result of the `getEntries` function is a list of `airlock.log.LogEntry` objects; each of which containing the following properties:
 
- * @property {string} message The text content of the log entry.
- * @property {string} exception The error associated with this entry. Can be undefined.
- * @property {Date} occuredUtc The time and date in universal time
+ * `message` *string*: The text content of the log entry.
+ * `exception` *string*: The error associated with this entry. Can be undefined.
+ * `occuredUtc` *Date*: The time and date in universal time
  * when this entry was written to the log.
- * @property {airlock.log.LogLevel} logLevel The log level of this entry.
- * @property {string} url The URL of the page or JavaScript file
+ * `logLevel` *airlock.log.LogLevel*: The log level of this entry.
+ * `url` *string*: The URL of the page or JavaScript file
  * where the log entry was written.
- * @property {number} The line number in the file where the call
+ * `lineNumber` *number*: The line number in the file where the call
  * to write to the log was made.
- * @property {string} function The name of the function
+ * `function` *string*: The name of the function
  * where the log call took place.
+ 
+ 
+ 
 
 ### Detecting if an Application Package is Installed
 

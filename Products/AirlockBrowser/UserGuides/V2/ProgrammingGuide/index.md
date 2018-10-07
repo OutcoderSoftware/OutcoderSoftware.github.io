@@ -707,23 +707,133 @@ try {
 
 The result of the `getEntries` function is a list of `airlock.log.LogEntry` objects; each of which containing the following properties:
 
- * `message` *string*: The text content of the log entry.
- * `exception` *string*: The error associated with this entry. Can be undefined.
- * `occuredUtc` *Date*: The time and date in universal time
- * when this entry was written to the log.
- * `logLevel` *airlock.log.LogLevel*: The log level of this entry.
- * `url` *string*: The URL of the page or JavaScript file
- * where the log entry was written.
- * `lineNumber` *number*: The line number in the file where the call
- * to write to the log was made.
- * `function` *string*: The name of the function
- * where the log call took place.
+* `message` *string*: The text content of the log entry.
+* `exception` *string*: The error associated with this entry. Can be undefined.
+* `occuredUtc` *Date*: The time and date in universal time when this entry was written to the log.
+* `logLevel` *airlock.log.LogLevel*: The log level of this entry.
+* `url` *string*: The URL of the page or JavaScript file where the log entry was written.
+* `lineNumber` *number*: The line number in the file where the call to write to the log was made.
+* `function` *string*: The name of the function where the log call took place.
  
 ### Deleting Log Entries
 
 By default, log entries remain in the database for 3 months; after which time they are automatically deleted. This helps to prevent the database from growing too large in size.
 
 To delete log entries using the JavaScript API, use the `airlock.log.deleteEntries(startDate, endDate)` function. The parameters `startDate` and `endDate` work in the same manner as they do in the `getLogEntries` function; any log entries that fall within the interval are deleted. If not specified, all entries are deleted.
+
+## Leveraging the Networking API
+
+Airlock Browser allows you to control the devices network connection, monitor network events, and to retrieve information regarding wireless networks in the devices vicinity.
+
+### Retrieving a List of Wireless Networks
+
+To retrieve a list of wireless networks, use the `airlock.networking.getWirelessNetworks` function. This function returns a function, and it may take several seconds to resolve. See the following usage example:
+
+```js
+airlock.networking.getWirelessNetworks()
+ .then(function (result) {
+		var text = '';
+		// Get the SSID's for each network.
+		for (var i = 0; i < result.length; i++) {
+			var network = result[i];
+			text += network.ssid + "\n";
+		}
+		alert(text);
+ }).catch(function (error) {
+		alert("Error: " + error);
+ });
+ ```
+ 
+ If you are using an async/await approach, you can simply await the function, like so:
+
+```js
+try {
+    var result = await airlock.networking.getWirelessNetworks();
+    
+    var text = '';
+    // Get the SSID's for each network.
+    for (var i = 0; i < result.length; i++) {
+    	var network = result[i];
+    	text += network.ssid + "\n";
+    }
+    alert(text);
+catch (error) {
+    alert("Error: " + error);
+}
+```
+
+The `airlock.networking.NetworkInfo` type has the following properties:
+
+* `bssid` *string* The address of the access point.
+* `ssid` *string* The Service Set Identifier. 
+SSID is a case sensitive, 32 alphanumeric character unique identifier attached
+to the header of packets sent over a wireless local-area network(WLAN).
+* `capabilities` *string* Describes the authentication, key management
+and encryption schemes supported by the access point.
+* `isPasspointNetwork` *string* Gets a value indicating if this network
+is a passpoint network, which is an improved method for connecting
+to Wi-Fi hotspots from the Wi-Fi Alliance.
+* `level` *number* The detected signal level in dBm, also known as the RSSI.
+* `operatorFriendlyName` *string* The user readable name of the network.
+The name can be up to 64 alphanumeric characters, and can include
+special characters and spaces. If the name includes quotation marks ("),
+include a backslash character (\) before each quotation mark. (e.g. \"example\")
+
+### Retrieving the Current Network Connection Information
+
+To retrieve the current connection information use the `airlock.networking.getNetworkInfo()` function. This function returns an `airlock.networking.NetworkInfo` object synchronously. See the following usage example:
+
+```js
+var info = airlock.networking.getNetworkInfo();
+// Display the SSID
+alert(info.ssid);
+```
+
+### Monitoring Network Connection Changes
+
+To monitor changes to the network connection, such as when the device loses or gains
+network connectivity, subscribe to the `airlock.networking.onConnectionChanged` event,
+as demonstrated in the following example:
+
+```js
+// Subscribe to event
+airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
+
+function handleConnectionChanged(args) {
+	// Display whether the device is connected to a network.
+	alert(args.connected);
+}
+```
+
+The handler is a function you define that accepts an `airlock.networking.NetworkInfo` argument.
+
+In the case when you no longer wish to receive connection change notifications, use the `removeListener` function to unsubscribe from the event, like so:
+
+```js
+airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
+```
+
+### Controlling the Enabled State of Wireless Networking
+
+To determine if the device is enabled for wireless networking, use the `airlock.networking.isWifiEnabled()` function. This function returns `true` if networking is enabled, and `false` otherwise.
+
+To switch wireless networking on or off, use the `airlock.networking.setWifiEnabled(enabled)` function. If the `enabled` parameter is `true`, WIFI is enabled. If `false`, it is disabled.
+
+## Printing a Page via JavaScript
+
+You are able to launch the print service, installed on a device, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To launch the print service to print the current active page, use the following:
+
+```javascript
+airlock.printing.printPage();
+```
+
+For a live example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
+
+## Harnessing the Device's Scanning Capability
+
+Industrial mobile computers often have a built-in hardware barcode scanner. The `airlock.scanning` namespace provides various functions for working with the hardware barcode scanner.
+
+
 
 ### Detecting if an Application Package is Installed
 
@@ -870,16 +980,6 @@ alert("connected: " + value.connected +
 ```
 
 For a live example see the [Networking samples](../../../Scripting/V2/Samples/Networking/).
-
-### Printing a Page via JavaScript
-
-You are able to launch the print service, installed on a device, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To launch the print service to print the current active page, use the following:
-
-```javascript
-airlock.printing.printPage();
-```
-
-For a live example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
 
 ### Using Text to Speech with JavaScript
 

@@ -719,8 +719,11 @@ The result of the `getEntries` function is a list of `airlock.log.LogEntry` obje
  * `function` *string*: The name of the function
  * where the log call took place.
  
- 
- 
+### Deleting Log Entries
+
+By default, log entries remain in the database for 3 months; after which time they are automatically deleted. This helps to prevent the database from growing too large in size.
+
+To delete log entries using the JavaScript API, use the `airlock.log.deleteEntries(startDate, endDate)` function. The parameters `startDate` and `endDate` work in the same manner as they do in the `getLogEntries` function; any log entries that fall within the interval are deleted. If not specified, all entries are deleted.
 
 ### Detecting if an Application Package is Installed
 

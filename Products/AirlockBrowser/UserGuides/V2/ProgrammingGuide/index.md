@@ -519,10 +519,39 @@ The resulting object is a `airlock.io.FileInfo` object, with the following prope
 
 ### Reading a File's Contents as Text
 
-To read a segment of a file as text use the `airlock.io.readText(handle, length, offset)`.
+There are two ways to read the contents of a file as text. 
+To read the entire contents of a file without using a file handle, use the `airlock.io.readAllText(filePath)` function. This returns a promise, which provides the text. See the following usage example:
+
+```js
+airlock.io.readAllText(filePath)
+    .then(function (text) {
+		alert(`${text}`);
+	}).catch(function (error) {
+		alert(`Error: ${error}`);
+	});
+```
+
+The second approach relies on a file handle and allows you to read the whole file, or just a segment of a file. For this, use the `airlock.io.readText(handle, length, offset)` function.
 The `handle` parameter is acquired when you first open or create the file. The `length` parameter is the length of the segment to read in characters. The encoding of the file is determined automatically. If the encoding cannot be determine, UTF-8 is used.
 
 The `offset` parameter is optional and specifies where in the file to start reading. Airlock Browser maintains the current position within the file for you.
+
+To read a line of text from the current file, use the `airlock.io.readLine(handle)` function. The function reads a line of character from the current position until the next line break.
+
+### Writing Text to a File
+
+Use the `airlock.io.writeText(handle, text)` function to write a string to a file at the current file offset. See the following usage example:
+
+```js
+airlock.io.writeText(file1Handle, "These pretzels are making me thirsty.")
+	.then(function () {
+		alert(textElement, "Done");
+	}).catch(function (error) {
+		alert(textElement, `Error ${error}`);
+	});
+```
+
+An exception is thrown if the `text` parameter is undefined.
 
 ### Reading a Binary File's Contents as Base64
 
@@ -533,13 +562,49 @@ The `offset` parameter denotes where within the file to start reading. If not sp
 See the following usage example:
 
 ```js
-airlock.io.readBase64(binaryFile1Handle, fileLength, 0)
+airlock.io.readBase64(binaryFile1Handle, fileLength)
 	.then(function (base64) {
 		var text = atob(base64);
 		alert(text);
 	}).catch(function (error) {
 		alert(`Error ${error}`);
 	});
+```
+
+### Writing Binary Data to a File using Base64
+
+To write binary data to a file, use the `airlock.io.writeBase64(handle, base64String)` function. The `base64String` parameter is the binary data converted to a Base64 string. To convert the binary data to a Base64 string in JavaScript use the built-in `btoa` function, as demonstrated in the following usage example:
+
+```js
+var textToWrite = "That rug really tied the room together.";
+
+var base64 = btoa(textToWrite);
+
+airlock.io.writeBase64(binaryFile1Handle, base64)
+	.then(function () {
+		alert("Done");
+	}).catch(function (error) {
+		alert(`Error ${error}`);
+	});
+```
+
+The example takes a string and converts it to Base64, where each character in the string is treated as a byte of binary data. The Base64 string is then written as binary data to the specified file at the current file offset.
+
+### Changing the File Offset
+
+To move to a new location with a file for reading or writing data, use the `airlock.io.seek(handle, offset)` function.
+Unlike other functions within the `airlock.io` namespace, `seek` is a synchronous operation.
+See the following usage example:
+
+```js
+let position = 1024; // 1024 bytes past the start of the file.
+airlock.io.seek(file1Handle, position);
+```
+
+To retrieve the current offset within a file, use the synchronous `airlock.io.getFileOffset(handle)` function, as demonstrated:
+
+```js
+var position = airlock.io.getFileOffset(file1Handle);
 ```
 
 ### Detecting if an Application Package is Installed

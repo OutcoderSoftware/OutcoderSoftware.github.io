@@ -29,7 +29,7 @@ title: Airlock Browser Programming Guide
 	* [Sounding an Audible Beep](#sounding-an-audible-beep)
 	* [Creating a Custom Beep](#creating-a-custom-beep)
 	* [Vibrating the Device](#vibrating-the-device)
-	* [Retrieve Detailed Device Information](#retrieve-detailed-device-information)
+	* [Retrieving Detailed Device Information](#retrieving-detailed-device-information)
 	* [Detecting if an Application Package is Installed](#detecting-if-an-application-package-is-installed)
 	* [Monitoring the Power State of the Device](#monitoring-the-power-state-of-the-device)
 	* [Controlling when the Screen Times-out](#controlling-when-the-screen-times-out)
@@ -79,6 +79,7 @@ title: Airlock Browser Programming Guide
 	* [Controlling the Orientation of the Display](#controlling-the-orientation-of-the-display)
 
 [//]: # (TOC End)
+
 
 ## Introduction
 
@@ -248,7 +249,7 @@ If a single toned beep doesn't fit your needs, then you can use the `airlock.dev
 
 In noisy environments, supplementing audible alerts with vibration can make your application more usable. To vibrate the device for a specified duration use the `airlock.device.vibrate(vibrateMS, intervalMS, count)` function. All three parameters of the `vibrate` function are optional. By default the `vibrate` function vibrates the device for 100 milliseconds. You can change this duration by specifying the `vibrateMS` parameter. In addition you can also specify an interval of non-vibration and a `count` value, which causes the device to vibrate and then pause vibration repeatedly. This operates much like the `soundToneFollowedBySilence` function, described above.
 
-### Retrieve Detailed Device Information
+### Retrieving Detailed Device Information
 
 Sometimes you need detailed information about the device on which your application is running. Using the `airlock.device.getSystemInfo()` function you can retrieve detailed information regarding the device, operating system, and display properties; as well as a unique device identifier. `getSystemInfo()` returns a `airlock.device.SystemInfo` object, with the following properties:
 

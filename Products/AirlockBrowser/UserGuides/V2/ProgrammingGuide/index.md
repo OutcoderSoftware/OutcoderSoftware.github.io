@@ -18,6 +18,7 @@ Airlock Browser JavaScript APIs via can be invoked from an on-page script or fro
 Please note that there exists [comprehensive working examples](../../Scripting/V2/Samples/) for the APIs listed in this document.
 
 In this document you explore the following sets of APIs, which are grouped together in the following JavaScript namespaces:
+
 * `airlock.app` Provides licensing, updates, versioning, and APIs for exiting the app.
 * `airlock.browsing` Allows you to control the user's web browsing experience.
 * `airlock.device` Provides functions for interacting with the device at the OS level.
@@ -89,7 +90,7 @@ Airlock Browser allows you to minimize the app via its `airlock.app.minimize()` 
 
 Sometimes you may wish to close the Airlock Browser app. This is achieve by calling the `airlock.app.exit(showNotification)` function, which causes Airlock Browser to close all of its related activities and return the user to the Android start screen. 
 
-By default a notification is displayed to the user, informing him or her that the app is about to exit. You can override this behavior by specifying the Boolean showNotification parameter.
+By default a notification is displayed to the user, informing him or her that the app is about to exit. You can override this behavior by specifying the Boolean `showNotification` parameter.
 
 ### Exiting the Browser and Launching Another App
 
@@ -104,6 +105,8 @@ If you wish Airlock Browser to remain open, but require another app to be launch
 ## Controlling the App's Browsing Behavior
 
 The `airlock.browsing` namespace contains functions that allow you to control the user's web browsing experience.
+
+To see the APIs in this namespace in action, please see the [browsing samples](../../../Scripting/V2/Samples/Browsing/).
 
 ### Defining the Navigation Error Action
 
@@ -123,6 +126,8 @@ To retrieve the current text size use `airlock.browsing.getTextZoomLevel()`.
 ## Interacting with the Device at the OS Level
 
 The `airlock.device` namespace provides functions for interacting with the device at the OS level, such as changing the screen brightness or sounding a tone.
+
+To see the APIs in this namespace in action, please see the [Device samples](../../../Scripting/V2/Samples/Device/).
 
 ### Changing the Screen's Brightness
 
@@ -172,16 +177,6 @@ If a single toned beep doesn't fit your needs, then you can use the `airlock.dev
 
 In noisy environments, supplementing audible alerts with vibration can make your application more usable. To vibrate the device for a specified duration use the `airlock.device.vibrate(vibrateMS, intervalMS, count)` function. All three parameters of the `vibrate` function are optional. By default the `vibrate` function vibrates the device for 100 milliseconds. You can change this duration by specifying the `vibrateMS` parameter. In addition you can also specify an interval of non-vibration and a `count` value, which causes the device to vibrate and then pause vibration repeatedly. This operates much like the `soundToneFollowedBySilence` function, described above.
 
-### Controlling when the Screen Times-out
-
-You can improve the battery life of the device, and in some scenarios increase security of your applications, by reducing the amount of time needed to engage the lock screen after the user becomes inactive. 
-
-To set the lock screen timeout value use the `airlock.device.setScreenTimeoutMS(timeoutMS)` function. The `timeoutMS` parameter specifies the duration in milliseconds before the lock screen is engaged.
-
-> **NOTE:** Decreasing the time-out value substantially can negatively affect the usability of the app if the user is required to authenticate to regain access.
-
-To retrieve the current lock screen timeout value use the `airlock.device.getScreenTimeoutMS()` function.
-
 ### Retrieve Detailed Device Information
 
 Sometimes you need detailed information about the device on which your application is running. Using the `airlock.device.getSystemInfo()` function you can retrieve detailed information regarding the device, operating system, and display properties; as well as a unique device identifier. `getSystemInfo()` returns a `airlock.device.SystemInfo` object, with the following properties:
@@ -214,6 +209,59 @@ Sometimes you need detailed information about the device on which your applicati
 
 Before launching an external app via the `airlock.app.launchApp` function, it's important to test if the package is installed. You do this using the `airlock.device.isPackageInstalled(packageName)` function, which returns `true` if the package is installed, and `false` otherwise.
 
+### Monitoring the Power State of the Device
+
+It's important to notify the user if the device battery is running low and if a current activity is in danger of not being able to be completed because of an imminent device shutdown. The `airlock.device.onPowerChanged` event allows you to monitor, in real-time, the power state of the device. It provides you with a notification when the device battery level changes by two percent, or when the device is plugged or unplugged from an external power supply.
+
+To subscribe to the event call the `addListener` function of the event as shown in the following example:
+
+```js
+airlock.device.onPowerChanged.addListener(handlePowerChanged);
+```
+
+The `handlePowerChanged` parameter is a function in your code that will receive a `airlock.device.PowerInfo` object when the event is raised; as demonstrated by the following:
+
+```js
+function handlePowerChanged(args) {
+	if (args.powerSource === airlock.device.PowerSource.BATTERY) {
+		// Using battery. Display remaining battery percentage.
+		alert(args.remainingBatteryPercent)
+	}
+}
+```
+
+The properties of the `PowerInfo` type are described in the following list:
+
+* `powerSource` {airlock.device.PowerSource}:
+	* `BATTERY` (0): A battery power source.
+	* `EXTERNAL` (1): An external power supply such as mains power.
+* `remainingBatteryMinutes` {number}: An estimate of the number of minutes of remaining battery charge.
+* `remainingBatteryPercent` {number}: A value between 0 and 100 indicating the battery charge remaining. Note that this value may not be indicative of the time until the device runs out of charge, as the device may be connected to mains power and charging. See the `batteryState` value.
+* `batteryState` {airlock.device.BatteryState}: Indicates the charging state of battery.
+    * `UNKNOWN` (0): The battery state is unknown. 
+	* `CHARGING` (1): Indicates the unit is charging.
+	* `DISCHARGING` (2): Indicates the battery is running down.
+	* `FULL` (4): Battery is fully charged.
+	* `NOT_CHARGING` (8): Battery is not charging.
+
+> **NOTE:** The `onPowerChanged` is raised when the devices power source changes, or when the remaining battery percent changes by 2 or more percent. The reason why it is 2 percent and not 1 percent, is that when the device is charging and sitting on about 100%, the remaining charge level will frequently oscillate, up and down, by 1 percent. This can unnecessarily burden your page with events calls.
+	
+To remove a listener from the `onPowerChanged` event, use the `removeListener(function)` function, as shown:
+
+```js
+airlock.device.onPowerChanged.removeListener(handlePowerChanged);
+```
+
+### Controlling when the Screen Times-out
+
+You can improve the battery life of the device, and in some scenarios increase security of your applications, by reducing the amount of time needed to engage the lock screen after the user becomes inactive. 
+
+To set the lock screen timeout value use the `airlock.device.setScreenTimeoutMS(timeoutMS)` function. The `timeoutMS` parameter specifies the duration in milliseconds before the lock screen is engaged.
+
+> **NOTE:** Decreasing the time-out value substantially can negatively affect the usability of the app if the user is required to authenticate to regain access.
+
+To retrieve the current lock screen timeout value use the `airlock.device.getScreenTimeoutMS()` function.
+
 ### Locking and Unlocking the Screen
 
 When the devices screen times-out, or the user explicitly engages the lock-screen, your application is able to unlock the screen using the `airlock.device.unlockScreen()` function. 
@@ -240,6 +288,8 @@ To grant Airlock Browser device admin privileges, use the *Enable device adminis
 
 Airlock Browser offers an extensive set of APIs for reading and writing files, and creating and searching for files and directories.
 
+To see the APIs in this namespace in action, please see the [IO samples](../../../Scripting/V2/Samples/IO/).
+
 ### A Note about JavaScript Promises
 
 While some functions are synchronous, most of the functions in the `airlock.io` namespace are asynchronous and use JavaScript promises. Promises is a feature of modern JavaScript and provides an elegant way of handling callbacks from asynchronous code. Some of the JavaScript APIs, especially those in the `airlock.io` and `airlock.networking` namespaces, can potentially take seconds to complete. Rather than lock the UI thread of the browser, some calls are performed on a background thread and returned to the your code via a promise. 
@@ -257,9 +307,9 @@ The `copyFile` function is an asynchronous operation and returns a promise. To n
 ```js
 airlock.io.moveFile(sourcePath, destinationPath)
  	.then(function () {
- 		alert(`File moved to: ${destinationPath}`);
+ 		alert('File moved to: ' + destinationPath);
  	}).catch(function (error) {
- 		alert(`Error ${error}`);
+ 		alert('Error: ' + error);
  	});
 ```
 
@@ -272,9 +322,9 @@ To delete a file call the `airlock.io.deleteFile(path)` function, as demonstrate
 ```js
 airlock.io.deleteFile(filePath)
 	.then(function () {
-		alert(`File deleted.`);
+		alert('File deleted.');
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
  ```
 
@@ -285,9 +335,9 @@ To test for the exists of a file use the `airlock.io.fileExists(filePath)` funct
 ```js
 airlock.io.fileExists(filePath)
 	.then(function (fileExists) {
-		alert(`File exists: ${fileExists}`);
+		alert('File exists:' + fileExists);
 	}).catch(function (error) {
-		alert(`Error: ${error}`);
+		alert('Error:' + error);
 	});
  ```
 
@@ -300,9 +350,9 @@ To test for the exists of a directory use the `airlock.io.directoryExists(direct
 ```js
 airlock.io.directoryExists(directoryPath)
 	.then(function (fileExists) {
-		alert(`Directory exists: ${fileExists}`);
+		alert('Directory exists: ' + fileExists);
 	}).catch(function (error) {
-		alert(`Error: ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -315,10 +365,10 @@ Before you can create a file in a directory, you must be certain that the direct
 ```js
 airlock.io.directoryExists(directoryPath)
     .then(function (exists) {
-		alert(`Directory exists: ${exists}`);
+		alert('Directory exists: ' + exists);
 		// Create a file etc.
 	}).catch(function (error) {
-		alert(`Error: ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -330,20 +380,20 @@ airlock.io.directoryExists(directoryPath)
 		if (!exists) {
 		    airlock.io.createDirectory(newDir)
 	        .then(function () {
-		alert(`Created directory ${newDir}`);
+		alert('Created directory ' + newDir);
 	})
 		}
 	}).catch(function (error) {
-		alert(`Error: ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
 ```js
 airlock.io.createDirectory(newDir)
 	.then(function () {
-		alert(`Created directory ${newDir}`);
+		alert('Created directory ' + newDir);
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
  ```
 
@@ -357,9 +407,9 @@ var file1Handle;
 airlock.io.openFile(filePath, airlock.io.FileMode.OPEN)
 	.then(function (fileHandle) {
 		file1Handle = fileHandle;
-		alert(`Successfully opened ${filePath}`);
+		alert('Successfully opened ' + filePath);
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -465,26 +515,26 @@ Once you've opened a file, it is kept open until Airlock Browser is exited or de
 ```js
 airlock.io.closeFile(file1Handle)
 	.then(function () {
-		alert(`File closed.`);
+		alert('File closed.');
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
  ```
  
- ### Deleting a Directory
+### Deleting a Directory
  
  Airlock Browser allows you to delete a directory using the `airlock.io.deleteDirectory(path, recursive)` function. The Boolean `recursive` parameter tells Airlock Browser to delete the directory and its contents. If the directory is not empty and `recursive` is false, an exception is thrown. See the following example:
  
  ```js
 airlock.io.deleteDirectory(newDir, recursive)
 	.then(function () {
-		alert(`Deleted directory ${newDir}`);
+		alert('Deleted directory ' + newDir);
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
  ```
  
- ### Searching for Files or Directories
+### Searching for Files or Directories
  
  The following two functions exists to allow you to search for a file or directory matching a particular pattern:
  
@@ -502,9 +552,9 @@ The following example demonstrates how to retrieve a list of all directories ben
  ```js
 airlock.io.getDirectories(outputDir, "*.*", true)
 	.then(function (result) {
-		alert(`${outputDir} contains: ${result.join("\n")}`);
+		alert(directoryPath + ' contains: ' + result.join("\n"));
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
  ```
 
@@ -513,9 +563,9 @@ Likewise, to retrieve a list of all files in the specified directory and subdire
 ```js
 airlock.io.getFiles(directoryPath, "*.*", true)
 	.then(function (result) {
-		alert(`${directoryPath} contains: ${result.join("\n")}`);
+		alert(directoryPath + ' contains: ' + result.join("\n"));
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -528,7 +578,7 @@ airlock.io.getFileInfo(sourcePath)
 	.then(function (result) {
 		alert(result.sizeBytes);
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -551,9 +601,9 @@ To read the entire contents of a file without using a file handle, use the `airl
 ```js
 airlock.io.readAllText(filePath)
     .then(function (text) {
-		alert(`${text}`);
+		alert(text);
 	}).catch(function (error) {
-		alert(`Error: ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -593,7 +643,7 @@ airlock.io.readBase64(binaryFile1Handle, fileLength)
 		var text = atob(base64);
 		alert(text);
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -610,7 +660,7 @@ airlock.io.writeBase64(binaryFile1Handle, base64)
 	.then(function () {
 		alert("Done");
 	}).catch(function (error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -652,6 +702,10 @@ Logging is an important aspect of any application. It allows you to analyze erro
 Airlock Browser provides you with an application log that is internally stored within a database. Providing you with thread-safe logging capabilities across multiple pages.
 
 Log entries not only record messages and error information, but also include the file location of when logging information, making it easy to identify the origin of the logging activity.
+
+To see the APIs in this namespace in action, please see the [Logging samples](../../../Scripting/V2/Samples/Logging/).
+
+### Writing to the Log
 
 The following demonstrates how to write to the log at the debug level:
 
@@ -709,7 +763,7 @@ airlock.log.getEntries(startDate)
 		}
 		alert(text);
 	}).catch(function(error) {
-		alert(`Error ${error}`);
+		alert('Error: ' + error);
 	});
 ```
 
@@ -725,7 +779,7 @@ try {
 	}
 	alert(text);
 } catch (error) {
-    alert(`Error ${error}`);
+    alert('Error: ' + error);
 }
 ```
 
@@ -858,11 +912,13 @@ You are able to launch the print service, installed on a device, from either a J
 airlock.printing.printPage();
 ```
 
-For a live example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
+For a working example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
 
 ## Harnessing the Device's Scanning Capability
 
 Industrial mobile computers often have a built-in hardware barcode scanner. The `airlock.scanning` namespace provides various functions for working with the hardware barcode scanner.
+
+To see the APIs in this namespace in action, please see the [Scanning samples](../../../Scripting/V2/Samples/Scanning/).
 
 ### Configuring the Barcode Reader via JavaScript
 
@@ -870,11 +926,19 @@ Airlock Browser provides a JavaScript API that allows you to fully configure the
 
 > **NOTE:** Configuration changes applied via JavaScript do *not* result in permanent changes to the device configuration with Airlock Browser. The device configuration, as specified in Airlock Browser's device configuration settings, is restored when Airlock Browser is restarted. The one exception to this is the `airlock.scanning.resetConfiguration()` function, which does alter the devices configuration across app restarts.
 
+To retrieve the configuration for the device use the `airlock.scanning.getConfiguration()` function. You can modify its properties, and then apply those changes by calling `airlock.scanning.setConfiguration(configuration)`. Each device type has a particular set of configuration properties. To determine what properties are available for the device see the type definitions in the [Device Specific Resources](../../../Scripting/V2/#device-specific-resources). The configuration type is named [SDK]DeviceConfiguration, where SDK is the name of the device SDK. For example, for the CipherLab configuration see the `CipherLabDeviceConfiguration` type definition.
+
+In addition to the devices device configuration object, you can also retrieve other related values using the following functions:
+
+* `airlock.scanning.getReaderModel()` Gets the reader model as reported by the device SDK.
+* `airlock.scanning.getFirmwareVersion()` Gets the reader firmware version as reported by the device SDK.
+* `airlock.scanning.getApiVersion()` Gets the API version of the device SDK. This value is retrieved from the device SDK itself.
+
 #### Retrieving a Decoder's Configuration
 
 The `airlock.scanning` object allows you to retrieve a decoder using the name of the decoder or its ID. You see how to retrieve a decoder by name in the following excerpt:
 
-```javascript
+```js
 var decoder = airlock.scanning.getDecoderWithName('Code39');
 ```
 
@@ -882,7 +946,7 @@ var decoder = airlock.scanning.getDecoderWithName('Code39');
 
 Alternatively, you can retrieve the decoder object using its SDK identifier. To do so, use the `getDecoderWithNativeId` function, as shown in the following example:
 
-```javascript
+```js
 var decoder = airlock.scanning.getDecoderWithNativeId(71);
 ```
 
@@ -892,7 +956,7 @@ For a list of configurable properties specific to the device you're using, see t
 
 Once you have obtained a decoder object, you can set its values and then push it back to the app using the `setDecoder` function, as shown in the following example:
 
-```javascript
+```js
 try {
 	var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);
 	codabarDecoder.enabled = true;
@@ -911,59 +975,121 @@ The `airlock.scanning.setDecoder` function throws an exception if the decoder va
 
 For a working example see the [Scanning samples page](../../../Scripting/V2/Samples/Scanning/).
 
-### Monitoring the Power State of the Device
+### Retrieving All Decoders
 
-It's important to notify the user if the device battery is running low and if a current activity is in danger of not being able to be completed because of an imminent device shutdown. The `airlock.device.onPowerChanged` event allows you to monitor, in real-time, the power state of the device. It provides you with a notification when the device battery level changes by two percent, or when the device is plugged or unplugged from an external power supply.
-
-To subscribe to the event call the `addListener` function of the event as shown in the following example:
+You can retrieve the set of decoders using the `airlock.scanning.getDecoders()` function. The function returns a promise, resolving to a list of decoder objects. See the following example:
 
 ```js
-airlock.device.onPowerChanged.addListener(handlePowerChanged);
+airlock.scanning.getDecoders()
+    .then(function (decoders) {
+		var text = "";
+		for (let i = 0; i < decoders.length; i++) {
+			text += decoders[i].name + ", ";
+		}
+		alert(text);
+	}).catch(function (error) {
+		alert('Error: ' + error);
+	});
 ```
 
-The `handlePowerChanged` parameter is a function in your code that will receive a `airlock.device.PowerInfo` object when the event is raised; as demonstrated by the following:
+### Responding to a Scan Event
+
+Whenever the user scans a barcode, your page is alerted to this event via the `airlock.scanning.onScan` event. The following example demonstrates how to subscribe to the event:
 
 ```js
-function handlePowerChanged(args) {
-	if (args.powerSource === airlock.device.PowerSource.BATTERY) {
-		// Using battery. Display remaining battery percentage.
-		alert(args.remainingBatteryPercent)
-	}
+airlock.scanning.onScan.addListener(handleScan);
+
+function handleScan(args) {
+	// Displays the barcode data.
+	alert(args.text);
 }
 ```
 
-The properties of the `PowerInfo` type are described in the following list:
-
-* {airlock.device.PowerSource} `powerSource`
-	* `BATTERY` (0): A battery power source.
-	* `EXTERNAL` (1): An external power supply such as mains power.
-* `remainingBatteryMinutes` {number}: An estimate of the number of minutes of remaining battery charge.
-* `remainingBatteryPercent` {number}: A value between 0 and 100 indicating the battery charge remaining. Note that this value may not be indicative of the time until the device runs out of charge, as the device may be connected to mains power and charging. See the `batteryState` value.
-* {airlock.device.BatteryState} `batteryState` Indicates the charging state of battery.
-    * `UNKNOWN` (0): The battery state is unknown. 
-	* `CHARGING` (1): Indicates the unit is charging.
-	* `DISCHARGING` (2): Indicates the battery is running down.
-	* `FULL` (4): Battery is fully charged.
-	* `NOT_CHARGING` (8): Battery is not charging.
-
-> **NOTE:** The `onPowerChanged` is raised when the devices power source changes, or when the remaining battery percent changes by 2 or more percent. The reason why it is 2 percent and not 1 percent, is that when the device is charging and sitting on about 100%, the remaining charge level will frequently oscillate, up and down, by 1 percent. This can unnecessarily burden your page with events calls.
-	
-To remove a listener from the `onPowerChanged` event, use the `removeListener(function)` function, as shown:
+To unsubscribe from the event, simply call the `removeListener` function, passing in the same function, like so:
 
 ```js
-airlock.device.onPowerChanged.removeListener(handlePowerChanged);
+airlock.scanning.onScan.removeListener(handleScan);
 ```
 
+The `handleScan` function in the example is a function that accepts a `airlock.scanning.ScanEventArgs` object, which has the following properties:
 
+* `rawDataInBase64` *string* The raw barcode data in Base64 format (if available).
+* `text` *string* The processed barcode data.
+* `nativeSymbologyId` *Number*  The identifier used
+in the device manufacturer's SDK for a symbology.
+* `symbologyName` *string* The symbology name, such as 'Code11'.
+* `sourceScanner` *string* The reader ID (if available).
+* `insertMode` *number* Replace = 0, Append = 1, Prepend = 2.
+Determines the behavior of the barcode wedge and whether it overwrites,
+appends, or prepends a text field with the scanned text.
+* `moveToNextField` *boolean* If true, after the scan,
+the browser will attempt to move to the next field on the page.
+* `keyboardWedgeEnabled` *boolean* If true, it indicates
+that the app may attempt to populate the current field with the barcode text.
+* `timestamp` *Date* Indicates when the scan occured.
 
+In most cases you will be most interested in the `text` property, which contains the barcode text, and the `nativeSymbologyId` property, which indicates the symbology of the barcode.
 
+### Handling Scan Errors
 
+When an error occurs while scanning a barcode, the `airlock.scanning.onScanError` event is raised. You subscribe to the event like so:
+
+```js
+airlock.scanning.onScanError.addListener(handleScanError)
+```
+
+To unsubscribe, use the following:
+
+```js
+airlock.scanning.onScanError.removeListener(handleScanError)
+```
+
+The `handleScanError` is a function in your code that accepts a `airlock.scanning.ScanErrorEventArgs` object.
+`ScanErrorEventArgs` has the following two properties:
+
+* `errorInfo` A SDK specific object representing the error information provided by the device SDK.
+* `timestamp` A Date value indicating when the failure occurred.
 
 ### Using Text to Speech with JavaScript
 
-You can have Airlock Browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:
+You can leverage Airlock Browser text-to-speech capability and have the browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:
 
 ```javascript
 airlock.speech.speakText("Hi from Airlock Browser");
 ```
+The function returns immediately, and does not block until the text is finished being spoken.
 
+## Controlling User Interface Elements
+
+The `airlock.ui` namespace contains functions for manipulating the user interface and for influencing the user's browsing experience.
+
+To see the APIs in this namespace in action, please see the [UI samples](../../../Scripting/V2/Samples/UI/).
+
+### Retrieving the UI Language of the App
+
+The UI language of the app can be set in the options screen of the app. By default, however, it uses the current operating system language. To retrieve the language code for the language use the `airlock.ui.getUILanguage()` function, which returns the name of the app's UI language. The name is a combination of an ISO 639 two-letter lowercase culture code associated with a language and an ISO 3166 two-letter uppercase subculture code associated with a country or region. For example, en-AU denotes Australian English. 
+
+### Entering and Exiting Fullscreen Mode
+
+Airlock Browser provides a fullscreen mode, where the application bar and tab headers are hidden (the app's application bar is reduced to an ellipsis), along with the built-in Android navigation bar and status bar. To determine if the app is currently in fullscreen mode use the `airlock.ui.isFullScreen()` function. This function returns `true` if the app is in fullscreen mode, and `false` otherwise. You can also set the fullscreen mode using the `airlock.ui.setFullScreen(fullscreen)`. 
+
+### Opening and Closing the Launchpad
+
+The slide-in launchpad can be controlled using the `airlock.ui.setLaunchpadOpen(open)` function. When you call this function with a parameter value of `true`, the launchpad slides into view (if not already in view). A value of `false` closes the launchpad, allowing the browser tabs to occupy all of the user interface. 
+
+To determine the current state of the launchpad, use the `airlock.ui.isLaunchpadOpen()` function, which returns `true` if open and `false` otherwise.
+
+### Controlling the Orientation of the Display
+
+Airlock Browser allows you to set the portrait or landscape lock of the display via the `airlock.ui.setOrientationLock(orientationLockType)` function. It accepts an enumeration value parameter of type `airlock.ui.OrientationLockType`, whose values are described below:
+
+* `UNLOCKED` (0): Indicates the orientation is dynamic and free
+to be rotated to portrait or landscape.
+* `LOCK_PORTRAIT` (1): The browser tab is locked to the portrait orientation.
+* `LOCK_LANDSCAPE` (2): The browser tab is locked to the landscape orientation.
+* `SYSTEM_CONTROLLED` (3): The locked or unlocked state is determined
+by the configuration and/or user settings in the app.
+
+Sometimes the orientation may not be immediately determinable, in which case it has a value of `SYSTEM_CONTROLLED`.
+
+To retrieve the current orientation use the `airlock.ui.getOrientationLock()` function.

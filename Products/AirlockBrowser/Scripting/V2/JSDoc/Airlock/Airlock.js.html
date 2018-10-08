@@ -990,6 +990,7 @@ airlock.io.readLine = function (handle) {
  * @param {string} text The text to write to the file.
  * @returns {Promise} A promise that when resolved
  * indicates success of the operation.
+ * @exception Occurs if text is undefined.
  * @example
  * airlock.io.writeText(file1Handle, "These pretzels are making me thirsty.")
  * 	.then(function () {
@@ -1087,6 +1088,350 @@ airlock.io.getAppFilesDirectory = function () {
  */
 airlock.io.getExternalStorageDirectory = function () {
 	return pageHost.ii.getResult("io.getExternalStorageDirectory");
+};
+
+/* Logging */
+
+/**
+ * Provides persistent logging capabilities.
+ * @namespace 
+ */
+airlock.log = {};
+
+/**
+ * Enum LogLevel
+ * @enum {number}
+ * @readonly
+ */
+airlock.log.LogLevel = {
+
+	/** The least restrictive level. */
+	ALL: 0,
+	/** For debugging purposes. More verbose than the Info level
+	* and less verbose than the Trace level. */
+	DEBUG: 2,
+	/** Signifies verbose information. More verbose than the Warn level
+	* and less verbose than the Debug level. */
+	INFO: 4,
+	/** Signifies a warning from e.g. an unexpected event. */
+	WARN: 8,
+	/** When an application error occurs. */
+	ERROR: 16,
+	/** When the application is no longer
+	* able to function or is in an unreliable state.
+	* Highly restrictive logging. */
+	FATAL: 32,
+	/** Logging is disabled. */
+	NONE: 64
+};
+
+/**
+ * Sets the minimum log level
+ * @param {airlock.log.LogLevel} level Any log messages below this threshold are ignored.
+ * @example
+ * // Limit logging to warning message or higher.
+ * airlock.log.setMinLevel(airlock.log.LogLevel.WARN);
+ */
+airlock.log.setMinLevel = function (level) {
+	pageHost.ii.getResult("log.setMinLevel", level);
+};
+
+/**
+ * Writes a log entry at the LogLevel.DEBUG level.
+ * The log entry is not processed if the minimum log level
+ * is greater than the DEBUG level.
+ * @param {string} message The text content to write to the log.
+ * @param {string} [error] An error associated with the entry. Can be null.
+ * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.debug("Message from my web page");
+ */
+airlock.log.debug = function (message, error) {
+	pageHost.ii.log.writeLog(2, message, error, 1);
+};
+
+/**
+ * Writes a log entry at the LogLevel.INFO level.
+ * The log entry is not processed if the minimum log level
+ * is greater than the INFO level.
+ * @param {string} message The text content to write to the log.
+ * @param {string} [error] An error associated with the entry. Can be null.
+ * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.info("Message from my web page");
+ */
+airlock.log.info = function (message, error) {
+	pageHost.ii.log.writeLog(4, message, error, 1);
+};
+
+/**
+ * Writes a log entry at the LogLevel.WARN level.
+ * The log entry is not processed if the minimum log level
+ * is greater than the WARN level.
+ * @param {string} message The text content to write to the log.
+ * @param {string} [error] An error associated with the entry. Can be null.
+ * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.warn("Message from my web page", error);
+ */
+airlock.log.warn = function (message, error) {
+	pageHost.ii.log.writeLog(8, message, error, 1);
+};
+
+/**
+ * Writes a log entry at the LogLevel.ERROR level.
+ * The log entry is not processed if the minimum log level
+ * is greater than the ERROR level.
+ * @param {string} message The text content to write to the log.
+ * @param {string} [error] An error associated with the entry. Can be null.
+ * @see {@link airlock.log.LogLevel}
+ * @example
+ * airlock.log.info("Message from my web page", error);
+ */
+airlock.log.error = function (message, error) {
+	pageHost.ii.log.writeLog(16, message, error, 1);
+};
+
+
+/**
+ * @typedef airlock.log.LogEntry
+ * @property {string} message The text content of the log entry.
+ * @property {string} exception The error associated with this entry. Can be undefined.
+ * @property {Date} occuredUtc The time and date in universal time
+ * when this entry was written to the log.
+ * @property {airlock.log.LogLevel} logLevel The log level of this entry.
+ * @property {string} url The URL of the page or JavaScript file
+ * where the log entry was written.
+ * @property {number} The line number in the file where the call
+ * to write to the log was made.
+ * @property {string} function The name of the function
+ * where the log call took place.
+ */
+
+
+/**
+ * Reads the log and returns the entries using a Promise.
+ * Optionally, a date range can be specified using the startDate and endDate
+ * parameters. If supplied, only those entries that fall between startDate
+ * and endDate are returned.
+ * @param {Date} [startDate] If supplied, only entries that were made
+ * after this date and time are returned.
+ * @param {Date} [endDate] If supplied, only entries that were made
+ * prior to this date and time are returned.
+ * @returns {Promise&lt;Array.&lt;airlock.log.LogEntry>>} Resolves a list of log entries.
+ * @example
+ * var startDate = new Date();
+ * // Create a Date object that indicates the time one minute ago.
+ * startDate.setMinutes(startDate.getMinutes() - 1);
+ *
+ * // Get Entries less than 1 minute old.
+ * airlock.log.getEntries(startDate)
+ *	.then(function (logEntries) {
+ *		let text = "";
+ *		for (let i = 0; i &lt; logEntries.length; i++) {
+ *			let entry = logEntries[i];
+ *			text += getPropertyValues(entry) + "\n";
+ *		}
+ *		alert(text);
+ *	}).catch(function(error) {
+ *		alert(`Error ${error}`);
+ *	});
+ */
+airlock.log.getEntries = function (startDate, endDate) {
+	return hsv12Private.makePromise("log.getEntries", startDate, endDate);
+};
+
+/**
+ * Deletes the log entries via a Promise.
+ * Optionally, a date range can be specified using the startDate and endDate
+ * parameters. If supplied, only those entries that fall between startDate
+ * and endDate are deleted. If both startDate and endDate are undefined,
+ * all log entries are deleted.
+ * @param {Date} [startDate] If supplied, only entries that were made
+ * after this date and time are deleted.
+ * @param {Date} [endDate] If supplied, only entries that were made
+ * prior to this date and time are deleted.
+ * @returns {number} The number of deleted log entries.
+ * @example
+ * var endDate = new Date();
+ * // Create a Date object that indicates the time one minute ago.
+ * endDate.setMinutes(endDate.getMinutes() - 1);
+ *
+ * // Delete Log Entries greater than 1 minute old.
+ * airlock.log.deleteEntries(null, endDate)
+ *		.then(function (value) {
+ *			alert(`Deleted ${value} entries.`);
+ *		}).catch(function (error) {
+ *			alert(`Error ${error}`);
+ *		});
+ */
+airlock.log.deleteEntries = function (startDate, endDate) {
+	return hsv12Private.makePromise("log.deleteEntries", startDate, endDate);
+};
+
+/* Networking */
+
+/**
+ * Provides functions and events for working
+ * with the network capabilities of a device.
+ * @namespace
+ */
+airlock.networking = {};
+
+/**
+ * Enum for network connection type values.
+ * @enum {number}
+ * @readonly
+ */
+airlock.networking.NetworkConnectionType = {
+	/** No network connection. */
+	NONE: 0,
+	/** Connected to a local area network. */
+	LAN: 1,
+	/** Connected to a mobile broadband network. */
+	MOBILE_BROADBAND: 2
+};
+
+/**
+ * @typedef airlock.networking.NetworkInfo
+ * @type {object}
+ * @property {boolean} approachingDataLimit Gets a value indicating whether
+ * the mobile broadband account is approaching a data limit.
+ * In which case, usage should be minimized.
+ * @property {boolean} connected Gets a value indicating if the application
+ * has a network connection for transmitting data.
+ * @property {boolean} limitData Gets a value indicating whether
+ * application data usage should be minimized.
+ * @property {airlock.networking.NetworkConnectionType} networkConnectionType
+ * The type of network connection. It can be 0 (none), 1 (lan), or 2 (mobile broadband).
+ * @property {boolean} roaming Gets a value indicating whether
+ * the mobile broadband account is relying on a third-party telecom;
+ * which may mean increased data usage costs for the user.
+ * If &lt;c>true&lt;/c>, usage should be minimized.
+ * @property {string} ssid The Service Set Identifier. SSID is a case sensitive,
+ * 32 alphanumeric character unique identifier attached to the header
+ * of packets sent over a wireless local-area network (WLAN).
+ * @property {boolean} wifiEnabled Gets or sets whether the device
+ * is able to connect to wireless networks.
+ */
+
+/**
+ * Gets the information for the current network connection, if any.
+ * @see {@link airlock.networking.NetworkInfo}
+ * @returns {airlock.networking.NetworkInfo} The network connection information.
+ * @example
+ * var info = airlock.networking.getNetworkInfo();
+ * // Display the SSID
+ * alert(info.ssid);
+ */
+airlock.networking.getNetworkInfo = function () {
+	return pageHost.ii.getResult("networking.getNetworkInfo");
+};
+
+/**
+ * @typedef airlock.networking.WirelessNetwork
+ * @type {object}
+ * @property {string} bssid The address of the access point.
+ * @property {string} ssid The Service Set Identifier.
+ * SSID is a case sensitive, 32 alphanumeric character unique identifier attached
+ * to the header of packets sent over a wireless local-area network(WLAN).
+ * @property {string} capabilities Describes the authentication, key management
+ * and encryption schemes supported by the access point.
+ * @property {string} isPasspointNetwork Gets a value indicating if this network
+ * is a passpoint network, which is an improved method for connecting
+ * to Wi-Fi hotspots from the Wi-Fi Alliance.
+ * @property {number} level The detected signal level in dBm, also known as the RSSI.
+ * @property {string} operatorFriendlyName The user readable name of the network.
+ * The name can be up to 64 alphanumeric characters, and can include
+ * special characters and spaces. If the name includes quotation marks ("),
+ * include a backslash character (\) before each quotation mark. (e.g. \"example\")
+ */
+
+/**
+ * Gets a promise that returns a list of WirelessNetwork objects.
+ * @returns {Promise&lt;Array.&lt;airlock.networking.WirelessNetwork>>} A promise that containing
+ *		a list of wireless networks when fulfilled.
+ *		The promise may take several seconds to resolve.
+ * @example
+ * airlock.networking.getWirelessNetworks()
+ * .then(function (result) {
+ *		var text = '';
+ *		// Get the SSID's for each network.
+ *		for (var i = 0; i &lt; result.length; i++) {
+ *			var network = result[i];
+ *			text += network.ssid + "\n";
+ *		}
+ *		alert(text);
+ * }).catch(function (error) {
+ *		alert("Error: " + error);
+ * });
+ */
+airlock.networking.getWirelessNetworks = function () {
+	return hsv12Private.makePromise("networking.getWirelessNetworksAsync");
+};
+
+/**
+ * Gets whether the device is able to connect to wireless networks.
+ * @returns {boolean} True if able to connect; false otherwise.
+ */
+airlock.networking.isWifiEnabled = function () {
+	return pageHost.ii.getResult("networking.isWifiEnabled");
+};
+
+/**
+ * Enables or disables wireless networking.
+ * @param {boolean} enabled If true, WIFI is enabled; false, it is disabled.
+ */
+airlock.networking.setWifiEnabled = function (enabled) {
+	pageHost.ii.getResult("networking.setWifiEnabled", enabled);
+};
+
+/**
+ * onConnectionChanged Event. This event is raised when the device
+ * connects or disconnects to/from a network.
+ * To subscribe to the event use:
+ *		airlock.networking.onConnectionChanged.addListener(function (networkInfo) {})
+ * To unsubscribe to the event use:
+ *		airlock.networking.onConnectionChanged.removeListener(afunctionReference)
+ * @event
+ * @type {airlock.networking.NetworkInfo}
+ * @example
+ * // Subscribe to event
+ * airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
+ *
+ * function handleConnectionChanged(args) {
+ *		// Display whether the device is connected to a network.
+ *		alert(args.connected);
+ * }
+ *
+ * // Unsubscribe
+ * airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
+ */
+airlock.networking.onConnectionChanged = airlock.networking.onConnectionChanged
+	|| pageHost.ii.registerEvent("networking.onConnectionChanged");
+
+/* Printing */
+
+/**
+ * Provides for printing of documents.
+ * @namespace 
+ */
+airlock.printing = {};
+
+/**
+ * Displays the print dialog, allowing the user to send the page to the printer.
+ * @returns {Promise} When resolved, the print request has been handed to the OS,
+ * which ordinarily displays a print dialog.
+ * @example
+ * airlock.printing.printPage()
+ * .then(function () {
+ *		alert('Print request sent to OS');
+ * }).catch(function (e) {
+ *		alert("Error sending print request " + e);
+ * });
+ */
+airlock.printing.printPage = function () {
+	return hsv12Private.makePromise("printing.printPage");
 };
 
 /* Scanning */
@@ -1327,9 +1672,9 @@ airlock.scanning.onScan = airlock.scanning.onScan
 /**
  * onScanError Event. Is raised when the barcode reader fails to scan a barcode.
  * To subscribe to the event use:
- *		airlock.scanning.onScanError.addListener(aFunction)
+ *		airlock.scanning.onScanError.addListener(handleScanError)
  * To unsubscribe to the event use:
- *		airlock.scanning.onScanError.removeListener(aFunction)
+ *		airlock.scanning.onScanError.removeListener(handleScanError)
  * @event
  * @type {airlock.scanning.ScanErrorEventArgs}
  * @example
@@ -1346,31 +1691,6 @@ airlock.scanning.onScan = airlock.scanning.onScan
  */
 airlock.scanning.onScanError = airlock.scanning.onScanError
 	|| pageHost.ii.registerEvent('scanning.onScanError');
-
-/* Printing */
-
-/**
- * Provides for printing of documents.
- * @namespace 
- */
-airlock.printing = {};
-
-/**
- * Displays the print dialog, allowing the user to send the page to the printer.
- * @returns {Promise} When resolved, the print request has been handed to the OS,
- * which ordinarily displays a print dialog.
- * @example
- * airlock.printing.printPage()
- * .then(function () {
- *		alert('Print request sent to OS');
- * }).catch(function (e) {
- *		alert("Error sending print request " + e);
- * });
- */
-airlock.printing.printPage = function () {
-	return hsv12Private.makePromise("printing.printPage");
-};
-
 
 /* Speech */
 
@@ -1403,7 +1723,7 @@ airlock.ui = {};
  * lowercase culture code associated with a language
  * and an ISO 3166 two-letter uppercase subculture code
  * associated with a country or region.
- * For example, en-AU denotes Australian english.
+ * For example, en-AU denotes Australian English.
  * @returns {string} A language code resembling 'en-AU'.
  */
 airlock.ui.getUILanguage = function() {
@@ -1513,327 +1833,6 @@ airlock.ui.getOrientationLock = function() {
 airlock.ui.setOrientationLock = function(lockType) {
 	pageHost.ii.getResult("ui.setOrientationLock", lockType);
 };
-
-/* Networking */
-
-/**
- * Provides functions and events for working
- * with the network capabilities of a device.
- * @namespace
- */
-airlock.networking = {};
-
-/**
- * Enum for network connection type values.
- * @enum {number}
- * @readonly
- */
-airlock.networking.NetworkConnectionType = {
-	/** No network connection. */
-	NONE: 0,
-	/** Connected to a local area network. */
-	LAN: 1,
-	/** Connected to a mobile broadband network. */
-	MOBILE_BROADBAND: 2
-};
-
-/**
- * @typedef airlock.networking.NetworkInfo
- * @type {object}
- * @property {boolean} approachingDataLimit Gets a value indicating whether
- * the mobile broadband account is approaching a data limit.
- * In which case, usage should be minimized.
- * @property {boolean} connected Gets a value indicating if the application
- * has a network connection for transmitting data.
- * @property {boolean} limitData Gets a value indicating whether
- * application data usage should be minimized.
- * @property {airlock.networking.NetworkConnectionType} networkConnectionType
- * The type of network connection. It can be 0 (none), 1 (lan), or 2 (mobile broadband).
- * @property {boolean} roaming Gets a value indicating whether
- * the mobile broadband account is relying on a third-party telecom;
- * which may mean increased data usage costs for the user.
- * If &lt;c>true&lt;/c>, usage should be minimized.
- * @property {string} ssid The Service Set Identifier. SSID is a case sensitive,
- * 32 alphanumeric character unique identifier attached to the header
- * of packets sent over a wireless local-area network (WLAN).
- * @property {boolean} wifiEnabled Gets or sets whether the device
- * is able to connect to wireless networks.
- */
-
-/**
- * Gets the information for the current network connection, if any.
- * @see {@link airlock.networking.NetworkInfo}
- * @returns {airlock.networking.NetworkInfo} The network connection information.
- * @example
- * var info = airlock.networking.getNetworkInfo();
- * // Display the SSID
- * alert(info.ssid);
- */
-airlock.networking.getNetworkInfo = function() {
-	return pageHost.ii.getResult("networking.getNetworkInfo");
-};
-
-/**
- * @typedef airlock.networking.WirelessNetwork
- * @type {object}
- * @property {string} bssid The address of the access point.
- * @property {string} ssid The Service Set Identifier.
- * SSID is a case sensitive, 32 alphanumeric character unique identifier attached
- * to the header of packets sent over a wireless local-area network(WLAN).
- * @property {string} capabilities Describes the authentication, key management
- * and encryption schemes supported by the access point.
- * @property {string} isPasspointNetwork Gets a value indicating if this network
- * is a passpoint network, which is an improved method for connecting
- * to Wi-Fi hotspots from the Wi-Fi Alliance.
- * @property {number} level The detected signal level in dBm, also known as the RSSI.
- * @property {string} operatorFriendlyName The user readable name of the network.
- * The name can be up to 64 alphanumeric characters, and can include
- * special characters and spaces. If the name includes quotation marks ("),
- * include a backslash character (\) before each quotation mark. (e.g. \"example\")
- */
-
-/**
- * Gets a promise that returns a list of WirelessNetwork objects.
- * @returns {Promise&lt;Array.&lt;airlock.networking.WirelessNetwork>>} A promise that containing
- *		a list of wireless networks when fulfilled.
- *		The promise may take several seconds to resolve.
- * @example
- * airlock.networking.getWirelessNetworks()
- * .then(function (result) {
- *		var text = '';
- *		// Get the SSID's for each network.
- *		for (var i = 0; i &lt; result.length; i++) {
- *			var network = result[i];
- *			text += network.ssid + "\n";
- *		}
- *		alert(text);
- * }).catch(function (error) {
- *		alert("Error: " + error);
- * });
- */
-airlock.networking.getWirelessNetworks = function() {
-	return hsv12Private.makePromise("networking.getWirelessNetworksAsync");
-};
-
-/**
- * Gets or sets whether the device
- * is able to connect to wireless networks.
- * @returns {boolean} True if able to connect; false otherwise.
- */
-airlock.networking.isWifiEnabled = function() {
-	return pageHost.ii.getResult("networking.isWifiEnabled");
-};
-
-/**
- * Enables or disables wireless networking.
- * @param {boolean} enabled If true, WIFI is enabled; false, it is disabled.
- */
-airlock.networking.setWifiEnabled = function(enabled) {
-	pageHost.ii.getResult("networking.setWifiEnabled", enabled);
-};
-
-/**
- * onConnectionChanged Event. This event is raised when the device
- * connects or disconnects to/from a network.
- * To subscribe to the event use:
- *		airlock.networking.onConnectionChanged.addListener(function (networkInfo) {})
- * To unsubscribe to the event use:
- *		airlock.networking.onConnectionChanged.removeListener(afunctionReference)
- * @event
- * @type {airlock.networking.NetworkInfo}
- * @example
- * // Subscribe to event
- * airlock.networking.onConnectionChanged.addListener(handleConnectionChanged);
- *
- * function handleConnectionChanged(args) {
- *		// Display whether the device is connected to a network.
- *		alert(args.connected);
- * }
- *
- * // Unsubscribe
- * airlock.networking.onConnectionChanged.removeListener(handleConnectionChanged);
- */
-airlock.networking.onConnectionChanged = airlock.networking.onConnectionChanged
-	|| pageHost.ii.registerEvent("networking.onConnectionChanged");
-
-/* Logging */
-
-/**
- * Provides persistent logging capabilities.
- * @namespace 
- */
-airlock.log = {};
-
-/**
- * Enum LogLevel
- * @enum {number}
- * @readonly
- */
-airlock.log.LogLevel = {
-
-	/** The least restrictive level. */
-	ALL: 0,
-	/** For debugging purposes. More verbose than the Info level
-	* and less verbose than the Trace level. */
-	DEBUG: 2,
-	/** Signifies verbose information. More verbose than the Warn level
-	* and less verbose than the Debug level. */
-	INFO: 4,
-	/** Signifies a warning from e.g. an unexpected event. */
-	WARN: 8,
-	/** When an application error occurs. */
-	ERROR: 16,
-	/** When the application is no longer
-	* able to function or is in an unreliable state.
-	* Highly restrictive logging. */
-	FATAL: 32,
-	/** Logging is disabled. */
-	NONE: 64
-};
-
-/**
- * Sets the minimum log level
- * @param {airlock.log.LogLevel} level Any log messages below this threshold are ignored.
- * @example
- * // Limit logging to warning message or higher.
- * airlock.log.setMinLevel(airlock.log.LogLevel.WARN);
- */
-airlock.log.setMinLevel = function(level) {
-	pageHost.ii.getResult("log.setMinLevel", level);
-};
-
-/**
- * Writes a log entry at the LogLevel.DEBUG level.
- * The log entry is not processed if the minimum log level
- * is greater than the DEBUG level.
- * @param {string} message The text content to write to the log.
- * @param {string} [error] An error associated with the entry. Can be null.
- * @see {@link airlock.log.LogLevel}
- * @example
- * airlock.log.debug("Message from my web page");
- */
-airlock.log.debug = function(message, error) {
-	pageHost.ii.log.writeLog(2, message, error, 1);
-};
-
-/**
- * Writes a log entry at the LogLevel.INFO level.
- * The log entry is not processed if the minimum log level
- * is greater than the INFO level.
- * @param {string} message The text content to write to the log.
- * @param {string} [error] An error associated with the entry. Can be null.
- * @see {@link airlock.log.LogLevel}
- * @example
- * airlock.log.info("Message from my web page");
- */
-airlock.log.info = function(message, error) {
-	pageHost.ii.log.writeLog(4, message, error, 1);
-};
-
-/**
- * Writes a log entry at the LogLevel.WARN level.
- * The log entry is not processed if the minimum log level
- * is greater than the WARN level.
- * @param {string} message The text content to write to the log.
- * @param {string} [error] An error associated with the entry. Can be null.
- * @see {@link airlock.log.LogLevel}
- * @example
- * airlock.log.warn("Message from my web page", error);
- */
-airlock.log.warn = function(message, error) {
-	pageHost.ii.log.writeLog(8, message, error, 1);
-};
-
-/**
- * Writes a log entry at the LogLevel.ERROR level.
- * The log entry is not processed if the minimum log level
- * is greater than the ERROR level.
- * @param {string} message The text content to write to the log.
- * @param {string} [error] An error associated with the entry. Can be null.
- * @see {@link airlock.log.LogLevel}
- * @example
- * airlock.log.info("Message from my web page", error);
- */
-airlock.log.error = function(message, error) {
-	pageHost.ii.log.writeLog(16, message, error, 1);
-};
-
-
-/**
- * @typedef airlock.log.LogEntry
- * @property {string} message The text content of the log entry.
- * @property {string} exception The error associated with this entry. Can be undefined.
- * @property {Date} occuredUtc The time and date in universal time
- * when this entry was written to the log.
- * @property {airlock.log.LogLevel} logLevel The log level of this entry.
- * @property {string} url The URL of the page or JavaScript file
- * where the log entry was written.
- * @property {number} The line number in the file where the call
- * to write to the log was made.
- * @property {string} function The name of the function
- * where the log call took place.
- */
-
-
-/**
- * Reads the log and returns the entries using a Promise.
- * Optionally, a date range can be specified using the startDate and endDate
- * parameters. If supplied, only those entries that fall between startDate
- * and endDate are returned.
- * @param {Date} [startDate] If supplied, only entries that were made
- * after this date and time are returned.
- * @param {Date} [endDate] If supplied, only entries that were made
- * prior to this date and time are returned.
- * @returns {Promise&lt;Array.&lt;airlock.log.LogEntry>>} Resolves a list of log entries.
- * @example
- * var startDate = new Date();
- * // Create a Date object that indicates the time one minute ago.
- * startDate.setMinutes(startDate.getMinutes() - 1);
- *
- * // Get Entries less than 1 minute old.
- * airlock.log.getEntries(startDate)
- *	.then(function (logEntries) {
- *		let text = "";
- *		for (let i = 0; i &lt; logEntries.length; i++) {
- *			let entry = logEntries[i];
- *			text += getPropertyValues(entry) + "\n";
- *		}
- *		alert(text);
- *	}).catch(function(error) {
- *		alert(`Error ${error}`);
- *	});
- */
-airlock.log.getEntries = function(startDate, endDate) {
-	return hsv12Private.makePromise("log.getEntries", startDate, endDate);
-};
-
-/**
- * Deletes the log entries via a Promise.
- * Optionally, a date range can be specified using the startDate and endDate
- * parameters. If supplied, only those entries that fall between startDate
- * and endDate are deleted. If both startDate and endDate are undefined,
- * all log entries are deleted.
- * @param {Date} [startDate] If supplied, only entries that were made
- * after this date and time are deleted.
- * @param {Date} [endDate] If supplied, only entries that were made
- * prior to this date and time are deleted.
- * @returns {number} The number of deleted log entries.
- * @example
- * var endDate = new Date();
- * // Create a Date object that indicates the time one minute ago.
- * endDate.setMinutes(endDate.getMinutes() - 1);
- *
- * // Delete Log Entries greater than 1 minute old.
- * airlock.log.deleteEntries(null, endDate)
- *		.then(function (value) {
- *			alert(`Deleted ${value} entries.`);
- *		}).catch(function (error) {
- *			alert(`Error ${error}`);
- *		});
- */
-airlock.log.deleteEntries = function(startDate, endDate) {
-	return hsv12Private.makePromise("log.deleteEntries", startDate, endDate);
-};
 </code></pre>
         </article>
     </section>
@@ -1850,7 +1849,7 @@ airlock.log.deleteEntries = function(startDate, endDate) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 07 2018 13:14:59 GMT+0200 (W. Europe Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 08 2018 19:34:37 GMT+0200 (W. Europe Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

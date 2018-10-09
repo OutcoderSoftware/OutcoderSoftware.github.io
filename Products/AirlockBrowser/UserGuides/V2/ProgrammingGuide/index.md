@@ -224,9 +224,9 @@ Airlock Browser allows you to control various volume streams via the `airlock.de
 * `VOICE_CALL` (0): used to identify the volume of audio streams for phone calls.
 * `SYSTEM` (1): Used to identify the volume of audio streams for system sounds.
 * `RING` (2): Used to identify the volume of audio streams for the phone ring.
-* `MUSIC` (3):,Used to identify the volume of audio streams for music playback.
-* `ALARM` (4): ,Used to identify the volume of audio streams for alarms.
-* `NOTIFICATION` (5),Used to identify the volume of audio streams for notifications.
+* `MUSIC` (3): Used to identify the volume of audio streams for music playback.
+* `ALARM` (4): Used to identify the volume of audio streams for alarms.
+* `NOTIFICATION` (5): Used to identify the volume of audio streams for notifications.
 * `DTMF` (8): Used to identify the volume of audio streams for DTMF Tones. Dual-tone multi-frequency (DTMF) tones are used by automated dial-in systems such as voicemail or where prompts are used to navigate.
 
 The `volume` parameter is a number between 0 and the maximum volume. To determine the maximum volume for a particular stream, use the `getMaxVolume` function, as demonstrated:

@@ -9,6 +9,12 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="ScriptExamples.js"></script>
 	<link rel="stylesheet" type="text/css" href="ScriptExamples.css">
+	<style>
+		span.itemHeading {
+			margin-left: 16px;
+			margin-top: 16px
+		}
+	</style>
 </head>
 <body style="background: white">
 	<div id="dialog"><div id="dialogText" style="white-space:pre-wrap;"></div></div>
@@ -27,7 +33,7 @@
 		<li><a href="App/">App</a></li>
 		<li><a href="Browsing/">Browsing</a></li>
 		<li><a href="Device/">Device</a></li>
-		<li><span style="margin-left: 16px; margin-top: 16px">IO</span>
+		<li><span class="itemHeading">IO</span>
 			<ul>
 				<li><a href="IO/">IO with Promises</a></li>
 				<li><a href="IO_Async/">IO with Async/Await</a></li>
@@ -38,7 +44,12 @@
 		<li><a href="Logging/">Log</a></li>
 		<li><a href="Networking/">Networking</a></li>
 		<li><a href="Printing/">Printing</a></li>
-		<li><a href="Scanning/">Scanning (Barcode Reader)</a></li>
+		<li><span class="itemHeading">Scanning (Barcode Reader)</span>
+			<ul>
+				<li><a href="Scanning/">Main Samples</a></li>
+				<li><a href="Scanning_KeyboardWedge/">Keyboard Wedge</a></li>
+			</ul>
+		</li>
 		<li><a href="Speech/">Speech</a></li>
 		<li><a href="UI/">UI</a></li>
 	</ul>

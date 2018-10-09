@@ -4,7 +4,7 @@ title: Airlock Browser Programming Guide
 ---
 
 # Airlock Browser Programming Guide
-#### For Version 2.0, Android
+#### For Airlock Browser Version 2.0, Android
 
 ## Table of Contents
 

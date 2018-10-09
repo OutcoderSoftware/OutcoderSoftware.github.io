@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.1.3
+ * @version 1.2.4
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -1663,6 +1663,27 @@ airlock.scanning.onScan = airlock.scanning.onScan
  */
 airlock.scanning.onScanError = airlock.scanning.onScanError
 	|| pageHost.ii.registerEvent('scanning.onScanError');
+
+
+/**
+ * Returns a value indicating whether the keyboard wedge
+ * is enabled. If it is, text that is scanned is placed
+ * directly into the active input control.
+ * @returns {boolean} true if enabled; false otherwise.
+ */
+airlock.scanning.isWedgeEnabled = function () {
+	return pageHost.ii.getResult("scanning.isWedgeEnabled");
+};
+
+/**
+ * Enables or disables the keyboard wedge.
+ * If enabled, text that is scanned is placed
+ * directly into the active input control.
+ * @param {boolean} enabled true enables the keyboard wedge; false disables it.
+ */
+airlock.scanning.setWedgeEnabled = function (enabled) {
+	pageHost.ii.getResult("scanning.setWedgeEnabled", enabled);
+};
 
 /* Speech */
 

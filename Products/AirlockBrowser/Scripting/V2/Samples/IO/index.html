@@ -272,8 +272,11 @@ function testWriteTextToFile(textElement) {
 function testReadTextFromFile(textElement) {
 	try {
 		var fileLength = airlock.io.getFileSizeBytes(file1Handle);
+		var position = document.getElementById('seekToTextFileValue').value;
 
-		airlock.io.readText(file1Handle, fileLength, 0)
+		var seekToPosition = fileLength - position;
+		
+		airlock.io.readText(file1Handle, seekToPosition)
 			.then(function (text) {
 				setText(textElement, text);
 			}).catch(function (error) {

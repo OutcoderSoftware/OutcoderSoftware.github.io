@@ -131,13 +131,13 @@ function testSetConfiguration(textElement) {
 	var config;
 	try {
 		config = airlock.scanning.getConfiguration();
-		config.displayMode = true;
 	} catch (e) {
 		setText(textElement, "Configuration get error " + e);
 		return;
 	}
 
 	try {
+		config.displayMode = true;
 		airlock.scanning.setConfiguration(config);
 	} catch (e) {
 		setText(textElement, "Configuration set error " + e);

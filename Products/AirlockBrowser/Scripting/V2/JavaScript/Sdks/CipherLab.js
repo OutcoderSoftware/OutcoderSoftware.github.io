@@ -42,16 +42,16 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} decodingIllumination=true 		
  * @property {boolean} displayMode=false 		
  * @property {number} decodingIlluminationPowerLevel=10 Valid values are [0, 10].		
- * @property {number} interCharGapSize=0
+ * @property {number} interCharGapSize=6
  *		A value that specifies the intercharacter gap size for Code 39 and Codabar, 			
  *		which is typically quite small. Due to various barcode printing technologies, 			
  *		this gap can grow larger than the maximum size allowed and prevent the scan engine 			
  *		from decoding a barcode. If this problem occurs, set it to "Large Intercharacter Gaps" 			
  *		to tolerate these out-of-specification barcodes. 			
- *		Valid values are 0 (Normal), 1 (Large).
+ *		Valid values are 0 (NotSupported), 6 (Normal), 10 (Large).
   * @property {number} negativeBarcodes=0 Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect).		
  * @property {boolean} pickListMode=false 		
- * @property {number} timeoutPresentationMode=900
+ * @property {number} timeoutPresentationMode=900000
  *		A value that specifies the minimum time interval between reading two identical barcodes. 			
  *		This helps prevent the scanner from accidentally reading the same barcode twice. 			
  *		This parameter applies to Continuous and Presentation modes. 			
@@ -62,7 +62,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  *		Valid values are 1 (Level1), 2 (Level2), 3 (Level3), 4 (Level4).
   * @property {number} scanAngle=0 Valid values are 0 (Wide), 1 (Narrow).		
  * @property {number} securityLevel=0 Valid values are [0, 3].		
- * @property {number} timeoutBetweenSameSymbol=1000
+ * @property {number} timeoutBetweenSameSymbology=1000
  *		A value that specifies the minimum time interval in milliseconds 			
  *		between reading two identical barcodes. This helps prevent the scanner 			
  *		from accidentally reading the same barcode twice. This parameter applies 			
@@ -73,7 +73,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} centerDecoding=true 		
  * @property {number} centerDecodingTolerance=0 Valid values are [0, 100].		
  * @property {number} transmitCodeIdChar=0 Valid values are 0 (None), 1 (AimCodeId).		
- * @property {number} triggerMode=0 Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).		
+ * @property {number} triggerPresentationMode=0 Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).		
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		
  * @property {boolean} barcodeVibrate=false 		

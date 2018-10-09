@@ -87,7 +87,7 @@ Airlock Browser includes a rich set of client-side JavaScript APIs that allow yo
 Airlock Browser JavaScript APIs via can be invoked from an on-page script or from a remote web application JavaScript event handler. 
 
 > **NOTE:**
-Please note that there exists [comprehensive working examples](../../Scripting/V2/Samples/) for the APIs listed in this document.
+Please note that there exists [comprehensive working samples](../../Scripting/V2/Samples/) for the APIs listed in this document.
 
 In this document you explore the following sets of APIs, which are grouped together in the following JavaScript namespaces:
 
@@ -130,7 +130,7 @@ The specified function is called immediately following the `window.onload` event
 
 ## Enabling Intellisense
 
-During development of your web application, you can include the  [Airlock.js](../../../Scripting/V2/JavaScript/Airlock/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, a long with examples. This aids in increasing the speed of development and reduces errors from typos.
+During development of your web application, you can include the  [Airlock.js](../../../Scripting/V2/JavaScript/Airlock/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, together with working samples. This aids in increasing the speed of development and reduces errors from typos.
 
 In addition, you can also find JavaScript files with type definitions for various 
 
@@ -262,10 +262,10 @@ Sometimes you need detailed information about the device on which your applicati
 * `deviceId` {string} A unique identifier for the device. This value may change with a factory reset.
 * `apiLevel` {string} The Android build level (the SdkInt).
 * `sdk` {string} The Android build name. For example 'kitkat'.
-* `buildId` {string} Either a changelist number or a number like "M4-rc20"
+* `buildId` {string} Either a change list number or a number like "M4-rc20"
 * `buildTime` {string} A long value that is a Unix epoch timestamp (in milliseconds) indicating when the device's ROM was built
 * `buildVersion` {string} The OS's user-visible version string. E.g., "1.0" or "3.4b5".
-* {airlock.device.DisplayInfo} `displayInfo` Indicates the properties of the device display.
+* `displayInfo` {airlock.device.DisplayInfo} Indicates the properties of the device display.
  
  The `airlock.device.DisplayInfo` type is useful for determining the display capabilities of the device and contains the following properties:
 
@@ -485,7 +485,7 @@ airlock.io.openFile(filePath, airlock.io.FileMode.OPEN)
 	});
 ```
 
-The return value of the `openFile` function is an identifier or *handle* that you use to read, write, and close the file when you are done with it. You see examples of using the handle subsequent sections.
+The return value of the `openFile` function is an identifier or *handle* that you use to read, write, and close the file when you are done with it. You see examples of using the handle in subsequent sections.
 
 The `airlock.io.FileMode` enumeration properties are described in the following list:
 
@@ -654,9 +654,9 @@ airlock.io.getFileInfo(sourcePath)
 	});
 ```
 
-The resulting object is a `airlock.io.FileInfo` object, with the following properties:
+The resulting object is an `airlock.io.FileInfo` object, with the following properties:
 
- * `directory` {string}The path to the file's directory.
+ * `directory` {string} The path to the file's directory.
  * `sizeBytes` {Number}  The size of the file in bytes.
  * `modifiedTime` {Date} The date and time that the file was last modified in universal time.
  * `modifiedTimeUtc` {Date} The date and time that the file was last modified in universal time.
@@ -984,7 +984,7 @@ You are able to launch the print service, installed on a device, from either a J
 airlock.printing.printPage();
 ```
 
-For a working example see the [Printing examples page](../../../Scripting/V2/Samples/Printing/).
+For a working example see the [Printing samples page](../../../Scripting/V2/Samples/Printing/).
 
 ## Harnessing the Device's Scanning Capability
 

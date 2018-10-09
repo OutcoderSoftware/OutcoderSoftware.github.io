@@ -134,7 +134,7 @@ During development of your web application, you can include the  [Airlock.js](..
 
 In addition, you can also find JavaScript files with type definitions for various 
 
-> **NOTE:** Airlock Browser includes 80+ APIs for controlling and interacting with the browsers. Only a small subset are covered in this guide. Please see the [Live Samples](../../../Scripting/V2/Samples/) and [API Documentation](../../../Scripting/V2/JSDoc/Airlock/) for more information.
+> **NOTE:** Airlock Browser includes 80+ APIs for controlling and interacting with the browsers. Only a small subset are covered in this guide. Please see the [Working Samples](../../../Scripting/V2/Samples/) and [API Documentation](../../../Scripting/V2/JSDoc/Airlock/) for more information.
 
 ## Exploring the App Namespace
 

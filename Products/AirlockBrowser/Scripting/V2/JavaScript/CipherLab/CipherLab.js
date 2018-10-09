@@ -238,10 +238,19 @@ function BarCodeRelease() {
 /**
  * Sets the values of a decoder.
  * @param {object} decoder The decoder object. Cannot be null.
+ * @returns {boolean} true if successful; false otherwise.
  * @see {@link airlock.scanning.setDecoder}
  */
 function BarCodeSetSymbology(decoder) {
-	airlock.scanning.setDecoder(decoder);
+	try {
+		airlock.scanning.setDecoder(decoder);
+	} catch (e) {
+		clLastScanError = e;
+		/* The reason we return a boolean is for compatibility with existing applications. */
+		return false;
+	} 
+
+	return true;
 }
 
 /**

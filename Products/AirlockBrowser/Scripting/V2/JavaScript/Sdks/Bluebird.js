@@ -1,6 +1,6 @@
 /**
  * @file Bluebird specific APIs for use with Airlock Browser.
- * @version 1.0.6856.23906
+ * @version 1.0.6856.36734
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 

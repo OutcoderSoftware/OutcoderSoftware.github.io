@@ -1,6 +1,6 @@
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6856.36734
+ * @version 1.0.6858.26256
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -25,7 +25,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
 /**
  * @typedef airlock.sdks.cipherLab.CipherLabDeviceConfiguration
- * @property {number} ledDuration=0 		
+ * @property {number} ledDuration=0 Valid values are [0, 5000].		
  * @property {number} readerBeep=0 Valid values are 0 (Default), 1 (Mute), 2 (Alarm2), 3 (Alarm3), 4 (Hwandsw), 5 (LowBattery), 6 (MenuPopup), 7 (MessageBox), 8 (Notify), 9 (VoiceBeep).		
  * @property {number} vibrationCounter=1 Valid values are [0, 10].		
  * @property {boolean} clearPreviousData=false 		
@@ -55,7 +55,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  *		A value that specifies the minimum time interval between reading two identical barcodes. 			
  *		This helps prevent the scanner from accidentally reading the same barcode twice. 			
  *		This parameter applies to Continuous and Presentation modes. 			
- *		Valid values are [1, 1800].
+ *		Valid values are [60000, 1800000].
   * @property {number} redundancyLevel=1
  *		A value that specifies decode redundancy. Higher redundancy levels 			
  *		should be selected for deteriorated barcode quality. 			
@@ -73,7 +73,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} centerDecoding=true 		
  * @property {number} centerDecodingTolerance=0 Valid values are [0, 100].		
  * @property {number} transmitCodeIdChar=0 Valid values are 0 (None), 1 (AimCodeId).		
- * @property {number} triggerPresentationMode=0 Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).		
+ * @property {number} triggerMode=0 Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).		
+ * @property {boolean} triggerPresentationMode=false 		
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		
  * @property {boolean} barcodeVibrate=false 		
@@ -149,9 +150,10 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  *		Length qualification *4 (0 ~ 55) 			
  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {number} securityLevel=0
+ *		Valid values are [0, 55].
+  * @property {number} securityLevel=0
  *		A value that specifies the decode security level while reading Code128. 			
- *		Valid values are 0 (High), 1 (Normal).
+ *		Valid values are [0, 55].
   * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
  */
@@ -178,8 +180,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Code93
- * @property {number} length1=4 		
- * @property {number} length2=55 		
+ * @property {number} length1=4 Valid values are [0, 55].		
+ * @property {number} length2=55 Valid values are [0, 55].		
  * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
  */
@@ -226,10 +228,10 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Ean13
  * @property {number} addon2=0
  *		A value that specifies the way processing addon2. 			
- *		Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).
+ *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {number} addon5=0
  *		A value that specifies the way processing addon5. 			
- *		Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).
+ *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {number} booklandISBNFormat=0
  *		If you enabled Bookland EAN, select one of the following formats for Bookland data. 			
  *		Valid values are 0 (Isbn10), 1 (Isbn13).
@@ -247,10 +249,10 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Ean8
  * @property {number} addon2=0
  *		A value that specifies the way processing addon2. 			
- *		Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).
+ *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {number} addon5=0
  *		A value that specifies the way processing addon5. 			
- *		Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).
+ *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {boolean} convertToEan13=false
  *		A value that specifies whether to convert EAN-8 to EAN-13. 			
  * @property {boolean} transmitCheckDigit=true
@@ -263,9 +265,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Industrial2Of5
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {boolean} enabled=true
+ *		Valid values are [0, 55].
+  * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
  */
 
@@ -284,8 +288,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upce1
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
+ * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToUpcA=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		
@@ -344,9 +348,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Interleaved2Of5
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {number} checkDigitVerification=0
+ *		Valid values are [0, 55].
+  * @property {number} checkDigitVerification=0
  *		A value that specifies whether and how to verify check digit. 			
  *		Valid values are 0 (Disable), 1 (Uss), 2 (Opcc).
   * @property {boolean} convertToEan13=false
@@ -355,8 +361,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  *		A value that specifies whether to transmit check digit. 			
  *		It is available only when I20f5CheckDigitVerification is not disabled. 			
  * @property {number} securityLevel=1
- *		A value that specifies the decode security level while reading. *3 (1 ~ 4) 			
- *		Valid values are [1, 4].
+ *		A value that specifies the decode security level while reading. 			
+ *		Valid values are [0, 3].
   * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
  */
@@ -369,7 +375,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
   * @property {number} concatenationRedundancy=10
  *		A value that specifies concatenation redundancy (2~20 times) when auto-discriminate 			
  *		of ISBT concatenation is enabled. By default, it is set to 10 times. 			
- * @property {boolean} enabled=true
+ *		Valid values are [2, 20].
+  * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
  */
 
@@ -383,9 +390,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Matrix2Of5
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {boolean} checkDigitVerification=false 		
+ *		Valid values are [0, 55].
+  * @property {boolean} checkDigitVerification=false 		
  * @property {boolean} transmitCheckDigit=false 		
  * @property {boolean} redundancy=false 		
  * @property {boolean} enabled=true
@@ -416,9 +425,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Msi
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {number} checkDigitAlgorithm=0 Valid values are 0 (Modulo1011), 1 (DoubleModulo10).		
+ *		Valid values are [0, 55].
+  * @property {number} checkDigitAlgorithm=0 Valid values are 0 (Modulo1011), 1 (DoubleModulo10).		
  * @property {number} checkDigitOption=0 Valid values are 0 (OneDigit), 1 (TwoDigits).		
  * @property {boolean} transmitCheckDigit=false 		
  * @property {boolean} enabled=true
@@ -480,8 +491,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upca
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
+ * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToEan13=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		
@@ -491,8 +502,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upce0
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 1 (AutoDiscriminate).		
+ * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToUpcA=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		

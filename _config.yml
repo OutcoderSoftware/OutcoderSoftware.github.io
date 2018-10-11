@@ -12,3 +12,7 @@ gems:
  - jekyll-sitemap
 permalink: /blog/:categories/:year/:month/:day/:title/
 excerpt_separator: '<a name="excerpt-end"></a>'
+
+collections:
+    BrowserProgrammingGuideV2:
+        output: true

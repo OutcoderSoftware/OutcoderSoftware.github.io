@@ -271,7 +271,7 @@ You can set the value directly, using the License Server API Key field. Or, you 
 The file must be named *ApiKey.txt* and must have the following path:
 [External Storage Directory]/Enterprise/Browser/ApiKey.txt
 
-> **TIP:** You can find the location of the external storage directory by browsing to the [IO example page](../../Scripting/V2/Examples/IO/#testGetKnowDirectoriesText) on your device, and using the *Get External Directory* button.
+> **TIP:** You can find the location of the external storage directory by browsing to the [IO example page](../../Scripting/V2/Samples/IO/#testGetKnowDirectoriesText) on your device, and using the *Get External Directory* button.
 
 Once you procure a license for Airlock Browser, there are two ways to apply the license. The first, is to automatically have the license applied by setting the correct License Server API Key on each device. You can then manage and distribute purchased licenses using the [Outcoder License Manager](../../../LicenseManager/V1/UserGuide/).
 

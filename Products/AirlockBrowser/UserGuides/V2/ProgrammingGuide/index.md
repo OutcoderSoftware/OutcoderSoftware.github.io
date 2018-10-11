@@ -87,7 +87,7 @@ Airlock Browser includes a rich set of client-side JavaScript APIs that allow yo
 Airlock Browser JavaScript APIs via can be invoked from an on-page script or from a remote web application JavaScript event handler. 
 
 > **NOTE:**
-Please note that there exists [comprehensive working samples](../../Scripting/V2/Samples/) for the APIs listed in this document.
+Please note that there exists [comprehensive working samples](../../../Scripting/V2/Samples/) for the APIs listed in this document.
 
 In this document you explore the following sets of APIs, which are grouped together in the following JavaScript namespaces:
 

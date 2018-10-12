@@ -1122,6 +1122,24 @@ The `handleScanError` is a function in your code that accepts a `airlock.scannin
 * `errorInfo` A SDK specific object representing the error information provided by the device SDK.
 * `timestamp` A Date value indicating when the failure occurred.
 
+### Enabling Keyboard Emulation
+
+Airlock Browser allows you to control if and how scanned data is populated into text fields.
+The `airlock.scanning.getPopulationMethod()` function retrieves population method for the current web application. It returns a `airlock.scanning.PopulationMethod` enumeration value, described below:
+
+* `NONE` (0): Population does not occur.
+* `SET_TEXT` (1): An HTML text input's value is set to the value of scanned data.
+* `EMULATE_KEYBOARD` (2): Scanned text and pre and post-scan keys are sent as keyboard presses.
+
+When set to `SET_TEXT`, when a barcode scan occurs the active text field is automatically populated
+with the scan data. This occurs by setting the HTML element's value property.
+
+In contrast, the `EMULATE_KEYBOARD` option causes the barcode text to be sent as key events to the page. This allows for control characters, such as ENTER or TAB, to be interpreted as navigation actions on a form.
+
+You can use JavaScript to control what happens before and after a barcode scan takes place. However, the `airlock.scanning.setPreScanKeys(keys)` and `airlock.scanning.setPostScanKeys(keys)` allow you to define a set of keys that will be invoked when a scan occurs before processing, or after a scan occurs. The `keys` parameter is a string containing space delimited key codes. For example, to have Airlock Browser append a comma and then tab to the next field you could set the Post-Scan keys to `55 61`.
+
+[See here](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/KeyEvent.html) for a complete list of available key codes.
+
 ### Using Text to Speech with JavaScript
 
 You can leverage Airlock Browser text-to-speech capability and have the browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:

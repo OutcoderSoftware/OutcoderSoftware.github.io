@@ -419,7 +419,9 @@ In some scenarios it may make sense to limit the automatic rotation of the scree
 Sometimes web pages that were originally designed for the desktop and not for mobile devices may have text that is too small to read. To increase (or decrease) the size of the text for a page, use the *Web Page Text Size* option on the Application screen.
 
 ### Enabling the Keyboard Wedge Capability
-In Airlock Browser, when a scan completes using the hardware barcode reader, the text is automatically pushed into the currently selected field of the web page. If you wish to disable this function, or if you require greater control over this capability and wish to rely solely on custom JavaScript for handling barcode events, you can disable the keyboard wedge function using the *Keyboard Wedge* option on the Application screen.
+In Airlock Browser, when a scan completes using the hardware barcode reader, the barcode text is automatically pushed into the currently selected field of the web page. If you wish to disable this function, or if you require greater control over this capability and wish to rely solely on custom JavaScript for handling barcode events, you can disable the keyboard wedge function by setting the *Scan Population Method* option on the Application screen to `None`.
+
+You can also define a set of keys that you wish to be invoked on or after a scan occurs. This allows you to control, for example, navigating to a different field on the page after a scan; without needing to use JavaScript. Please see the [Programming Guide](ProgrammingGuide/) for more information on Population Method.
 
 ### Understanding the Scan Insert Mode
 When Airlock Browser's Keyboard Wedge capability is enabled, text is automatically inserted to the active field on the active browser tab. The barcode text, by default, replaces the content in the field. Use the *Scan Insert Mode* option to append or prepend the barcode to the existing content within the field.

@@ -940,12 +940,12 @@ To retrieve the current connection information use the `airlock.networking.getNe
 ```js
 var value = airlock.networking.getNetworkInfo();
 alert("connected: " + value.connected +
-	"\napproachingDataLimit: " + value.approachingDataLimit +
-	"\nroaming: " + value.roaming +
-	"\nnetworkConnectionType: " + value.networkConnectionType +
-	"\nlimitData: " + value.limitData +
-	"\nssid: " + value.ssid +
-	"\nipAddress: " + value.ipAddress);
+	" approachingDataLimit: " + value.approachingDataLimit +
+	" roaming: " + value.roaming +
+	" networkConnectionType: " + value.networkConnectionType +
+	" limitData: " + value.limitData +
+	" ssid: " + value.ssid +
+	" ipAddress: " + value.ipAddress);
 ```
 
 ### Monitoring Network Connection Changes

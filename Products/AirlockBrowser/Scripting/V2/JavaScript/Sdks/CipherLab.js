@@ -1,6 +1,6 @@
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6858.26256
+ * @version 1.0.6859.31369
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -73,7 +73,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} centerDecoding=true 		
  * @property {number} centerDecodingTolerance=0 Valid values are [0, 100].		
  * @property {number} transmitCodeIdChar=0 Valid values are 0 (None), 1 (AimCodeId).		
- * @property {number} triggerMode=0 Valid values are 0 (LevelMode), 1 (ContinuousMode), 2 (PresentationMode), 3 (AutoAimMode).		
+ * @property {number} triggerMode=0 Valid values are 0 (LevelMode), 4 (ContinuousMode), 7 (PresentationMode), 9 (AutoAimMode).		
  * @property {boolean} triggerPresentationMode=false 		
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		

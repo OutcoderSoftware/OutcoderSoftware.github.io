@@ -1,6 +1,6 @@
 /**
  * @file Zebra specific APIs for use with Airlock Browser.
- * @version 1.0.6858.26256
+ * @version 1.0.6859.31369
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 

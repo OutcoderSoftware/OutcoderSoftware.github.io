@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -15,6 +15,7 @@
 
 		function HandleAirlockReady() {
 			initWedge('keyboardWedgeText');
+			initScanKeys('scanKeysText');
 		}
 	</script>
 </head>
@@ -29,9 +30,10 @@
 	<div class="testDiv">
 		<h3>Keyboard Wedge</h3>
 		<script id="keyboardWedgeScript">
-function handleUseWedgeChanged(useWedge, textElement) {
+function handleUseWedgeChanged(select, textElement) {
 	try {
-		airlock.scanning.setWedgeEnabled(useWedge);
+		var value = parseInt(select.value);
+		airlock.scanning.setPopulationMethod(value);
 	} catch (e) {
 		setText(textElement, "Error: " + e);
 	}
@@ -39,9 +41,9 @@ function handleUseWedgeChanged(useWedge, textElement) {
 
 function initWedge(textElement) {
 	try {
-		var wedgeEnabled = airlock.scanning.isWedgeEnabled();
-		var checkBox = document.getElementById('wedgeCheckbox');
-		checkBox.checked = wedgeEnabled;
+		var populationMethod = airlock.scanning.getPopulationMethod();
+		var select = document.getElementById("populationMethodSelect");
+		select.value = populationMethod + "";
 	} catch (e) {
 		setText(textElement, "Error: " + e);
 	}
@@ -50,12 +52,61 @@ function initWedge(textElement) {
 		<script>insertScriptInPre('keyboardWedgePre', 'keyboardWedgeScript');</script>
 		<div class="sampleControls">
 			<div class="label">Wedge Enabled</div>
-			<input type="checkbox" id="wedgeCheckbox"
-					onclick="handleUseWedgeChanged(this.checked, 'keyboardWedgeText')" />
-			<div class="label">Tap to Focus Before Scan. With wedge enabled, scan data is placed in the text box.</div>
-			<input type="text"/>
+			<!--<input type="checkbox" id="wedgeCheckbox"
+				onclick="handleUseWedgeChanged(this.checked, 'keyboardWedgeText')" />-->
+			<select id="populationMethodSelect" onchange="handleUseWedgeChanged(this, keyboardWedgeText)">
+				<option value="0">None</option>
+				<option value="1" selected="selected">Set Text</option>
+				<option value="2">Emulate Keyboard</option>
+			</select>
+			<div class="label">Tap to focus before scan. With wedge enabled, scan data is placed in the text box.</div>
+			<input type="text" />
 		</div>
 		<div class="outputText" id="keyboardWedgeText"></div>
+	</div>
+
+	<div class="testDiv">
+		<h3>Key Emulation</h3>
+		<script id="scanKeysScript">
+function initScanKeys(textElement) {
+	try {
+		var preScanKeyText = document.getElementById("preScanKeyText");
+		preScanKeyText.value = airlock.scanning.getPreScanKeys();
+		var postScanKeyText = document.getElementById("postScanKeyText");
+		postScanKeyText.value = airlock.scanning.getPostScanKeys();
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+	}
+}
+
+function updateScanKeys(textElement) {
+	try {
+		var preScanKeyText = document.getElementById("preScanKeyText");
+		airlock.scanning.setPreScanKeys(preScanKeyText.value);
+		var postScanKeyText = document.getElementById("postScanKeyText");
+		airlock.scanning.setPostScanKeys(postScanKeyText.value);
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+	}
+}
+		</script><pre class="example" id="scanKeysPre"></pre>
+		<script>insertScriptInPre('scanKeysPre', 'scanKeysScript');</script>
+		<div class="sampleControls">
+			<div class="label">Pre-Scan Keys</div>
+
+			<input type="text" id="preScanKeyText" />
+			<input type="button" value="Update" onclick="updateScanKeys('scanKeysText')" style="margin:unset" /><br />
+			<div class="label">Post-Scan Keys</div>
+			<input type="text" id="postScanKeyText" />
+			<input type="button" value="Update" onclick="updateScanKeys('scanKeysText')" style="margin:unset" /><br />
+
+			<div class="label">Tap to focus before scan.</div>
+
+			<input type="text" /><br />
+			<input type="text" /><br />
+			<input type="text" /><br />
+		</div>
+		<div class="outputText" id="scanKeysText"></div>
 	</div>
 
 </body>

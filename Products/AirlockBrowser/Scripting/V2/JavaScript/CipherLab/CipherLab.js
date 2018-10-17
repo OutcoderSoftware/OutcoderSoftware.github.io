@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.0.1
+ * @version 1.1.0
  * @copyright Outcoder Sarl 2018. All Rights Reserved.
  */
 
@@ -115,10 +115,17 @@ function BarCodeGetReaderOutputConfiguration() {
 /**
  * Applies the specified scanner configuration to the device.
  * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} configuration The barcode reader configuration.
+ * @returns {boolean} true if set successfully; false otherwise.
  * @see {@link airlock.scanning.setConfiguration}
  */
 function BarCodeSetReaderOutputConfiguration(configuration) {
-	airlock.scanning.setConfiguration(configuration);
+	try {
+		airlock.scanning.setConfiguration(configuration);
+		return true;
+	} catch (e) {
+		clLastScanError = e;
+		return false;
+	} 
 }
 
 /**
@@ -891,9 +898,16 @@ function BarCodeGetUserPreferences() {
  * Sets the configuration.
  * Properties of the configuration object vary depending on the device SDK.
  * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} userPreference The configuration object.
+ * @returns {boolean} true if set successfully; false otherwise.
  */
 function BarCodeSetUserPreferences(userPreference) {
-	airlock.scanning.setConfiguration(userPreference);
+	try {
+		airlock.scanning.setConfiguration(userPreference);
+		return true;
+	} catch (e) {
+		clLastScanError = e;
+		return false;
+	} 
 }
 
 /**
@@ -910,7 +924,14 @@ function BarCodeGetNotificationParams() {
  * Sets the configuration.
  * Properties of the configuration object vary depending on the device SDK.
  * @param {airlock.sdks.cipherLab.CipherLabDeviceConfiguration} userPreference The configuration object.
+ * @returns {boolean} true if set successfully; false otherwise.
  */
 function BarCodeSetNotificationParams(userPreference) {
-	airlock.scanning.setConfiguration(userPreference);
+	try {
+		airlock.scanning.setConfiguration(userPreference);
+		return true;
+	} catch (e) {
+		clLastScanError = e;
+		return false;
+	} 
 }

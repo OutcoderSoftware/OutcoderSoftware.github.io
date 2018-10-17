@@ -39,6 +39,7 @@ function testGetDecoders(textElement) {
 		airlock.scanning.getDecoders()
 			.then(function (decoders) {
 				var text = getPropertyValues(decoders);
+				setText(textElement, "Retrieved decoders.");
 				showDialog(text);
 			}).catch(function (error) {
 				setText(textElement, "Error: " + error);
@@ -205,20 +206,20 @@ function testSetActive(textElement) {
 	<div class="outputText" id="setScannerActiveText"></div>
 </div>
 <div class="testDiv">
-	<h3>Retrieving the Reader Type</h3>
-	<script id="getReaderTypeScript">
-function testGetReaderType(textElement) {
+	<h3>Retrieving the Reader Model</h3>
+	<script id="getReaderModelScript">
+function testGetReaderModel(textElement) {
 	try {
-		var text = airlock.scanning.getReaderType();
+		var text = airlock.scanning.getReaderModel();
 		setText(textElement, text + "");
 	} catch (e) {
 		setText(textElement, "Error: " + e);
 		return;
 	}
 }
-	</script><pre class="example" id="getReaderTypePre"></pre><script>insertScriptInPre('getReaderTypePre', 'getReaderTypeScript');</script>
-	<input type="button" onclick="testGetReaderType('getReaderTypeText')" value="Get Reader Type" />
-	<div class="outputText" id="getReaderTypeText"></div>
+	</script><pre class="example" id="getReaderModelPre"></pre><script>insertScriptInPre('getReaderModelPre', 'getReaderModelScript');</script>
+	<input type="button" onclick="testGetReaderModel('getReaderModelText')" value="Get Reader Model" />
+	<div class="outputText" id="getReaderModelText"></div>
 </div>
 <div class="testDiv">
 	<h3>Obtaining the Reader's Firmware Version</h3>

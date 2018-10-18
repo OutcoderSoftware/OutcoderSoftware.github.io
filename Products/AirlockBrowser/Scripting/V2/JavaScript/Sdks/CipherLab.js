@@ -226,12 +226,12 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Ean13
- * @property {number} addon2=0
+ * @property {number} addon2=1
  *		A value that specifies the way processing addon2. 			
- *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
-  * @property {number} addon5=0
+ *		Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).
+  * @property {number} addon5=1
  *		A value that specifies the way processing addon5. 			
- *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
+ *		Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {number} booklandISBNFormat=0
  *		If you enabled Bookland EAN, select one of the following formats for Bookland data. 			
  *		Valid values are 0 (Isbn10), 1 (Isbn13).
@@ -247,12 +247,12 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Ean8
- * @property {number} addon2=0
+ * @property {number} addon2=1
  *		A value that specifies the way processing addon2. 			
- *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
-  * @property {number} addon5=0
+ *		Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).
+  * @property {number} addon5=1
  *		A value that specifies the way processing addon5. 			
- *		Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).
+ *		Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).
   * @property {boolean} convertToEan13=false
  *		A value that specifies whether to convert EAN-8 to EAN-13. 			
  * @property {boolean} transmitCheckDigit=true
@@ -288,8 +288,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upce1
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon2=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToUpcA=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		
@@ -429,8 +429,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
   * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
  *		Valid values are [0, 55].
-  * @property {number} checkDigitAlgorithm=0 Valid values are 0 (Modulo1011), 1 (DoubleModulo10).		
- * @property {number} checkDigitOption=0 Valid values are 0 (OneDigit), 1 (TwoDigits).		
+  * @property {number} checkDigitAlgorithm=1 Valid values are 1 (Modulo1011), 2 (DoubleModulo10).		
+ * @property {number} checkDigitOption=1 Valid values are 1 (OneDigit), 2 (TwoDigits).		
  * @property {boolean} transmitCheckDigit=false 		
  * @property {boolean} enabled=true
  *		Gets or sets a value indicating if the decoder is used to interpret barcodes. 			
@@ -491,8 +491,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upca
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon2=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToEan13=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		
@@ -502,8 +502,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
 
  /**
  * @typedef airlock.sdks.cipherLab.decoders.Upce0
- * @property {number} addon2=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
- * @property {number} addon5=0 Valid values are 0 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon2=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
+ * @property {number} addon5=1 Valid values are 1 (IgnoresAddon), 2 (AutoDiscriminate).		
  * @property {boolean} convertToUpcA=false 		
  * @property {number} transmitSystemNumber=1 Valid values are 0 (None), 1 (SystemCharacter), 2 (SystemCharacterAndCtyCode).		
  * @property {boolean} transmitCheckDigit=true 		

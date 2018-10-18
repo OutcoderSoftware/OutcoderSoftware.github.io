@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.1.0
+ * @version 1.2.0
  * @copyright Outcoder Sarl 2018. All Rights Reserved.
  */
 
@@ -187,6 +187,7 @@ function BarCodeGetDecodersStatus() {
  * Sets the decoder enabled state according to the values
  * set in the specified decodersStatus object.
  * @param {object} decodersStatus Contains properties for each decoder.
+ * @returns {boolean} true if set successfully; false otherwise.
  * @see {@link BarCodeGetDecodersStatus}
  */
 function BarCodeSetDecodersStatus(decodersStatus) {
@@ -205,8 +206,15 @@ function BarCodeSetDecodersStatus(decodersStatus) {
 
 		decoder.enabled = propertyValue === true;
 
-		airlock.scanning.setDecoder(decoder);
+		try {
+			airlock.scanning.setDecoder(decoder);
+		} catch (e) {
+			clLastScanError = e;
+			return false;
+		}
 	}
+
+	return true;
 }
 
 /**

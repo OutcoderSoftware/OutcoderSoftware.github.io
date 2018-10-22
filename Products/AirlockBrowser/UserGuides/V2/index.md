@@ -172,6 +172,16 @@ When enabled, this option causes Airlock Browser to re-open the pages that were 
 ### Allow Access to My Location
 Some websites rely on knowing the GPS location of the device to provide, for example, navigation services. Disabling this option prevents web pages from accessing the location of the device.
 
+### Add Shared Content to History
+
+When enabled, when sharing a page or image, it is added to the shared content section of the history screen.
+
+### Enable Incognito Mode at Start-Up
+
+Incognito mode prevents the browser from retaining the history of viewed pages. An incognito button can be placed in the application bar menu by using the menu customization option.
+
+> **NOTE:** When incognito mode is enabled pop-up windows are disabled.
+
 ### Save Passwords for Web Pages
 When enabled, the browser prompts the user to save a password when it identifies a form submission with a password field. If the user agrees to saving the password, the password is stored in an encrypted form. When the user navigates to the same page, the browser will attempt to populate the password field.
 

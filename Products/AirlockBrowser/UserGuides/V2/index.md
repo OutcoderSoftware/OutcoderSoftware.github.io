@@ -272,9 +272,17 @@ Airlock Browser can be configured remotely using an exported configuration file.
 
 Changing the Configuration File URL causes the browser to immediately attempt to download the configuration file and import the configuration. If configuration importation succeeds, a success message is displayed.
 
+### Importing Configuration with MDM Software
+
+When Airlock Browser is launched, and periodically thereafter, the browser automatically looks for a configuration file located at *'&lt;External Directory&gt;/Enterprise/Browser/Config.brs'*. If the *Configuration File URL* setting has not been modified in the app's setting screen, then the *Config.brs* is automatically applied. By deploying this file using your MDM solution, you can easily configure multiple devices without needing to manually make any changes to your devices. In addition, a different *Configuration File URL* setting may be present in the imported *Config.brs* file. This allows you to instruct Airlock Browser to download its configuration file from a different location from then on.
+
+Before Airlock Browser imports a configuration file it first verifies that the file's last modified date is more recent than the date of the last import. If it is not, the configuration file is *not* automatically imported.
+
+> **NOTE:** Settings from an imported configuration file override any local settings applied using the settings screen.
+
 ### License Server API Key
 
-The License Server API Key is a value that is assigned to you by Outcoder or a third-party representitive. This key allows you to assign, unassign, and reassign licenses for devices within your organization. All devices in your organization should have the same License Server API Key.
+The License Server API Key is a value that is assigned to you by Outcoder or a third-party representative. This key allows you to assign, unassign, and reassign licenses for devices within your organization. All devices in your organization should have the same License Server API Key.
 
 You can set the value directly, using the License Server API Key field. Or, you can set this value by placing the key in a file on the device. 
 

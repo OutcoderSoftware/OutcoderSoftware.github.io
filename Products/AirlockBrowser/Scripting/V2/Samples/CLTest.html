@@ -1,55 +1,91 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<title>CipherLab JavaScript(v2) Test</title>
 
 	<script type="text/javascript">
-	airlock.onReady("handleAirlockReady()");
-	var pageLoaded = false;
-	
-	function handleAirlockReady() {
-		if (pageLoaded) {
-			return;
-		}
-		pageLoaded = true;
-			
-		document.getElementById("sp_reader_init").textContent = "Load...";
-		document.getElementById("sp_reader_type").textContent = "Load...";
-		document.getElementById("sp_service_ver").textContent = "Load...";
-		document.getElementById("sp_api_ver").textContent = "Load...";
+		airlock.onReady("handleAirlockReady()");
+		var pageLoaded = false;
 
-		try {
-			BarCodeInit();
-			document.getElementById("sp_reader_init").textContent = "OK";
-		}
-		catch (err) {
-			document.getElementById("sp_reader_init").textContent = err;
-		}
+		async function handleAirlockReady() {
+			if (pageLoaded) {
+				return;
+			}
+			pageLoaded = true;
 
-		try {
-			var service_version = BarCodeGetReaderType();
-			document.getElementById("sp_reader_type").textContent = service_version;
-		}
-		catch (err) {
-			document.getElementById("sp_reader_type").textContent = err;
-		}
+			document.getElementById("sp_reader_init").textContent = "Load...";
+			document.getElementById("sp_reader_type").textContent = "Load...";
+			document.getElementById("sp_service_ver").textContent = "Load...";
+			document.getElementById("sp_api_ver").textContent = "Load...";
 
-		try {
-			var service_version = BarCodeGetReaderServiceVersion();
-			document.getElementById("sp_service_ver").textContent = service_version;
-		}
-		catch (err) {
-			document.getElementById("sp_service_ver").textContent = err;
-		}
+			try {
+				BarCodeInit();
+				document.getElementById("sp_reader_init").textContent = "OK";
+			} catch (err) {
+				document.getElementById("sp_reader_init").textContent = err;
+			}
 
-		try {
-			var api_version = BarCodeGetApiVersion();
-			document.getElementById("sp_api_ver").textContent = api_version;
+			try {
+				var service_version = BarCodeGetReaderType();
+				document.getElementById("sp_reader_type").textContent = service_version;
+			} catch (err) {
+				document.getElementById("sp_reader_type").textContent = err;
+			}
+
+			try {
+				var service_version = BarCodeGetReaderServiceVersion();
+				document.getElementById("sp_service_ver").textContent = service_version;
+			} catch (err) {
+				document.getElementById("sp_service_ver").textContent = err;
+			}
+
+			try {
+				var api_version = BarCodeGetApiVersion();
+				document.getElementById("sp_api_ver").textContent = api_version;
+			} catch (err) {
+				document.getElementById("sp_api_ver").textContent = err;
+			}
+
+			try {
+				var ds = await BarCodeGetDecodersStatus();
+				var blah = ds.enableTriopticCode39;
+				ds.enableTriopticCode39 = !blah;
+				await BarCodeSetDecodersStatus(ds);
+				var ds2 = await BarCodeGetDecodersStatus();
+				var blah2 = ds2.enableTriopticCode39;
+
+				ds = await BarCodeGetDecodersStatus();
+				blah = ds.enableUccCoupon;
+				ds.enableUccCoupon = !blah;
+				await BarCodeSetDecodersStatus(ds);
+				ds2 = await BarCodeGetDecodersStatus();
+				blah2 = ds2.enableUccCoupon;
+
+				ds = await BarCodeGetDecodersStatus();
+				blah = ds.enableUpcE1;
+				ds.enableUpcE1 = !blah;
+				await BarCodeSetDecodersStatus(ds);
+				ds2 = await BarCodeGetDecodersStatus();
+				blah2 = ds2.enableUpcE1;
+
+				ds = await BarCodeGetDecodersStatus();
+				blah = ds.enablePlessey;
+				ds.enablePlessey = !blah;
+				await BarCodeSetDecodersStatus(ds);
+				ds2 = await BarCodeGetDecodersStatus();
+				blah2 = ds2.enablePlessey;
+
+				ds = await BarCodeGetDecodersStatus();
+				blah = ds.enableTelepen;
+				ds.enableTelepen = !blah;
+				await BarCodeSetDecodersStatus(ds);
+				ds2 = await BarCodeGetDecodersStatus();
+				blah2 = ds2.enableTelepen;
+			} catch (e) {
+				document.getElementById("sp_api_ver").textContent = e;
+			} 
 		}
-		catch (err) {
-			document.getElementById("sp_api_ver").textContent = err;
-		}
-	}
 	</script>
 </head>
 

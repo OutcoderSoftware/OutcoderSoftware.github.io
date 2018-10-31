@@ -209,6 +209,9 @@ function BarCodeSetDecodersStatus(decodersStatus) {
 		try {
 			airlock.scanning.setDecoder(decoder);
 		} catch (e) {
+			if (e !== null && e !== undefined && e.toString().toLowerCase().indexOf("not supported") !== -1) {
+				continue;
+			}
 			clLastScanError = e;
 			return false;
 		}

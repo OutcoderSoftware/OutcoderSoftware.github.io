@@ -1136,9 +1136,13 @@ with the scan data. This occurs by setting the HTML element's value property.
 
 In contrast, the `EMULATE_KEYBOARD` option causes the barcode text to be sent as key events to the page. This allows for control characters, such as ENTER or TAB, to be interpreted as navigation actions on a form.
 
-You can use JavaScript to control what happens before and after a barcode scan takes place. However, the `airlock.scanning.setPreScanKeys(keys)` and `airlock.scanning.setPostScanKeys(keys)` allow you to define a set of keys that will be invoked when a scan occurs before processing, or after a scan occurs. The `keys` parameter is a string containing space delimited key codes. For example, to have Airlock Browser append a comma and then tab to the next field you could set the Post-Scan keys to `55 61`.
+You can use JavaScript to control what happens before and after a barcode scan is handled. In addition, the `airlock.scanning.setPreScanKeys(keys)` and `airlock.scanning.setPostScanKeys(keys)` allow you to define a set of keys that will be invoked when a scan occurs before processing, or after a scan occurs. The `keys` parameter is a string containing space delimited key codes. For example, to have Airlock Browser append a comma and then tab to the next field you could set the Post-Scan keys to `55 61`.
+
+Keys can be specified in base 10, or base 16 by prefixing with `0x`.
 
 [See here](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/KeyEvent.html) for a complete list of available key codes.
+
+> **NOTE:** When a web application's *Scan Insert Mode* is set to `Replace`, all text inserted using the `setPreScanKeys` function or the `Emulate keys on scan` field in the Application screen, are removed before the scanned text is inserted. To prevent this, change the *Scan Insert Mode* to `Append` in the Application screen.
 
 ### Using Text to Speech with JavaScript
 

@@ -1598,7 +1598,9 @@ airlock.scanning.getApiVersion = function() {
 /**
  * @typedef airlock.scanning.ScanEventArgs
  * @property {string} rawDataInBase64 The raw barcode data in Base64 format (if available).
- * @property {string} text The processed barcode data.
+ * @property {string} text The formatted barcode data that may be modified
+ * by an event handler before it is placed in a text field.
+ * @property {string} barcodeText The original read-only barcode text.
  * @property {string|Number} nativeSymbologyId The identifier used
  * in the device manufacturer's SDK for a symbology.
  * @property {string} symbologyName The symbology name, such as 'Code11'.

@@ -269,6 +269,8 @@ function testSubscribeToScanEvent(textElement) {
 
 function handleScan(args) {
 	setText('testScanEventText', getPropertyValues(args));
+	/* Change the text that is inserted into a field. */
+	args.text = args.nativeSymbologyId + ", " + args.barcodeText;
 }
 
 function testUnsubscribeToScanEvent(textElement) {
@@ -283,6 +285,8 @@ function testUnsubscribeToScanEvent(textElement) {
 	</script><pre class="example" id="subscribeToScanEventPre"></pre><script>insertScriptInPre('subscribeToScanEventPre', 'subscribeToScanEventScript');</script>
 	<input type="button" onclick="testSubscribeToScanEvent('testScanEventText')" value="Subscribe to Scan Event" /><br />
 	<input type="button" onclick="testUnsubscribeToScanEvent('testScanEventText')" value="Unsubscribe" /><br />
+	<div>Focus and scan a barcode:</div><br />
+	<input type="text" /><br />
 	<div class="outputText" type="text" id="testScanEventText"></div>
 </div>
 

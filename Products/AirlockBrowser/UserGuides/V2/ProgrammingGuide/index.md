@@ -1086,7 +1086,9 @@ airlock.scanning.onScan.removeListener(handleScan);
 The `handleScan` function in the example is a function that accepts a `airlock.scanning.ScanEventArgs` object, which has the following properties:
 
 * `rawDataInBase64` *string* The raw barcode data in Base64 format (if available).
-* `text` *string* The processed barcode data.
+* `text` *string* The formatted barcode data that may be modified
+* by an event handler before it is placed in a text field.
+* `barcodeText` *string* The original read-only barcode text.
 * `nativeSymbologyId` *Number*  The identifier used
 in the device manufacturer's SDK for a symbology.
 * `symbologyName` *string* The symbology name, such as 'Code11'.
@@ -1101,6 +1103,17 @@ that the app may attempt to populate the current field with the barcode text.
 * `timestamp` *Date* Indicates when the scan occured.
 
 In most cases you will be most interested in the `text` property, which contains the barcode text, and the `nativeSymbologyId` property, which indicates the symbology of the barcode.
+
+To modify the text that is inserted into a field, modify the `text` property within a scan event, like so:
+
+```js
+var barcode = scanArgs.barcodeText;
+var symbology = scanArgs.nativeSymbologyId;
+/* By changing the text property you change what is inserted into a field. */
+scanArgs.text = symbology + ", " + barcode + ", " + barcode.length;
+```
+
+> **NOTE:** You can also create a scan event handler within Airlock Browser using the JavaScript setting on the Application screen. On the *Select Template* screen, select *Barcode Scan*. This produces a script that can be augmented for your needs. You have full access to the HTML DOM within your script, as well as the airlock.* APIs. A `scanArgs` object is automatically provided to your handler. 
 
 ### Handling Scan Errors
 

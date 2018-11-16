@@ -343,13 +343,12 @@ If you specify the 'Configuration file URL' option, Airlock Browser periodically
 
 Tapping the Manage License item displays the Manage License screen. (See Figure 12.)
 
+> **NOTE:** The Manage License screen is used to manually import a license and is designed for scenarios where internet access is not available. The preferred method for applying licenses is with the [Licium License Manager](http://www.outcoder.com/Products/LicenseManager/). The Licium License Manager (LLM) provides an easy way to distribute licenses for Outcoder products such as Airlock Browser. LLM allows you to assign, revoke, or reassign licenses to devices within your organisation.
+In addition, it provides you with a bird's eye view of products installed on devices within your organisation, and gives you back control over license distribution.
+
 The Manage License screen allows you to export the serial number of the product, which can be provided to Outcoder or your supplier to procure a license. You can use the Save button, to save the serial number to a file. The *Copy* button copies the serial to the devices clipboard. While the *Share* button allows you to select another app, such as an email client, to send the serial number to yourself or a third-party.
 
 Once a license has been procured, you can import the license using the *Import* item on the Manage License screen.
-
-> **NOTE:** A license file can contain licenses for multiple devices.
-
-To deploy licenses to multiple devices in the field, the [Outcoder License Server](http://www.outcoder.com/Products/LicenseServer/) may be used.
 
 <figure><img src='Images/ManageLicense.png'><figcaption>Figure 12. Manage License Screen</figcaption></figure>
 

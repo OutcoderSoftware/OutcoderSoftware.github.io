@@ -43,6 +43,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
                 <li><a href="Downloads/">Download Airlock Browser for Android</a></li>
                 <li><a href="UserGuides/V2/">User Guide</a></li>
 				<li><a href="Scripting/V2/">Developer Resources</a></li>
+				<!--<li><a href="../LicenseManager/V2/">License Manager</a></li>-->
               </ul>
             </div>
         </div>

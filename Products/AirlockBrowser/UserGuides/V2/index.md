@@ -201,7 +201,7 @@ URL rules determine which pages can or cannot be accessed by the browser. When n
 As soon as a match is found, the *Allow* or *Deny* rule is applied. Long press to change the order of a URL rule. Swipe a URL rule left or right to delete it. If you mistakenly delete a rule, use the undo button in the application bar to restore it.
 To create a new rule, tap the *+* button in the application bar.
 
-Wildcards are supported by default. You may also specify more complex rules using regular expressions.
+Wildcards are supported by default. You may also specify more complex rules using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression). To enable interpretation of the text as a regular expression, check the *Regular Expression* checkbox.
 
 > **NOTE:** An allow rule is automatically created for the URL of active web application profile (defined in the Launchpad), and it takes precedence over the URL rules defined on the URL Rules screen. 
 

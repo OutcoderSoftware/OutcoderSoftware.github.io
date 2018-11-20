@@ -10,13 +10,18 @@ LLM requires Windows 10 Fall Creators Update (10.0; Build 17134)
 
 You can [download LLM from the Windows Store](ms-windows-store://pdp/?productid=9PL94PP8R8HF).
 
-When you first launch LLM, a dialog is presented requesting an API key. (See Figure 1.) This key is supplied by your vendor and enables the application to communicate with the license service.
+Once licenses have been obtained from your vendor, you will also receive the following two keys:
+
+* an Administration API key,
+* and a Product API key.
+
+When you first launch LLM, a dialog is presented requesting an API key. (See Figure 1.) This key is the Administration license key supplied by your vendor and enables the application to communicate with the license service.
 
 > **NOTE:** The key is also configurable on the Settings screen. You can reach the Settings screen via the *cog* button on the top right of LLM.
 
 <figure><img src='EnterKey.png'><figcaption>Figure 1. Entering the API key into the License Manager</figcaption></figure>
 
-The *Product API Key* property is used by applications to identify themselves as being part of your organization. (See Figure 2.)
+The *Product API Key* property is used by an application to identify itself as being part of your organization. (See Figure 2.) It is entered into an app (e.g., Airlock Browser) so that when the app talks to the licensing server, it can identify the organizational owner. All installations of an app within an organization will ordinarily share the same product API key.
 
 To configure Airlock Browser's Product API Key setting, please see [License Server API Key](/Products/AirlockBrowser/UserGuides/V2/#license-server-api-key).
 

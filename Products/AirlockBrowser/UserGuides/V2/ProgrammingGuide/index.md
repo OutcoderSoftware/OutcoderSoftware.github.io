@@ -1157,6 +1157,10 @@ Keys can be specified in base 10, or base 16 by prefixing with `0x`.
 
 > **NOTE:** When a web application's *Scan Insert Mode* is set to `Replace`, all text inserted using the `setPreScanKeys` function or the `Emulate keys on scan` field in the Application screen, are removed before the scanned text is inserted. To prevent this, change the *Scan Insert Mode* to `Append` in the Application screen.
 
+#### Specifying a Keyboard Action During Keyboard Emulation
+
+By default Airlock Browser invokes a down press and an up press for each key specified by the pre-scan keys and post-scan keys. When a more complex key combination is required, you can prefix the key with either *d* for down or *u* for up. This allows you to indicate that a key should be held down while another key is pressed. For example `d59 30 u59` simulates holding down the shift key (code 59) while pressing the *B* key (code 30).
+
 ### Using Text to Speech with JavaScript
 
 You can leverage Airlock Browser text-to-speech capability and have the browser speak any text, from either a JavaScript event handler in a web profile, or from on-page JavaScript. To speak text use the following:

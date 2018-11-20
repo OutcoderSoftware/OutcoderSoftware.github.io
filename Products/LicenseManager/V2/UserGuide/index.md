@@ -21,7 +21,7 @@ When you first launch LLM, a dialog is presented requesting an API key. (See Fig
 
 <figure><img src='EnterKey.png'><figcaption>Figure 1. Entering the API key into the License Manager</figcaption></figure>
 
-The *Product API Key* property is used by an application to identify itself as being part of your organization. (See Figure 2.) It is entered into an app (e.g., Airlock Browser) so that when the app talks to the licensing server, it can identify the organizational owner. All installations of an app within an organization will ordinarily share the same product API key.
+The *Product API Key* property is used by an application to identify itself as being part of your organization. (See Figure 2.) It is entered into an app, such as Airlock Browser, so that when the app talks to the licensing server, it can identify the organizational owner. All installations of an app within an organization will ordinarily share the same product API key.
 
 To configure Airlock Browser's Product API Key setting, please see [License Server API Key](/Products/AirlockBrowser/UserGuides/V2/#license-server-api-key).
 

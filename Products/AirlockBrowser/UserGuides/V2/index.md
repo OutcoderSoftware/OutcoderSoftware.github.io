@@ -435,16 +435,30 @@ In some scenarios it may make sense to limit the automatic rotation of the scree
 ### Improving Text Readability
 Sometimes web pages that were originally designed for the desktop and not for mobile devices may have text that is too small to read. To increase (or decrease) the size of the text for a page, use the *Web Page Text Size* option on the Application screen.
 
-### Enabling the Keyboard Wedge Capability
+### Inserting Scanned Text into a Field
 In Airlock Browser, when a scan completes using the hardware barcode reader, the barcode text is automatically pushed into the currently selected field of the web page. If you wish to disable this function, or if you require greater control over this capability and wish to rely solely on custom JavaScript for handling barcode events, you can disable the keyboard wedge function by setting the *Scan Population Method* option on the Application screen to `None`.
 
-You can also define a set of keys that you wish to be invoked on or after a scan occurs. This allows you to control, for example, navigating to a different field on the page after a scan; without needing to use JavaScript. Please see the [Programming Guide](ProgrammingGuide/) for more information on Population Method.
+When *Scan Population Method* is set to *Set Text*, the active fields content is set to the scanned barcode text using JavaScript. When *Scan Population Method* is set to *Emulate Keyboard*, keyboard keys are emulated on the web page, simulating keyboard presses by the user.
 
-### Understanding the Scan Insert Mode
-When Airlock Browser's Keyboard Wedge capability is enabled, text is automatically inserted to the active field on the active browser tab. The barcode text, by default, replaces the content in the field. Use the *Scan Insert Mode* option to append or prepend the barcode to the existing content within the field.
+#### Understanding Scan Insert Mode
+The *Scan Insert Mode* setting allows you to control the placement of text into the active input field. If set to *Replace*, scanned barcode text replaces all content within the active input field. If set to *Prepend*, barcode text is inserted at the beginning of the active input field. *Append* sees the barcode text appended to the existing content of the active input field.
 
-### Using a Scan Terminator
-The Application's *Scan Terminator* option allows you to provide a key, or keys, that are invoked in the browser when the keyboard wedge is used to insert a barcode into a field. Use combinations of *{Tab}* and *{Enter}*. Use *{Tab}* to indicate that the tab key should be invoked to skip to the next field on a page. Use *{Enter}* to invoke the enter key when a scan completes.
+#### Prefixing and Postfixing Scanned Data
+Use the *Prefix scanned data with* and *Postfix scanned data with* options to prefix and postfix the scanned data with any text.
+
+#### Emulating Keys when a Scan Occurs
+In addition to the *Prefix* and *Postfix* options, you can also emulate keyboard presses when a barcode is scanned. The *Emulate keys on scan* or *Emulate keys after scan* options allow you to define a set of space delimited key codes, which are sent to the web page as simulated key presses.
+
+Emulating keys allows you to control, for example, navigating to a different field on the page after a scan; without requiring the use of JavaScript.
+
+The *on scan* keys are emulated before scanned text has been set or emulated; and *after scan* keys are emulated after scanned text has been set or emulated.
+
+> **NOTE:** *Emulate keys on scan* and *Emulate keys after scan* options are independent of the *Prefix* and *Postfix* options. This is especially evident when using the *Set Text* population method. When *Emulate keys on scan* is used in combination with *Set Text*, the emulated text will be removed from the active input field.
+
+[See here](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/KeyEvent.html) for a complete list of available key codes.
+
+## Allowing Legacy Pages to Launch Popups in the Same Tab
+When Airlock Browser has reached its maximum number of allowed tabs (as defined in the settings), if a web page attempts to use JavaScript to open a page in a new window, Airlock Browser opens the page in the current tab. This is especially useful in lock down scenarios where the maximum number of tabs has been set to 1. To disable this behavior, set the *Tabs Exceeded Action* to *None*.
 
 ## Interacting with the Browser via On-Page JavaScript
 In addition to Airlock Browsers client-side JavaScript, you can also interact with the browser using on-page JavaScript. Airlock Browser offers a JavaScript API that is consumable from web pages to respond to power events, monitor network availability, and handle barcode scanning events.

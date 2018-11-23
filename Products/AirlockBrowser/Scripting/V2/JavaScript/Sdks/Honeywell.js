@@ -1,6 +1,6 @@
 /**
  * @file Honeywell specific APIs for use with Airlock Browser.
- * @version 1.0.6884.39765
+ * @version 1.0.6901.21433
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -47,7 +47,8 @@ airlock.sdks.honeywell = airlock.sdks.honeywell || {};
  * @property {number} imagerTriggerDelay=0 		
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		
- * @property {boolean} barcodeVibrate=false 		
+ * @property {boolean} barcodeVibrate=true 		
+ * @property {number} barcodeSuccessVibrateMS=true Valid values are [1, 1000].		
  */
  
 /**

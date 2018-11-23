@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.2.4
+ * @version 1.2.5
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -1500,14 +1500,32 @@ airlock.scanning.setDecoder = function(decoder) {
 };
 
 /**
+ * The base type for vendor specific device configurations.
+ * @typedef airlock.scanning.DeviceConfigurationBase
+ * @type {object}
+ * @property {boolean} notifyBarcodeReadSuccessful=true
+ * If true, when a successful barcode read occurs,
+ * the device notifies the user by vibrating and/or an audible beep.
+ * @property {boolean} notifyBarcodeReadFailed=false
+ * If true, when a barcode read failure occurs,
+ * the device notifies the user by vibrating and/or an audible beep.
+ * @property {boolean} barcodeVibrate=true Enables or disables
+ * the vibration controller for barcode events.
+ * @property {number} barcodeSuccessVibrateMS=50 Determines the time
+ * that the device vibrates upon a successful read.
+ */
+
+/**
  * Returns the scanner configuration as an object.
  * Fields can be set, and the configuration can be applied using setConfiguration.
  * @see {@link airlock.scanning.setConfiguration}
- * @return {object} The reader configuration.
+ * @return {airlock.scanning.DeviceConfigurationBase} The reader configuration.
+ * Ordinarily this object includes additional properties applicable
+ * to the device manufacturer.
  * @example
  * var config = airlock.scanning.getConfiguration();
- * // Displays false
- * alert(config.displayMode);
+ * // Displays true
+ * alert(config.barcodeVibrate);
  */
 airlock.scanning.getConfiguration = function() {
 	return pageHost.ii.getResult("scanning.getConfiguration");
@@ -1515,11 +1533,13 @@ airlock.scanning.getConfiguration = function() {
 
 /**
  * Applies the specified scanner configuration to the device.
- * @param {object} configuration The barcode reader configuration.
+ * @param {airlock.scanning.DeviceConfigurationBase} configuration
+ * The reader configuration. Ordinarily this object includes
+ * additional properties applicable to the device manufacturer.
  * @exception {ScriptCallException} Thrown if the device SDK is not supported.
  * @example
  * var config = airlock.scanning.getConfiguration();
- * config.displayMode = true;
+ * config.barcodeVibrate = false;
  * airlock.scanning.setConfiguration(config);
  */
 airlock.scanning.setConfiguration = function(configuration) {

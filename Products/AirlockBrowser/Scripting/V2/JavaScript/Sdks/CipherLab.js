@@ -1,6 +1,6 @@
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6884.39765
+ * @version 1.0.6901.21433
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 
@@ -30,7 +30,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} clearPreviousData=false 		
  * @property {boolean} showCodeType=false 		
  * @property {boolean} showCodeLen=false 		
- * @property {number} szCharsetName=0 Valid values are 0 (windows1250), 1 (windows1251), 2 (windows1252), 3 (windows1253), 4 (windows1254), 5 (windows1255), 6 (windows1256), 7 (windows1257), 8 (windows1258), 9 (big5), 10 (shift_JIS).		
+ * @property {number} szCharsetName=0 Valid values are 0 (utf8), 1 (windows1250), 2 (windows1251), 3 (windows1252), 4 (windows1253), 5 (windows1254), 6 (windows1255), 7 (windows1256), 8 (windows1257), 9 (windows1258), 10 (big5), 11 (shift_JIS), 12 (gbk).		
  * @property {string} szPrefixCode 		
  * @property {string} szSuffixCode 		
  * @property {string} useDelim 		
@@ -47,7 +47,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  *		this gap can grow larger than the maximum size allowed and prevent the scan engine 			
  *		from decoding a barcode. If this problem occurs, set it to "Large Intercharacter Gaps" 			
  *		to tolerate these out-of-specification barcodes. 			
- *		Valid values are 0 (NotSupported), 6 (Normal), 10 (Large).
+ *		Valid values are 6 (Normal), 10 (Large).
   * @property {number} negativeBarcodes=0 Valid values are 0 (RegularOnly), 1 (InverseOnly), 2 (AutoDetect).		
  * @property {boolean} pickListMode=false 		
  * @property {number} timeoutPresentationMode=900000
@@ -76,7 +76,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} triggerPresentationMode=false 		
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		
- * @property {boolean} barcodeVibrate=false 		
+ * @property {boolean} barcodeVibrate=true 		
+ * @property {number} barcodeSuccessVibrateMS=true Valid values are [1, 1000].		
  */
  
 /**
@@ -107,9 +108,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Codabar
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {boolean} clsiEditing=false
+ *		Valid values are [0, 55].
+  * @property {boolean} clsiEditing=false
  *		A value specifying whether to edit CLSI. 			
  * @property {number} notisEditingType=0
  *		A value specifying whether to transform it to NOTIS editing format (Start/Stop characters) 			
@@ -132,9 +135,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Code11
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {number} numberOfCheckDigits=0
+ *		Valid values are [0, 55].
+  * @property {number} numberOfCheckDigits=0
  *		A value specifying whether and how to verify check digit. 			
  *		Valid values are 0 (None), 1 (One), 2 (Two).
   * @property {boolean} transmitCheckDigit=false
@@ -147,7 +152,8 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Code128
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
  *		Valid values are [0, 55].
   * @property {number} securityLevel=0
@@ -161,9 +167,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Code39
  * @property {number} length1=4
  *		Length qualification *4 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *55 (0 ~ 55) 			
- * @property {boolean} convertToCode32=false
+ *		Valid values are [0, 55].
+  * @property {boolean} convertToCode32=false
  *		A value that specifies whether to convert Code 39 to Code 32 (= Italian Pharmacode). 			
  * @property {boolean} convertToCode32Prefix=false
  *		A value that specifies whether to transmit prefix for Code 32 data. 			
@@ -451,9 +459,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Plessey
  * @property {number} length1=4
  *		Length qualification *0 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *0 (0 ~ 55) 			
- * @property {boolean} transmitCheckDigit=true
+ *		Valid values are [0, 55].
+  * @property {boolean} transmitCheckDigit=true
  *		A value that specifies whether to transmit check digit. 			
  * @property {boolean} unconventionalStop=true
  *		A value that specifies whether to enable Plessey unconventional stop. 			
@@ -473,9 +483,11 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @typedef airlock.sdks.cipherLab.decoders.Telepen
  * @property {number} length1=4
  *		Length qualification *0 (0 ~ 55) 			
- * @property {number} length2=55
+ *		Valid values are [0, 55].
+  * @property {number} length2=55
  *		Length qualification *0 (0 ~ 55) 			
- * @property {number} format=0
+ *		Valid values are [0, 55].
+  * @property {number} format=0
  *		A value that sets output format. "0" represents ASCII, while "1" represents Numeric. 			
  *		Valid values are 0 (Ascii), 1 (Numeric).
   * @property {boolean} enabled=true

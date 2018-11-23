@@ -30,6 +30,8 @@ redirect_from:
 	* [Unlock using Fingerprint Reader](#unlock-using-fingerprint-reader)
 	* [Restore Tabs at Startup](#restore-tabs-at-startup)
 	* [Allow Access to My Location](#allow-access-to-my-location)
+	* [Add Shared Content to History](#add-shared-content-to-history)
+	* [Enable Incognito Mode at Start-Up](#enable-incognito-mode-at-start-up)
 	* [Save Passwords for Web Pages](#save-passwords-for-web-pages)
 	* [Delete Saved Passwords](#delete-saved-passwords)
 	* [Delete Cookies](#delete-cookies)
@@ -41,34 +43,24 @@ redirect_from:
 	* [Styling the App with a Custom Theme](#styling-the-app-with-a-custom-theme)
 * [Using the Device Settings tab](#using-the-device-settings-tab)
 	* [Configuration File URL](#configuration-file-url)
+	* [Importing Configuration with MDM Software](#importing-configuration-with-mdm-software)
 	* [License Server API Key](#license-server-api-key)
 	* [Configuring Device Vendor Specific Settings](#configuring-device-vendor-specific-settings)
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
-* [Using Airlock Browser's JavaScript API](#using-airlock-browsers-javascript-api)
-	* [Ensuring Airlock is Ready to Receive Commands](#ensuring-airlock-is-ready-to-receive-commands)
-	* [Enabling Intellisense](#enabling-intellisense)
-	* [Configuring the Barcode Reader via JavaScript](#configuring-the-barcode-reader-via-javascript)
-	* [Monitoring Network Connectivity](#monitoring-network-connectivity)
-	* [Printing a Page via JavaScript](#printing-a-page-via-javascript)
-	* [Using Text to Speech with JavaScript](#using-text-to-speech-with-javascript)
-	* [Setting Advanced Scripting Permission](#setting-advanced-scripting-permission)
 * [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
 	* [Limiting Screen Rotation](#limiting-screen-rotation)
 	* [Improving Text Readability](#improving-text-readability)
-	* [Enabling the Keyboard Wedge Capability](#enabling-the-keyboard-wedge-capability)
-	* [Understanding the Scan Insert Mode](#understanding-the-scan-insert-mode)
-	* [Using a Scan Terminator](#using-a-scan-terminator)
+	* [Inserting Scanned Text into a Field](#inserting-scanned-text-into-a-field)
+* [Allowing Legacy Pages to Launch Popups in the Same Tab](#allowing-legacy-pages-to-launch-popups-in-the-same-tab)
 * [Interacting with the Browser via On-Page JavaScript](#interacting-with-the-browser-via-on-page-javascript)
 * [Using the History Screen](#using-the-history-screen)
 * [Creating and Editing Bookmarks](#creating-and-editing-bookmarks)
 
 [//]: # (TOC End)
-
-
 
 ## Introduction
 
@@ -201,7 +193,7 @@ URL rules determine which pages can or cannot be accessed by the browser. When n
 As soon as a match is found, the *Allow* or *Deny* rule is applied. Long press to change the order of a URL rule. Swipe a URL rule left or right to delete it. If you mistakenly delete a rule, use the undo button in the application bar to restore it.
 To create a new rule, tap the *+* button in the application bar.
 
-Wildcards are supported by default. You may also specify more complex rules using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression). To enable interpretation of the text as a regular expression, check the *Regular Expression* checkbox.
+Wildcards are supported by default. You may also specify more complex rules using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression). To enable interpretation of the text as a regular expression, check the *Regular Expression* checkbox. For example, to specify URLs that belong to the example.com domain and all sub-pages you might use something like `^\s*https?://(www.)?example.com/?.*`
 
 > **NOTE:** An allow rule is automatically created for the URL of active web application profile (defined in the Launchpad), and it takes precedence over the URL rules defined on the URL Rules screen. 
 
@@ -296,11 +288,11 @@ Once you procure a license for Airlock Browser, there are two ways to apply the 
 Alternatively, if your device does not have internet access, you can manually import the license using the Import License button in Administration -> Manage License. 
 
 ### Configuring Device Vendor Specific Settings
-Airlock Browser allows configuration of vendor specific settings for devices manufactured by Bluebird, CipherLab, Honeywell, Panasonic, and Zebra. Different device types offer different options for their hardware. To configure Airlock Browser for a specific device type, tap *Vendor Configurations* from the *Device* tab of the Settings screen. A list of device vendors is displayed. Tapping a vendor name opens the *Device Configuration* screen for that vendor. (See Figure 8.)
+Airlock Browser allows configuration of vendor specific settings for devices manufactured by Bluebird, CipherLab, Honeywell, Panasonic, and Zebra. Different device types offer different options for their hardware. 
 
-If the device you are using is a supported device you are taken directly to the vendor configuration settings for the device type.
+When Airlock Browser is running on a supported device from any of the above manufacturers, the *Vendor Configurations* button on the *Device* tab of the Settings screen takes you to the device configuration specific to the device type. However, when running Airlock Browser on a device such as a tablet that is not manufactured by one of the above manufactures, tapping *Vendor Configurations* from the *Device* tab of the Settings screen displays a list of device vendors; allowing you to configure multiple device vendor configurations, and allowing you to support multiple device types within the one exported configuration file. (See Figure 8.)
 
-> **TIP:** To create a configuration supporting multiple device vendors, export the configuration from one device manufacturer and import it to a device from another manufacturer. You can then configure the device from the second manufacturer, while still retaining the configuration for the first.
+> **TIP:** An alternate way to create a configuration supporting multiple device vendors, is to export the configuration from one device manufacturer and import it to a device from another manufacturer. You can then configure the device from the second manufacturer, while still retaining the configuration for the first.
 
 The list of available settings varies for each of the vendor device types.
 

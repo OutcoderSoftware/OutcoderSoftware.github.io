@@ -1512,7 +1512,7 @@ airlock.scanning.setDecoder = function(decoder) {
  * @property {boolean} barcodeVibrate=true Enables or disables
  * the vibration controller for barcode events.
  * @property {number} barcodeSuccessVibrateMS=50 Determines the time
- * that the device vibrates upon a successful read.
+ * that the device vibrates upon a successful read, in milliseconds.
  */
 
 /**

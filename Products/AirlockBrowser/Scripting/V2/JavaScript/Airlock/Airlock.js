@@ -1501,6 +1501,8 @@ airlock.scanning.setDecoder = function(decoder) {
 
 /**
  * The base type for vendor specific device configurations.
+ * Please see the vendor specific device configuration for your device
+ * within the root its respective namespace.
  * @typedef airlock.scanning.DeviceConfigurationBase
  * @type {object}
  * @property {boolean} notifyBarcodeReadSuccessful=true
@@ -1513,6 +1515,10 @@ airlock.scanning.setDecoder = function(decoder) {
  * the vibration controller for barcode events.
  * @property {number} barcodeSuccessVibrateMS=50 Determines the time
  * that the device vibrates upon a successful read, in milliseconds.
+ * @see <a href="../Sdks/CipherLab/airlock.sdks.cipherLab.html#.CipherLabDeviceConfiguration">CipherLabDeviceConfiguration</a>
+ * @see <a href="../Sdks/Bluebird/airlock.sdks.bluebird.html#.BluebirdDeviceConfiguration">BluebirdDeviceConfiguration</a>
+ * @see <a href="../Sdks/Honeywell/airlock.sdks.honeywell.html#.HoneywellDeviceConfiguration">HoneywellDeviceConfiguration</a>
+ * @see <a href="../Sdks/Zebra/airlock.sdks.zebra.html#.EmdkDeviceConfiguration">EmdkDeviceConfiguration</a>
  */
 
 /**

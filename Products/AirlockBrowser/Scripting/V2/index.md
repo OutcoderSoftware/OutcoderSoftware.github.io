@@ -38,3 +38,4 @@ If you have an existing application built using Windows Mobile/CE,
 use this API.
 
 * <a href="JavaScript/CipherLab/CipherLab.js" download>CipherLab.js</a> \| [Documentation](JSDoc/CipherLab/)
+* <a href="CipherLabApiDifferences" download>API Differences</a>

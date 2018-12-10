@@ -443,11 +443,12 @@ In addition to the *Prefix* and *Postfix* options, you can also emulate keyboard
 
 Emulating keys allows you to control, for example, navigating to a different field on the page after a scan; without requiring the use of JavaScript.
 
+Some example key codes are: 59 for SHIFT, 61 for TAB, and 66 for ENTER.
+[See here](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/KeyEvent.html) for a complete list of available key codes.
+
 The *on scan* keys are emulated before scanned text has been set or emulated; and *after scan* keys are emulated after scanned text has been set or emulated.
 
 > **NOTE:** *Emulate keys on scan* and *Emulate keys after scan* options are independent of the *Prefix* and *Postfix* options. This is especially evident when using the *Set Text* population method. When *Emulate keys on scan* is used in combination with *Set Text*, the emulated text will be removed from the active input field.
-
-[See here](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/KeyEvent.html) for a complete list of available key codes.
 
 ## Allowing Legacy Pages to Launch Popups in the Same Tab
 When Airlock Browser has reached its maximum number of allowed tabs (as defined in the settings), if a web page attempts to use JavaScript to open a page in a new window, Airlock Browser opens the page in the current tab. This is especially useful in lock down scenarios where the maximum number of tabs has been set to 1. To disable this behavior, set the *Tabs Exceeded Action* to *None*.

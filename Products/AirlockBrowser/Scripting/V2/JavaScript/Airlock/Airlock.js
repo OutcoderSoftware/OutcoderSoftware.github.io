@@ -1,6 +1,6 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.2.5
+ * @version 1.3.0
  * @copyright Outcoder Sàrl 2018. All Rights Reserved.
  */
 

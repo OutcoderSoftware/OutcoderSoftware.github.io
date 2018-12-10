@@ -21,6 +21,9 @@
 
 			try {
 				BarCodeInit();
+
+				//BarCodeSetActive(false);
+
 				document.getElementById("sp_reader_init").textContent = "OK";
 			} catch (err) {
 				document.getElementById("sp_reader_init").textContent = err;

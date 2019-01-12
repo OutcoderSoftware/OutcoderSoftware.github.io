@@ -2,7 +2,7 @@
 author: Chris Summers
 title: Outcoder partners with CipherLab, bringing Airlock Browser pre-installed on mobile computers 
 layout: PressRelease
-published: true
+published: false
 ---
 
 ZURICH SWITZERLAND --- January 14, 2019 --- Outcoder, the company that focusses on industrial and consumer web browsers, 

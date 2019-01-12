@@ -16,3 +16,6 @@ excerpt_separator: '<a name="excerpt-end"></a>'
 collections:
     BrowserProgrammingGuideV2:
         output: true
+    pressReleases:
+        permalink: /PressReleases/:path/
+        output: true

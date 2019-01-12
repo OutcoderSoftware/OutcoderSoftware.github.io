@@ -386,7 +386,8 @@ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, inpu
 }
 
 .navbar-nav > li > a {
-	line-height: 60px;
+	line-height: 10px;
+	padding-top: 45px;
 }
 
 .dropdown-menu>li>a {

@@ -1,7 +1,7 @@
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.6901.28306
- * @copyright Outcoder Sàrl 2018. All Rights Reserved.
+ * @version 1.0.6956.24631
+ * @copyright Outcoder Sàrl 2019. All Rights Reserved.
  */
 
  /**
@@ -77,7 +77,7 @@ airlock.sdks.cipherLab = airlock.sdks.cipherLab || {};
  * @property {boolean} notifyBarcodeReadSuccessful=true 		
  * @property {boolean} notifyBarcodeReadFailed=false 		
  * @property {boolean} barcodeVibrate=true 		
- * @property {number} barcodeSuccessVibrateMS=true Valid values are [1, 1000].		
+ * @property {number} barcodeSuccessVibrateMS=true Valid values are [1, 1500].		
  */
  
 /**

@@ -39,19 +39,49 @@ function testSetFullScreen(textElement) {
 <div class="testDiv">
 	<h3>Opening and Closing the Launchpad</h3>
 	<script id="setLaunchpadOpenScript">
-function testSetLaunchpadOpen(textElement) {
+		function testSetLaunchpadOpen(textElement) {
+			try {
+				var open = airlock.ui.isLaunchpadOpen();
+				airlock.ui.setLaunchpadOpen(!open);
+				setText(textElement, "Set to " + !open);
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+	</script><pre class="example" id="setLaunchpadOpenPre"></pre><script>insertScriptInPre('setLaunchpadOpenPre', 'setLaunchpadOpenScript');</script>
+	<input type="button" onclick="testSetLaunchpadOpen('setLaunchpadOpenText')" value="SetLaunchpadOpen" />
+	<div class="outputText" type="text" id="setLaunchpadOpenText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Closing the Software Keyboard</h3>
+	<script id="getKeyboardScript">
+function testToggleKeyboard(textElement) {
 	try {
-		var open = airlock.ui.isLaunchpadOpen();
-		airlock.ui.setLaunchpadOpen(!open);
-		setText(textElement, "Set to " + !open);
+		airlock.ui.closeKeyboard();
+
+		var value = airlock.ui.isKeyboardOpen();
+		setText(textElement, "Keyboard Open: " + value);
+
 	} catch (e) {
 		setText(textElement, "Error: " + e);
 		return;
 	}
 }
-	</script><pre class="example" id="setLaunchpadOpenPre"></pre><script>insertScriptInPre('setLaunchpadOpenPre', 'setLaunchpadOpenScript');</script>
-	<input type="button" onclick="testSetLaunchpadOpen('setLaunchpadOpenText')" value="SetLaunchpadOpen" />
-	<div class="outputText" type="text" id="setLaunchpadOpenText"></div>
+
+function delayClose() {
+	setTimeout(function() {
+		testToggleKeyboard('testToggleKeyboardText');
+	}, 5000);
+}
+	</script><pre class="example" id="getKeyboardPre"></pre>
+	<script>insertScriptInPre('getKeyboardPre', 'getKeyboardScript');</script>
+	<div>
+		Select the text box to open the software keyboard. The keyboard should close after 5 seconds:
+		<input type="text" onfocus="delayClose(); return false;" />
+	</div>
+	<div class="outputText" type="text" id="testToggleKeyboardText"></div>
 </div>
 
 <div class="testDiv">
@@ -97,32 +127,6 @@ function testGetUILanguage(textElement) {
 	</script><pre class="example" id="getUILanguagePre"></pre><script>insertScriptInPre('getUILanguagePre', 'getUILanguageScript');</script>
 	<input type="button" onclick="testGetUILanguage('testGetUILanguageText')" value="GetUILanguage" />
 	<div class="outputText" type="text" id="testGetUILanguageText"></div>
-</div>
-
-<div class="testDiv">
-	<h3>Closing the Software Keyboard</h3>
-	<script id="getKeyboardScript">
-		function testToggleKeyboard(textElement) {
-			try {
-				airlock.ui.closeKeyboard();
-
-				var value = airlock.ui.isKeyboardOpen();
-				setText(textElement, "Keyboard Open: " + value);
-
-			} catch (e) {
-				setText(textElement, "Error: " + e);
-				return;
-			}
-		}
-	</script><pre class="example" id="getKeyboardPre"></pre>
-	<script>insertScriptInPre('getKeyboardPre', 'getKeyboardScript');</script>
-	<div>
-		Select the text box to open the software keyboard:
-		<input type="text" />
-	</div>
-	<input type="button" onclick="testToggleKeyboard('testToggleKeyboardText')" value="Close Keyboard" />
-	<input type="button" value="Dummy button" />
-	<div class="outputText" type="text" id="testToggleKeyboardText"></div>
 </div>
 
 </body>

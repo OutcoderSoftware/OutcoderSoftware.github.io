@@ -1967,7 +1967,7 @@ airlock.ui.setOrientationLock = function(lockType) {
  * @return {boolean} True if the software input panel is showing,
  * False otherwise.
  */
-airlock.ui.showKeyboard = function () {
+airlock.ui.isKeyboardShown = function () {
 	return pageHost.ii.getResult("ui.isKeyboardShown");
 };
 

@@ -100,28 +100,26 @@ function testGetUILanguage(textElement) {
 </div>
 
 <div class="testDiv">
-	<h3>Software Keyboard</h3>
+	<h3>Opening the Software Keyboard</h3>
 	<script id="getKeyboardScript">
-function testToggleKeyboard(textElement) {
-	try {
-		var value = airlock.ui.isKeyboardShown();
-		
-		if (value) {
-			airlock.ui.hideKeyboard();
-		} else {
-			airlock.ui.showKeyboard();
+		function testToggleKeyboard(textElement) {
+			try {
+				airlock.ui.closeKeyboard();
+
+				var value = airlock.ui.isKeyboardOpen();
+				setText(textElement, "Keyboard Open: " + value);
+
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
 		}
-
-		setText(textElement, "Keyboard Shown: " + value);
-
-	} catch (e) {
-		setText(textElement, "Error: " + e);
-		return;
-	}
-}
 	</script><pre class="example" id="getKeyboardPre"></pre><script>insertScriptInPre('getKeyboardPre', 'getKeyboardScript');</script>
-	<input type ="text" /><br />
-	<input type="button" onclick="testToggleKeyboard('testToggleKeyboardText')" value="Toggle Keyboard" />
+	<div>
+		Select the text box to open the software keyboard:
+		<input type="text" />
+	</div>
+	<input type="button" onclick="testToggleKeyboard('testToggleKeyboardText')" value="Close Keyboard" />
 	<div class="outputText" type="text" id="testToggleKeyboardText"></div>
 </div>
 

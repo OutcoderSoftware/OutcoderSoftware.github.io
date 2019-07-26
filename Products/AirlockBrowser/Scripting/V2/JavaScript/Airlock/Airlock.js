@@ -1977,10 +1977,3 @@ airlock.ui.isKeyboardShown = function () {
 airlock.ui.hideKeyboard = function () {
 	pageHost.ii.getResult("ui.hideKeyboard");
 };
-
-/**
- * Shows the software keyboard if available.
- */
-airlock.ui.showKeyboard = function () {
-	pageHost.ii.getResult("ui.showKeyboard");
-};

@@ -1,6 +1,6 @@
 /**
  * @file CipherLab specific APIs for use with Airlock Browser.
- * @version 1.0.7146.22231
+ * @version 1.0.7146.23670
  * @copyright Outcoder Sàrl 2019. All Rights Reserved.
  */
 

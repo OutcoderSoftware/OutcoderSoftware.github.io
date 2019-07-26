@@ -1967,13 +1967,13 @@ airlock.ui.setOrientationLock = function(lockType) {
  * @return {boolean} True if the software input panel is showing,
  * False otherwise.
  */
-airlock.ui.isKeyboardShown = function () {
-	return pageHost.ii.getResult("ui.isKeyboardShown");
+airlock.ui.isKeyboardOpen = function () {
+	return pageHost.ii.getResult("ui.isKeyboardOpen");
 };
 
 /**
  * Hides the software keyboard if visible.
  */
-airlock.ui.hideKeyboard = function () {
-	pageHost.ii.getResult("ui.hideKeyboard");
+airlock.ui.closeKeyboard = function () {
+	pageHost.ii.getResult("ui.closeKeyboard");
 };

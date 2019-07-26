@@ -1,7 +1,7 @@
 ﻿/**
  * @file Provides a script interface for interacting with Airlock Browser
- * @version 1.3.0
- * @copyright Outcoder Sàrl 2018. All Rights Reserved.
+ * @version 1.3.1
+ * @copyright Outcoder Sàrl 2019. All Rights Reserved.
  */
 
 /**
@@ -1961,4 +1961,26 @@ airlock.ui.getOrientationLock = function() {
  */
 airlock.ui.setOrientationLock = function(lockType) {
 	pageHost.ii.getResult("ui.setOrientationLock", lockType);
+};
+
+/**
+ * @return {boolean} True if the software input panel is showing,
+ * False otherwise.
+ */
+airlock.ui.showKeyboard = function () {
+	return pageHost.ii.getResult("ui.isKeyboardShown");
+};
+
+/**
+ * Hides the software keyboard if visible.
+ */
+airlock.ui.hideKeyboard = function () {
+	pageHost.ii.getResult("ui.hideKeyboard");
+};
+
+/**
+ * Shows the software keyboard if available.
+ */
+airlock.ui.showKeyboard = function () {
+	pageHost.ii.getResult("ui.showKeyboard");
 };

@@ -99,5 +99,30 @@ function testGetUILanguage(textElement) {
 	<div class="outputText" type="text" id="testGetUILanguageText"></div>
 </div>
 
+<div class="testDiv">
+	<h3>Software Keyboard</h3>
+	<script id="getKeyboardScript">
+function testToggleKeyboard(textElement) {
+	try {
+		var value = airlock.ui.isKeyboardShown();
+		
+		if (value) {
+			airlock.ui.hideKeyboard();
+		} else {
+			airlock.ui.showKeyboard();
+		}
+
+		setText(textElement, "Keyboard Shown: " + value);
+
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="getKeyboardPre"></pre><script>insertScriptInPre('getKeyboardPre', 'getKeyboardScript');</script>
+	<input type="button" onclick="testToggleKeyboard('testToggleKeyboardText')" value="Toggle Keyboard" />
+	<div class="outputText" type="text" id="testToggleKeyboardText"></div>
+</div>
+
 </body>
 </html>

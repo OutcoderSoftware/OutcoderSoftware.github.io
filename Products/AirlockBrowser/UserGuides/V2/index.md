@@ -9,6 +9,8 @@ redirect_from:
 # Airlock Browser User Guide
 #### For Version 2.0, Android
 
+[Download as PDF](AirlockBrowserVersion2UserGuide.pdf)
+
 ## Table of Contents
 
 [//]: # (TOC Begin)

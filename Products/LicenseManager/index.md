@@ -9,7 +9,7 @@ title: Outcoder | Licium License Manager
 		<div class="banner-2-cont">
 		  <h1 class="wow fadeInUp text-center">Licium License Manager</h1>
 		  <h4 class="wow fadeInUp text-center hidden-xs">Easily license products in your enterprise</h4>
-		  <div class="text-center hidden-xs"><a href="ms-windows-store://pdp/?productid=9PL94PP8R8HF" class="btn btn-black btn-xl">Download Now</a></div>
+		  <div class="text-center hidden-xs"><a href="https://www.microsoft.com/en-us/p/licium-license-manager/9pl94pp8r8hf" class="btn btn-black btn-xl">Download Now</a></div>
 		</div>
 	  </div>
 	</div>
@@ -34,7 +34,7 @@ title: Outcoder | Licium License Manager
 		 
 		   <div class="about-3-cont-txt" style="padding-top:0px;">
 			  <ul class="wow fadeInUp">
-				<li><a href="ms-windows-store://pdp/?productid=9PL94PP8R8HF/">Download Licium License Manager</a></li>
+				<li><a href="https://www.microsoft.com/en-us/p/licium-license-manager/9pl94pp8r8hf">Download Licium License Manager</a></li>
 				<li><a href="V2/UserGuide">User Guide</a></li>
 			  </ul>
 			</div>

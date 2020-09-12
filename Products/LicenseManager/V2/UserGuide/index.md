@@ -8,7 +8,7 @@ Outcoder's Licium License Manager (LLM) allows you to manage the software licens
 
 LLM requires Windows 10 Fall Creators Update (10.0; Build 17134)
 
-You can [download LLM from the Windows Store](ms-windows-store://pdp/?productid=9PL94PP8R8HF).
+You can [download LLM from the Windows Store](https://www.microsoft.com/en-us/p/licium-license-manager/9pl94pp8r8hf).
 
 Once licenses have been obtained from your vendor, you will also receive the following two keys:
 

@@ -23,7 +23,7 @@ customjs:
     <p class="help-block"></p>
     <input type="text" name="Organization" class="form-control" placeholder="Organization" />
     <p class="help-block"></p>
-    <input type="email" name="_replyto" id="email" class="form-control" placeholder="Email" />
+    <input type="email" name="_replyto" id="email" class="form-control" placeholder="Email" required/>
     <p class="help-block"></p>
     <input type="text" name="LicenseCount" class="form-control" placeholder="Number of Licenses" />
     <p class="help-block"></p>

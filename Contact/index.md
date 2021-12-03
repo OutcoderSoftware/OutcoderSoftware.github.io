@@ -11,7 +11,7 @@ title: Outcoder - Contact Us
     <p class="help-block"></p>
     <input type="text" name="Organization" class="form-control" placeholder="Organization" />
     <p class="help-block"></p>
-    <input type="email" name="_replyto" id="email" class="form-control" placeholder="Email" />
+    <input type="email" name="_replyto" id="email" class="form-control" placeholder="Email" required />
     <p class="help-block"></p>
     <textarea type="text" name="MessageBody" class="form-control" placeholder="Message"></textarea>
     <input type="hidden" name="_next" value="http://outcoder.com/RequestQuote/FormSubmitted/" />

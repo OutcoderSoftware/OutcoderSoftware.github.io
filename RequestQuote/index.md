@@ -18,7 +18,7 @@ customjs:
 <div class="call-to-action col-md-5 col-xs-12">
 <div class="contact-form-cont">
 <h3>Request Quote</h3>
-<form action="https://formspree.io/sales@outcoder.com" method="post">
+<form action="https://formspree.io/f/xrgjzeky" method="post">
     <input type="text" name="name" class="form-control" placeholder="Name" />
     <p class="help-block"></p>
     <input type="text" name="Organization" class="form-control" placeholder="Organization" />

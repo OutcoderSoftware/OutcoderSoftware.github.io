@@ -6,7 +6,7 @@ title: Outcoder - Contact Us
 <div class="col-lg-6">
 <div class="contact-form-cont">
 <h3>Contact Us</h3>
-<form action="https://formspree.io/inquiries@outcoder.com" method="post">
+<form action="https://formspree.io/f/xknywobb" method="post">
     <input type="text" name="name" class="form-control" placeholder="Name" />
     <p class="help-block"></p>
     <input type="text" name="Organization" class="form-control" placeholder="Organization" />

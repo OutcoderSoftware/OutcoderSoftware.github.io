@@ -345,6 +345,7 @@ function testUnsubscribeToPowerChanged(textElement) {
 		}
 
 		function handleButtonPress(args) {
+			args.handled = true;
 			setText('testButtonPressEventText', getPropertyValues(args));
 		}
 

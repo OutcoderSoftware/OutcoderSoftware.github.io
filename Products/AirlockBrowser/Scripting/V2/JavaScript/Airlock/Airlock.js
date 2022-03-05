@@ -578,10 +578,10 @@ airlock.device.onPowerChanged = airlock.device.onPowerChanged
  * @readonly
  */
 airlock.device.ButtonState = {
-	/** This state occurs when a finger is lifted off of a button; after DOWN. */
-	UP: 0,
 	/** This state occurs when a finger is pressed down on a button; before UP. */
-	DOWN: 1,
+	DOWN: 0,
+	/** This state occurs when a finger is lifted off of a button; after DOWN. */
+	UP: 1
 };
 
 /**

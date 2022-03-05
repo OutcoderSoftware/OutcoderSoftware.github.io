@@ -311,7 +311,7 @@ function testSubscribeToPowerChanged(textElement) {
 }
 
 function handlePowerChanged(args) {
-	setText('testConnectionChangedEventText', getPropertyValues(args));
+	setText('testPowerChangedEventText', getPropertyValues(args));
 }
 
 function testUnsubscribeToPowerChanged(textElement) {
@@ -326,9 +326,43 @@ function testUnsubscribeToPowerChanged(textElement) {
 	</script>
 	<pre class="example" id="powerChangedEventPre"></pre>
 	<script>insertScriptInPre('powerChangedEventPre', 'powerChangedEventScript');</script>
-	<input type="button" onclick="testSubscribeToPowerChanged('testConnectionChangedEventText')" value="Subscribe to Power Changed" /><br />
-	<input type="button" onclick="testUnsubscribeToPowerChanged('testConnectionChangedEventText')" value="Unsubscribe" /><br />
-	<div class="outputText" type="text" id="testConnectionChangedEventText"></div>
+	<input type="button" onclick="testSubscribeToPowerChanged('testPowerChangedEventText')" value="Subscribe to Power Changed" /><br />
+	<input type="button" onclick="testUnsubscribeToPowerChanged('testPowerChangedEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testPowerChangedEventText"></div>
+</div>
+
+<div class="testDiv">
+	<h3>Subscribing to the Hardware Button Press Event (on supported devices)</h3>
+	<script id="buttonPressEventScript">
+		function testSubscribeToButtonPress(textElement) {
+			try {
+				airlock.device.onButtonPress.addListener(handleButtonPress);
+				setText(textElement, 'Subscribed.');
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+
+		function handleButtonPress(args) {
+			setText('testConnectionChangedEventText', getPropertyValues(args));
+		}
+
+		function testUnsubscribeToButtonPress(textElement) {
+			try {
+				airlock.device.onButtonPress.removeListener(handleButtonPress);
+				setText(textElement, "Unsubscribed");
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+	</script>
+	<pre class="example" id="buttonPressEventPre"></pre>
+	<script>insertScriptInPre('buttonPressEventPre', 'buttonPressEventScript');</script>
+	<input type="button" onclick="testSubscribeToButtonPress('testButtonPressEventText')" value="Subscribe to Button Press" /><br />
+	<input type="button" onclick="testUnsubscribeToButtonPress('testButtonPressEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testButtonPressEventText"></div>
 </div>
 
 <div class="testDiv">

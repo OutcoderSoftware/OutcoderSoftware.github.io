@@ -501,7 +501,7 @@ airlock.device.PowerSource = {
 
 /**
  * Enum BatteryState
- * @type {number}
+ * @enum {number}
  * @readonly
  */
 airlock.device.BatteryState = {
@@ -571,6 +571,49 @@ airlock.device.getPower = function () {
  */
 airlock.device.onPowerChanged = airlock.device.onPowerChanged
 	|| pageHost.ii.registerEvent("device.onPowerChanged");
+
+/**
+ * Enum ButtonState
+ * @enum {number}
+ * @readonly
+ */
+airlock.device.ButtonState = {
+	/** This state occurs when a finger is lifted off of a button; after DOWN. */
+	UP: 0,
+	/** This state occurs when a finger is pressed down on a button; before UP. */
+	DOWN: 1,
+};
+
+/**
+ * @typedef airlock.device.ButtonPressArgs
+ * @property {string} buttonId The unique ID of the button. E.g., "1"
+ * @property {airlock.device.ButtonState} state The pressed state of the button.
+ */
+
+/**
+ * onButtonPress Event. Is raised on supported devices
+ * when a custom hardware button is pressed.
+ * To subscribe to the event use:
+ *		airlock.device.onButtonPress.addListener(function (args) {})
+ * To unsubscribe to the event use:
+ *		airlock.device.onButtonPress.removeListener(afunctionReference)
+ * @event
+ * @type {airlock.device.ButtonPressedEventArgs}
+ * @example
+ * // Subscribe to event
+ * airlock.device.onButtonPress.addListener(handleHardwareButtonPress);
+ *
+ * function handleButtonPress(args) {
+ *		if (args.State === ButtonState.UP && args.buttonId === "1") {
+ *			alert("Button 1 pressed.");
+ *		}
+ * }
+ *
+ * // Unsubscribe
+ * airlock.device.onButtonPress.removeListener(handleHardwareButtonPress);
+ */
+airlock.device.onButtonPress = airlock.device.onButtonPress
+	|| pageHost.ii.registerEvent("device.onButtonPress");
 
 /* IO */
 

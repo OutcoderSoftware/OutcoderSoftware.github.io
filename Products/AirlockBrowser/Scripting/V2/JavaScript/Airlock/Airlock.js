@@ -588,6 +588,8 @@ airlock.device.ButtonState = {
  * @typedef airlock.device.ButtonPressArgs
  * @property {string} buttonId The unique ID of the button. E.g., "1"
  * @property {airlock.device.ButtonState} state The pressed state of the button.
+ * @property {boolean} handled This must be set to true to prevent the default
+ * button actions from being performed.
  */
 
 /**
@@ -605,6 +607,7 @@ airlock.device.ButtonState = {
  *
  * function handleButtonPress(args) {
  *		if (args.State === ButtonState.UP && args.buttonId === "1") {
+ *			args.handled = true;
  *			alert("Button 1 pressed.");
  *		}
  * }

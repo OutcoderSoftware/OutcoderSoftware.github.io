@@ -618,6 +618,52 @@ airlock.device.ButtonState = {
 airlock.device.onButtonPress = airlock.device.onButtonPress
 	|| pageHost.ii.registerEvent("device.onButtonPress");
 
+/**
+ * Enum KeyState
+ * @enum {number}
+ * @readonly
+ */
+airlock.device.KeyState = {
+	/** This state occurs when a finger is pressed down on a key; before UP. */
+	DOWN: 0,
+	/** This state occurs when a finger is lifted off of a key; after DOWN. */
+	UP: 1
+};
+
+/**
+ * @typedef airlock.device.KeyPressEventArgs
+ * @property {string} keyId The unique ID of the key. E.g., "MENU"
+ * @property {airlock.device.KeyState} state The pressed state of the key.
+ * @property {boolean} handled This must be set to true to prevent the default
+ * key actions from being performed.
+ */
+
+/**
+ * onKeyPress Event. Is raised on supported devices
+ * when a custom hardware key is pressed.
+ * To subscribe to the event use:
+ *		airlock.device.onKeyPress.addListener(function (args) {})
+ * To unsubscribe to the event use:
+ *		airlock.device.onKeyPress.removeListener(afunctionReference)
+ * @event
+ * @type {airlock.device.KeyPressedEventArgs}
+ * @example
+ * // Subscribe to event
+ * airlock.device.onKeyPress.addListener(handleKeyPress);
+ *
+ * function handleKeyPress(args) {
+ *		if (args.State === KeyState.UP && args.keyId === "1") {
+ *			args.handled = true;
+ *			alert("Key 1 pressed.");
+ *		}
+ * }
+ *
+ * // Unsubscribe
+ * airlock.device.onKeyPress.removeListener(handleHardwareKeyPress);
+ */
+airlock.device.onKeyPress = airlock.device.onKeyPress
+	|| pageHost.ii.registerEvent("device.onKeyPress");
+
 /* IO */
 
 /**

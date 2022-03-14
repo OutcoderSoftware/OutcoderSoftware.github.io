@@ -44,6 +44,41 @@ function testSetBrightness(textElement) {
 </div>
 
 <div class="testDiv">
+	<h3>Subscribing to the Key Press Event</h3>
+	<script id="keyPressEventScript">
+		function testSubscribeToKeyPress(textElement) {
+			try {
+				airlock.device.onKeyPress.addListener(handleKeyPress);
+				setText(textElement, 'Subscribed.');
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+
+		function handleKeyPress(args) {
+			args.handled = true;
+			setText('testKeyPressEventText', getPropertyValues(args));
+		}
+
+		function testUnsubscribeToKeyPress(textElement) {
+			try {
+				airlock.device.onKeyPress.removeListener(handleKeyPress);
+				setText(textElement, "Unsubscribed");
+			} catch (e) {
+				setText(textElement, "Error: " + e);
+				return;
+			}
+		}
+	</script>
+	<pre class="example" id="buttonPressEventPre"></pre>
+	<script>insertScriptInPre('buttonPressEventPre', 'buttonPressEventScript');</script>
+	<input type="button" onclick="testSubscribeToKeyPress('testKeyPressEventText')" value="Subscribe to Key Press" /><br />
+	<input type="button" onclick="testUnsubscribeToKeyPress('testKeyPressEventText')" value="Unsubscribe" /><br />
+	<div class="outputText" type="text" id="testKeyPressEventText"></div>
+</div>
+
+<div class="testDiv">
 	<h3>Using Ringer Mode</h3>
 	<script id="setRingerModeScript">
 function testSetRingerMode(textElement) {

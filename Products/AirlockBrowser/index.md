@@ -175,7 +175,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
 				<div class="media feature">
 					<div class="media-body">
 						<h3 class="media-heading">Lockdown Mode</h3>
-						Engage lock-down mode to restrict access to adminstration features.
+						Engage lock-down mode to restrict access to administration features.
 					</div>
 				</div>
 

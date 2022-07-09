@@ -1,78 +1,79 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Outcoder designs and builds mobile web Browsers. Outcoder is the maker of the popular Surfy browser available for Android and Windows commercial sector. 
-Outcoder develops Airlock Browser; an Industrial browser with unique features that maximize the productivity of mobile workers, minimize support and administration costs, 
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Outcoder designs and builds mobile web Browsers. Outcoder is the maker of the popular Surfy browser available for Android and Windows commercial sector.
+Outcoder develops Airlock Browser; an Industrial browser with unique features that maximize the productivity of mobile workers, minimize support and administration costs,
 and provide a seamless migration from legacy applications to today’s Web-based solutions. Available for Android and Windows Embeded 8.1 Handheld." />
-<meta name="keywords" content="Outcoder, Airlock, Surfy, Browser, Surfy Browser, Android, industrial browser, secure browser, mobile development platform, client application, browser emulation, secure mobile browser, 
+	<meta name="keywords" content="Outcoder, Airlock, Surfy, Browser, Surfy Browser, Android, industrial browser, secure browser, mobile development platform, client application, browser emulation, secure mobile browser,
 browser-based applications, airlock browser, terminal based web browser, mobility client, browser applications, browser-based apps, industrial browser, mobile browser emulation, enterprise browser, WE8H, WE8HH, WE8.1H,
 Windows Embedded, enterprise browser, FZ-E1, Toughpad, Pideon, BM180, Ingenico, Motorola, Intermec, Bluebird, Daniel Vaughan" />
-<meta name="author" content="Outcoder" />
-<title>{{ page.title }}</title>
-<link rel="icon" href="/favicon.png" type="image/x-icon" />
-<!-- google font -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CRubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
-<!-- bootstrap css -->
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
-<!-- iconic font css -->
-<link href="/css/font-awesome.min.css" rel="stylesheet" />
-<!-- dropdown menu css -->
-<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet" />
-<!-- animate css -->
-<link href="/css/animate.css" rel="stylesheet" />
-<!--Image Popup-->
-<link href="/css/magnific-popup.css" rel="stylesheet" />
-<!-- theme css -->
-<link href="/css/style.css" rel="stylesheet" />
-<link href="/css/responsive.css" rel="stylesheet" />
-<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		
-<script src="/js/jquery.min.js"></script> 
-<script src="/js/bootstrap.min.js"></script> 
-<script src="/js/bootstrap-dropdownhover.min.js"></script> 
-<!-- css3 animation on scroll --> 
-<script src="/js/wow.min.js"></script> 
-<!-- Image Popup  --> 
-<script src="/js/jquery.magnific-popup.min.js"></script> 
-<!-- counter --> 
-<script src="/js/waypoints.min.js"></script> 
-<script src="/js/jquery.counterup.min.js"></script> 
-<!-- default --> 
-<script src="/js/main.js"></script>
-	
-<link rel="stylesheet" href="/css/custom.css">
-<link rel="stylesheet" href="/css/CodeHighlighting/vs.css">
+	<meta name="author" content="Outcoder" />
+	<title>{{ page.title }}</title>
+	<link rel="icon" href="/favicon.png" type="image/x-icon" />
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CRubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+	<!-- bootstrap css -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- iconic font css -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- dropdown menu css -->
+	<link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet" />
+	<!-- animate css -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	<!--Image Popup-->
+	<link href="/css/magnific-popup.css" rel="stylesheet" />
+	<!-- theme css -->
+	<link href="/css/style.css" rel="stylesheet" />
+	<link href="/css/responsive.css" rel="stylesheet" />
+	<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+			<![endif]-->
 
-{% for css in layout.customcss %}
-<link rel="stylesheet" href="{{ css }}" />
-{% endfor %}
-	
-{% for css2 in layout.cssmaxwidth700 %}
-<link rel="stylesheet" href="{{ css2 }}" media="screen and (max-width: 700px)" />
-{% endfor %}
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-dropdownhover.min.js"></script>
+	<!-- css3 animation on scroll -->
+	<script src="/js/wow.min.js"></script>
+	<!-- Image Popup  -->
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<!-- counter -->
+	<script src="/js/waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<!-- default -->
+	<script src="/js/main.js"></script>
 
-{% for js in layout.customjs %}
-<script type="text/javascript" src="{{ js }}"></script>
-{% endfor %}
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/CodeHighlighting/vs.css">
 
-{% for css in page.customcss %}
-<link rel="stylesheet" href="{{ css }}" />
-{% endfor %}
-	
-{% for css2 in page.cssmaxwidth700 %}
-<link rel="stylesheet" href="{{ css2 }}" media="screen and (max-width: 700px)" />
-{% endfor %}
+	{% for css in layout.customcss %}
+	<link rel="stylesheet" href="{{ css }}" />
+	{% endfor %}
 
-{% for js in page.customjs %}
-<script type="text/javascript" src="{{ js }}"></script>
-{% endfor %}
+	{% for css2 in layout.cssmaxwidth700 %}
+	<link rel="stylesheet" href="{{ css2 }}" media="screen and (max-width: 700px)" />
+	{% endfor %}
 
+	{% for js in layout.customjs %}
+	<script type="text/javascript" src="{{ js }}"></script>
+	{% endfor %}
+
+	{% for css in page.customcss %}
+	<link rel="stylesheet" href="{{ css }}" />
+	{% endfor %}
+
+	{% for css2 in page.cssmaxwidth700 %}
+	<link rel="stylesheet" href="{{ css2 }}" media="screen and (max-width: 700px)" />
+	{% endfor %}
+
+	{% for js in page.customjs %}
+	<script type="text/javascript" src="{{ js }}"></script>
+	{% endfor %}
+
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <!--<div class="preloader"></div>-->

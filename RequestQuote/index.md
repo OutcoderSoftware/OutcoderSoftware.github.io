@@ -35,7 +35,9 @@ customjs:
     <input type="hidden" name="ProductId" id="ProductId" />
 	<input type="hidden" name="PageId" id="RequestQuote" />
     <p class="help-block"></p>
-    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+             <div class="g-recaptcha" data-sitekey="6LfdA9ggAAAAAMEyG7LuXzuXpfzWolUfx7kjfCQo"></div> <!-- replace with your recaptcha SITE key not secret key -->
+      <br/>
+
     <input type="submit" value="Send" id="validate" class="btn btn-primary btn-xl" />
 </form>
 </div>

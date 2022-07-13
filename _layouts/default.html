@@ -73,7 +73,16 @@ Windows Embedded, enterprise browser, FZ-E1, Toughpad, Pideon, BM180, Ingenico, 
 	<script type="text/javascript" src="{{ js }}"></script>
 	{% endfor %}
 
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?render={6LfEMT4fAAAAADXVvcrPRtjXgCYEle3fsYaBicA5}"></script>
+	<script>
+		grecaptcha.ready(function () {
+            grecaptcha.execute('{6LfEMT4fAAAAADXVvcrPRtjXgCYEle3fsYaBicA5}', { action: 'submit' }).then(function (token) {
+				console.info("got token: " + token);
+				document.getElementById('g-recaptcha-response').value = token;
+			});
+		});
+	</script>
+
 </head>
 <body>
 <!--<div class="preloader"></div>-->

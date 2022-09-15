@@ -59,3 +59,53 @@ title: Outcoder | The Browser Company
   </div>
   <!-- Carousel Banner End --> 
 </section>
+<section id="clients" class="section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="text-center">Featured Customers</h2>
+        <div class="text-center">
+          <hr class="hr-center">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Quad_Logo.jpg" class="img-responsive" alt="Quad"></div>
+      </div>
+	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Lgt_Logo.png" class="img-responsive" alt="LGT Logistics"></div>
+      </div>
+	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Chirpal_Logo.png" class="img-responsive" alt="Chiripal Poly Films"></div>
+      </div>
+	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Avigilon_Logo.png" class="img-responsive" alt="Avigilon"></div>
+      </div>
+	   <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/dbi_logo.png" class="img-responsive" alt="DBI Plastics"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Trox_Logo.png" class="img-responsive" alt="Trox"></div>
+      </div>
+	        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Arvind-Brand_logo.png" class="img-responsive" alt="Arvind Brand"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Codeware_logo.png" class="img-responsive" alt="Codeware"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Valgreti_Logo.png" class="img-responsive" alt="Valgreti"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Logicode_logo.png" class="img-responsive" alt="Logicode"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Emerson_logo.png" class="img-responsive" alt="Emerson"></div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="Images/Fec_logo.gif" class="img-responsive" alt="Anker Noreste"></div>
+      </div>
+    </div>
+  </div>
+</section>

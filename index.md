@@ -71,13 +71,13 @@ title: Outcoder | The Browser Company
     </div>
     <div class="row">
 	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Quad_Logo.jpg" class="img-responsive" alt="Quad"></div>
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Quad_logo.jpg" class="img-responsive" alt="Quad"></div>
       </div>
 	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
         <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Lgt_Logo.png" class="img-responsive" alt="LGT Logistics"></div>
       </div>
 	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Chirpal_Logo.png" class="img-responsive" alt="Chiripal Poly Films"></div>
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Chirpal_logo.png" class="img-responsive" alt="Chiripal Poly Films"></div>
       </div>
 	 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
         <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Avigilon_Logo.png" class="img-responsive" alt="Avigilon"></div>
@@ -95,7 +95,7 @@ title: Outcoder | The Browser Company
         <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Codeware_logo.png" class="img-responsive" alt="Codeware"></div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Valgreti_Logo.png" class="img-responsive" alt="Valgreti"></div>
+        <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Valgreti_logo.png" class="img-responsive" alt="Valgreti"></div>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
         <div class="clients-cont wow fadeIn" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s"><img src="images/Logicode_logo.png" class="img-responsive" alt="Logicode"></div>

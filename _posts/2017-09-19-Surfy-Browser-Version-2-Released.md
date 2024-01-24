@@ -23,7 +23,7 @@ Surfy Browser's translators are:
  
  We hope you enjoy using this new version of Surfy Browser.
 
- Happy browsing to you!
+ Happy browsing!
 
 
  <ul class="list-inline intro-social-buttons">

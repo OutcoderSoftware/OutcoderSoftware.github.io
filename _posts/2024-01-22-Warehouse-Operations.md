@@ -1,6 +1,6 @@
 ---
 author: James Deakin
-title: Revolutionizing Warehouse Operations with Industrial Browsers and Barcode Technology
+title: Revolutionizing Warehouse Operations
 published: true
 ---
 

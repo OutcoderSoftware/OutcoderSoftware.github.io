@@ -1,5 +1,5 @@
 ---
-author: James Deakin
+author: Violet Durand
 title: Leveraging Mobile Device Management
 published: true
 ---

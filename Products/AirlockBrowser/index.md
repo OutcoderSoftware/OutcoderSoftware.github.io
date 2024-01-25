@@ -304,6 +304,18 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
   </div>
 </section>
 
+<section id="banner-final-action" class="section-padding">
+  <div class="container">
+    <div class="row">
+	    <div class="col-lg-8 col-lg-offset-2">
+		    <div class="banner-2-cont">
+			    <div class="text-center hidden-xs"><a href="Downloads/" class="btn btn-black btn-xl">Try it Now</a> &nbsp; <a href="../../RequestQuote/index.html?ProductId=IndustrialAndroid" class="btn btn-default btn-xl">Request A Quote</a></div>
+		    </div>
+	    </div>
+    </div>
+  </div>
+</section>
+
 <script src="/js/jquery.cycle2.js"></script>
 <script>
 	$(document).ready(function ()

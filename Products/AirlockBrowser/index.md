@@ -304,7 +304,7 @@ title: Outcoder | The Browser Company | Airlock Browser for Android
   </div>
 </section>
 
-<section id="banner-final-action" class="section-padding">
+<section id="banner-final-action" class="section-padding" style="padding: 0 0 100px 0;">
   <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">

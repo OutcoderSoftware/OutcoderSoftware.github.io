@@ -1,5 +1,5 @@
 ---
-author: James Deakin
+author: Violet Durand
 title: Streamlining Warehouse Operations with an Industrial Browsers
 published: true
 ---

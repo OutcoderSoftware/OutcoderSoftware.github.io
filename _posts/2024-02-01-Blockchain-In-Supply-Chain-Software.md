@@ -1,7 +1,7 @@
 ---
 author: Violet Durand
 title: Enhancing Supply Chain Integrity with Blockchain Technology
-published: false
+published: true
 ---
 
 <img src="/Blog/Images/PostImages/2024-02-01/BlockChainAndSupplyChain480.png" alt="Blockchain in Supply Chain Software" />

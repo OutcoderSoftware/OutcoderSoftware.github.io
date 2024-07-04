@@ -128,6 +128,19 @@ The JavaScript object that you use to call through to Airlock Browser is named `
 
 The specified function is called immediately following the `window.onload` event. The parameter to the `onReady` function is a string containing JavaScript.
 
+> **Please note:** When using the *Edit JavaScript* feature do not use the `airlock.onReady(...)` function, as it is called before your script executes.
+When using the 'On Page Load' option call the function directly like so:
+
+```js
+function handleAirlockReady() {
+	var decoder = airlock.scanning.getDecoderWithNativeId(71);
+	decoder.enabled = false;
+	airlock.scanning.setDecoder(decoder);
+}
+
+handleAirlockReady();
+```
+
 ## Enabling Intellisense
 
 During development of your web application, you can include the  [Airlock.js](../../../Scripting/V2/JavaScript/Airlock/Airlock.js) file in your project for intellisense/code completion support. The JSDoc comments within the file include type and parameter information, together with working samples. This aids in increasing the speed of development and reduces errors from typos.

@@ -48,5 +48,3 @@ Airlock Browser includes a rich set of client-side JavaScript APIs that allow yo
 
 
 For more detailed instructions, refer to the [Airlock Browser User Guide](https://outcoder.com/Products/AirlockBrowser/UserGuides/V2/).
-
----

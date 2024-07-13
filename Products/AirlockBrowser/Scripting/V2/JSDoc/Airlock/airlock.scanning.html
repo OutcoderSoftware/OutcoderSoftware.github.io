@@ -536,6 +536,8 @@
 
 
 
+
+
         
             
 
@@ -629,6 +631,8 @@
 
 
 
+
+
         
             
 
@@ -697,6 +701,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -825,6 +831,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -854,119 +862,6 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>var config = airlock.scanning.getConfiguration();// Displays truealert(config.barcodeVibrate);</code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".getDecoders"><span class="type-signature">(static) </span>getDecoders<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;object>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieves all decoders via a Promise.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1574">line 1574</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A list of all decoders.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;object>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>airlock.scanning.getDecoders().then(function (decoders) {		var text = "";		for (let i = 0; i &lt; decoders.length; i++) {			text += decoders[i].name + ", ";		}		alert(text);	}).catch(function (error) {		alert(`Error: ${error}`);	});</code></pre>
 
 
 
@@ -1096,6 +991,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1278,6 +1175,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1307,6 +1206,121 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>var codabarDecoder = airlock.scanning.getDecoderWithNativeId(71);// Displays 'codabar'alert(decoder.name);</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getDecoders"><span class="type-signature">(static) </span>getDecoders<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;object>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieves all decoders via a Promise.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1574">line 1574</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A list of all decoders.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;object>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>airlock.scanning.getDecoders().then(function (decoders) {		var text = "";		for (let i = 0; i &lt; decoders.length; i++) {			text += decoders[i].name + ", ";		}		alert(text);	}).catch(function (error) {		alert(`Error: ${error}`);	});</code></pre>
 
 
 
@@ -1378,6 +1392,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1499,6 +1515,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1594,6 +1612,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1715,6 +1735,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1810,6 +1832,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1931,6 +1955,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -2026,6 +2052,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2147,6 +2175,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -2242,6 +2272,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2355,6 +2387,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2529,6 +2563,8 @@
 
 
 
+
+
 <h5>Throws:</h5>
 
         
@@ -2687,6 +2723,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2874,6 +2912,8 @@
 
 
 
+
+
         
             
 
@@ -2991,6 +3031,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -3144,6 +3186,8 @@
 
 
 
+
+
         
             
 
@@ -3261,6 +3305,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -3414,6 +3460,8 @@
 
 
 
+
+
         
             
 
@@ -3549,6 +3597,8 @@
 
 
 
+
+
         
             
 
@@ -3666,6 +3716,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -4476,6 +4528,8 @@
 
 
 
+
+
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// Subscribeairlock.scanning.onScan.addListener(handleScan);function handleScan(args) {		// Displays the barcode data.		alert(args.text);}// Unsubscribeairlock.scanning.onScan.removeListener(handleScan);</code></pre>
@@ -4577,6 +4631,8 @@
 
 
 
+
+
     <h5>Examples</h5>
     
     <pre class="prettyprint"><code>// Subscribeairlock.scanning.onScanError.addListener(handleScanError);function handleScanError(args) {		// Display error info (if exists)		alert(args.errorInfo);}</code></pre>
@@ -4597,13 +4653,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onButtonPress">onButtonPress</a></li><li><a href="airlock.device.html#.event:onKeyPress">onKeyPress</a></li><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onButtonPress">onButtonPress</a></li><li><a href="airlock.device.html#.event:onKeyPress">onKeyPress</a></li><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 04 2024 19:52:10 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -486,6 +486,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -722,6 +724,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -871,6 +875,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1101,6 +1107,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1250,6 +1258,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1425,6 +1435,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1587,6 +1599,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -1687,6 +1701,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -1933,6 +1949,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -2040,6 +2058,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2197,6 +2217,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -2372,11 +2394,172 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
 <div class="param-desc">
     The current offset in bytes.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getFileSizeBytes"><span class="type-signature">(static) </span>getFileSizeBytes<span class="signature">(handle)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the size of a file in bytes.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The file identifier.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1124">line 1124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The size of the file in bytes.
 </div>
 
 
@@ -2605,6 +2788,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -2634,163 +2819,6 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>airlock.io.getFiles(directoryPath, "*.*", true)		.then(function (result) {			alert(`${directoryPath} contains: ${result.join("\n")}`);		}).catch(function (error) {			alert(`Error ${error}`);		});</code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".getFileSizeBytes"><span class="type-signature">(static) </span>getFileSizeBytes<span class="signature">(handle)</span><span class="type-signature"> &rarr; {number}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Gets the size of a file in bytes.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>handle</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The file identifier.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line1124">line 1124</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The size of the file in bytes.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
 
 
 
@@ -2941,6 +2969,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -3139,6 +3169,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -3288,6 +3320,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -3549,6 +3583,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -3698,6 +3734,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -3947,6 +3985,8 @@
 
 
 
+
+
 <h5>Returns:</h5>
 
         
@@ -4136,6 +4176,8 @@
 
 
 
+
+
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>let position = 1024; // 1024 bytes past the start of the file.airlock.io.seek(file1Handle, position);</code></pre>
@@ -4259,6 +4301,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -4429,6 +4473,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -4614,6 +4660,8 @@
 
     
 </dl>
+
+
 
 
 
@@ -4962,13 +5010,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onButtonPress">onButtonPress</a></li><li><a href="airlock.device.html#.event:onKeyPress">onKeyPress</a></li><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="airlock.html">airlock</a></li><li><a href="airlock.app.html">app</a></li><li><a href="airlock.browsing.html">browsing</a></li><li><a href="airlock.device.html">device</a></li><li><a href="airlock.io.html">io</a></li><li><a href="airlock.log.html">log</a></li><li><a href="airlock.networking.html">networking</a></li><li><a href="airlock.printing.html">printing</a></li><li><a href="airlock.scanning.html">scanning</a></li><li><a href="airlock.speech.html">speech</a></li><li><a href="airlock.ui.html">ui</a></li></ul><h3>Events</h3><ul><li><a href="airlock.device.html#.event:onButtonPress">onButtonPress</a></li><li><a href="airlock.device.html#.event:onKeyPress">onKeyPress</a></li><li><a href="airlock.device.html#.event:onPowerChanged">onPowerChanged</a></li><li><a href="airlock.networking.html#.event:onConnectionChanged">onConnectionChanged</a></li><li><a href="airlock.scanning.html#.event:onScan">onScan</a></li><li><a href="airlock.scanning.html#.event:onScanError">onScanError</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 04 2024 19:52:10 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

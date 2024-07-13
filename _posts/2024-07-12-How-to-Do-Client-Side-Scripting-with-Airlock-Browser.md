@@ -33,8 +33,7 @@ Paste a custom User Agent string into the User Agent field in the Web Applicatio
 ### Example: Adding a Custom JavaScript
 
 
-1. **Creating a New Script** Use the JavaScript editor to write or import your script.
-Example:
+1. **Creating a New Script** Use the JavaScript editor to write or import your script. Example:
 ```javascript
 console.log("Page loaded successfully.");
 ```
@@ -43,7 +42,5 @@ Select the execution event (e.g., On Page Load).
 2. **Testing the Script**
 Reload the web application profile by tapping on the application tile.
 Verify that the script runs as expected when the event triggers.
-
-
 
 For more detailed instructions, refer to the [Airlock Browser User Guide](https://outcoder.com/Products/AirlockBrowser/UserGuides/V2/).

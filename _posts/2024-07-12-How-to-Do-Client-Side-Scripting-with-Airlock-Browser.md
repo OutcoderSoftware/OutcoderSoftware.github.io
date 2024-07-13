@@ -40,7 +40,7 @@ console.log("Page loaded successfully.");
 ```
 Select the execution event (e.g., On Page Load).
 
-2. **two Testing the Script**
+2. **Testing the Script**
 Reload the web application profile by tapping on the application tile.
 Verify that the script runs as expected when the event triggers.
 

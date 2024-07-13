@@ -26,9 +26,5 @@ Use fields like `BarcodeData`, `SourceScanner`, and `Symbology` to handle and ma
 Improve the appearance and usability of legacy web applications by applying custom CSS.
 Tap the CSS button on the Web Application Profile screen and use the CSS editor to add your styles.
 
-## 5. Applying a Custom User Agent
-Some web applications require specific User Agents to render content correctly.
-Paste a custom User Agent string into the User Agent field in the Web Application Profile settings.
 
-### Example: Adding a Custom JavaScript
 

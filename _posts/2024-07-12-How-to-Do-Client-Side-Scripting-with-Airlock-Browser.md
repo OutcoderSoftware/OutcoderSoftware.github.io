@@ -18,8 +18,3 @@ Tap the JavaScript button on the Web Application Profile screen.
 Create or edit JavaScript that executes during specific events, such as page load or barcode scan.
 Use the "+" button to add new JavaScript items and select the event trigger (e.g., On Page Load, Before Barcode Wedge, After Barcode Scan).
 
-## 3. Handling Barcode Scan Events
-Airlock Browser provides barcode data to client-side JavaScript as an immutable object named `scanData`.
-Use fields like `BarcodeData`, `SourceScanner`, and `Symbology` to handle and manipulate scan results.
-
-

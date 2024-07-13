@@ -22,9 +22,4 @@ Use the "+" button to add new JavaScript items and select the event trigger (e.g
 Airlock Browser provides barcode data to client-side JavaScript as an immutable object named `scanData`.
 Use fields like `BarcodeData`, `SourceScanner`, and `Symbology` to handle and manipulate scan results.
 
-## 4. Adding Client-Side CSS
-Improve the appearance and usability of legacy web applications by applying custom CSS.
-Tap the CSS button on the Web Application Profile screen and use the CSS editor to add your styles.
-
-
 

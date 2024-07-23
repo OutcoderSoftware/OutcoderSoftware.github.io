@@ -377,7 +377,7 @@ The following are the three available execution events:
 * On Page Load
 * Before Barcode Wedge
 * After Barcode Scan
-* Append to body
+* Append to body (available in version 5.6.0)
 
 If *On Page Load* is selected, the script is invoked on the web page as soon as the page has loaded.
 

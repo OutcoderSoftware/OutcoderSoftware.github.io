@@ -406,10 +406,9 @@ When you create a New JavaScript item, you have the option to select one of the 
 * Print
 * Load External Script
 
-The templates have the following content.
 
 
-* Barcode Scan
+#### Barcode Scan
 ```javascript
 var barcode = scanArgs.barcodeText;
 var symbology = scanArgs.nativeSymbologyId;
@@ -418,15 +417,15 @@ scanArgs.text = symbology + ", " + barcode + ", " + barcode.length;
 /* Please see the documentation for ScanEventArgs field information. *
 ```
 
-* Speech
+#### Speech
 ```javascript
 airlock.speech.speakText("Hi from Airlock Browser");
 ```
-* Print
+#### Print
 ```javascript
 airlock.printing.printPage();
 ```
-* Load External Script
+#### Load External Script
 ```javascript
 function loadExternalScript(url) {
     var script = document.createElement('script');

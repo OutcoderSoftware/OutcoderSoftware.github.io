@@ -51,6 +51,7 @@ redirect_from:
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
+	* [Using JavaScript Templates](#using-javascript-templates)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
 * [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
@@ -376,6 +377,7 @@ The following are the three available execution events:
 * On Page Load
 * Before Barcode Wedge
 * After Barcode Scan
+* Append to Body
 
 If *On Page Load* is selected, the script is invoked on the web page as soon as the page has loaded.
 
@@ -387,11 +389,60 @@ If *Before Barcode Wedge* is selected, the script is invoked before text is inse
 
 If *After Barcode Scan* is selected, the script is invoked after a barcode scan is performed, regardless of the *Keyboard Wedge* option in the Web Application Profile settings.
 
+If *Append to Body* is selected, the script is not invoked but added directly to the body of the html page.
+
 JavaScript may be entered directly into the JavaScript field. Alternatively, use the Import button in the application bar to browse for a JavaScript file. This allows you to edit the file with the convenience of a desktop editor. 
 
 When importing a file, you are given the option to append its content to the JavaScript field or replace the content in the JavaScript field.
 
 <figure><img src='Images/JavaScript.png'><figcaption>Figure 15. JavaScript Editor</figcaption></figure>
+
+
+### Using JavaScript Templates
+When you create a New JavaScript item, you have the option to select one of the following JavaScript templates:
+* Blank
+* Barcode Scan
+* Speech
+* Print
+* Load External Script
+
+
+* Barcode Scan
+```javascript
+var barcode = scanArgs.barcodeText;
+var symbology = scanArgs.nativeSymbologyId;
+/* By changing the text property you change what is inserted into a field. */
+scanArgs.text = symbology + ", " + barcode + ", " + barcode.length;
+/* Please see the documentation for ScanEventArgs field information. *
+```
+
+* Speech
+```javascript
+airlock.speech.speakText("Hi from Airlock Browser");
+```
+* Print
+```javascript
+airlock.printing.printPage();
+```
+* Load External Script
+```javascript
+function loadExternalScript(url) {
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    script.onload = function () {
+        /* console.log('Script loaded successfully.'); */
+    };
+    script.onerror = function () {
+        /* console.error('Error loading script.'); */
+    };
+    document.head.appendChild(script);
+}
+
+/* Call the function with the network path or URL to the external script. */
+```
+
+
 
 ### Handling Barcode Scan Events
 

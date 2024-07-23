@@ -377,7 +377,7 @@ The following are the three available execution events:
 * On Page Load
 * Before Barcode Wedge
 * After Barcode Scan
-* Append to Body
+* Append to body
 
 If *On Page Load* is selected, the script is invoked on the web page as soon as the page has loaded.
 
@@ -389,7 +389,7 @@ If *Before Barcode Wedge* is selected, the script is invoked before text is inse
 
 If *After Barcode Scan* is selected, the script is invoked after a barcode scan is performed, regardless of the *Keyboard Wedge* option in the Web Application Profile settings.
 
-If *Append to Body* is selected, the script is not invoked but added directly to the body of the html page.
+If *Append to body* is selected, the script is not invoked but added directly to the body of the html page.
 
 JavaScript may be entered directly into the JavaScript field. Alternatively, use the Import button in the application bar to browse for a JavaScript file. This allows you to edit the file with the convenience of a desktop editor. 
 
@@ -438,7 +438,6 @@ function loadExternalScript(url) {
     };
     document.head.appendChild(script);
 }
-
 /* Call the function with the network path or URL to the external script. */
 ```
 

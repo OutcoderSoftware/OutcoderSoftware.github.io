@@ -406,6 +406,8 @@ When you create a New JavaScript item, you have the option to select one of the 
 * Print
 * Load External Script
 
+The templates have the following content.
+
 
 * Barcode Scan
 ```javascript

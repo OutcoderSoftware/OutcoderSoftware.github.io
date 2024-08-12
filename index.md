@@ -1,5 +1,5 @@
 ---
-title: Outcoder | The Browser Company
+title: Outcoder | The Browser Company | Airlock Industrial Browser
 ---
 
 <section id="banner-2">

@@ -1,6 +1,8 @@
 ---
 layout: UserGuide
-title: Airlock Browser User Guide
+title: Airlock Browser | Industrial Browser for Android | User Guide
+description: A purpose-built industrial browser, designed for warehouse and industrial environments to meet the needs of mobile workers. It is a highely configurable application with powerful client scripting that enables deep device integration features.
+keywords: industrial browser,browser for mobile computers,browser for WMS,secure browser, user guide
 redirect_from:
  - /Products/AirlockBrowser/UserGuides/V1/AirlockBrowserUserGuide.html
  - /Products/AirlockBrowser/UserGuide/

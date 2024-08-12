@@ -1,5 +1,6 @@
 ---
-title: Outcoder | The Browser Company | Airlock Browser for Android
+title: Outcoder | Industrial Browser | Airlock Browser for Android
+
 ---
 
 <section id="banner-3" class="section-padding" style="background:url(/images/airlock-bg.jpg) no-repeat 0 0; background-position:center; background-attachment:fixed;  background-size: cover; }">

@@ -8,7 +8,7 @@ title: Outcoder | Industrial Browser | Airlock Browser | Faq
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-header-txt-cont">
-                    <h2 class="text-left">Faq</h2>
+                    <h2 class="text-left">FAQ</h2>
                     <h6><a href="#" class="">Home</a> / Faq</h6>
                 </div>
             </div>

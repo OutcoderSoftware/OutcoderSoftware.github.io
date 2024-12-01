@@ -51,7 +51,7 @@ redirect_from:
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
-	* [Inserting HTML](#inserting-html)
+	* [Inserting HTML into a Page](#inserting-html-into-a-page)
 	* [Using JavaScript Templates](#using-javascript-templates)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
 * [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
@@ -398,7 +398,7 @@ When importing a file, you are given the option to append its content to the Jav
 
 <figure><img src='Images/JavaScript.png'><figcaption>Figure 15. JavaScript Editor</figcaption></figure>
 
-### Inserting HTML
+### Inserting HTML into a Page
 
 You can use custom JavaScript to modify the HTML of a page. 
 For example, to add a new `div` to a page, creating a new JavaScript item

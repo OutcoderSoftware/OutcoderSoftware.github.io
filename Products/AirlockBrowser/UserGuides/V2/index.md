@@ -51,6 +51,7 @@ redirect_from:
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
+	* [Appending HTML](#appending-html)
 	* [Using JavaScript Templates](#using-javascript-templates)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
 * [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
@@ -397,6 +398,18 @@ When importing a file, you are given the option to append its content to the Jav
 
 <figure><img src='Images/JavaScript.png'><figcaption>Figure 15. JavaScript Editor</figcaption></figure>
 
+### Appending HTML
+
+You can use custom JavaScript to modify the HTML of a page. 
+For example, to add a new `div` to a page, creating a new JavaScript item
+as described in the previous section. Set the event as `On Page Load`
+and include the following JavaScript code:
+
+```js
+const newDiv = document.createElement('div');
+newDiv.textContent = 'This div was added after the page loaded!';
+document.body.appendChild(newDiv);
+```
 
 ### Using JavaScript Templates
 When you create a New JavaScript item, you have the option to select one of the following JavaScript templates:
@@ -405,8 +418,6 @@ When you create a New JavaScript item, you have the option to select one of the 
 * Speech
 * Print
 * Load External Script
-
-
 
 #### Barcode Scan
 ```javascript

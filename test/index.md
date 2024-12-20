@@ -1,8 +1,7 @@
 ---
 layout: test
-title: Test page 1
+title: Simple Input Fields
 ---
-<h1>{{ page.title }}</h1>
 
 <h1>Three Text Input Fields</h1>
     <form>

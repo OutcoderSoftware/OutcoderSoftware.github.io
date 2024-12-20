@@ -3,7 +3,7 @@ layout: None
 title: Simple Input Fields
 ---
 
-<h1>Three Text Input Fields</h1>
+<h1>Input Fields</h1>
 
 <style>
 	.form-container {

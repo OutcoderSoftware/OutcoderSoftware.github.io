@@ -7,9 +7,9 @@ redirect_from:
 ---
 
 # Airlock Browser User Guide
-#### For Version 2.0, Android
+#### For Version 2.8, Android
 
-[Download as PDF](AirlockBrowserVersion2UserGuide.pdf)
+[Download as PDF](AirlockBrowserUserGuide_02_08.pdf)
 
 ## Table of Contents
 

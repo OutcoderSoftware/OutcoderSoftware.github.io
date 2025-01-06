@@ -354,16 +354,15 @@ See also [symbologyName](https://outcoder.com/Products/AirlockBrowser/Scripting/
 
 <figure><img src='Images/IntentFilterSettings.png'><figcaption>Figure 10.1. Barcode Intent Settings</figcaption></figure>
 
-**Please note** that Intent settings only take effect when Airlock Browser 
-is *not* running on a device from one of the following manufacturers:
-
-* Bluebird
-* CipherLab
-* Datalogic
-* Honeywell
-* Panasonic
-* Urovo
-* Zebra
+> **NOTE:** Intent settings only take effect when Airlock Browser is *not* running on a device from one of the following manufacturers:
+>
+> * Bluebird
+> * CipherLab
+> * Datalogic
+> * Honeywell
+> * Panasonic
+> * Urovo
+> * Zebra
 
 ## Configuring Lock-Down Mode with the Administration Screen
 

@@ -47,8 +47,8 @@ title: Outcoder | Industrial Browser | Airlock Browser for Android
                 <!--<li><a href="../LicenseManager/V2/">License Manager</a></li>-->
               </ul>
 
-              <h3>Need Specialized Support?</h3>
-              <p style="padding-top:20px;">
+              <h3 style="padding-top:1.1em;">Need Specialized Support?</h3>
+              <p>
                   Looking for help integrating Airlock Browser into your organization?  
                   We offer custom services to support every aspect of your development needs, including (but not limited to) custom JavaScript and CSS solutions.
                   <br />

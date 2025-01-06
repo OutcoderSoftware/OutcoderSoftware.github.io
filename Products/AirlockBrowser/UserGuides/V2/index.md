@@ -361,7 +361,6 @@ See also [symbologyName](https://outcoder.com/Products/AirlockBrowser/Scripting/
 > * Datalogic
 > * Honeywell
 > * Panasonic
-> * Urovo
 > * Zebra
 
 ## Configuring Lock-Down Mode with the Administration Screen

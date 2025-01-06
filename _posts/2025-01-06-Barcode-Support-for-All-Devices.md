@@ -36,7 +36,7 @@ For detailed instructions, refer to the [user guide](https://outcoder.com/Produc
 
 With this new feature, Airlock Browser empowers your team to work smarter, not harder. Whether you're rolling out updates across multiple devices or streamlining barcode scanning, we've got you covered.
 
-Try it out today and let us know what you think! As always, we’re here to help with any questions or feedback you have.
+Try it out today and let us know what you think! As always, we're here to help with any questions or feedback you have.
 
 * [Request a Feature](https://github.com/orgs/OutcoderSoftware/discussions/8)
 * [Report a Bug](https://github.com/OutcoderSoftware/AirlockBrowser/issues)

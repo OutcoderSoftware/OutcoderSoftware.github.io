@@ -48,6 +48,7 @@ redirect_from:
 	* [Importing Configuration with MDM Software](#importing-configuration-with-mdm-software)
 	* [License Server API Key](#license-server-api-key)
 	* [Configuring Device Vendor Specific Settings](#configuring-device-vendor-specific-settings)
+	* [Configuring Barcode Intent Settings for Non-Vendor Specific Devices](#configuring-barcode-intent-settings)
 * [Configuring Lock-Down Mode with the Administration Screen](#configuring-lock-down-mode-with-the-administration-screen)
 * [Creating a Web Application Profile](#creating-a-web-application-profile)
 	* [Invoking Custom JavaScript](#invoking-custom-javascript)
@@ -320,6 +321,25 @@ When a symbology is disabled it appears dimmed-out in the Symbology Selection sc
 <figure><img src='Images/DC_Symbology.png'><figcaption>Figure 10. Symbology screen</figcaption></figure>
 
 Vendor device configurations *are* included in the exported configuration file.
+
+### Configuring Barcode Intent Settings
+
+Airlock Browser is able to leverage the hardware barcode scanner on devices that are **not explicitly supported**.
+To achieve this, configure the Barcode Intent Settings as shown in Figure 10.1.
+
+The settings provided in this section must match the device barcode settings.
+Most devices allow the configuration of these values via a built-in app.
+You have the option of either configuring these settings via the built-in app 
+or via the Airlock Browser settings. 
+
+> **TIP:** One key advantage of using Airlock Browser's
+settings is that these settings are able to propogated to multiple device using
+Airlock Browser's configuration system.
+
+When Airlock Browser starts up, it listens for the intent with the name denoted
+by the *Barcode Intent Filter* setting.
+
+<figure><img src='Images/IntentFilterSettings.png'><figcaption>Figure 10.1. Barcode Intent Settings</figcaption></figure>
 
 ## Configuring Lock-Down Mode with the Administration Screen
 

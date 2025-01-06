@@ -332,12 +332,25 @@ Most devices allow the configuration of these values via a built-in app.
 You have the option of either configuring these settings via the built-in app 
 or via the Airlock Browser settings. 
 
-> **TIP:** One key advantage of using Airlock Browser's
+> **TIP:** An advantage of using Airlock Browser's
 settings is that these settings are able to propogated to multiple device using
 Airlock Browser's configuration system.
 
 When Airlock Browser starts up, it listens for the intent with the name denoted
 by the *Barcode Intent Filter* setting.
+
+The *Extra Data String* setting must also match that used by the device's 
+built-in barcode intent settings.
+
+The *Extra Symbology* setting is an optional setting that may or may not
+be configurable on a device. Some device vendors do not provide this capability.
+For the symbology to be provided to a JavaScript handler, this setting must
+also match the the device's built-in barcode intent settings. 
+
+> **NOTE:** If there is a mismatch, then the JavaScript handler will receive an empty value
+for the 'symbologyName' field. 
+
+See also [symbologyName](https://outcoder.com/Products/AirlockBrowser/Scripting/V2/JSDoc/Airlock/airlock.scanning.html#.ScanEventArgs)
 
 <figure><img src='Images/IntentFilterSettings.png'><figcaption>Figure 10.1. Barcode Intent Settings</figcaption></figure>
 

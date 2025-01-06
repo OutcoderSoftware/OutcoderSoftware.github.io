@@ -6,12 +6,13 @@ published: true
 
 We're thrilled to announce a powerful new feature in **[Airlock Browser](https://outcoder.com/Products/AirlockBrowser/)**: 
 support for hardware barcode readers for any device with a hardware barcode reader! 
+
 This update enables any device with barcode scanning capabilities 
 to integrate seamlessly with Airlock Browser, enhancing flexibility and efficiency for your organization.
 
 ## Why It Matters
 
-Previously, Airlock Browser only supported a predefined list of manufacturers. 
+Previously, Airlock Browser only supported hardware barcode readers of a predefined list of manufacturers. 
 With this new feature, you can now configure the browser to work with barcode scanners from virtually any device. 
 Whether you're scanning inventory, processing transactions, or managing logistics, 
 Airlock Browser is now more versatile than ever.

@@ -4,8 +4,6 @@ title: Introducing Hardware Barcode Support for all Devices
 published: true
 ---
 
-# Introducing Barcode Intent Support in Airlock Browser
-
 We're thrilled to announce a powerful new feature in **[Airlock Browser](https://outcoder.com/Products/AirlockBrowser/)**: 
 support for hardware barcode readers for any device with a hardware barcode reader! 
 This update enables any device with barcode scanning capabilities 

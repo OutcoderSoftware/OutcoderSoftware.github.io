@@ -50,7 +50,7 @@ title: Outcoder | Industrial Browser | Airlock Browser for Android
               <p>
                   Looking for help integrating Airlock Browser into your organization?  
                   We offer custom services to support every aspect of your development needs, including (but not limited to) custom JavaScript and CSS solutions.
-                  <br></br>
+                  <br />
                   <a href="/Contact">Get in touch with us today!</a>
               </p>
             </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: airlock</title>
+    <title>JSDoc: Namespace: nfc</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: airlock</h1>
+    <h1 class="page-title">Namespace: nfc</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2>airlock</h2>
+        <h2>
+            <span class="ancestors"><a href="airlock.html">airlock</a>.</span>nfc</h2>
         
     
 </header>
@@ -37,7 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">The root namespace for Airlock Browser.</div>
+            <div class="description">Provides types and events for receiving NFC tags.</div>
         
 
         
@@ -72,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line11">line 11</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line673">line 673</a>
     </li></ul></dd>
     
 
@@ -99,115 +100,7 @@
     
 
     
-        <h3 class="subsection-title">Namespaces</h3>
 
-        <dl>
-            <dt><a href="airlock.app.html">app</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.browsing.html">browsing</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.device.html">device</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.io.html">io</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.log.html">log</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.networking.html">networking</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.nfc.html">nfc</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.printing.html">printing</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.scanning.html">scanning</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.speech.html">speech</a></dt>
-            <dd></dd>
-        
-            <dt><a href="airlock.ui.html">ui</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".onReady"><span class="type-signature">(static) </span>onReady<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Use this function to determine when the airlock object is ready tobe called. The specified function is called immediately followingthe window.onload event.
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>// The following lines can be placed in a script element// in a page's head element.airlock.onReady("handleAirlockReady()");var filesDir;function handleAirlockReady() {	// Initialize the fileDir variable to the app's files directory.	filesDir = airlock.io.getAppFilesDirectory(); }</code></pre>
-
-
-
-        
     
 
     
@@ -217,22 +110,12 @@
 
         
                 
-<h4 class="name" id=".Event">Event</h4>
+<h4 class="name" id=".NfcRecord">NfcRecord</h4>
 
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -264,13 +147,13 @@
 
         <tr>
             
-                <td class="name"><code>addListener</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">string</span>
 
 
             
@@ -280,20 +163,20 @@
 
             
 
-            <td class="description last">Adds a listener for the event. listener is a function that a</td>
+            <td class="description last">The unique ID of the NFC record.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>removeListener</code></td>
+                <td class="name"><code>payload</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">string</span>
 
 
             
@@ -303,7 +186,30 @@
 
             
 
-            <td class="description last">Removes a previously added listener.</td>
+            <td class="description last">The record text.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recordType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Corresponds to the Android record.Tnf.</td>
         </tr>
 
     
@@ -342,7 +248,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line40">line 40</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line675">line 675</a>
     </li></ul></dd>
     
 
@@ -360,29 +266,22 @@
 
             
                 
+<h4 class="name" id=".TagReceivedEventArgs">TagReceivedEventArgs</h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
 
     
 
-    
-    <h4 class="name" id=".EventListener"><span class="type-signature"></span>EventListener<span class="signature">(args)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -404,13 +303,13 @@
 
         <tr>
             
-                <td class="name"><code>args</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
             
@@ -420,12 +319,146 @@
 
             
 
-            <td class="description last">An event argument object containing valuespertaining to the particular event.</td>
+            <td class="description last">The unique ID of the NFC event.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>records</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="airlock.nfc.html#.NfcRecord">airlock.nfc.NfcRecord</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The list of records.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">This must be set to true to prevent defaultactions from being performed (if any).</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line682">line 682</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+    
+
+    
+        <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".event:onTagReceived">onTagReceived</h4>
+    
+
+    
+
+
+
+<div class="description">
+    onTagReceived Event. Is raised on supported deviceswhen a NFC tag is received by the device.To subscribe to the event use:		airlock.nfc.onTagReceived.addListener(function (args) {})To unsubscribe to the event use:		airlock.nfc.onTagReceived.removeListener(afunctionReference)
+</div>
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="airlock.nfc.html#.TagReceivedEventArgs">airlock.nfc.TagReceivedEventArgs</a></span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 
@@ -461,7 +494,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line34">line 34</a>
+        <a href="Airlock.js.html">Airlock.js</a>, <a href="Airlock.js.html#line713">line 713</a>
     </li></ul></dd>
     
 
@@ -490,10 +523,13 @@
 
 
 
-
-            
+    <h5>Example</h5>
     
+    <pre class="prettyprint"><code>// Subscribe to eventairlock.nfc.onTagReceived.addListener(handleTagReceived);function handleTagReceived(args) {		if (args.State === KeyState.UP &amp;&amp; args.keyId === "1") {			args.handled = true;			alert("Key 1 pressed.");		}}// Unsubscribeairlock.nfc.onTagReceived.removeListener(handleTagReceived);</code></pre>
 
+
+
+        
     
 </article>
 

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Airlock Browser Scripting - NFC</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link href="../../../CodeFormatting/prism.css" rel="stylesheet" />
+	<script src="../ScriptExamples.js"></script>
+	<link rel="stylesheet" type="text/css" href="../ScriptExamples.css">
+	<script>
+		airlock.onReady("HandleAirlockReady()");
+
+		function HandleAirlockReady() {
+			//alert('Doing stuff 2.');
+			//var decoder = airlock.scanning.getDecoderWithName('Code39');
+			//decoder.enabled = false;
+			//airlock.scanning.setDecoder(decoder);
+		}
+	</script>
+</head>
+<body>
+<script src="../../../CodeFormatting/prism.js"></script>
+<div class="header">
+	<div class="navigation"><a href="../" class="navigation">Airlock Browser Scripting</a></div>
+	<h2>NFC (Pre-release)</h2>
+</div>
+<div id="dialog"><div id="dialogText" style="white-space: pre-wrap;"></div></div>
+
+<div class="testDiv">
+	<h3>Monitoring NFC Tag Received Events</h3>
+	<script id="subscribeToNfcTagReceivedEventScript">
+function testSubscribeToTagReceivedEvent(textElement) {
+	try {
+		airlock.nfc.onTagReceived.addListener(handleTagReceived);
+		setText(textElement, 'Subscribed.');
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+
+function handleTagReceived(args) {
+	setText('testTagReceivedEventText', getPropertyValues(args));
+	args.handled = true;
+}
+
+function testUnsubscribeToTagReceivedEvent(textElement) {
+	try {
+		airlock.nfc.onTagReceived.removeListener(handleTagReceived);
+		setText(textElement, "Unsubscribed");
+	} catch (e) {
+		setText(textElement, "Error: " + e);
+		return;
+	}
+}
+	</script><pre class="example" id="subscribeToTagReceivedEventPre"></pre><script>insertScriptInPre('subscribeToTagReceivedEventPre', 'subscribeToTagReceivedEventScript');</script>
+	<input type="button" onclick="testSubscribeToTagReceivedEvent('testTagReceivedEventText')" value="Subscribe to TagReceived Event" /><br />
+	<input type="button" onclick="testUnsubscribeToScanEvent('testTagReceivedEventText')" value="Unsubscribe" /><br />
+	<div>Read an NFC tag.</div><br />
+	<div class="outputText" type="text" id="testTagReceivedEventText"></div>
+</div>
+
+</body>
+</html>

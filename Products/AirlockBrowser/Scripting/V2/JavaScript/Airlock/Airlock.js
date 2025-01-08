@@ -664,55 +664,6 @@ airlock.device.KeyState = {
 airlock.device.onKeyPress = airlock.device.onKeyPress
 	|| pageHost.ii.registerEvent("device.onKeyPress");
 
-/* NFC */
-
-/**
- * Provides types and events for receiving NFC tags.
- * @namespace 
- */
-airlock.nfc = {};
-
-/**
- * @typedef airlock.nfc.NfcRecord
- * @property {string} id The unique ID of the NFC record.
- * @property {string} payload The record text.
- * @property {string} recordType Corresponds to the Android record.Tnf.
- */
-
-/**
- * @typedef airlock.nfc.TagReceivedEventArgs
- * @property {string} id The unique ID of the NFC event.
- * @property {airlock.nfc.NfcRecord[]} records The list of records.
- * @property {boolean} handled This must be set to true to prevent default
- * actions from being performed (if any).
- */
-
-/**
- * onTagReceived Event. Is raised on supported devices
- * when a NFC tag is received by the device.
- * To subscribe to the event use:
- *		airlock.nfc.onTagReceived.addListener(function (args) {})
- * To unsubscribe to the event use:
- *		airlock.nfc.onTagReceived.removeListener(afunctionReference)
- * @event
- * @type {airlock.nfc.TagReceivedEventArgs}
- * @example
- * // Subscribe to event
- * airlock.nfc.onTagReceived.addListener(handleTagReceived);
- *
- * function handleTagReceived(args) {
- *		if (args.State === KeyState.UP && args.keyId === "1") {
- *			args.handled = true;
- *			alert("Key 1 pressed.");
- *		}
- * }
- *
- * // Unsubscribe
- * airlock.nfc.onTagReceived.removeListener(handleTagReceived);
- */
-airlock.nfc.onTagReceived = airlock.nfc.onTagReceived
-	|| pageHost.ii.registerEvent("nfc.onTagReceived");
-
 /* IO */
 
 /**
@@ -1522,6 +1473,55 @@ airlock.networking.setWifiEnabled = function (enabled) {
  */
 airlock.networking.onConnectionChanged = airlock.networking.onConnectionChanged
 	|| pageHost.ii.registerEvent("networking.onConnectionChanged");
+
+/* NFC */
+
+/**
+ * Provides types and events for receiving NFC tags.
+ * @namespace 
+ */
+airlock.nfc = {};
+
+/**
+ * @typedef airlock.nfc.NfcRecord
+ * @property {string} id The unique ID of the NFC record.
+ * @property {string} payload The record text.
+ * @property {string} recordType Corresponds to the Android record.Tnf.
+ */
+
+/**
+ * @typedef airlock.nfc.TagReceivedEventArgs
+ * @property {string} id The unique ID of the NFC event.
+ * @property {airlock.nfc.NfcRecord[]} records The list of records.
+ * @property {boolean} handled This must be set to true to prevent default
+ * actions from being performed (if any).
+ */
+
+/**
+ * onTagReceived Event. Is raised on supported devices
+ * when a NFC tag is received by the device.
+ * To subscribe to the event use:
+ *		airlock.nfc.onTagReceived.addListener(function (args) {})
+ * To unsubscribe to the event use:
+ *		airlock.nfc.onTagReceived.removeListener(afunctionReference)
+ * @event
+ * @type {airlock.nfc.TagReceivedEventArgs}
+ * @example
+ * // Subscribe to event
+ * airlock.nfc.onTagReceived.addListener(handleTagReceived);
+ *
+ * function handleTagReceived(args) {
+ *		if (args.State === KeyState.UP && args.keyId === "1") {
+ *			args.handled = true;
+ *			alert("Key 1 pressed.");
+ *		}
+ * }
+ *
+ * // Unsubscribe
+ * airlock.nfc.onTagReceived.removeListener(handleTagReceived);
+ */
+airlock.nfc.onTagReceived = airlock.nfc.onTagReceived
+	|| pageHost.ii.registerEvent("nfc.onTagReceived");
 
 /* Printing */
 

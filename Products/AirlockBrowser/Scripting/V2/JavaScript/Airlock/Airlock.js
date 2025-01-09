@@ -1511,10 +1511,10 @@ airlock.nfc = {};
  * airlock.nfc.onTagReceived.addListener(handleTagReceived);
  *
  * function handleTagReceived(args) {
- *		if (args.State === KeyState.UP && args.keyId === "1") {
- *			args.handled = true;
- *			alert("Key 1 pressed.");
+ *		for (let record of args.records) {
+ *			alert(record.payload);
  *		}
+		args.handled = true;
  * }
  *
  * // Unsubscribe

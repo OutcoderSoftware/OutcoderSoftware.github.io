@@ -26,7 +26,7 @@ When an NFC-enabled device reads a tag, Airlock Browser captures the tag's infor
 
 For developers, Airlock Browser provides a robust set of NFC-related types and events that can be leveraged in client-side JavaScript. 
 
-> **TIP:** For detailed programming guidance, see the [Programming Reference](https://outcoder.com/Products/AirlockBrowser/Scripting/V2/JSDoc/Airlock/airlock.nfc.html).
+> **TIP:** For detailed programming guidance, see the [User Guide](https://outcoder.com/Products/AirlockBrowser/UserGuides/V2/#enabling-nfc-tag-reading) and [Programming Reference](https://outcoder.com/Products/AirlockBrowser/Scripting/V2/JSDoc/Airlock/airlock.nfc.html).
 
 ## Ready to Enable NFC in Your Workflow?
 

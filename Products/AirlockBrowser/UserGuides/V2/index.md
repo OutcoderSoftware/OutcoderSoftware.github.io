@@ -55,6 +55,7 @@ redirect_from:
 	* [Inserting HTML into a Page](#inserting-html-into-a-page)
 	* [Using JavaScript Templates](#using-javascript-templates)
 	* [Handling Barcode Scan Events](#handling-barcode-scan-events)
+	* [Enabling NFC Tag Reading](#enabling-nfc-tag-reading)
 * [Adding Client-Side CSS to Pages](#adding-client-side-css-to-pages)
 	* [Applying a Custom User Agent](#applying-a-custom-user-agent)
 	* [Limiting Screen Rotation](#limiting-screen-rotation)
@@ -514,6 +515,18 @@ The number of characters present in the barcode data.
 Indicates whether the currently active field is to be populated with the barcode data.
 * `InsertMode`  
 If the keyboard wedge is enabled, this field indicates if the barcode data will replace or be prepended or appended to the active text field.
+
+### Enabling NFC Tag Reading
+
+When an NFC tag is read via a device that is NFC enabled, Airlock Browser
+is able to deliver the NFC tag information to client-side JavaScript.
+To enable this feature for a web application, 
+navigate to the *Application* screen by long-pressing 
+the web application's tile in the *Launchpad*. 
+Ensure that the *NFC Receive* item is enabled.
+
+See the [Programming Guide](https://outcoder.com/Products/AirlockBrowser/Scripting/V2/JSDoc/Airlock/airlock.nfc.html) for detailed information 
+on using NFC related types and events in client-side JavaScript.
 
 ## Adding Client-Side CSS to Pages
 If you have a legacy web application that was not designed for a mobile device, you may apply custom CSS to the page to improve its appearance and usability. Tap the *CSS* button on the Web Application Profile screen to display the CSS editor.

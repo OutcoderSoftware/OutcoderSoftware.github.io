@@ -1,6 +1,6 @@
 ---
 author: Violet Durand
-title: Introducing Hardware Barcode Support for all Devices
+title: Introducing NFC Tag Reading in Airlock Browser
 published: true
 ---
 

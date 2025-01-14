@@ -4,7 +4,7 @@ title: Introducing NFC Tag Reading in Airlock Browser
 published: true
 ---
 
-We're excited to announce a new feature in **Airlock Browser**: NFC tag reading support! With this update, web applications can seamlessly interact with NFC-enabled devices, unlocking a range of possibilities for innovative solutions in your organization.
+We're excited to announce a new feature in **[Airlock Browser](https://outcoder.com/Products/AirlockBrowser/)**: NFC tag reading support! With this update, web applications can seamlessly interact with NFC-enabled devices, unlocking a range of possibilities for innovative solutions in your organization.
 
 ## Why NFC Tag Reading?
 

@@ -6,6 +6,10 @@
 	text-align: left;
 }
 
+.post h1, .post h2 {
+	color: #555;
+}
+
 .navbar-default .navbar-nav > li > a {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }

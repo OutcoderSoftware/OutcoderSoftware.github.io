@@ -157,6 +157,13 @@ title: Outcoder | Industrial Browser | Airlock Browser for Android
                         Swipe between tabs to work across multiple web application profiles.
                     </div>
                 </div>
+
+                <div class="media text-right feature">
+                    <div class="media-body">
+                        <h3 class="media-heading">NFC Support</h3>
+                        Let your web application read RFID tags as well as other NFC-enabled devices and smart cards.
+                    </div>
+                </div>
                 
             </div>
 

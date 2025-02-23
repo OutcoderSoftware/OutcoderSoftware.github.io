@@ -7,7 +7,7 @@ published: true
 Uncover the essentials of industrial browsers: what they are, how they stand apart from standard browsers, and their main features designed for industrial applications.
 
 ## What is an Industrial Browser?
-<img align="right" width="314" src="/Blog/Images/PostImages/2025-02-23/IndustrialDeviceHeldByWorker.jpg" alt="Worker holding an industrial device." />
+<img align="right" width="314" src="/Blog/Images/PostImages/2025-02-23/industrialDeviceHeldByWorker.jpg" alt="Worker holding an industrial device." />
 
 The growing prevalence of web-based Warehouse Management Systems (WMS) has driven demand for industrial-grade browsers designed explicitly for ruggedized mobile devices. These purpose-built browsers integrate seamlessly with WMS platforms.
 

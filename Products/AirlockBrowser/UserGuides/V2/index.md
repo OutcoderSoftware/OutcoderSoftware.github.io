@@ -90,7 +90,7 @@ There is an address bar, and various toolbar and menu items. Tapping the address
 
 When the application bar is expanded, the tab headers are revealed at the top of the screen. You can switch between tabs by scrolling and tapping the desired tab. A favicon image for the page sits in each tab along with the page title and an SSL indicator that notifies the user of an secure SSL connection. A vertical ellipsis button reveals a set of commands available for the active tab. (See Figure 2.)
 
-<figure><img src='Images/TabMenu.png'><figcaption>Figure 2. Browser Tab Menu</figcaption></figure>
+<figure><img src='Images/TabMenu.jpg'><figcaption>Figure 2. Browser Tab Menu</figcaption></figure>
 
 Tapping the Settings button in the application bar menu, displays the Settings screen. (See Figure 3.)
 

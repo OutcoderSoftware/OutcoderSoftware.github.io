@@ -494,6 +494,7 @@ function loadExternalScript(url) {
     document.head.appendChild(script);
 }
 /* Call the function with the network path or URL to the external script. */
+loadExternalScript('<your-url-here>'); // e.g., 'https://example.com/script.js'
 ```
 
 

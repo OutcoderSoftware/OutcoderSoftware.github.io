@@ -56,7 +56,7 @@ title: Outcoder | Taming Industrial Chaos
 		<div class="item"> <img src="/images/slide4.png" class="img-responsive" alt="Fourth Slide Image">
 			<div class="carousel-caption">
 				<h1 class="wow fadeInUp color-white">Orpius</h1>
-				<h4 class="wow fadeInUp color-white hidden-xs">MULTI-AGENT CENTRAL INTELLIGENCE SYSTEM THAT BUILDS SPECILIEZED AGENTS ON DEMAND</h4>
+				<h4 class="wow fadeInUp color-white hidden-xs">MULTI-AGENT SYSTEM THAT BUILDS SPECILIEZED AGENTS ON DEMAND</h4>
 			<!--<div class="text-center hidden-xs"><a href="https://play.google.com/store/apps/details?id=com.outcoder.browser&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="btn btn-black btn-xl">Download It Now</a> &nbsp; <a href="http://www.orpius.com" class="btn btn-default btn-xl">Learn More</a></div>-->
 			<div class="text-center hidden-xs">
 				<!--<a href="https://play.google.com/store/apps/details?id=com.outcoder.browser&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="btn btn-black btn-xl">Download It Now</a>

@@ -10,6 +10,7 @@ title: Outcoder | Taming Industrial Chaos
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
 		</ol>
 		<!-- Wrapper for carousel items -->
 		<div class="carousel-inner"> 
@@ -51,15 +52,29 @@ title: Outcoder | Taming Industrial Chaos
 		</div>
 		<!--3rd item end-->
 
-		<!--4th item start -->
-		<div class="item"> <img src="/images/slide4.png" class="img-responsive" alt="Third Slide Image">
+		<!--4rd item start-->
+		<div class="item"> <img src="/images/slide4.png" class="img-responsive" alt="Fourth Slide Image">
+			<div class="carousel-caption">
+				<h1 class="wow fadeInUp color-white">Orpius</span></h1>
+				<h4 class="wow fadeInUp color-white hidden-xs">MULTI-AGENT CENTRAL INTELLIGENCE SYSTEM THAT BUILDS SPECILIEZED AGENTS ON DEMAND</h4>
+			<!--<div class="text-center hidden-xs"><a href="https://play.google.com/store/apps/details?id=com.outcoder.browser&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="btn btn-black btn-xl">Download It Now</a> &nbsp; <a href="http://www.orpius.com" class="btn btn-default btn-xl">Learn More</a></div>-->
+			<div class="text-center hidden-xs">
+				<!--<a href="https://play.google.com/store/apps/details?id=com.outcoder.browser&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="btn btn-black btn-xl">Download It Now</a>
+				&nbsp;-->
+				<a href="http://www.orpius.com" class="btn btn-default btn-xl" target="_blank">Learn More</a></div>
+			</div>
+		</div>
+		<!--4rd item end-->
+
+		<!--5th item start -->
+		<div class="item"> <img src="/images/slide5.png" class="img-responsive" alt="Fifth Slide Image">
 			<div class="carousel-caption">
 				<h1 class="wow fadeInUp color-white"><span>Surfy</span> Browser </h1>
 				<h4 class="wow fadeInUp color-white hidden-xs">A DARINGLY DIFFERENT CONSUMER BROWSER</h4>
 				<div class="text-center hidden-xs"><a href="https://play.google.com/store/apps/details?id=com.outcoder.browser&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" class="btn btn-black btn-xl">Download It Now</a> &nbsp; <a href="http://www.surfybrowser.com" class="btn btn-default btn-xl">Learn More</a></div>
 			</div>
 		</div>
-		<!--4th item End--> 
+		<!--5th item End--> 
 	</div>
 
 	<!-- Carousel controls -->

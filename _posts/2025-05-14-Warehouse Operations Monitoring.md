@@ -11,15 +11,12 @@ In a busy warehouse, ensuring smooth operations while maintaining tight security
 
 Imagine a large warehouse equipped with multiple cameras and sensors monitoring different sections. During regular hours, the cameras capture footage and sensors track activity to maintain operational efficiency. However, after hours, the system takes on a more vigilant role in safeguarding the facility.
 
-# Trigger Event:
-A sensor detects a delivery truck entering the loading dock after hours. This could indicate a legitimate late delivery or potential unauthorized access.
+**Trigger Event:** A sensor detects a delivery truck entering the loading dock after hours. This could indicate a legitimate late delivery or potential unauthorized access.
 
 
-# Frame Analysis:
-The system captures frames from the video feed and initiates real-time image analysis. It identifies the number of people present in the area and cross-references the activity against the expected schedule.
+**Frame Analysis:** The system captures frames from the video feed and initiates real-time image analysis. It identifies the number of people present in the area and cross-references the activity against the expected schedule.
 
-# Action:
-If the analysis detects unauthorized personnel or unexpected activity, the system can automatically respond:
+**Action:** If the analysis detects unauthorized personnel or unexpected activity, the system can automatically respond:
 + It can trigger an alert to the security system and automatically lock the dock doors to prevent unauthorized access.
 + Simultaneously, it can send a notification to the warehouse manager, detailing the detected anomaly, including the number of people and any suspicious behavior.
 + Additionally, the system may activate a secondary camera, strategically positioned to monitor the area more closely, ensuring continued surveillance until the threat is resolved.

@@ -1,6 +1,6 @@
 ---
 author: Violet Durand
-title: Warehouse Operations Monitoring: Enhancing Security and Efficiency
+title: Enhancing Security and Efficiency with Warehouse Operations Monitoring
 published: true
 ---
 

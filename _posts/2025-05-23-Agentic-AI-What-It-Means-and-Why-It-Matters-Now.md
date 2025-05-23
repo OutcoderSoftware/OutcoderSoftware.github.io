@@ -4,15 +4,14 @@ title: Agentic AI: What It Means and Why It Matters Now
 published: true
 ---
 
-The AI landscape is undergoing a seismic shift. While generative AI (gen AI) dominated headlines in 2023–2024 with tools like ChatGPT creating art, code, and text, a new paradigm is emerging: Agentic AI. Unlike gen AI, which reacts to prompts to generate content, Agentic AI acts autonomously, making decisions and executing complex workflows with minimal human oversight. This shift is not just technological, it’s redefining industries and workforce dynamics.
+The AI landscape is undergoing a shift. While generative AI (gen AI) dominated headlines in 2023–2024 with tools like ChatGPT creating art, code, and text, a new paradigm is emerging: Agentic AI. Unlike gen AI, which reacts to prompts to generate content, Agentic AI acts autonomously, making decisions and executing complex workflows with minimal human oversight. This shift is not just technological, it’s redefining industries and workforce dynamics.
 ## What Is Agentic AI
 Agentic AI refers to systems capable of independent reasoning, planning, and action to achieve predefined goals. These agents integrate large language models (LLMs), machine learning, and traditional programming to navigate dynamic environments, adapt to new data, and interact with external tools like APIs or IoT devices.
 #### Key Characteristics:
 1. **Autonomy:** Operates without constant human input (e.g., selfdriving cars adjusting routes in realtime)
 2. **Proactive Problem Solving:** Breaks tasks into subtasks, delegates to specialized tools, and iterates based on feedback
-3. **Contextual Awareness:** Learns from interactions and environmental data to refine decisions (e.g., healthcare agents adjusting treatment plans)
-4. **Multi-Agent Collaboration:** Teams of agents work together, such as supply chain agents coordinating logistics and inventory
-
+3. **Contextual Awareness:** Turns agents from rule-based executors into adaptive problem-solvers. They can anticipate needs, self-optimize (e.g., rerouting workflows around bottlenecks) or personalize interactions (e.g., tailoring software UX based on a user’s role).
+4. **Multi-Agent Collaboration:** Agentic systems often involve multiple agents working together; sharing information, delegating tasks, and resolving conflicts.
 
 ## Why Agentic AI Matters Now
 Agentic AI is transforming industries by automating workflows that once required human intervention. For example:
@@ -36,7 +35,7 @@ Organizations that embrace agentic systems early will be positioned to lead as t
 
 
 ## Human-AI Collaboration in Agentic Systems
-In agentic systems, AI isn’t just working alongside humans, it’s working with them. In our system, both AI agents and human users are treated as first-class participants.
+In agentic systems, AI isn’t just working alongside humans, it’s working with them. For exanple, in Orpius, both AI agents and human users are treated as first-class participants.
 
 Tasks are dynamically delegated to either AI agents or human team members, depending on who is best suited for the job.
 

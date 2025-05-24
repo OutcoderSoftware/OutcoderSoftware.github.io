@@ -7,7 +7,7 @@ published: true
 In a busy warehouse, ensuring smooth operations while maintaining tight security is a critical challenge. Leveraging connected video streams and sensors can provide comprehensive monitoring and immediate, context-aware actions.
 
 ## Scenario: After-Hours Intrusion Detection
-<img align="right" width="314" src="/Blog/Images/PostImages/2025-05-14/warehouseWithCameras.png" alt="Warehouse equipped with cameras." />
+<img align="right" width="314" src="/Blog/Images/PostImages/2025-05-14/warehousewithcameras.png" alt="Warehouse equipped with cameras." />
 
 Imagine a large warehouse equipped with multiple cameras and sensors monitoring different sections. During regular hours, the cameras capture footage and sensors track activity to maintain operational efficiency. However, after hours, the system takes on a more vigilant role in safeguarding the facility.
 

@@ -17,13 +17,7 @@ Agentic AI matters now because traditional automation can't keep up with the com
 
 
 ## Human-AI Collaboration in Agentic Systems
-In agentic systems, AI isn't just working alongside humans, it's working with them. For example, in Orpius, both AI agents and human users are treated as first-class participants.
-
-Tasks are dynamically delegated to either AI agents or human team members, depending on who is best suited for the job.
-
-The system is location-aware, taking into account time zones, availability, and context to ensure the right task goes to the right actor at the right time.
-
-.It creates a flexible system where responsibilities shift dynamically based on context, not rigid rules.
+In agentic systems, AI isn't just working alongside humans, it's working with them. For example, in Orpius, both AI agents and human users are treated as first-class participants. Tasks are dynamically delegated to either AI agents or human team members, depending on who is best suited for the job. The system is location-aware, taking into account time zones, availability, and context to ensure the right task goes to the right actor at the right time. It creates a flexible system where responsibilities shift dynamically based on context, not rigid rules.
  
 ## Challenges and Risks
 

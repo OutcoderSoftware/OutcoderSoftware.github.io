@@ -17,8 +17,9 @@ We took a different path. We didn't just build another multi-agent framework. We
 
 We don’t just let you define agents, we give you a distributed orchestration layer where agents, tools, and systems collaborate intelligently. You’re not locked into single-session tasks or rigid flows. 
 
-You can think of it as the intelligence layer between your users and your systems.
 
+This is what Orpius is built to do:
+Understand natural input, reason about its intent, access the right tools, and act without forcing you to build all that logic yourself.
 ## A Platform You Can Build On
 We provide you with intelligent, distributed backend with endless possibilities for you to build on. You get built-in capabilities like event-driven tasks, scheduling, shared documents, secrets, vision, and even a .NET code engine.
 
